@@ -1,0 +1,124 @@
+@import '~igniteui-angular/lib/core/styles/themes/utilities';
+@import '~igniteui-angular/lib/core/styles/components/card/card-component';
+@import '~igniteui-angular/lib/core/styles/components/card/card-theme';
+@import '~igniteui-angular/lib/core/styles/components/carousel/carousel-component';
+@import '~igniteui-angular/lib/core/styles/components/carousel/carousel-theme';
+@import '~igniteui-angular/lib/core/styles/components/bottom-nav/bottom-nav-component';
+@import '~igniteui-angular/lib/core/styles/components/bottom-nav/bottom-nav-theme';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-component';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-theme';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-component';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-theme';
+
+main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+	//overflow: auto;
+    height: 100%;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.navigation-1 {
+margin-top: 1px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.bottom-navigation-1 {
+position: absolute;
+top: 897px;
+left: 4px;
+z-index: 1;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.image-size {
+width: 100%;
+height: 247px;
+}
+
+.image-fit {
+object-fit: cover;
+}
+
+.slider-1 {
+height: 247px;
+min-height: 247px;
+
+}
+.background-row {
+
+position: relative;
+padding: 0;
+}
+
+$navigation-theme: igx-navbar-theme(
+$background: igx-color($default-palette, primary),
+$idle-icon-color: rgb(255, 255, 255),
+$text-color: rgb(255, 255, 255)
+);
+
+$bottom-navigation-theme: igx-bottom-nav-theme(
+$background: rgb(255, 255, 255),
+$idle-item-color: igx-color($default-palette, grays, 700),
+$active-item-color: igx-color($default-palette, primary)
+);
+
+$slider-theme: igx-carousel-theme(
+$button-background: rgb(255, 255, 255),
+$button-arrow-color: igx-color($default-palette, grays, 700),
+$indicator-dot-color: rgb(255, 255, 255),
+$indicator-active-border-color: rgb(255, 255, 255),
+$disable-button-shadow: false
+);
+
+
+:host {
+::ng-deep {
+.navigation {
+@include igx-navbar($navigation-theme);
+}
+
+.bottom-navigation {
+@include igx-bottom-nav($bottom-navigation-theme);
+}
+
+.slider {
+@include igx-carousel($slider-theme);
+position: absolute;
+top: 19px;
+left: 43px;
+z-index: 8;
+
+height: 247px;
+min-height: 247px;
+
+}
+
+}
+}

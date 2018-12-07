@@ -1,0 +1,245 @@
+@import '~igniteui-angular/lib/core/styles/themes/utilities';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-component';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-theme';
+@import '~igniteui-angular/lib/core/styles/components/button/button-component';
+@import '~igniteui-angular/lib/core/styles/components/button/button-theme';
+@import '~igniteui-angular/lib/core/styles/components/input/input-group-component';
+@import '~igniteui-angular/lib/core/styles/components/input/input-group-theme';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-component';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-theme';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-component';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-theme';
+
+main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+	//overflow: auto;
+    height: 100%;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+
+
+.registration {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.navigation {
+margin-top: 7px;
+margin-left: 6px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.colorswhite {
+position: absolute;
+top: 50px;
+left: 138px;
+z-index: 1;
+
+width: 744px;
+min-width: 744px;
+height: 99px;
+min-height: 99px;
+
+background-color: rgb(255, 255, 255);
+}
+.card-background {
+position: absolute;
+top: 149px;
+left: 138px;
+z-index: 3;
+
+width: 744px;
+min-width: 744px;
+height: 725px;
+min-height: 725px;
+
+background-color: rgb(255, 255, 255);
+}
+.mobile-no-1 {
+width: 361px;
+min-width: 361px;
+
+}
+.email-1 {
+width: 361px;
+min-width: 361px;
+
+}
+.password-1 {
+width: 361px;
+min-width: 361px;
+
+}
+.reenter-password-1 {
+width: 361px;
+min-width: 361px;
+
+}
+.reference-code-1 {
+width: 361px;
+min-width: 361px;
+
+}
+.title {
+color: igx-color($default-palette, primary);
+position: absolute;
+top: 77px;
+left: 397px;
+z-index: 2;
+
+margin-top: 0px;
+width: 193px;
+min-width: 193px;
+height: 57px;
+min-height: 57px;
+
+font-family: 'Helvetica', 'Titillium Web', sans-serif;
+text-align: center;
+}
+.background-row {
+margin-left: 6px;
+
+position: relative;
+padding: 0;
+}
+
+$navigation-navbar-theme: igx-navbar-theme(
+$background: igx-color($default-palette, primary),
+$idle-icon-color: rgb(255, 255, 255),
+$text-color: rgb(255, 255, 255)
+);
+
+$mobile-no-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$email-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$password-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$reenter-password-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$reference-code-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$register-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, secondary, 600),
+$raised-text-color: rgb(255, 255, 255)
+);
+
+$cancel-1-theme: igx-button-theme(
+$flat-background: rgba(0, 0, 0, 0),
+$flat-text-color: igx-color($default-palette, secondary)
+);
+
+
+:host {
+::ng-deep {
+.navigation-navbar {
+@include igx-navbar($navigation-navbar-theme);
+}
+
+.mobile-no {
+@include igx-input-group($mobile-no-theme);
+position: absolute;
+top: 224px;
+left: 313px;
+z-index: 6;
+
+}
+
+.email {
+@include igx-input-group($email-theme);
+position: absolute;
+top: 315px;
+left: 313px;
+z-index: 7;
+
+}
+
+.password {
+@include igx-input-group($password-theme);
+position: absolute;
+top: 406px;
+left: 313px;
+z-index: 8;
+
+}
+
+.reenter-password {
+@include igx-input-group($reenter-password-theme);
+position: absolute;
+top: 497px;
+left: 313px;
+z-index: 9;
+
+}
+
+.reference-code {
+@include igx-input-group($reference-code-theme);
+position: absolute;
+top: 588px;
+left: 313px;
+z-index: 10;
+
+}
+
+.register {
+@include igx-button($register-theme);
+position: absolute;
+top: 710px;
+left: 313px;
+z-index: 4;
+
+}
+
+.cancel-1 {
+@include igx-button($cancel-1-theme);
+position: absolute;
+top: 710px;
+left: 533px;
+z-index: 5;
+
+}
+
+}
+}

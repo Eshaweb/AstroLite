@@ -1,0 +1,343 @@
+@import '~igniteui-angular/lib/core/styles/themes/utilities';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-component';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-theme';
+@import '~igniteui-angular/lib/core/styles/components/button/button-component';
+@import '~igniteui-angular/lib/core/styles/components/button/button-theme';
+@import '~igniteui-angular/lib/core/styles/components/time-picker/time-picker-component';
+@import '~igniteui-angular/lib/core/styles/components/time-picker/time-picker-theme';
+@import '~igniteui-angular/lib/core/styles/components/date-picker/date-picker-component';
+@import '~igniteui-angular/lib/core/styles/components/date-picker/date-picker-theme';
+@import '~igniteui-angular/lib/core/styles/components/input/input-group-component';
+@import '~igniteui-angular/lib/core/styles/components/input/input-group-theme';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-component';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-theme';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-component';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-theme';
+
+main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+	//overflow: auto;
+    height: 100%;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+
+
+.horoscope-1 {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.navigation {
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.colorswhite {
+position: absolute;
+top: 176px;
+left: 55px;
+z-index: 3;
+
+width: 911px;
+min-width: 911px;
+height: 702px;
+min-height: 702px;
+
+background-color: rgb(255, 255, 255);
+}
+.colorswhite-1 {
+position: absolute;
+top: 50px;
+left: 57px;
+z-index: 1;
+
+width: 911px;
+min-width: 911px;
+height: 114px;
+min-height: 114px;
+
+background-color: rgb(255, 255, 255);
+}
+.longitude-1 {
+width: 153px;
+min-width: 153px;
+
+}
+.horoscope {
+color: igx-color($default-palette, grays, 900);
+position: absolute;
+top: 66px;
+left: 79px;
+z-index: 2;
+
+margin-top: 0px;
+height: 71px;
+min-height: 71px;
+
+font-family: 'Big Caslon', 'Titillium Web', sans-serif;
+font-weight: 500;
+}
+.enter-details {
+color: igx-color($default-palette, grays, 900);
+position: absolute;
+top: 219px;
+left: 79px;
+z-index: 4;
+
+margin-top: 0px;
+height: 57px;
+min-height: 57px;
+
+}
+.name-1 {
+width: 263px;
+min-width: 263px;
+
+}
+.birth-date-1 {
+width: 263px;
+min-width: 263px;
+
+}
+.birth-place-1 {
+width: 585px;
+min-width: 585px;
+
+}
+.father-name-1 {
+width: 263px;
+min-width: 263px;
+
+}
+.birth-time-1 {
+width: 263px;
+min-width: 263px;
+
+}
+.inputs-input-line-copy10-1 {
+width: 180px;
+min-width: 180px;
+
+}
+.mother-name-1 {
+width: 263px;
+min-width: 263px;
+
+}
+.inputs-input-line-copy3-1 {
+width: 180px;
+min-width: 180px;
+
+}
+.time-format-1 {
+width: 222px;
+min-width: 222px;
+
+}
+.background-row {
+
+position: relative;
+padding: 0;
+}
+
+$navigation-navbar-theme: igx-navbar-theme(
+$background: igx-color($default-palette, primary),
+$idle-icon-color: rgb(255, 255, 255),
+$text-color: rgb(255, 255, 255)
+);
+
+$longitude-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$name-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$birth-date-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$variant: 'dark'
+);
+
+$birth-place-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$father-name-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$birth-time-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$variant: 'dark'
+);
+
+$inputs-input-line-copy10-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$submit-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, secondary, 600),
+$raised-text-color: rgb(255, 255, 255)
+);
+
+$mother-name-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$inputs-input-line-copy3-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$time-format-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+
+:host {
+::ng-deep {
+.navigation-navbar {
+@include igx-navbar($navigation-navbar-theme);
+}
+
+.longitude {
+@include igx-input-group($longitude-theme);
+position: absolute;
+top: 708px;
+left: 72px;
+z-index: 6;
+
+}
+
+.name {
+@include igx-input-group($name-theme);
+position: absolute;
+top: 312px;
+left: 79px;
+z-index: 5;
+
+}
+
+.birth-date {
+@include igx-input-group($birth-date-theme);
+position: absolute;
+top: 464px;
+left: 79px;
+z-index: 8;
+
+}
+
+.birth-place {
+@include igx-input-group($birth-place-theme);
+position: absolute;
+top: 586px;
+left: 79px;
+z-index: 9;
+
+}
+
+.father-name {
+@include igx-input-group($father-name-theme);
+position: absolute;
+top: 312px;
+left: 401px;
+z-index: 13;
+
+}
+
+.birth-time {
+@include igx-input-group($birth-time-theme);
+position: absolute;
+top: 466px;
+left: 401px;
+z-index: 10;
+
+}
+
+.inputs-input-line-copy10 {
+@include igx-input-group($inputs-input-line-copy10-theme);
+position: absolute;
+top: 706px;
+left: 401px;
+z-index: 7;
+
+}
+
+.submit {
+@include igx-button($submit-theme);
+position: absolute;
+top: 806px;
+left: 401px;
+z-index: 15;
+
+}
+
+.mother-name {
+@include igx-input-group($mother-name-theme);
+position: absolute;
+top: 312px;
+left: 687px;
+z-index: 14;
+
+}
+
+.inputs-input-line-copy3 {
+@include igx-input-group($inputs-input-line-copy3-theme);
+position: absolute;
+top: 706px;
+left: 702px;
+z-index: 12;
+
+}
+
+.time-format {
+@include igx-input-group($time-format-theme);
+position: absolute;
+top: 464px;
+left: 728px;
+z-index: 11;
+
+}
+
+}
+}

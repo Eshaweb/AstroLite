@@ -1,0 +1,117 @@
+@import '~igniteui-angular/lib/core/styles/themes/utilities';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-component';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-theme';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-component';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-theme';
+
+main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+	overflow: auto;
+    height: 100%;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+
+
+.services {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.navigation {
+margin-top: 7px;
+margin-left: 6px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.colorswhite {
+position: absolute;
+top: 199px;
+left: 49px;
+z-index: 4;
+
+width: 658px;
+min-width: 658px;
+height: 679px;
+min-height: 679px;
+
+background-color: rgb(255, 255, 255);
+}
+.colorswhite-1 {
+position: absolute;
+top: 50px;
+left: 51px;
+z-index: 2;
+
+width: 658px;
+min-width: 658px;
+height: 114px;
+min-height: 114px;
+
+background-color: rgb(255, 255, 255);
+}
+.our-services {
+color: igx-color($default-palette, grays, 900);
+position: absolute;
+top: 66px;
+left: 73px;
+z-index: 3;
+
+margin-top: 0px;
+height: 71px;
+min-height: 71px;
+
+font-family: 'Big Caslon', 'Titillium Web', sans-serif;
+font-weight: 500;
+}
+.colorswhite-2 {
+position: absolute;
+top: 50px;
+left: 747px;
+z-index: 1;
+
+width: 242px;
+min-width: 242px;
+height: 826px;
+min-height: 826px;
+
+background-color: rgb(255, 255, 255);
+}
+.background-row {
+margin-left: 6px;
+
+position: relative;
+padding: 0;
+}
+
+$navigation-navbar-theme: igx-navbar-theme(
+$background: igx-color($default-palette, primary),
+$idle-icon-color: rgb(255, 255, 255),
+$text-color: rgb(255, 255, 255)
+);
+
+
+:host {
+::ng-deep {
+.navigation-navbar {
+@include igx-navbar($navigation-navbar-theme);
+}
+
+}
+}

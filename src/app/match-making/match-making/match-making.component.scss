@@ -1,0 +1,380 @@
+@import '~igniteui-angular/lib/core/styles/themes/utilities';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-component';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-theme';
+@import '~igniteui-angular/lib/core/styles/components/button/button-component';
+@import '~igniteui-angular/lib/core/styles/components/button/button-theme';
+@import '~igniteui-angular/lib/core/styles/components/input/input-group-component';
+@import '~igniteui-angular/lib/core/styles/components/input/input-group-theme';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-component';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-theme';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-component';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-theme';
+
+main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+	//overflow: auto;
+    height: 100%;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+
+
+.match-making {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.navigation {
+margin-top: 7px;
+margin-left: 6px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.colorswhite {
+position: absolute;
+top: 199px;
+left: 49px;
+z-index: 4;
+
+width: 658px;
+min-width: 658px;
+height: 679px;
+min-height: 679px;
+
+background-color: rgb(255, 255, 255);
+}
+.colorswhite-1 {
+position: absolute;
+top: 50px;
+left: 51px;
+z-index: 2;
+
+width: 658px;
+min-width: 658px;
+height: 114px;
+min-height: 114px;
+
+background-color: rgb(255, 255, 255);
+}
+.inputs-input-line-copy4-1 {
+width: 131px;
+min-width: 131px;
+
+}
+.inputs-input-line-copy2-1 {
+width: 153px;
+min-width: 153px;
+
+}
+.inputs-input-line-copy7-1 {
+width: 131px;
+min-width: 131px;
+
+}
+.match-my-horoscope {
+color: igx-color($default-palette, grays, 900);
+position: absolute;
+top: 66px;
+left: 73px;
+z-index: 3;
+
+margin-top: 0px;
+height: 71px;
+min-height: 71px;
+
+font-family: 'Big Caslon', 'Titillium Web', sans-serif;
+font-weight: 500;
+}
+.enter-girls-details {
+color: igx-color($default-palette, grays, 900);
+position: absolute;
+top: 219px;
+left: 73px;
+z-index: 5;
+
+margin-top: 0px;
+height: 57px;
+min-height: 57px;
+
+}
+.inputs-input-line-1 {
+width: 263px;
+min-width: 263px;
+
+}
+.inputs-input-line-copy10-1 {
+width: 180px;
+min-width: 180px;
+
+}
+.inputs-input-line-copy5-1 {
+width: 164px;
+min-width: 164px;
+
+}
+.inputs-input-line-copy8-1 {
+width: 164px;
+min-width: 164px;
+
+}
+.inputs-input-line-copy-1 {
+width: 263px;
+min-width: 263px;
+
+}
+.inputs-input-line-copy9-1 {
+width: 180px;
+min-width: 180px;
+
+}
+.inputs-input-line-copy3-1 {
+width: 180px;
+min-width: 180px;
+
+}
+.inputs-input-line-copy6-1 {
+width: 180px;
+min-width: 180px;
+
+}
+.colorswhite-2 {
+position: absolute;
+top: 50px;
+left: 747px;
+z-index: 1;
+
+width: 242px;
+min-width: 242px;
+height: 826px;
+min-height: 826px;
+
+background-color: rgb(255, 255, 255);
+}
+.background-row {
+margin-left: 6px;
+
+position: relative;
+padding: 0;
+}
+
+$navigation-navbar-theme: igx-navbar-theme(
+$background: igx-color($default-palette, primary),
+$idle-icon-color: rgb(255, 255, 255),
+$text-color: rgb(255, 255, 255)
+);
+
+$inputs-input-line-copy4-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$inputs-input-line-copy2-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$inputs-input-line-copy7-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$inputs-input-line-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$inputs-input-line-copy10-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$inputs-input-line-copy5-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$inputs-input-line-copy8-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$buttons-raised-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, secondary),
+$raised-text-color: igx-color($default-palette, grays, 900)
+);
+
+$inputs-input-line-copy-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$inputs-input-line-copy9-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$inputs-input-line-copy3-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$inputs-input-line-copy6-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+
+:host {
+::ng-deep {
+.navigation-navbar {
+@include igx-navbar($navigation-navbar-theme);
+}
+
+.inputs-input-line-copy4 {
+@include igx-input-group($inputs-input-line-copy4-theme);
+position: absolute;
+top: 457px;
+left: 63px;
+z-index: 9;
+
+}
+
+.inputs-input-line-copy2 {
+@include igx-input-group($inputs-input-line-copy2-theme);
+position: absolute;
+top: 708px;
+left: 66px;
+z-index: 7;
+
+}
+
+.inputs-input-line-copy7 {
+@include igx-input-group($inputs-input-line-copy7-theme);
+position: absolute;
+top: 586px;
+left: 69px;
+z-index: 10;
+
+}
+
+.inputs-input-line {
+@include igx-input-group($inputs-input-line-theme);
+position: absolute;
+top: 312px;
+left: 73px;
+z-index: 6;
+
+}
+
+.inputs-input-line-copy10 {
+@include igx-input-group($inputs-input-line-copy10-theme);
+position: absolute;
+top: 708px;
+left: 270px;
+z-index: 8;
+
+}
+
+.inputs-input-line-copy5 {
+@include igx-input-group($inputs-input-line-copy5-theme);
+position: absolute;
+top: 464px;
+left: 271px;
+z-index: 11;
+
+}
+
+.inputs-input-line-copy8 {
+@include igx-input-group($inputs-input-line-copy8-theme);
+position: absolute;
+top: 586px;
+left: 271px;
+z-index: 12;
+
+}
+
+.buttons-raised {
+@include igx-button($buttons-raised-theme);
+position: absolute;
+top: 801px;
+left: 275px;
+z-index: 17;
+
+}
+
+.inputs-input-line-copy {
+@include igx-input-group($inputs-input-line-copy-theme);
+position: absolute;
+top: 307px;
+left: 418px;
+z-index: 16;
+
+}
+
+.inputs-input-line-copy9 {
+@include igx-input-group($inputs-input-line-copy9-theme);
+position: absolute;
+top: 586px;
+left: 501px;
+z-index: 14;
+
+}
+
+.inputs-input-line-copy3 {
+@include igx-input-group($inputs-input-line-copy3-theme);
+position: absolute;
+top: 708px;
+left: 501px;
+z-index: 15;
+
+}
+
+.inputs-input-line-copy6 {
+@include igx-input-group($inputs-input-line-copy6-theme);
+position: absolute;
+top: 464px;
+left: 509px;
+z-index: 13;
+
+}
+
+}
+}

@@ -1,0 +1,50 @@
+<main class="igx-typography"><form>
+<div class="incomes">
+<div class="navigation"><div class="navbar">
+<igx-navbar 
+title="Incomes" actionButtonIcon="menu" >
+<igx-icon name="more_vert" ></igx-icon>
+</igx-navbar>
+</div>
+
+</div>
+<div class="incomes-screen"><div class="income"><h4 class="igx-typography__h4 add-income">Add Income</h4>
+<div class="payee-input">
+<igx-input-group type="line" class="payee-input-1" >
+<input igxInput type="text" value="Payee" />
+</igx-input-group>
+</div>
+
+<div class="currency"><div class="amount-input">
+<igx-input-group type="line" class="amount-input-1" >
+<input igxInput type="text" value="Amount" />
+</igx-input-group>
+</div>
+
+<div class="currency-input">
+<igx-input-group type="line" class="currency-input-1" >
+<input igxInput type="text" value="USD" />
+<igx-suffix>
+<div class="currency-input-2-suffix">
+<igx-icon name="arrow_drop_down" ></igx-icon>
+</div>
+</igx-suffix>
+</igx-input-group>
+</div>
+
+</div>
+<div class="save-button">
+<button igxRipple class="save-button-1" igxButton="raised" >ADD</button>
+</div>
+
+</div>
+<div class="income-grid">
+<igx-grid [autoGenerate]="false" height="399px" >
+<igx-column header="Date" width="200px" dataType="string" ></igx-column>
+<igx-column header="Payee" width="560px" dataType="string" ></igx-column>
+<igx-column header="Amount" width="200px" dataType="number" ></igx-column>
+</igx-grid>
+</div>
+
+</div>
+</div></form></main>

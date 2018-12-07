@@ -1,0 +1,5 @@
+@import "~igniteui-angular/lib/core/styles/themes/index";
+@include igx-core();
+@include igx-theme($default-palette);
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');

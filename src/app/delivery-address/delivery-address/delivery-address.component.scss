@@ -1,0 +1,272 @@
+@import '~igniteui-angular/lib/core/styles/themes/utilities';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-component';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-theme';
+@import '~igniteui-angular/lib/core/styles/components/button/button-component';
+@import '~igniteui-angular/lib/core/styles/components/button/button-theme';
+@import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-component';
+@import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-theme';
+@import '~igniteui-angular/lib/core/styles/components/input/input-group-component';
+@import '~igniteui-angular/lib/core/styles/components/input/input-group-theme';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-component';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-theme';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-component';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-theme';
+
+main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+	overflow: auto;
+    height: 100%;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+
+
+.delivery-address-1 {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.navigation {
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.delivery-address {
+color: igx-color($default-palette, grays, 900);
+margin-top: 37px;
+margin-left: 64px;
+
+}
+.title {
+height: 114px;
+min-height: 114px;
+margin-top: 50px;
+margin-right: 75px;
+margin-left: 57px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.street-1 {
+width: 461px;
+min-width: 461px;
+
+}
+.apartment-1 {
+width: 461px;
+min-width: 461px;
+
+}
+.country-1 {
+width: 461px;
+min-width: 461px;
+
+}
+.state-1 {
+width: 461px;
+min-width: 461px;
+
+}
+.city-1 {
+width: 461px;
+min-width: 461px;
+
+}
+.postal-code-1 {
+width: 461px;
+min-width: 461px;
+
+}
+.checkbox-1 {
+width: 100%;
+
+}
+.button-1 {
+width: 100%;
+height: 36px;
+min-height: 36px;
+
+}
+.form-address {
+width: 461px;
+min-width: 461px;
+margin: 103px auto 0 auto;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.body {
+height: 702px;
+min-height: 702px;
+margin-top: 12px;
+margin-right: 77px;
+margin-left: 55px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.screen-content {
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgba(igx-color($default-palette, primary), .10);
+}
+
+$navigation-navbar-theme: igx-navbar-theme(
+$background: igx-color($default-palette, primary),
+$idle-icon-color: rgb(255, 255, 255),
+$text-color: rgb(255, 255, 255)
+);
+
+$street-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$apartment-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$country-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$country-2-suffix-theme: igx-icon-theme(
+$color: igx-color($default-palette, grays, 700)
+);
+
+$state-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$state-2-suffix-theme: igx-icon-theme(
+$color: igx-color($default-palette, grays, 700)
+);
+
+$city-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$postal-code-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$checkbox-theme: igx-checkbox-theme(
+$fill-color: igx-color($default-palette, secondary),
+$tick-color: rgb(255, 255, 255),
+$variant: 'dark'
+);
+
+$button-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, secondary, 600),
+$raised-text-color: rgb(255, 255, 255)
+);
+
+
+:host {
+::ng-deep {
+.navigation-navbar {
+@include igx-navbar($navigation-navbar-theme);
+}
+
+.street {
+@include igx-input-group($street-theme);
+}
+
+.apartment {
+@include igx-input-group($apartment-theme);
+margin-top: 16px;
+
+}
+
+.country {
+@include igx-input-group($country-theme);
+margin-top: 16px;
+
+}
+
+.country-2-suffix {
+@include igx-icon($country-2-suffix-theme);
+}
+
+.state {
+@include igx-input-group($state-theme);
+margin-top: 16px;
+
+}
+
+.state-2-suffix {
+@include igx-icon($state-2-suffix-theme);
+}
+
+.city {
+@include igx-input-group($city-theme);
+margin-top: 16px;
+
+}
+
+.postal-code {
+@include igx-input-group($postal-code-theme);
+margin-top: 16px;
+
+}
+
+.checkbox {
+@include igx-checkbox($checkbox-theme);
+margin-top: 16px;
+
+}
+
+.button {
+@include igx-button($button-theme);
+margin-top: 8px;
+
+}
+
+}
+}
