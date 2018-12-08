@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InfragisticsImportsModule } from '../infragistics-imports/infragistics-imports.module';
 import { MatchMakingComponent } from './match-making/match-making.component';
 import { AgmCoreModule } from '../../../node_modules/@agm/core';
+import { MatchMakingService } from '../../Services/MatchMakingService/MatchMakingService';
 @NgModule({
     imports: [AgmCoreModule.forRoot({
         // apiKey: "AIzaSyD68pTd0CmqTXSqPHFpLrPWkiClqPBIpLQ",  
@@ -19,6 +20,7 @@ import { AgmCoreModule } from '../../../node_modules/@agm/core';
         InfragisticsImportsModule
     ],
     declarations: [MatchMakingComponent],
+    providers: [MatchMakingService],
     exports: [
         MatchMakingComponent
     ]

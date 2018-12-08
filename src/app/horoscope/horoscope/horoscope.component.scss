@@ -1,12 +1,18 @@
 @import '~igniteui-angular/lib/core/styles/themes/utilities';
-@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-component';
-@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-theme';
 @import '~igniteui-angular/lib/core/styles/components/button/button-component';
 @import '~igniteui-angular/lib/core/styles/components/button/button-theme';
+@import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-component';
+@import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-theme';
 @import '~igniteui-angular/lib/core/styles/components/time-picker/time-picker-component';
 @import '~igniteui-angular/lib/core/styles/components/time-picker/time-picker-theme';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-component';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-theme';
+@import '~igniteui-angular/lib/core/styles/components/radio/radio-component';
+@import '~igniteui-angular/lib/core/styles/components/radio/radio-theme';
 @import '~igniteui-angular/lib/core/styles/components/date-picker/date-picker-component';
 @import '~igniteui-angular/lib/core/styles/components/date-picker/date-picker-theme';
+@import '~igniteui-angular/lib/core/styles/components/combo/combo-component';
+@import '~igniteui-angular/lib/core/styles/components/combo/combo-theme';
 @import '~igniteui-angular/lib/core/styles/components/input/input-group-component';
 @import '~igniteui-angular/lib/core/styles/components/input/input-group-theme';
 @import '~igniteui-angular/lib/core/styles/components/icon/icon-component';
@@ -48,108 +54,267 @@ padding: 0;
 flex-shrink: 0;
 }
 
-.colorswhite {
-position: absolute;
-top: 176px;
-left: 55px;
-z-index: 3;
-
-width: 911px;
-min-width: 911px;
-height: 702px;
-min-height: 702px;
-
-background-color: rgb(255, 255, 255);
-}
-.colorswhite-1 {
-position: absolute;
-top: 50px;
-left: 57px;
-z-index: 1;
-
-width: 911px;
-min-width: 911px;
-height: 114px;
-min-height: 114px;
-
-background-color: rgb(255, 255, 255);
-}
-.longitude-1 {
-width: 153px;
-min-width: 153px;
-
-}
 .horoscope {
 color: igx-color($default-palette, grays, 900);
-position: absolute;
-top: 66px;
-left: 79px;
-z-index: 2;
+margin-top: 2px;
+margin-left: 55px;
 
-margin-top: 0px;
 height: 71px;
 min-height: 71px;
 
 font-family: 'Big Caslon', 'Titillium Web', sans-serif;
 font-weight: 500;
 }
-.enter-details {
-color: igx-color($default-palette, grays, 900);
+.title {
 position: absolute;
-top: 219px;
-left: 79px;
-z-index: 4;
+top: 12px;
+left: 34px;
+z-index: 2;
 
-margin-top: 0px;
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.sub-title {
+color: igx-color($default-palette, grays, 900);
+margin-top: 33px;
+margin-right: 618px;
+margin-left: 58px;
+
+width: 100%;
 height: 57px;
 min-height: 57px;
 
 }
 .name-1 {
-width: 263px;
-min-width: 263px;
-
-}
-.birth-date-1 {
-width: 263px;
-min-width: 263px;
-
-}
-.birth-place-1 {
-width: 585px;
-min-width: 585px;
+width: 332px;
+min-width: 332px;
 
 }
 .father-name-1 {
-width: 263px;
-min-width: 263px;
+width: 332px;
+min-width: 332px;
 
 }
-.birth-time-1 {
-width: 263px;
-min-width: 263px;
+.name-row1 {
 
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+padding: 0;
 }
-.inputs-input-line-copy10-1 {
-width: 180px;
-min-width: 180px;
 
-}
 .mother-name-1 {
-width: 263px;
-min-width: 263px;
+width: 332px;
+min-width: 332px;
 
 }
-.inputs-input-line-copy3-1 {
-width: 180px;
-min-width: 180px;
+.name-2 {
+position: relative;
+z-index: 2;
 
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
 }
+
 .time-format-1 {
-width: 222px;
-min-width: 222px;
+width: 332px;
+min-width: 332px;
 
 }
+.name-row {
+margin-top: 25px;
+margin-right: 159px;
+margin-left: 42px;
+
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+padding: 0;
+}
+
+.gender {
+color: igx-color($default-palette, grays, 900);
+margin-top: 13px;
+
+height: 24px;
+min-height: 24px;
+
+}
+.dateof-bith-1 {
+width: 329px;
+min-width: 329px;
+
+}
+igx-radio-group {
+    display: flex;
+    flex-flow: column nowrap;
+}
+igx-radio {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.radio-group {
+position: relative;
+left: -209px;
+z-index: 3;
+
+}
+.timeof-birth-1 {
+width: 332px;
+min-width: 332px;
+
+}
+.gender-row {
+margin-top: 19px;
+margin-right: 165px;
+margin-left: 45px;
+
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+padding: 0;
+}
+
+.birth-place-1 {
+width: 329px;
+min-width: 329px;
+
+}
+.longitude {
+color: igx-color($default-palette, grays, 900);
+margin-top: 1px;
+
+font-weight: 600;
+}
+.inputs-input-border-copy24-1 {
+width: 128px;
+min-width: 128px;
+
+}
+.inputs-input-border-copy25-1 {
+width: 128px;
+min-width: 128px;
+
+}
+.inputs-input-border-copy26-1 {
+width: 128px;
+min-width: 128px;
+
+}
+.longitude-row {
+margin-left: 19px;
+
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+padding: 0;
+}
+
+.latitude {
+color: igx-color($default-palette, grays, 900);
+margin-top: 0px;
+font-weight: 600;
+}
+.inputs-input-border-copy27-1 {
+width: 128px;
+min-width: 128px;
+
+}
+.inputs-input-border-copy29-1 {
+width: 128px;
+min-width: 128px;
+
+}
+.inputs-input-border-copy30-1 {
+width: 128px;
+min-width: 128px;
+
+}
+.latitude-row {
+margin-top: 9px;
+
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+padding: 0;
+}
+
+.zone {
+color: igx-color($default-palette, grays, 900);
+margin-top: 15px;
+
+font-weight: 600;
+}
+.inputs-input-border-copy28-1 {
+width: 128px;
+min-width: 128px;
+
+}
+.inputs-input-border-copy31-1 {
+width: 128px;
+min-width: 128px;
+
+}
+.inputs-input-border-copy32-1 {
+width: 128px;
+min-width: 128px;
+
+}
+.zone-row {
+margin-top: 7px;
+margin-left: 16px;
+
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+padding: 0;
+}
+
+.time-zone {
+color: igx-color($default-palette, secondary);
+margin-top: 20px;
+margin-left: 26px;
+
+height: 28px;
+min-height: 28px;
+
+}
+.coordinates {
+height: 263px;
+min-height: 263px;
+margin-top: 32px;
+margin-right: 173px;
+margin-left: 35px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.submit-1 {
+width: 100%;
+
+}
+.content {
+position: absolute;
+top: 110px;
+left: 34px;
+z-index: 1;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
 .background-row {
 
 position: relative;
@@ -162,26 +327,7 @@ $idle-icon-color: rgb(255, 255, 255),
 $text-color: rgb(255, 255, 255)
 );
 
-$longitude-theme: igx-input-group-theme(
-$idle-bottom-line-color: igx-color($default-palette, grays),
-$box-background: transparent,
-$border-background: transparent,
-$variant: 'dark'
-);
-
 $name-theme: igx-input-group-theme(
-$idle-bottom-line-color: igx-color($default-palette, grays),
-$box-background: transparent,
-$border-background: transparent,
-$variant: 'dark'
-);
-
-$birth-date-theme: igx-input-group-theme(
-$idle-bottom-line-color: igx-color($default-palette, grays),
-$variant: 'dark'
-);
-
-$birth-place-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: transparent,
@@ -195,31 +341,7 @@ $border-background: transparent,
 $variant: 'dark'
 );
 
-$birth-time-theme: igx-input-group-theme(
-$idle-bottom-line-color: igx-color($default-palette, grays),
-$variant: 'dark'
-);
-
-$inputs-input-line-copy10-theme: igx-input-group-theme(
-$idle-bottom-line-color: igx-color($default-palette, grays),
-$box-background: transparent,
-$border-background: transparent,
-$variant: 'dark'
-);
-
-$submit-theme: igx-button-theme(
-$raised-background: igx-color($default-palette, secondary, 600),
-$raised-text-color: rgb(255, 255, 255)
-);
-
 $mother-name-theme: igx-input-group-theme(
-$idle-bottom-line-color: igx-color($default-palette, grays),
-$box-background: transparent,
-$border-background: transparent,
-$variant: 'dark'
-);
-
-$inputs-input-line-copy3-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: transparent,
@@ -228,9 +350,110 @@ $variant: 'dark'
 
 $time-format-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: igx-color($default-palette, grays, 200),
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$dateof-bith-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$variant: 'dark'
+);
+
+$radio-group-1-theme: igx-radio-theme(
+$fill-color: igx-color($default-palette, grays, 600),
+$variant: 'dark'
+);
+
+$radio-group-2-theme: igx-radio-theme(
+$fill-color: igx-color($default-palette, grays, 600),
+$variant: 'dark'
+);
+
+$timeof-birth-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$variant: 'dark'
+);
+
+$birth-place-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: transparent,
 $variant: 'dark'
+);
+
+$inputs-input-border-copy24-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: rgba(0, 0, 0, 0),
+$variant: 'dark'
+);
+
+$inputs-input-border-copy25-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: rgba(0, 0, 0, 0),
+$variant: 'dark'
+);
+
+$inputs-input-border-copy26-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: rgba(0, 0, 0, 0),
+$variant: 'dark'
+);
+
+$inputs-input-border-copy27-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: rgba(0, 0, 0, 0),
+$variant: 'dark'
+);
+
+$inputs-input-border-copy29-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: rgba(0, 0, 0, 0),
+$variant: 'dark'
+);
+
+$inputs-input-border-copy30-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: rgba(0, 0, 0, 0),
+$variant: 'dark'
+);
+
+$inputs-input-border-copy28-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: rgba(0, 0, 0, 0),
+$variant: 'dark'
+);
+
+$inputs-input-border-copy31-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: rgba(0, 0, 0, 0),
+$variant: 'dark'
+);
+
+$inputs-input-border-copy32-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: rgba(0, 0, 0, 0),
+$variant: 'dark'
+);
+
+$editbutton-theme: igx-checkbox-theme(
+$fill-color: igx-color($default-palette, secondary),
+$tick-color: rgb(255, 255, 255),
+$variant: 'dark'
+);
+
+$submit-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, secondary, 600),
+$raised-text-color: rgb(255, 255, 255)
 );
 
 
@@ -240,102 +463,128 @@ $variant: 'dark'
 @include igx-navbar($navigation-navbar-theme);
 }
 
-.longitude {
-@include igx-input-group($longitude-theme);
-position: absolute;
-top: 708px;
-left: 72px;
-z-index: 6;
-
-}
-
 .name {
 @include igx-input-group($name-theme);
-position: absolute;
-top: 312px;
-left: 79px;
-z-index: 5;
-
-}
-
-.birth-date {
-@include igx-input-group($birth-date-theme);
-position: absolute;
-top: 464px;
-left: 79px;
-z-index: 8;
-
-}
-
-.birth-place {
-@include igx-input-group($birth-place-theme);
-position: absolute;
-top: 586px;
-left: 79px;
-z-index: 9;
+margin-top: 6px;
 
 }
 
 .father-name {
 @include igx-input-group($father-name-theme);
-position: absolute;
-top: 312px;
-left: 401px;
-z-index: 13;
-
-}
-
-.birth-time {
-@include igx-input-group($birth-time-theme);
-position: absolute;
-top: 466px;
-left: 401px;
-z-index: 10;
-
-}
-
-.inputs-input-line-copy10 {
-@include igx-input-group($inputs-input-line-copy10-theme);
-position: absolute;
-top: 706px;
-left: 401px;
-z-index: 7;
-
-}
-
-.submit {
-@include igx-button($submit-theme);
-position: absolute;
-top: 806px;
-left: 401px;
-z-index: 15;
+margin: 0 0 0 auto;
 
 }
 
 .mother-name {
 @include igx-input-group($mother-name-theme);
-position: absolute;
-top: 312px;
-left: 687px;
-z-index: 14;
-
-}
-
-.inputs-input-line-copy3 {
-@include igx-input-group($inputs-input-line-copy3-theme);
-position: absolute;
-top: 706px;
-left: 702px;
-z-index: 12;
+margin-top: 13px;
+margin-left: 4px;
 
 }
 
 .time-format {
 @include igx-input-group($time-format-theme);
-position: absolute;
-top: 464px;
-left: 728px;
-z-index: 11;
+margin: 65px 0 0 auto;
+
+}
+
+.dateof-bith {
+@include igx-input-group($dateof-bith-theme);
+margin-top: 50px;
+margin-left: -55px;
+
+}
+
+.radio-group-1 {
+@include igx-radio($radio-group-1-theme);
+}
+
+.radio-group-2 {
+@include igx-radio($radio-group-2-theme);
+}
+
+.timeof-birth {
+@include igx-input-group($timeof-birth-theme);
+margin: 53px 0 0 auto;
+
+}
+
+.birth-place {
+@include igx-input-group($birth-place-theme);
+margin-top: 15px;
+margin-left: 47px;
+
+}
+
+.inputs-input-border-copy24 {
+@include igx-input-group($inputs-input-border-copy24-theme);
+margin-left: 113px;
+
+}
+
+.inputs-input-border-copy25 {
+@include igx-input-group($inputs-input-border-copy25-theme);
+margin-left: 40px;
+
+}
+
+.inputs-input-border-copy26 {
+@include igx-input-group($inputs-input-border-copy26-theme);
+margin-left: 37px;
+
+}
+
+.inputs-input-border-copy27 {
+@include igx-input-group($inputs-input-border-copy27-theme);
+margin-top: 2px;
+margin-left: 114px;
+
+}
+
+.inputs-input-border-copy29 {
+@include igx-input-group($inputs-input-border-copy29-theme);
+margin-left: 41px;
+
+}
+
+.inputs-input-border-copy30 {
+@include igx-input-group($inputs-input-border-copy30-theme);
+margin-left: 36px;
+
+}
+
+.inputs-input-border-copy28 {
+@include igx-input-group($inputs-input-border-copy28-theme);
+margin-top: 4px;
+margin-left: 117px;
+
+}
+
+.inputs-input-border-copy31 {
+@include igx-input-group($inputs-input-border-copy31-theme);
+margin-left: 41px;
+
+}
+
+.inputs-input-border-copy32 {
+@include igx-input-group($inputs-input-border-copy32-theme);
+margin-left: 35px;
+
+}
+
+.editbutton {
+@include igx-checkbox($editbutton-theme);
+margin-top: 11px;
+margin-left: 31px;
+
+}
+
+.submit {
+@include igx-button($submit-theme);
+margin-top: 24px;
+margin-right: 419px;
+margin-bottom: 13px;
+margin-left: 374px;
 
 }
 

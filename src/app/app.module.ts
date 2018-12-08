@@ -9,12 +9,6 @@ import { LoginComponent } from './login/login/login.component';
 import { UIService } from '../Services/UIService/ui.service';
 import { ShareButtonsModule } from '@ngx-share/buttons';
 import { InfragisticsImportsModule } from './infragistics-imports/infragistics-imports.module';
-import { AboutModule } from './about/about.module';
-import { AboutComponent } from './about/about/about.component';
-import { BudgetHomeComponent } from './budget-home/budget-home/budget-home.component';
-import { BudgetHomeModule } from './budget-home/budget-home.module';
-import { IncomesModule } from './incomes/incomes.module';
-import { IncomesComponent } from './incomes/incomes/incomes.component';
 import { AstamangalaModule } from './astamangala/astamangala.module';
 import { AstamangalaComponent } from './astamangala/astamangala/astamangala.component';
 import { DashboardModule } from './dashboard/dashboard.module';
@@ -66,9 +60,6 @@ const generatedRoutes: Routes = [
     { path: 'delAddress', component: DeliveryAddressComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'astamangala', component: AstamangalaComponent },
-    { path: 'about', component: AboutComponent },
-    { path: 'budget', component: BudgetHomeComponent },
-    { path: 'incomes', component: IncomesComponent },
     { path: 'loginDemo', component: LoginDemoComponent },
     { path: 'regDemo', component: RegistrationDemoComponent },
 
@@ -120,8 +111,7 @@ let config = new AuthServiceConfig([
         BrowserAnimationsModule,
         LoginModule, RegistrationModule,
         RouterModule.forRoot(generatedRoutes),
-        AboutModule, BudgetHomeModule,
-        IncomesModule, AstamangalaModule,
+        AstamangalaModule,
         DashboardModule,
         DeliveryAddressModule,
         HoroscopeModule,

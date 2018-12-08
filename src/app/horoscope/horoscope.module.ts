@@ -6,6 +6,8 @@ import { InfragisticsImportsModule } from '../infragistics-imports/infragistics-
 import { HoroscopeComponent } from './horoscope/horoscope.component';
 import { AgmCoreModule } from '../../../node_modules/@agm/core';
 import { ToastrModule } from '../../../node_modules/ngx-toastr';
+import { HoroScopeService } from '../../Services/HoroScopeService/HoroScopeService';
+import { PartyService } from '../../Services/PartyService/PartyService';
 @NgModule({
     imports: [
         AgmCoreModule.forRoot({
@@ -25,6 +27,7 @@ import { ToastrModule } from '../../../node_modules/ngx-toastr';
         FormsModule,
         InfragisticsImportsModule
     ],
+    providers: [HoroScopeService, PartyService],
     declarations: [HoroscopeComponent],
     exports: [
         HoroscopeComponent

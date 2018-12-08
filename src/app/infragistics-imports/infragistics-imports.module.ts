@@ -18,7 +18,8 @@ import {
 	IgxTimePickerModule,
 	IgxRadioModule,
 	IgxCarouselModule,
-	IgxBottomNavModule
+	IgxBottomNavModule,
+	IgxComboModule
 } from 'igniteui-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
@@ -42,7 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         BrowserAnimationsModule,
         IgxRadioModule,
         IgxCarouselModule,
-        IgxBottomNavModule
+        IgxBottomNavModule,
+        IgxComboModule
     ],
     declarations: [],
     exports: [
@@ -64,7 +66,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         BrowserAnimationsModule,
         IgxRadioModule,
         IgxCarouselModule,
-        IgxBottomNavModule
+        IgxBottomNavModule,
+        IgxComboModule
     ]
 })
 export class InfragisticsImportsModule {
