@@ -2,7 +2,8 @@ import { Injectable, ViewChild } from "@angular/core";
 import { SmartHttpClient } from "../shared/http-client/smart-httpclient.service";
 import { Observable } from "rxjs";
 import { SalesResponse } from "../../Models/Sales/SalesResponse";
-import { HttpClient, HttpBackend } from "@angular/common/http";
+import { HttpClient, HttpBackend, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { HoroRequest } from "src/Models/HoroScope/HoroRequest";
 
 
 
@@ -15,6 +16,8 @@ export class HoroScopeService {
     existingAddress: any;
     defaultAddress: any;
     paymentModes: any;
+    horoRequest: HoroRequest;
+    data:any;
     ItActId='#SH';
     //@ViewChild(Nav) nav;
     // constructor(public navCtrl: NavController,public smartHttpClient: SmartHttpClient) {
@@ -28,6 +31,14 @@ export class HoroScopeService {
 
             callback(data);
         });
+    }
+    GetHoroReport(){
+        var url = "http://www.astrolite.in/wcf/webhoroapi/api/result/horoscopereport";
+        return this.http.get(url, { responseType: "blob", headers:new HttpHeaders().append('Content-Type','application/json') }).catch(this.handleEror);
+    }
+    private handleEror(err:HttpErrorResponse){
+        alert(err);
+        return ""
     }
     CreateOrder(orderModel, callback: (data) => void) {
         var endPoint = "Order/CreateOrder";

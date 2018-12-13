@@ -8,21 +8,21 @@ title="Login" actionButtonIcon="arrow_back" >
 </div>
 
 </div>
-<div class="background-row">
+<div class="background-row" [formGroup]="loginForm">
 <div class="colorswhite">
 </div>
 <span class="igx-typography__subtitle-1 ifyouare-non-regis">If you are Non-Registred user you can login through OTP</span>
 <a class="igx-typography__body-1 otp-login" >Click here to login </a>
 <div class="mobile-no">
 <igx-input-group type="line" class="mobile-no-1" >
-<input igxInput type="text" value="Enter your mobile no" />
+<input igxInput type="number" formControlName="mobileno" />
 <label igxLabel>Mobile No</label>
 </igx-input-group>
 </div>
 
 <div class="password">
 <igx-input-group type="line" class="password-1" >
-<input igxInput type="text" value="Enter your password" />
+<input igxInput type="password" formControlName="password" />
 <label igxLabel>Password</label>
 </igx-input-group>
 </div>
@@ -37,7 +37,7 @@ title="Login" actionButtonIcon="arrow_back" >
     message="Are you sure LogOut..?">
 </igx-dialog>
 <div class="login">
-<button igxRipple class="login-1" igxButton="raised" (click)='login()'>Login</button>
+<button igxRipple class="login-1" [disabled]="!loginForm.valid" igxButton="raised" (click)='onClick()'>Login</button>
 </div>
 
 <a class="igx-typography__body-1 forget-password" >Forget Password </a>

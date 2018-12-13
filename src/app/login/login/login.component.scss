@@ -30,15 +30,13 @@ form {
 
 
 
-.login-3 {
+.login-2 {
     display: flex;
     flex-direction: column;
     flex: 1;
 }
 
 .navigation {
-margin-top: 7px;
-margin-left: 6px;
 
 display: flex;
 flex-direction: column;
@@ -46,40 +44,6 @@ padding: 0;
 flex-shrink: 0;
 }
 
-.colorswhite {
-position: absolute;
-top: 101px;
-left: 178px;
-z-index: 1;
-
-width: 658px;
-min-width: 658px;
-height: 810px;
-min-height: 810px;
-
-background-color: rgb(255, 255, 255);
-}
-.ifyouare-non-regis {
-color: igx-color($default-palette, secondary);
-position: absolute;
-top: 674px;
-left: 301px;
-z-index: 9;
-
-margin-top: 0px;
-height: 24px;
-min-height: 24px;
-
-}
-.otp-login {
-position: absolute;
-top: 698px;
-left: 301px;
-z-index: 2;
-
-text-decoration: underline;
-color: igx-color($default-palette, primary);
-}
 .mobile-no-1 {
 width: 361px;
 min-width: 361px;
@@ -90,28 +54,70 @@ width: 361px;
 min-width: 361px;
 
 }
-.login-1 {
-width: 144px;
-min-width: 144px;
-height: 54px;
-min-height: 54px;
-
-}
 .forget-password {
-position: absolute;
-top: 474px;
-left: 342px;
-z-index: 8;
+margin-top: 13px;
+margin-left: 165px;
 
 text-decoration: underline;
 color: igx-color($default-palette, primary);
 }
-.login-2 {
+.facebook-1 {
+width: 379px;
+min-width: 379px;
+height: 50px;
+min-height: 50px;
+
+}
+.googlelogin-1 {
+width: 379px;
+min-width: 379px;
+height: 50px;
+min-height: 50px;
+
+}
+.ifyouare-non-regis {
+color: igx-color($default-palette, secondary);
+margin-top: 0px;
+height: 24px;
+min-height: 24px;
+
+}
+.otp-login {
+position: relative;
+top: 23px;
+left: -413px;
+z-index: 2;
+
+text-decoration: underline;
 color: igx-color($default-palette, primary);
+}
+.ifyouare-non-regis-row {
+margin-top: 28px;
+margin-right: 121px;
+margin-left: 124px;
+
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+padding: 0;
+}
+
+.content {
 position: absolute;
-top: 139px;
-left: 417px;
-z-index: 3;
+top: 69px;
+left: 183px;
+z-index: 1;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.title {
+color: igx-color($default-palette, primary);
+margin-left: 99px;
 
 margin-top: 0px;
 width: 131px;
@@ -122,8 +128,26 @@ min-height: 57px;
 font-family: 'Helvetica', 'Titillium Web', sans-serif;
 text-align: center;
 }
+.login-1 {
+width: 379px;
+min-width: 379px;
+height: 50px;
+min-height: 50px;
+
+}
+.title-1 {
+position: absolute;
+top: 139px;
+left: 324px;
+z-index: 2;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
 .background-row {
-margin-left: 6px;
 
 position: relative;
 padding: 0;
@@ -149,14 +173,19 @@ $border-background: transparent,
 $variant: 'dark'
 );
 
-$login-theme: igx-button-theme(
-$raised-background: igx-color($default-palette, secondary, 400),
+$facebook-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, info),
 $raised-text-color: rgb(255, 255, 255)
 );
 
-$cancel-1-theme: igx-button-theme(
-$flat-background: rgba(0, 0, 0, 0),
-$flat-text-color: igx-color($default-palette, secondary)
+$googlelogin-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, secondary, 900),
+$raised-text-color: rgb(255, 255, 255)
+);
+
+$login-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, secondary, 400),
+$raised-text-color: rgb(255, 255, 255)
 );
 
 
@@ -168,37 +197,33 @@ $flat-text-color: igx-color($default-palette, secondary)
 
 .mobile-no {
 @include igx-input-group($mobile-no-theme);
-position: absolute;
-top: 310px;
-left: 327px;
-z-index: 6;
+margin-top: 241px;
+margin-left: 150px;
 
 }
 
 .password {
 @include igx-input-group($password-theme);
-position: absolute;
-top: 411px;
-left: 327px;
-z-index: 7;
+margin-top: 51px;
+margin-left: 150px;
+
+}
+
+.facebook {
+@include igx-button($facebook-theme);
+margin: 76px auto 0 auto;
+
+}
+
+.googlelogin {
+@include igx-button($googlelogin-theme);
+margin: 13px auto 0 auto;
 
 }
 
 .login {
 @include igx-button($login-theme);
-position: absolute;
-top: 575px;
-left: 327px;
-z-index: 4;
-
-}
-
-.cancel-1 {
-@include igx-button($cancel-1-theme);
-position: absolute;
-top: 575px;
-left: 548px;
-z-index: 5;
+margin-top: 347px;
 
 }
 

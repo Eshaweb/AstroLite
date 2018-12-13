@@ -4,10 +4,10 @@ export class HoroRequest{
     Father:string;
     Mother:string;
     Gothra:string;
-    // Date:string;
-    // Time:string;
-    Date:Date;
-    Time:Date;
+    Date:string;
+    Time:string;
+    //Date:Date;
+    //Time:Date;
     TimeFormat:string;
     LatDeg:number;
     LatMt:number;

@@ -1,0 +1,63 @@
+main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    flex-grow: 0;
+    flex-direction: row;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+}
+
+nav header {
+    flex: 1 1 auto;
+}
+
+nav header section {
+    flex: 1 1 auto;
+    height: 100%;
+    overflow-y: auto;
+}
+
+img {
+    width: 32px;
+    height: 32px;
+}
+
+ng-template header {
+    color: #9c9c9c;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: auto;
+}
+
+.loading {
+    color: red;
+    position: fixed;
+    z-index: 999;
+    height: 96px;
+    width: 96px;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.spinnerDisabled {
+    color: grey;
+}

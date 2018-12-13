@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChildren, ElementRef, AfterViewInit, Output, EventEmitter, NgZone, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControlName, FormControl, AbstractControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/observable/fromEvent';
@@ -13,6 +13,8 @@ import { UIService } from '../../../Services/UIService/ui.service';
 import { SmartHttpClient } from '../../../Services/shared/http-client/smart-httpclient.service';
 import { HoroRequest } from '../../../Models/HoroScope/HoroRequest';
 import { SelectBoxModel } from '../../../Models/SelectBoxModel';
+import { isNumeric } from 'rxjs/util/isNumeric';
+import { Gender } from 'src/Enums/gender';
 
 
 @Component({
@@ -21,9 +23,8 @@ import { SelectBoxModel } from '../../../Models/SelectBoxModel';
   styleUrls: ['./horoscope.component.scss']
 })
 export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
-
+  //public date: Date;
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
-
   ngOnInit() {
     this.mapsAPILoader.load().then(() => {
       let nativeHomeInputBox = document.getElementById('txtHome').getElementsByTagName('input')[0];
@@ -49,36 +50,35 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   }
   getTimezone(lat, long) {
-
-    // this.horoRequest.LatDeg = parseInt(lat);
-    // this.horoRequest.LongDeg = parseInt(long);
-    // this.horoRequest.LatMt = parseInt(Math.abs((lat - this.horoRequest.LatDeg) * 60).toString());
-    // this.horoRequest.LongMt = parseInt(Math.abs((long - this.horoRequest.LongDeg) * 60).toString());
-    // if (lat < 0) {
-    //   this.horoRequest.NS = "S";
-    // }
-    // else {
-    //   this.horoRequest.NS = "N";
-    // }
-    // if (long < 0) {
-    //   this.horoRequest.EW = "W";
-    // }
-    // else {
-    //   this.horoRequest.EW = "W";
-    // }
-    // this.horoScopeService.getTimezone(lat, long).subscribe((data: any) => {
-    //   this.horoRequest.ZH = parseInt((Math.abs(data.rawOffset) / 3600.00).toString());
-    //   this.horoRequest.ZM = parseInt((((Math.abs(data.rawOffset) / 3600.00) - this.horoRequest.ZH) * 60).toString());
-    //   if (data.rawOffset < 0) {
-    //     this.horoRequest.PN = "-";
-    //   }
-    //   else {
-    //     this.horoRequest.PN = "+";
-    //   }
-    //   this.timeZoneName = data.timeZoneName;
-    //   this.timeZoneId = data.timeZoneId;
-    //   this.cdr.detectChanges();
-    // });
+    this.horoRequest.LatDeg = parseInt(lat);
+    this.horoRequest.LongDeg = parseInt(long);
+    this.horoRequest.LatMt = parseInt(Math.abs((lat - this.horoRequest.LatDeg) * 60).toString());
+    this.horoRequest.LongMt = parseInt(Math.abs((long - this.horoRequest.LongDeg) * 60).toString());
+    if (lat < 0) {
+      this.horoRequest.NS = "S";
+    }
+    else {
+      this.horoRequest.NS = "N";
+    }
+    if (long < 0) {
+      this.horoRequest.EW = "W";
+    }
+    else {
+      this.horoRequest.EW = "W";
+    }
+    this.horoScopeService.getTimezone(lat, long).subscribe((data: any) => {
+      this.horoRequest.ZH = parseInt((Math.abs(data.rawOffset) / 3600.00).toString());
+      this.horoRequest.ZM = parseInt((((Math.abs(data.rawOffset) / 3600.00) - this.horoRequest.ZH) * 60).toString());
+      if (data.rawOffset < 0) {
+        this.horoRequest.PN = "-";
+      }
+      else {
+        this.horoRequest.PN = "+";
+      }
+      this.timeZoneName = data.timeZoneName;
+      this.timeZoneId = data.timeZoneId;
+      this.cdr.detectChanges();
+    });
   }
 
   horoscopeForm: FormGroup;
@@ -91,7 +91,8 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
   { "Id": "K", "Text": "Kannada" },
   { "Id": "M", "Text": "Malayalam" }];
 
-  checkBoxValue: boolean = false;
+  public checkBoxValue: boolean = false;
+  public enabletoEdit: boolean = false;
   long: number;
   lat: number;
   horoRequest: HoroRequest;
@@ -103,8 +104,8 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
     { Id: "DOUBLE", Text: 'Double Summer Time' },
     { Id: "WAR", Text: 'War Time' }
   ];
-  //genders:SelectBoxModel[];
-  genders: string[];
+  genders:string[];
+  //genders: SelectBoxModel[];
   payusing: PaymentInfo[];
   using: string[];
   paymentForm: FormGroup;
@@ -125,7 +126,12 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
     // "25px";
     e.component.content().style.width = "320px";
   }
+  public enumToKeyValues(definition: Object): string[] {
 
+    return Object.keys(definition).filter((value, index) => {
+        return isNumeric(value);
+    });
+}
   constructor(private toastrService: ToastrService, private route: ActivatedRoute, private router: Router, private formBuilder: FormBuilder,
     private cdr: ChangeDetectorRef, private partyService: PartyService, public horoScopeService: HoroScopeService, public uiService: UIService,
     public smartHttpClient: SmartHttpClient, private ngZone: NgZone, private mapsAPILoader: MapsAPILoader, public formbuilder: FormBuilder) {
@@ -134,22 +140,23 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
     { Id: "F", Text: "Female" }];
     //this.serviceInfo =  horoScopeService.getCustomers();
     this.payusing = horoScopeService.getInfo();
+    this.genders=this.enumToKeyValues(Gender);
     // this.genders=[{Id:"M",Text:"Male"},
     //   {Id:"F",Text:"Female"}];
     // this.genders=[{"Id":"M","Text":"Male"},
     //   {"Id":"F","Text":"Female"}];
-    this.genders = ["Male", "Female"];
+    //this.genders = ["Male", "Female"];
     this.using = ["AstroLite Wallet", "Payment Gateway"];
     this.horoscopeForm = this.formbuilder.group({
       name: ['Shamanth', [Validators.required, Validators.minLength(4)]],
       fathername: ['Rajesh', [Validators.required, Validators.minLength(4)]],
       mothername: ['Leelavathi', [Validators.required, Validators.minLength(4)]],
-      gothra: ['Vasista', [Validators.required, Validators.minLength(4)]],
-      Bdate: ['', [Validators.required]],
+      //gothra: ['Vasista', [Validators.required, Validators.minLength(4)]],
+      Bdate: [null, [Validators.required]],
       Btime: ['', [Validators.required]],
       timeformat: ['', [Validators.required]],
       bplace: ['', [Validators.required]],
-      language: ['', [Validators.required]],
+      //language: ['', [Validators.required]],
       latitude: [''],
       longitude: [''],
       gender: ['', [Validators.required]],
@@ -169,8 +176,10 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
     fathernameContrl.valueChanges.subscribe(value => this.setErrorMessage(fathernameContrl));
     const mothernameContrl = this.horoscopeForm.get('mothername');
     mothernameContrl.valueChanges.subscribe(value => this.setErrorMessage(mothernameContrl));
-    const gothraContrl = this.horoscopeForm.get('gothra');
-    gothraContrl.valueChanges.subscribe(value => this.setErrorMessage(gothraContrl));
+    // const gothraContrl = this.horoscopeForm.get('gothra');
+    // gothraContrl.valueChanges.subscribe(value => this.setErrorMessage(gothraContrl));
+    const genderContrl = this.horoscopeForm.get('gender');
+    genderContrl.valueChanges.subscribe(value => this.setErrorMessage(genderContrl));
     const LatDegContrl = this.horoscopeForm.get('LatDeg');
     LatDegContrl.valueChanges.subscribe(value => this.setErrorMessage(LatDegContrl));
     const LatMtContrl = this.horoscopeForm.get('LatMt');
@@ -181,8 +190,8 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
     BtimeContrl.valueChanges.subscribe(value => this.setErrorMessage(BtimeContrl));
     const bplaceContrl = this.horoscopeForm.get('bplace');
     bplaceContrl.valueChanges.subscribe(value => this.setErrorMessage(bplaceContrl));
-    const languageContrl = this.horoscopeForm.get('language');
-    languageContrl.valueChanges.subscribe(value => this.setErrorMessage(languageContrl));
+    // const languageContrl = this.horoscopeForm.get('language');
+    // languageContrl.valueChanges.subscribe(value => this.setErrorMessage(languageContrl));
 
     this.horoRequest = {
       Name: this.horoscopeForm.controls['name'].value,
@@ -251,64 +260,54 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
 
     Bdate_required: '*Select Date of Birth',
 
+    gender_required: '*Select Date of Birth',
+
     bplace_required: '*Enter Birth Place',
 
     language_required: '*Select Language',
 
   };
-  // getTimezone(lat, long) {
-
-  //   this.horoRequest.LatDeg = parseInt(lat);
-  //   this.horoRequest.LongDeg = parseInt(long);
-  //   this.horoRequest.LatMt = parseInt(Math.abs((lat - this.horoRequest.LatDeg) * 60).toString());
-  //   this.horoRequest.LongMt = parseInt(Math.abs((long - this.horoRequest.LongDeg) * 60).toString());
-  //   if (lat < 0) {
-  //     this.horoRequest.NS = "S";
-  //   }
-  //   else {
-  //     this.horoRequest.NS = "N";
-  //   }
-  //   if (long < 0) {
-  //     this.horoRequest.EW = "W";
-  //   }
-  //   else {
-  //     this.horoRequest.EW = "W";
-  //   }
-  //   this.horoScopeService.getTimezone(lat, long).subscribe((data: any) => {
-  //     this.horoRequest.ZH = parseInt((Math.abs(data.rawOffset) / 3600.00).toString());
-  //     this.horoRequest.ZM = parseInt((((Math.abs(data.rawOffset) / 3600.00) - this.horoRequest.ZH) * 60).toString());
-  //     if (data.rawOffset < 0) {
-  //       this.horoRequest.PN = "-";
-  //     }
-  //     else {
-  //       this.horoRequest.PN = "+";
-  //     }
-  //     this.timeZoneName = data.timeZoneName;
-  //     this.timeZoneId = data.timeZoneId;
-  //     this.cdr.detectChanges();
-  //   });
-  // }
-
+ 
   OnMouseUp(event) {
     if (event == null) {
       this.timeZoneName = null;
     }
   }
-
+  checkBoxStateChanged(){
+    if(this.checkBoxValue==true){
+       this.enabletoEdit=true;
+       this.checkBoxValue=false;
+    }
+    else{
+      this.enabletoEdit=false;
+      this.checkBoxValue=true;
+    }
+  }
+  
+  onSelection(event){
+    console.log("hello");
+  }
+  public date: Date = new Date(Date.now());
+  private monthFormatter = new Intl.DateTimeFormat("en", { month: "long" });
+  public formatter = (date: Date) => {
+    return `${date.getDate()} ${this.monthFormatter.format(date)}, ${date.getFullYear()}`;
+  }
   onClick() {
-    // let loading = this.loadingController.create({
-    //   content: 'Loading the Free HoroScope..'
-    // });
-    // loading.present();
+    var bdate:Date=this.horoscopeForm.controls['Bdate'].value;
+    var btime:Date=this.horoscopeForm.controls['Btime'].value;
+    var dateinString=bdate.getFullYear().toString()+"-"+("0"+((bdate.getMonth())+1)).toString().slice(-2)+"-"+("0"+bdate.getDate()).toString().slice(-2);
+    var timeinString=("0"+btime.getHours()).toString().slice(-2)+":"+("0"+btime.getMinutes()).toString().slice(-2)+":"+btime.getSeconds().toString()+"0";
     this.horoRequest = {
       Name: this.horoscopeForm.controls['name'].value,
       Father: this.horoscopeForm.controls['fathername'].value,
       Mother: this.horoscopeForm.controls['mothername'].value,
-      Gothra: this.horoscopeForm.controls['gothra'].value,
-      Date: this.horoscopeForm.controls['Bdate'].value,
-      Time: this.horoscopeForm.controls['Btime'].value,
+      Gothra: 'Vasista',
+      //Date: "2018-12-28",
+      //Time: "18:34:00",
+      Date:dateinString,
+      Time:timeinString,
       //DOB:this.horoscopeForm.controls['Bdate'].value.toISOString(),
-      TimeFormat: this.horoscopeForm.controls['timeformat'].value,
+      TimeFormat: this.horoscopeForm.controls['timeformat'].value[0].Id,
       LatDeg: this.horoscopeForm.controls['LatDeg'].value,
       LatMt: this.horoscopeForm.controls['LatMt'].value,
       LongDeg: this.horoscopeForm.controls['LongDeg'].value,
@@ -318,7 +317,7 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
       ZH: this.horoscopeForm.controls['ZH'].value,
       ZM: this.horoscopeForm.controls['ZM'].value,
       PN: this.horoscopeForm.controls['PN'].value,
-      Gender: "F",
+      Gender: this.horoscopeForm.controls['gender'].value,
       // ReportType:null,
       // FormParameter:null,
       // Swarna:null,
@@ -329,17 +328,23 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
       // Path:null
     }
     var horoRequest = this.horoRequest;
-    this.BDate = this.horoscopeForm.controls['Bdate'].value;
+    //this.BDate = this.horoscopeForm.controls['Bdate'].value;
     this.horoScopeService.GetFreeData(this.horoRequest, (data) => {
-      //loading.dismiss();
-      // this.navCtrl.push(Horoscope2Page, { horoRequest, data, "BirthPlace": this.horoscopeForm.controls['bplace'].value, 'Fathername': this.horoscopeForm.controls['fathername'].value, 'Mothername': this.horoscopeForm.controls['mothername'].value })
-      // this.router.navigate(['xxxxxxx']);
-      this.router.navigate(["/horoscope2", { horoRequest, data, "BirthPlace": this.horoscopeForm.controls['bplace'].value, 'Fathername': this.horoscopeForm.controls['fathername'].value, 'Mothername': this.horoscopeForm.controls['mothername'].value }]);
-
+      let navigationExtras: NavigationExtras = {
+        // queryParams: {
+        //   "BirthPlace": this.horoscopeForm.controls['bplace'].value, 
+        //   'Fathername': this.horoscopeForm.controls['fathername'].value, 
+        //   'Mothername': this.horoscopeForm.controls['mothername'].value
+        // }
+        queryParams: horoRequest,
+        // queryParams:{horoRequest:JSON.stringify(horoRequest),"data":data}
+      };
+      //this.router.navigate(["/horoscopeFree",  {"horoRequest":horoRequest,queryParams:horoRequest, "data":data, navigationExtras,"BirthPlace": this.horoscopeForm.controls['bplace'].value, 'Fathername': this.horoscopeForm.controls['fathername'].value, 'Mothername': this.horoscopeForm.controls['mothername'].value }]);
+      this.horoScopeService.horoRequest = this.horoRequest;
+      this.horoScopeService.data = data;
+      this.router.navigate(["/horoscopeFree", { "BirthPlace": this.horoscopeForm.controls['bplace'].value, 'Fathername': this.horoscopeForm.controls['fathername'].value, 'Mothername': this.horoscopeForm.controls['mothername'].value }]);
     });
   }
-
-
 
 }
 

@@ -3,6 +3,8 @@
 @import '~igniteui-angular/lib/core/styles/components/button/button-theme';
 @import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-component';
 @import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-theme';
+@import '~igniteui-angular/lib/core/styles/components/combo/combo-component';
+@import '~igniteui-angular/lib/core/styles/components/combo/combo-theme';
 @import '~igniteui-angular/lib/core/styles/components/time-picker/time-picker-component';
 @import '~igniteui-angular/lib/core/styles/components/time-picker/time-picker-theme';
 @import '~igniteui-angular/lib/core/styles/components/ripple/ripple-component';
@@ -11,8 +13,6 @@
 @import '~igniteui-angular/lib/core/styles/components/radio/radio-theme';
 @import '~igniteui-angular/lib/core/styles/components/date-picker/date-picker-component';
 @import '~igniteui-angular/lib/core/styles/components/date-picker/date-picker-theme';
-@import '~igniteui-angular/lib/core/styles/components/combo/combo-component';
-@import '~igniteui-angular/lib/core/styles/components/combo/combo-theme';
 @import '~igniteui-angular/lib/core/styles/components/input/input-group-component';
 @import '~igniteui-angular/lib/core/styles/components/input/input-group-theme';
 @import '~igniteui-angular/lib/core/styles/components/icon/icon-component';
@@ -66,10 +66,11 @@ font-family: 'Big Caslon', 'Titillium Web', sans-serif;
 font-weight: 500;
 }
 .title {
-position: absolute;
-top: 12px;
-left: 34px;
-z-index: 2;
+height: 86px;
+min-height: 86px;
+margin-top: 12px;
+margin-right: 39px;
+margin-left: 34px;
 
 display: flex;
 flex-direction: column;
@@ -90,16 +91,16 @@ min-height: 57px;
 
 }
 .name-1 {
-width: 332px;
-min-width: 332px;
+width: 343px;
+min-width: 343px;
 
 }
 .father-name-1 {
-width: 332px;
-min-width: 332px;
+width: 343px;
+min-width: 343px;
 
 }
-.name-row1 {
+.name-row {
 
 display: flex;
 flex-direction: row;
@@ -108,13 +109,16 @@ padding: 0;
 }
 
 .mother-name-1 {
-width: 332px;
-min-width: 332px;
+width: 343px;
+min-width: 343px;
 
 }
 .name-2 {
-position: relative;
-z-index: 2;
+height: 121px;
+min-height: 121px;
+margin-top: 9px;
+margin-right: 132px;
+margin-left: 45px;
 
 display: flex;
 flex-direction: column;
@@ -122,25 +126,9 @@ padding: 0;
 flex-shrink: 0;
 }
 
-.time-format-1 {
-width: 332px;
-min-width: 332px;
-
-}
-.name-row {
-margin-top: 25px;
-margin-right: 159px;
-margin-left: 42px;
-
-display: flex;
-flex-direction: row;
-flex-shrink: 0;
-padding: 0;
-}
-
 .gender {
 color: igx-color($default-palette, grays, 900);
-margin-top: 13px;
+margin-top: 25px;
 
 height: 24px;
 min-height: 24px;
@@ -159,9 +147,9 @@ igx-radio {
     margin-top: 5px;
     margin-bottom: 5px;
 }
-.radio-group {
+.gender-button {
 position: relative;
-left: -209px;
+left: -218px;
 z-index: 3;
 
 }
@@ -171,7 +159,7 @@ min-width: 332px;
 
 }
 .gender-row {
-margin-top: 19px;
+margin-top: 23px;
 margin-right: 165px;
 margin-left: 45px;
 
@@ -186,6 +174,22 @@ width: 329px;
 min-width: 329px;
 
 }
+.time-format-1 {
+width: 332px;
+min-width: 332px;
+
+}
+.birth-place-row {
+margin-top: 10px;
+margin-right: 165px;
+margin-left: 47px;
+
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+padding: 0;
+}
+
 .longitude {
 color: igx-color($default-palette, grays, 900);
 margin-top: 1px;
@@ -303,10 +307,11 @@ width: 100%;
 
 }
 .content {
-position: absolute;
-top: 110px;
-left: 34px;
-z-index: 1;
+height: 810px;
+min-height: 810px;
+margin-top: 12px;
+margin-right: 39px;
+margin-left: 34px;
 
 display: flex;
 flex-direction: column;
@@ -315,10 +320,13 @@ flex-shrink: 0;
 background-color: rgb(255, 255, 255);
 }
 
-.background-row {
+.screen {
 
-position: relative;
+display: flex;
+flex-direction: column;
 padding: 0;
+flex-shrink: 0;
+background-color: rgba(igx-color($default-palette, primary), .10);
 }
 
 $navigation-navbar-theme: igx-navbar-theme(
@@ -348,28 +356,24 @@ $border-background: transparent,
 $variant: 'dark'
 );
 
-$time-format-theme: igx-input-group-theme(
-$idle-bottom-line-color: igx-color($default-palette, grays),
-$box-background: igx-color($default-palette, grays, 200),
-$border-background: transparent,
-$variant: 'dark'
-);
-
 $dateof-bith-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $variant: 'dark'
 );
 
-$radio-group-1-theme: igx-radio-theme(
+$gender-button-1-theme: igx-radio-theme(
 $fill-color: igx-color($default-palette, grays, 600),
 $variant: 'dark'
 );
 
-$radio-group-2-theme: igx-radio-theme(
+$gender-button-2-theme: igx-radio-theme(
 $fill-color: igx-color($default-palette, grays, 600),
 $variant: 'dark'
 );
-
+$gender-button-3-theme: igx-radio-theme(
+$fill-color: igx-color($default-palette, grays, 600),
+$variant: 'dark'
+);
 $timeof-birth-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $variant: 'dark'
@@ -378,6 +382,13 @@ $variant: 'dark'
 $birth-place-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$time-format-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays, 700),
+$box-background: igx-color($default-palette, grays, 200),
 $border-background: transparent,
 $variant: 'dark'
 );
@@ -477,42 +488,41 @@ margin: 0 0 0 auto;
 
 .mother-name {
 @include igx-input-group($mother-name-theme);
-margin-top: 13px;
+margin-top: 12px;
 margin-left: 4px;
-
-}
-
-.time-format {
-@include igx-input-group($time-format-theme);
-margin: 65px 0 0 auto;
 
 }
 
 .dateof-bith {
 @include igx-input-group($dateof-bith-theme);
-margin-top: 50px;
+margin-top: 62px;
 margin-left: -55px;
 
 }
 
-.radio-group-1 {
-@include igx-radio($radio-group-1-theme);
+.gender-button-1 {
+@include igx-radio($gender-button-1-theme);
 }
 
-.radio-group-2 {
-@include igx-radio($radio-group-2-theme);
+.gender-button-2 {
+@include igx-radio($gender-button-2-theme);
 }
 
 .timeof-birth {
 @include igx-input-group($timeof-birth-theme);
-margin: 53px 0 0 auto;
+margin: 65px 0 0 auto;
 
 }
 
 .birth-place {
 @include igx-input-group($birth-place-theme);
-margin-top: 15px;
-margin-left: 47px;
+margin-top: 5px;
+
+}
+
+.time-format {
+@include igx-input-group($time-format-theme);
+margin: 0 0 0 auto;
 
 }
 

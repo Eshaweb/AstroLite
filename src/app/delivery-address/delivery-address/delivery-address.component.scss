@@ -17,7 +17,7 @@ main {
     padding: 0;
     display: flex;
     flex-direction: column;
-	overflow: auto;
+	//overflow: auto;
     height: 100%;
 }
 
@@ -49,7 +49,7 @@ flex-shrink: 0;
 .delivery-address {
 color: igx-color($default-palette, grays, 900);
 margin-top: 37px;
-margin-left: 64px;
+margin-left: 42px;
 
 }
 .title {

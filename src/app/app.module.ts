@@ -38,13 +38,22 @@ import { RegistrationDemoComponent } from './registrationDemo/registrationDemo/r
 import { RegistrationDemoModule } from './registrationDemo/registrationDemo.module';
 import { RegistrationComponent } from './registration/registration/registration.component';
 import { RegistrationModule } from './registration/registration.module';
+import { HoroscopeFreeComponent } from './horoscope-free/horoscope-free/horoscope-free.component';
+import { HoroscopeFreeModule } from './horoscope-free/horoscope-free.module';
+import { HoroscopePaidServiceComponent } from './horoscope-paid-service/horoscope-paid-service/horoscope-paid-service.component';
+import { HoroscopePaidServiceModule } from './horoscope-paid-service/horoscope-paid-service.module';
+import { PaymentComponent } from './payment/payment/payment.component';
+import { PaymentModule } from './payment/payment.module';
+import { SharedModule } from 'src/shared/shared.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const generatedRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'loginDemo',
+        redirectTo: 'horoscope',
         pathMatch: 'full'
     },
+    { path: 'horoscope', component: HoroscopeComponent },
     {
         path: 'login',
         component:LoginComponent
@@ -56,13 +65,17 @@ const generatedRoutes: Routes = [
         //loadChildren: './registration/registration.module#RegistrationModule'
     },
     { path: 'matchmaking', component: MatchMakingComponent },
-    { path: 'horoscope', component: HoroscopeComponent },
-    { path: 'delAddress', component: DeliveryAddressComponent },
+    // { path: 'horoscope', component: HoroscopeComponent },
+    { path: 'horoscopeFree', component: HoroscopeFreeComponent },
+    { path: 'horoscopePaid', component: HoroscopePaidServiceComponent },
+    { path: 'deliveryAddress', component: DeliveryAddressComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'astamangala', component: AstamangalaComponent },
     { path: 'loginDemo', component: LoginDemoComponent },
     { path: 'regDemo', component: RegistrationDemoComponent },
-
+    { path: 'payment', component: PaymentComponent },
+    { path: 'pagenotfound', component: PageNotFoundComponent },
+    { path: '**', redirectTo: 'pagenotfound' }
 ];
 
 let config = new AuthServiceConfig([
@@ -90,7 +103,7 @@ let config = new AuthServiceConfig([
   
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,PageNotFoundComponent
     ],
     imports: [IgxProgressBarModule,IgxButtonModule, IgxIconModule, IgxRippleModule,
         AgmCoreModule.forRoot({
@@ -111,10 +124,10 @@ let config = new AuthServiceConfig([
         BrowserAnimationsModule,
         LoginModule, RegistrationModule,
         RouterModule.forRoot(generatedRoutes),
-        AstamangalaModule,
-        DashboardModule,
-        DeliveryAddressModule,
-        HoroscopeModule,
+        AstamangalaModule,HoroscopePaidServiceModule,
+        DashboardModule,SharedModule,
+        DeliveryAddressModule, PaymentModule,
+        HoroscopeModule,HoroscopeFreeModule,
         MatchMakingModule, RegistrationDemoModule,
         ServicesModule, LoginDemoModule
     ],
@@ -133,7 +146,7 @@ let config = new AuthServiceConfig([
             provide: AuthServiceConfig,
             useFactory: provideConfig
           }],
-    bootstrap: [AppComponent],
+    bootstrap: [AppComponent,PageNotFoundComponent],
     exports: [
         RouterModule
     ]

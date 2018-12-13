@@ -178,7 +178,7 @@ export class LoginDemoComponent implements OnInit, OnDestroy, AfterViewInit {
         if (this.horoInfo != null) {
 
         //   this.navCtrl.push(ServiceInfoPage, { 'PartyMastId': data.PartyMastId, 'HoroInfo': this.navParams.get('HoroInfo') });
-        this.router.navigate(["/horoscope2", { "PartyMastId": data.PartyMastId, 'HoroInfo': this.horoInfo}]);
+        this.router.navigate(["/horoscopePaid", { "PartyMastId": data.PartyMastId, 'HoroInfo': this.horoInfo}]);
 
         //this.viewCtrl.dismiss();
         }

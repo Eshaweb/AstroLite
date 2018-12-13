@@ -1,0 +1,344 @@
+@import '~igniteui-angular/lib/core/styles/themes/utilities';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-component';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-theme';
+@import '~igniteui-angular/lib/core/styles/components/button/button-component';
+@import '~igniteui-angular/lib/core/styles/components/button/button-theme';
+@import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-component';
+@import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-theme';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-component';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-theme';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-component';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-theme';
+
+main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+	//overflow: auto;
+    height: 100%;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+
+
+.horoscope-paid-service {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.navigation {
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.colors-overlay10 {
+position: absolute;
+z-index: 0;
+
+width: 100%;
+height: 100%;
+
+background-color: rgba(igx-color($default-palette, primary), .10);
+}
+.horoscope {
+color: igx-color($default-palette, grays, 900);
+margin-top: 18px;
+margin-left: 35px;
+
+height: 71px;
+min-height: 71px;
+
+font-family: 'Big Caslon', 'Titillium Web', sans-serif;
+font-weight: 500;
+}
+.title {
+height: 111px;
+min-height: 111px;
+position: absolute;
+top: 17px;
+left: 17px;
+z-index: 2;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.full-horoscope {
+color: igx-color($default-palette, secondary);
+margin-top: 16px;
+margin-right: 114px;
+margin-left: 10px;
+
+width: 100%;
+height: 57px;
+min-height: 57px;
+
+font-family: 'Helvetica', 'Titillium Web', sans-serif;
+font-size: 24px;
+text-align: center;
+}
+.sample-p-d-f {
+color: igx-color($default-palette, info);
+margin-top: 7px;
+margin-left: 49px;
+
+height: 28px;
+min-height: 28px;
+
+}
+.checkbox2 {
+margin-top: 17px;
+margin-left: 49px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.full-horoscope-1 {
+height: 399px;
+min-height: 399px;
+margin-top: 4px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.medium-horoscope {
+color: igx-color($default-palette, secondary);
+margin-top: 16px;
+margin-right: 67px;
+margin-left: 10px;
+
+width: 100%;
+height: 57px;
+min-height: 57px;
+
+font-family: 'Helvetica', 'Titillium Web', sans-serif;
+font-size: 24px;
+text-align: center;
+}
+.sample-p-d-f-1 {
+color: igx-color($default-palette, info);
+margin-top: 7px;
+margin-left: 51px;
+
+height: 28px;
+min-height: 28px;
+
+}
+.checkbox2-1 {
+margin-top: 17px;
+margin-left: 51px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.medium-horoscope-1 {
+height: 399px;
+min-height: 399px;
+margin-left: 38px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.a2-page-horoscope {
+color: igx-color($default-palette, secondary);
+margin-top: 13px;
+margin-right: 69px;
+margin-left: 18px;
+
+width: 100%;
+height: 57px;
+min-height: 57px;
+
+font-family: 'Helvetica', 'Titillium Web', sans-serif;
+font-size: 24px;
+text-align: center;
+}
+.sample-p-d-f-2 {
+color: igx-color($default-palette, info);
+margin-top: 9px;
+margin-left: 49px;
+
+height: 28px;
+min-height: 28px;
+
+}
+.checkbox2-2 {
+margin-top: 17px;
+margin-left: 49px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.a2-page-horoscope-1 {
+height: 396px;
+min-height: 396px;
+margin: 3px 0 0 auto;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.full-horoscope-row {
+
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+padding: 0;
+}
+
+.next-button-1 {
+width: 100%;
+
+}
+.body {
+position: absolute;
+top: 156px;
+left: 17px;
+z-index: 1;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.colors-overlay10-row {
+margin-top: 4px;
+
+position: relative;
+padding: 0;
+}
+
+$navigation-navbar-theme: igx-navbar-theme(
+$background: igx-color($default-palette, primary),
+$idle-icon-color: rgb(255, 255, 255),
+$text-color: rgb(255, 255, 255)
+);
+
+$checkbox-theme: igx-checkbox-theme(
+$fill-color: igx-color($default-palette, secondary),
+$tick-color: rgb(255, 255, 255),
+$variant: 'dark'
+);
+
+$checkbox-copy-theme: igx-checkbox-theme(
+$fill-color: igx-color($default-palette, secondary),
+$tick-color: rgb(255, 255, 255),
+$variant: 'dark'
+);
+
+$checkbox-1-theme: igx-checkbox-theme(
+$fill-color: igx-color($default-palette, secondary),
+$tick-color: rgb(255, 255, 255),
+$variant: 'dark'
+);
+
+$checkbox-copy-1-theme: igx-checkbox-theme(
+$fill-color: igx-color($default-palette, secondary),
+$tick-color: rgb(255, 255, 255),
+$variant: 'dark'
+);
+
+$checkbox-2-theme: igx-checkbox-theme(
+$fill-color: igx-color($default-palette, secondary),
+$tick-color: rgb(255, 255, 255),
+$variant: 'dark'
+);
+
+$checkbox-copy-2-theme: igx-checkbox-theme(
+$fill-color: igx-color($default-palette, secondary),
+$tick-color: rgb(255, 255, 255),
+$variant: 'dark'
+);
+
+$next-button-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, secondary, 600),
+$raised-text-color: rgb(255, 255, 255)
+);
+
+
+:host {
+::ng-deep {
+.navigation-navbar {
+@include igx-navbar($navigation-navbar-theme);
+}
+
+.checkbox {
+@include igx-checkbox($checkbox-theme);
+}
+
+.checkbox-copy {
+@include igx-checkbox($checkbox-copy-theme);
+margin-top: 6px;
+margin-left: 49px;
+
+}
+
+.checkbox-1 {
+@include igx-checkbox($checkbox-1-theme);
+}
+
+.checkbox-copy-1 {
+@include igx-checkbox($checkbox-copy-1-theme);
+margin-top: 6px;
+margin-left: 51px;
+
+}
+
+.checkbox-2 {
+@include igx-checkbox($checkbox-2-theme);
+}
+
+.checkbox-copy-2 {
+@include igx-checkbox($checkbox-copy-2-theme);
+margin-top: 6px;
+margin-left: 49px;
+
+}
+
+.next-button {
+@include igx-button($next-button-theme);
+margin-top: 121px;
+margin-right: 338px;
+margin-left: 355px;
+
+}
+
+}
+}

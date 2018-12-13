@@ -69,9 +69,6 @@ color: igx-color($default-palette, grays, 900);
 margin-top: 12px;
 margin-left: 33px;
 
-height: 71px;
-min-height: 71px;
-
 font-family: 'Big Caslon', 'Titillium Web', sans-serif;
 font-weight: 500;
 }
@@ -79,7 +76,7 @@ font-weight: 500;
 position: absolute;
 top: 9px;
 left: 21px;
-z-index: 2;
+z-index: 4;
 
 display: flex;
 flex-direction: column;
@@ -245,10 +242,12 @@ flex-shrink: 0;
 }
 
 .girl-detail {
+height: 667px;
+min-height: 667px;
 position: absolute;
 top: 118px;
 left: 22px;
-z-index: 3;
+z-index: 2;
 
 display: flex;
 flex-direction: column;
@@ -264,8 +263,6 @@ min-width: 278px;
 }
 .language {
 margin-top: 10px;
-margin-right: 332px;
-margin-bottom: 96px;
 margin-left: 363px;
 
 display: flex;
@@ -274,11 +271,9 @@ padding: 0;
 flex-shrink: 0;
 }
 
-.submit-button-1 {
-width: 100%;
-
-}
 .bottom-button {
+height: 145px;
+min-height: 145px;
 position: absolute;
 top: 789px;
 left: 22px;
@@ -448,10 +443,12 @@ flex-shrink: 0;
 }
 
 .boy-details {
+height: 666px;
+min-height: 666px;
 position: absolute;
 top: 119px;
 left: 514px;
-z-index: 4;
+z-index: 3;
 
 display: flex;
 flex-direction: column;
@@ -732,15 +729,13 @@ margin-left: 31px;
 
 .inputs-input-border-copy {
 @include igx-input-group($inputs-input-border-copy-theme);
-margin-top: 1px;
-margin-left: 34px;
+margin: auto 0 auto 34px;
 
 }
 
 .inputs-input-border-copy2 {
 @include igx-input-group($inputs-input-border-copy2-theme);
-margin-top: 1px;
-margin-left: 35px;
+margin: auto 0 auto 35px;
 
 }
 
@@ -764,8 +759,7 @@ margin-left: 34px;
 
 .inputs-input-border-copy6 {
 @include igx-input-group($inputs-input-border-copy6-theme);
-margin-top: 2px;
-margin-left: 31px;
+margin: auto 0 auto 31px;
 
 }
 
@@ -796,8 +790,6 @@ margin-left: 24px;
 .submit-button {
 @include igx-button($submit-button-theme);
 margin-top: 33px;
-margin-right: 331px;
-margin-bottom: 13px;
 margin-left: 364px;
 
 }

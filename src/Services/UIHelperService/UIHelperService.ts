@@ -6,7 +6,7 @@ export class UIHelperService {
      readonly rootUrl = 'https://sahakari.azurewebsites.net';
      readonly baseUrl = 'http://astroliteapi.azurewebsites.net/api/';
     readonly rootUrl1 = 'https://sahakari.azurewebsites.net/token';
-
+readonly root='http://www.astrolite.in/wcf/webhoroapi/api/result/horoscopereport';
 //    readonly rootUrl = 'http://localhost:55394';
 //    readonly baseUrl='http://localhost:55394/api';
 //    readonly rootUrl1 = 'http://localhost:55394/token';

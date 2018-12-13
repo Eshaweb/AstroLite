@@ -1,0 +1,245 @@
+@import '~igniteui-angular/lib/core/styles/themes/utilities';
+@import '~igniteui-angular/lib/core/styles/components/combo/combo-component';
+@import '~igniteui-angular/lib/core/styles/components/combo/combo-theme';
+@import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-component';
+@import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-theme';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-component';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-theme';
+@import '~igniteui-angular/lib/core/styles/components/button/button-component';
+@import '~igniteui-angular/lib/core/styles/components/button/button-theme';
+@import '~igniteui-angular/lib/core/styles/components/input/input-group-component';
+@import '~igniteui-angular/lib/core/styles/components/input/input-group-theme';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-component';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-theme';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-component';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-theme';
+
+main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+	overflow: auto;
+    height: 100%;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+
+
+.payment-1 {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.navigation {
+margin-top: 7px;
+margin-left: 6px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.payment {
+color: igx-color($default-palette, grays, 900);
+margin-top: 32px;
+margin-left: 28px;
+
+height: 71px;
+min-height: 71px;
+
+font-family: 'Big Caslon', 'Titillium Web', sans-serif;
+font-weight: 500;
+}
+.title {
+position: absolute;
+top: 15px;
+left: 22px;
+z-index: 6;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.coupon-note {
+color: igx-color($default-palette, secondary);
+margin-top: 61px;
+margin-left: 80px;
+
+height: 28px;
+min-height: 28px;
+
+}
+.coupon-code-1 {
+width: 361px;
+min-width: 361px;
+
+}
+.apply-button-1 {
+height: 39px;
+min-height: 39px;
+
+}
+.coupon-code-row {
+margin-top: 23px;
+margin-right: 121px;
+margin-left: 80px;
+
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+padding: 0;
+}
+
+.content {
+position: absolute;
+top: 155px;
+left: 22px;
+z-index: 2;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.actual-price1200 {
+color: igx-color($default-palette, grays, 900);
+position: absolute;
+top: 391px;
+left: 98px;
+z-index: 3;
+
+margin-top: 0px;
+}
+.order-total {
+color: igx-color($default-palette, secondary);
+position: absolute;
+top: 348px;
+left: 99px;
+z-index: 8;
+
+margin-top: 0px;
+}
+.discount0000 {
+color: igx-color($default-palette, grays, 900);
+position: absolute;
+top: 419px;
+left: 99px;
+z-index: 4;
+
+margin-top: 0px;
+}
+.total-price1200 {
+color: igx-color($default-palette, grays, 900);
+position: absolute;
+top: 447px;
+left: 99px;
+z-index: 5;
+
+margin-top: 0px;
+}
+.combo-line-1 {
+width: 377px;
+min-width: 377px;
+
+}
+.background-row {
+margin-left: 6px;
+
+position: relative;
+padding: 0;
+}
+
+$navigation-navbar-theme: igx-navbar-theme(
+$background: igx-color($default-palette, primary),
+$idle-icon-color: rgb(255, 255, 255),
+$text-color: rgb(255, 255, 255)
+);
+
+$coupon-code-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+$apply-button-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, secondary, 600),
+$raised-text-color: rgb(255, 255, 255)
+);
+
+$checkbox-theme: igx-checkbox-theme(
+$fill-color: igx-color($default-palette, secondary),
+$tick-color: rgb(255, 255, 255),
+$variant: 'dark'
+);
+
+$continue-button-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, secondary, 600),
+$raised-text-color: rgb(255, 255, 255)
+);
+
+$combo-line-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$variant: 'dark'
+);
+
+
+:host {
+::ng-deep {
+.navigation-navbar {
+@include igx-navbar($navigation-navbar-theme);
+}
+
+.coupon-code {
+@include igx-input-group($coupon-code-theme);
+}
+
+.apply-button {
+@include igx-button($apply-button-theme);
+margin: 13px 0 0 auto;
+
+}
+
+.checkbox {
+@include igx-checkbox($checkbox-theme);
+margin-top: 280px;
+margin-left: 80px;
+
+}
+
+.continue-button {
+@include igx-button($continue-button-theme);
+margin-top: 170px;
+margin-left: 219px;
+
+}
+
+.combo-line {
+@include igx-input-group($combo-line-theme);
+position: absolute;
+top: 621px;
+left: 108px;
+z-index: 7;
+
+}
+
+}
+}
