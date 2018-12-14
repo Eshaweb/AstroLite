@@ -3,14 +3,12 @@
 @import '~igniteui-angular/lib/core/styles/components/button/button-theme';
 @import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-component';
 @import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-theme';
-@import '~igniteui-angular/lib/core/styles/components/combo/combo-component';
-@import '~igniteui-angular/lib/core/styles/components/combo/combo-theme';
-@import '~igniteui-angular/lib/core/styles/components/time-picker/time-picker-component';
-@import '~igniteui-angular/lib/core/styles/components/time-picker/time-picker-theme';
 @import '~igniteui-angular/lib/core/styles/components/ripple/ripple-component';
 @import '~igniteui-angular/lib/core/styles/components/ripple/ripple-theme';
 @import '~igniteui-angular/lib/core/styles/components/radio/radio-component';
 @import '~igniteui-angular/lib/core/styles/components/radio/radio-theme';
+@import '~igniteui-angular/lib/core/styles/components/time-picker/time-picker-component';
+@import '~igniteui-angular/lib/core/styles/components/time-picker/time-picker-theme';
 @import '~igniteui-angular/lib/core/styles/components/date-picker/date-picker-component';
 @import '~igniteui-angular/lib/core/styles/components/date-picker/date-picker-theme';
 @import '~igniteui-angular/lib/core/styles/components/input/input-group-component';
@@ -25,7 +23,7 @@ main {
     padding: 0;
     display: flex;
     flex-direction: column;
-	//overflow: auto;
+	overflow: auto;
     height: 100%;
 }
 
@@ -81,9 +79,9 @@ background-color: rgb(255, 255, 255);
 
 .sub-title {
 color: igx-color($default-palette, grays, 900);
-margin-top: 33px;
-margin-right: 618px;
-margin-left: 58px;
+margin-top: 39px;
+margin-right: 615px;
+margin-left: 61px;
 
 width: 100%;
 height: 57px;
@@ -91,16 +89,26 @@ min-height: 57px;
 
 }
 .name-1 {
-width: 343px;
-min-width: 343px;
+width: 261px;
+min-width: 261px;
 
 }
 .father-name-1 {
-width: 343px;
-min-width: 343px;
+width: 245px;
+min-width: 245px;
 
 }
-.name-row {
+.mother-name-1 {
+width: 223px;
+min-width: 223px;
+
+}
+.name-2 {
+height: 52px;
+min-height: 52px;
+margin-top: 14px;
+margin-right: 47px;
+margin-left: 48px;
 
 display: flex;
 flex-direction: row;
@@ -108,35 +116,40 @@ flex-shrink: 0;
 padding: 0;
 }
 
-.mother-name-1 {
-width: 343px;
-min-width: 343px;
+.dateof-bith-1 {
+width: 264px;
+min-width: 264px;
 
 }
-.name-2 {
-height: 121px;
-min-height: 121px;
-margin-top: 9px;
-margin-right: 132px;
-margin-left: 45px;
+.timeof-birth-1 {
+width: 256px;
+min-width: 256px;
+
+}
+.gotra-1 {
+width: 223px;
+min-width: 223px;
+
+}
+.dateand-time {
+height: 53px;
+min-height: 53px;
+margin-top: 53px;
+margin-right: 47px;
+margin-left: 48px;
 
 display: flex;
-flex-direction: column;
-padding: 0;
+flex-direction: row;
 flex-shrink: 0;
+padding: 0;
 }
 
-.gender {
+.gender-label {
 color: igx-color($default-palette, grays, 900);
-margin-top: 25px;
+margin-top: 11px;
 
 height: 24px;
 min-height: 24px;
-
-}
-.dateof-bith-1 {
-width: 329px;
-min-width: 329px;
 
 }
 igx-radio-group {
@@ -148,41 +161,20 @@ igx-radio {
     margin-bottom: 5px;
 }
 .gender-button {
-position: relative;
-left: -218px;
-z-index: 3;
+margin-left: 33px;
 
 }
-.timeof-birth-1 {
-width: 332px;
-min-width: 332px;
-
-}
-.gender-row {
-margin-top: 23px;
-margin-right: 165px;
-margin-left: 45px;
-
-display: flex;
-flex-direction: row;
-flex-shrink: 0;
-padding: 0;
-}
-
 .birth-place-1 {
-width: 329px;
-min-width: 329px;
+width: 270px;
+min-width: 270px;
 
 }
-.time-format-1 {
-width: 332px;
-min-width: 332px;
-
-}
-.birth-place-row {
-margin-top: 10px;
-margin-right: 165px;
-margin-left: 47px;
+.gender {
+height: 74px;
+min-height: 74px;
+margin-top: 32px;
+margin-right: 311px;
+margin-left: 61px;
 
 display: flex;
 flex-direction: row;
@@ -192,27 +184,29 @@ padding: 0;
 
 .longitude {
 color: igx-color($default-palette, grays, 900);
-margin-top: 1px;
+margin-top: 20px;
 
-font-weight: 600;
-}
-.inputs-input-border-copy24-1 {
-width: 128px;
-min-width: 128px;
+height: 24px;
+min-height: 24px;
 
 }
-.inputs-input-border-copy25-1 {
-width: 128px;
-min-width: 128px;
+.logitude1-1 {
+width: 144px;
+min-width: 144px;
 
 }
-.inputs-input-border-copy26-1 {
-width: 128px;
-min-width: 128px;
+.longitude2-1 {
+width: 144px;
+min-width: 144px;
 
 }
-.longitude-row {
-margin-left: 19px;
+.logitude3-1 {
+width: 144px;
+min-width: 144px;
+
+}
+.longitude-1 {
+margin-left: 3px;
 
 display: flex;
 flex-direction: row;
@@ -222,26 +216,30 @@ padding: 0;
 
 .latitude {
 color: igx-color($default-palette, grays, 900);
-margin-top: 0px;
-font-weight: 600;
-}
-.inputs-input-border-copy27-1 {
-width: 128px;
-min-width: 128px;
+margin-top: 25px;
+
+height: 24px;
+min-height: 24px;
 
 }
-.inputs-input-border-copy29-1 {
-width: 128px;
-min-width: 128px;
+.lattitude1-1 {
+width: 144px;
+min-width: 144px;
 
 }
-.inputs-input-border-copy30-1 {
-width: 128px;
-min-width: 128px;
+.latitude2-1 {
+width: 144px;
+min-width: 144px;
 
 }
-.latitude-row {
+.latitude3-1 {
+width: 144px;
+min-width: 144px;
+
+}
+.latitude-1 {
 margin-top: 9px;
+margin-left: 3px;
 
 display: flex;
 flex-direction: row;
@@ -251,28 +249,30 @@ padding: 0;
 
 .zone {
 color: igx-color($default-palette, grays, 900);
-margin-top: 15px;
+margin-top: 19px;
 
-font-weight: 600;
-}
-.inputs-input-border-copy28-1 {
-width: 128px;
-min-width: 128px;
+height: 24px;
+min-height: 24px;
 
 }
-.inputs-input-border-copy31-1 {
-width: 128px;
-min-width: 128px;
+.zone1-1 {
+width: 144px;
+min-width: 144px;
 
 }
-.inputs-input-border-copy32-1 {
-width: 128px;
-min-width: 128px;
+.zone2-1 {
+width: 144px;
+min-width: 144px;
 
 }
-.zone-row {
+.zone3-1 {
+width: 144px;
+min-width: 144px;
+
+}
+.zone-1 {
 margin-top: 7px;
-margin-left: 16px;
+margin-left: 5px;
 
 display: flex;
 flex-direction: row;
@@ -283,8 +283,9 @@ padding: 0;
 .time-zone {
 color: igx-color($default-palette, secondary);
 margin-top: 20px;
-margin-left: 26px;
+margin-right: 444px;
 
+width: 100%;
 height: 28px;
 min-height: 28px;
 
@@ -292,9 +293,8 @@ min-height: 28px;
 .coordinates {
 height: 263px;
 min-height: 263px;
-margin-top: 32px;
-margin-right: 173px;
-margin-left: 35px;
+position: relative;
+z-index: 2;
 
 display: flex;
 flex-direction: column;
@@ -302,16 +302,33 @@ padding: 0;
 flex-shrink: 0;
 }
 
-.submit-1 {
-width: 100%;
+.bottom-button {
+margin-top: 261px;
+margin-left: -498px;
 
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
 }
+
+.coordinates-row {
+margin-top: 52px;
+margin-right: 92px;
+margin-left: 53px;
+
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+padding: 0;
+}
+
 .content {
-height: 810px;
-min-height: 810px;
-margin-top: 12px;
-margin-right: 39px;
-margin-left: 34px;
+height: 833px;
+min-height: 833px;
+margin-top: 6px;
+margin-right: 42px;
+margin-left: 31px;
 
 display: flex;
 flex-direction: column;
@@ -329,6 +346,21 @@ flex-shrink: 0;
 background-color: rgba(igx-color($default-palette, primary), .10);
 }
 
+@function get-palette($palette, $variant: 'light') {
+$p: igx-color($palette, 'primary');
+$s: igx-color($palette, 'secondary');
+@return igx-palette($primary: $p,
+$secondary: $s,
+$grays: if($variant == 'light', #fff, #000)
+);
+}
+@function get-schema($variant: 'light') {
+@return map-get((
+dark: $dark-schema,
+light: $light-schema
+), $variant);
+}
+
 $navigation-navbar-theme: igx-navbar-theme(
 $background: igx-color($default-palette, primary),
 $idle-icon-color: rgb(255, 255, 255),
@@ -339,127 +371,143 @@ $name-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: transparent,
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $father-name-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: transparent,
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $mother-name-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: transparent,
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $dateof-bith-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
+);
+
+$timeof-birth-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
+);
+
+$gotra-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $gender-button-1-theme: igx-radio-theme(
 $fill-color: igx-color($default-palette, grays, 600),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $gender-button-2-theme: igx-radio-theme(
 $fill-color: igx-color($default-palette, grays, 600),
-$variant: 'dark'
-);
-$gender-button-3-theme: igx-radio-theme(
-$fill-color: igx-color($default-palette, grays, 600),
-$variant: 'dark'
-);
-$timeof-birth-theme: igx-input-group-theme(
-$idle-bottom-line-color: igx-color($default-palette, grays),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $birth-place-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: transparent,
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
-$time-format-theme: igx-input-group-theme(
-$idle-bottom-line-color: igx-color($default-palette, grays, 700),
-$box-background: igx-color($default-palette, grays, 200),
-$border-background: transparent,
-$variant: 'dark'
-);
-
-$inputs-input-border-copy24-theme: igx-input-group-theme(
+$logitude1-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
-$inputs-input-border-copy25-theme: igx-input-group-theme(
+$longitude2-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
-$inputs-input-border-copy26-theme: igx-input-group-theme(
+$logitude3-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
-$inputs-input-border-copy27-theme: igx-input-group-theme(
+$lattitude1-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
-$inputs-input-border-copy29-theme: igx-input-group-theme(
+$latitude2-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
-$inputs-input-border-copy30-theme: igx-input-group-theme(
+$latitude3-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
-$inputs-input-border-copy28-theme: igx-input-group-theme(
+$zone1-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
-$inputs-input-border-copy31-theme: igx-input-group-theme(
+$zone2-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
-$inputs-input-border-copy32-theme: igx-input-group-theme(
+$zone3-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $editbutton-theme: igx-checkbox-theme(
 $fill-color: igx-color($default-palette, secondary),
 $tick-color: rgb(255, 255, 255),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $submit-theme: igx-button-theme(
@@ -476,27 +524,35 @@ $raised-text-color: rgb(255, 255, 255)
 
 .name {
 @include igx-input-group($name-theme);
-margin-top: 6px;
-
 }
 
 .father-name {
 @include igx-input-group($father-name-theme);
-margin: 0 0 0 auto;
+margin: 0 73px 0 auto;
 
 }
 
 .mother-name {
 @include igx-input-group($mother-name-theme);
-margin-top: 12px;
-margin-left: 4px;
+margin-left: 73px;
 
 }
 
 .dateof-bith {
 @include igx-input-group($dateof-bith-theme);
-margin-top: 62px;
-margin-left: -55px;
+margin-top: 1px;
+
+}
+
+.timeof-birth {
+@include igx-input-group($timeof-birth-theme);
+margin: 1px 57px 0 auto;
+
+}
+
+.gotra {
+@include igx-input-group($gotra-theme);
+margin-left: 57px;
 
 }
 
@@ -508,93 +564,77 @@ margin-left: -55px;
 @include igx-radio($gender-button-2-theme);
 }
 
-.timeof-birth {
-@include igx-input-group($timeof-birth-theme);
-margin: 65px 0 0 auto;
-
-}
-
 .birth-place {
 @include igx-input-group($birth-place-theme);
-margin-top: 5px;
+margin: 21px 0 0 auto;
 
 }
 
-.time-format {
-@include igx-input-group($time-format-theme);
-margin: 0 0 0 auto;
+.logitude1 {
+@include igx-input-group($logitude1-theme);
+margin-left: 190px;
 
 }
 
-.inputs-input-border-copy24 {
-@include igx-input-group($inputs-input-border-copy24-theme);
-margin-left: 113px;
+.longitude2 {
+@include igx-input-group($longitude2-theme);
+margin-left: 45px;
 
 }
 
-.inputs-input-border-copy25 {
-@include igx-input-group($inputs-input-border-copy25-theme);
+.logitude3 {
+@include igx-input-group($logitude3-theme);
+margin-left: 41px;
+
+}
+
+.lattitude1 {
+@include igx-input-group($lattitude1-theme);
+margin: auto 0 auto 207px;
+
+}
+
+.latitude2 {
+@include igx-input-group($latitude2-theme);
+margin-left: 46px;
+
+}
+
+.latitude3 {
+@include igx-input-group($latitude3-theme);
 margin-left: 40px;
 
 }
 
-.inputs-input-border-copy26 {
-@include igx-input-group($inputs-input-border-copy26-theme);
-margin-left: 37px;
-
-}
-
-.inputs-input-border-copy27 {
-@include igx-input-group($inputs-input-border-copy27-theme);
-margin-top: 2px;
-margin-left: 114px;
-
-}
-
-.inputs-input-border-copy29 {
-@include igx-input-group($inputs-input-border-copy29-theme);
-margin-left: 41px;
-
-}
-
-.inputs-input-border-copy30 {
-@include igx-input-group($inputs-input-border-copy30-theme);
-margin-left: 36px;
-
-}
-
-.inputs-input-border-copy28 {
-@include igx-input-group($inputs-input-border-copy28-theme);
+.zone1 {
+@include igx-input-group($zone1-theme);
 margin-top: 4px;
-margin-left: 117px;
+margin-left: 238px;
 
 }
 
-.inputs-input-border-copy31 {
-@include igx-input-group($inputs-input-border-copy31-theme);
-margin-left: 41px;
+.zone2 {
+@include igx-input-group($zone2-theme);
+margin-left: 46px;
 
 }
 
-.inputs-input-border-copy32 {
-@include igx-input-group($inputs-input-border-copy32-theme);
-margin-left: 35px;
+.zone3 {
+@include igx-input-group($zone3-theme);
+margin-left: 39px;
 
 }
 
 .editbutton {
 @include igx-checkbox($editbutton-theme);
 margin-top: 11px;
-margin-left: 31px;
+margin-left: 6px;
 
 }
 
 .submit {
 @include igx-button($submit-theme);
-margin-top: 24px;
-margin-right: 419px;
-margin-bottom: 13px;
-margin-left: 374px;
+margin-top: 14px;
 
 }
 

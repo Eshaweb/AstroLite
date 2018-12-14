@@ -200,7 +200,7 @@ export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewIni
         }
         this.horoScopeService.UpdateAddressToOrder(orderAddress, (data) => {
             //   this.navCtrl.push(PaymentDetailsPage,{'ItemOrdered':this.navParams.get('ItemOrdered'),'OrderId':this.navParams.get('OrderId')});
-            this.router.navigate(["/paymentdetails", { "ItemOrdered": this.ItemOrdered, 'OrderId': this.OrderId}]);
+            this.router.navigate(["/payment", { "ItemOrdered": this.ItemOrdered, 'OrderId': this.OrderId}]);
 
         });
     }

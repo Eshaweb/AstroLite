@@ -1,0 +1,14 @@
+main {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+nav {
+    display: flex;
+    flex-basis: 250px;
+}
+
+section {
+    flex: 1 1 auto;
+}

@@ -16,7 +16,6 @@ import { SelectBoxModel } from '../../../Models/SelectBoxModel';
 import { isNumeric } from 'rxjs/util/isNumeric';
 import { Gender } from 'src/Enums/gender';
 
-
 @Component({
   selector: 'app-horoscope',
   templateUrl: './horoscope.component.html',
@@ -25,6 +24,8 @@ import { Gender } from 'src/Enums/gender';
 export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
   //public date: Date;
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
+  birthplace: string;
+  dateModel: string;
   ngOnInit() {
     this.mapsAPILoader.load().then(() => {
       let nativeHomeInputBox = document.getElementById('txtHome').getElementsByTagName('input')[0];
@@ -35,6 +36,7 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+          this.birthplace=place.formatted_address;
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
           this.getTimezone(this.latitude, this.longitude);
@@ -81,7 +83,7 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
-  horoscopeForm: FormGroup;
+  horoscopeFormForm: FormGroup;
   latitude: number;
   longitude: number;
   timeZoneName: any;
@@ -147,15 +149,16 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
     //   {"Id":"F","Text":"Female"}];
     //this.genders = ["Male", "Female"];
     this.using = ["AstroLite Wallet", "Payment Gateway"];
-    this.horoscopeForm = this.formbuilder.group({
+    //this.horoRequest=this.horoScopeService.horoRequest;
+    this.horoscopeFormForm = this.formbuilder.group({
       name: ['Shamanth', [Validators.required, Validators.minLength(4)]],
-      fathername: ['Rajesh', [Validators.required, Validators.minLength(4)]],
-      mothername: ['Leelavathi', [Validators.required, Validators.minLength(4)]],
-      //gothra: ['Vasista', [Validators.required, Validators.minLength(4)]],
-      Bdate: [null, [Validators.required]],
-      Btime: ['', [Validators.required]],
+      fatherName: ['Rajesh', [Validators.required, Validators.minLength(4)]],
+      motherName: ['Leelavathi', [Validators.required, Validators.minLength(4)]],
+      gotra: ['Vasista', [Validators.required, Validators.minLength(4)]],
+      birthDate: [null, [Validators.required]],
+      birthTime: ['', [Validators.required]],
       timeformat: ['', [Validators.required]],
-      bplace: ['', [Validators.required]],
+      birthPlace: ['', [Validators.required]],
       //language: ['', [Validators.required]],
       latitude: [''],
       longitude: [''],
@@ -170,43 +173,43 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
       ZM: [null, [Validators.min(0), Validators.max(45)]],
       PN: ['', [Validators.required, Validators.pattern("^[+-]?$")]]
     });
-    const nameContrl = this.horoscopeForm.get('name');
+    const nameContrl = this.horoscopeFormForm.get('name');
     nameContrl.valueChanges.subscribe(value => this.setErrorMessage(nameContrl));
-    const fathernameContrl = this.horoscopeForm.get('fathername');
-    fathernameContrl.valueChanges.subscribe(value => this.setErrorMessage(fathernameContrl));
-    const mothernameContrl = this.horoscopeForm.get('mothername');
-    mothernameContrl.valueChanges.subscribe(value => this.setErrorMessage(mothernameContrl));
-    // const gothraContrl = this.horoscopeForm.get('gothra');
-    // gothraContrl.valueChanges.subscribe(value => this.setErrorMessage(gothraContrl));
-    const genderContrl = this.horoscopeForm.get('gender');
+    const fatherNameContrl = this.horoscopeFormForm.get('fatherName');
+    fatherNameContrl.valueChanges.subscribe(value => this.setErrorMessage(fatherNameContrl));
+    const motherNameContrl = this.horoscopeFormForm.get('motherName');
+    motherNameContrl.valueChanges.subscribe(value => this.setErrorMessage(motherNameContrl));
+    const gotraContrl = this.horoscopeFormForm.get('gotra');
+    gotraContrl.valueChanges.subscribe(value => this.setErrorMessage(gotraContrl));
+    const genderContrl = this.horoscopeFormForm.get('gender');
     genderContrl.valueChanges.subscribe(value => this.setErrorMessage(genderContrl));
-    const LatDegContrl = this.horoscopeForm.get('LatDeg');
+    const LatDegContrl = this.horoscopeFormForm.get('LatDeg');
     LatDegContrl.valueChanges.subscribe(value => this.setErrorMessage(LatDegContrl));
-    const LatMtContrl = this.horoscopeForm.get('LatMt');
+    const LatMtContrl = this.horoscopeFormForm.get('LatMt');
     LatMtContrl.valueChanges.subscribe(value => this.setErrorMessage(LatMtContrl));
-    const BdateContrl = this.horoscopeForm.get('Bdate');
-    BdateContrl.valueChanges.subscribe(value => this.setErrorMessage(BdateContrl));
-    const BtimeContrl = this.horoscopeForm.get('Btime');
-    BtimeContrl.valueChanges.subscribe(value => this.setErrorMessage(BtimeContrl));
-    const bplaceContrl = this.horoscopeForm.get('bplace');
-    bplaceContrl.valueChanges.subscribe(value => this.setErrorMessage(bplaceContrl));
+    const birthDateContrl = this.horoscopeFormForm.get('birthDate');
+    birthDateContrl.valueChanges.subscribe(value => this.setErrorMessage(birthDateContrl));
+    const birthTimeContrl = this.horoscopeFormForm.get('birthTime');
+    birthTimeContrl.valueChanges.subscribe(value => this.setErrorMessage(birthTimeContrl));
+    const birthPlaceContrl = this.horoscopeFormForm.get('birthPlace');
+    birthPlaceContrl.valueChanges.subscribe(value => this.setErrorMessage(birthPlaceContrl));
     // const languageContrl = this.horoscopeForm.get('language');
     // languageContrl.valueChanges.subscribe(value => this.setErrorMessage(languageContrl));
 
     this.horoRequest = {
-      Name: this.horoscopeForm.controls['name'].value,
+      Name: this.horoscopeFormForm.controls['name'].value,
       Father: null,
       Mother: null,
       Gothra: null,
       Date: null,
       Time: null,
       TimeFormat: null,
-      LatDeg: this.horoscopeForm.controls['LatDeg'].value,
-      LatMt: this.horoscopeForm.controls['LatMt'].value,
-      LongDeg: this.horoscopeForm.controls['LongDeg'].value,
-      LongMt: this.horoscopeForm.controls['LongMt'].value,
-      NS: this.horoscopeForm.controls['NS'].value,
-      EW: this.horoscopeForm.controls['EW'].value,
+      LatDeg: this.horoscopeFormForm.controls['LatDeg'].value,
+      LatMt: this.horoscopeFormForm.controls['LatMt'].value,
+      LongDeg: this.horoscopeFormForm.controls['LongDeg'].value,
+      LongMt: this.horoscopeFormForm.controls['LongMt'].value,
+      NS: this.horoscopeFormForm.controls['NS'].value,
+      EW: this.horoscopeFormForm.controls['EW'].value,
       ZH: null,
       ZM: null,
       PN: null,
@@ -241,14 +244,14 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
     name_required: '*Enter Name',
     name_minlength: '*Minimum length is 4',
 
-    fathername_required: '*Enter Father Name',
-    fathername_minlength: '*Minimum length is 4',
+    fatherName_required: '*Enter Father Name',
+    fatherName_minlength: '*Minimum length is 4',
 
-    mothername_required: '*Enter Mother Name',
-    mothername_minlength: '*Minimum length is 4',
+    motherName_required: '*Enter Mother Name',
+    motherName_minlength: '*Minimum length is 4',
 
-    gothra_required: '*Enter Gothra',
-    gothra_minlength: '*Minimum length is 4',
+    gotra_required: '*Enter Gothra',
+    gotra_minlength: '*Minimum length is 4',
 
     LatDeg_required: '*Enter Latitude Degree',
     LatDeg_min: '*Minimum value is 0',
@@ -258,7 +261,7 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
     LatMt_min: '*Minimum value is 0',
     LatMt_max: '*Maximum value is 59',
 
-    Bdate_required: '*Select Date of Birth',
+    birthDate_required: '*Select Date of Birth',
 
     gender_required: '*Select Date of Birth',
 
@@ -293,31 +296,31 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
     return `${date.getDate()} ${this.monthFormatter.format(date)}, ${date.getFullYear()}`;
   }
   onClick() {
-    var bdate:Date=this.horoscopeForm.controls['Bdate'].value;
-    var btime:Date=this.horoscopeForm.controls['Btime'].value;
+    var bdate:Date=this.horoscopeFormForm.controls['Bdate'].value;
+    var btime:Date=this.horoscopeFormForm.controls['Btime'].value;
     var dateinString=bdate.getFullYear().toString()+"-"+("0"+((bdate.getMonth())+1)).toString().slice(-2)+"-"+("0"+bdate.getDate()).toString().slice(-2);
     var timeinString=("0"+btime.getHours()).toString().slice(-2)+":"+("0"+btime.getMinutes()).toString().slice(-2)+":"+btime.getSeconds().toString()+"0";
     this.horoRequest = {
-      Name: this.horoscopeForm.controls['name'].value,
-      Father: this.horoscopeForm.controls['fathername'].value,
-      Mother: this.horoscopeForm.controls['mothername'].value,
+      Name: this.horoscopeFormForm.controls['name'].value,
+      Father: this.horoscopeFormForm.controls['fathername'].value,
+      Mother: this.horoscopeFormForm.controls['mothername'].value,
       Gothra: 'Vasista',
       //Date: "2018-12-28",
       //Time: "18:34:00",
       Date:dateinString,
       Time:timeinString,
       //DOB:this.horoscopeForm.controls['Bdate'].value.toISOString(),
-      TimeFormat: this.horoscopeForm.controls['timeformat'].value[0].Id,
-      LatDeg: this.horoscopeForm.controls['LatDeg'].value,
-      LatMt: this.horoscopeForm.controls['LatMt'].value,
-      LongDeg: this.horoscopeForm.controls['LongDeg'].value,
-      LongMt: this.horoscopeForm.controls['LongMt'].value,
-      NS: this.horoscopeForm.controls['NS'].value,
-      EW: this.horoscopeForm.controls['EW'].value,
-      ZH: this.horoscopeForm.controls['ZH'].value,
-      ZM: this.horoscopeForm.controls['ZM'].value,
-      PN: this.horoscopeForm.controls['PN'].value,
-      Gender: this.horoscopeForm.controls['gender'].value,
+      TimeFormat: this.horoscopeFormForm.controls['timeformat'].value[0].Id,
+      LatDeg: this.horoscopeFormForm.controls['LatDeg'].value,
+      LatMt: this.horoscopeFormForm.controls['LatMt'].value,
+      LongDeg: this.horoscopeFormForm.controls['LongDeg'].value,
+      LongMt: this.horoscopeFormForm.controls['LongMt'].value,
+      NS: this.horoscopeFormForm.controls['NS'].value,
+      EW: this.horoscopeFormForm.controls['EW'].value,
+      ZH: this.horoscopeFormForm.controls['ZH'].value,
+      ZM: this.horoscopeFormForm.controls['ZM'].value,
+      PN: this.horoscopeFormForm.controls['PN'].value,
+      Gender: this.horoscopeFormForm.controls['gender'].value,
       // ReportType:null,
       // FormParameter:null,
       // Swarna:null,
@@ -327,6 +330,11 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
       // IsMarried:null,
       // Path:null
     }
+
+    // var dateindate = new  Date (dateinString);
+    // this.dateModel=dateindate.toDateString ();
+
+
     var horoRequest = this.horoRequest;
     //this.BDate = this.horoscopeForm.controls['Bdate'].value;
     this.horoScopeService.GetFreeData(this.horoRequest, (data) => {
@@ -342,7 +350,7 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
       //this.router.navigate(["/horoscopeFree",  {"horoRequest":horoRequest,queryParams:horoRequest, "data":data, navigationExtras,"BirthPlace": this.horoscopeForm.controls['bplace'].value, 'Fathername': this.horoscopeForm.controls['fathername'].value, 'Mothername': this.horoscopeForm.controls['mothername'].value }]);
       this.horoScopeService.horoRequest = this.horoRequest;
       this.horoScopeService.data = data;
-      this.router.navigate(["/horoscopeFree", { "BirthPlace": this.horoscopeForm.controls['bplace'].value, 'Fathername': this.horoscopeForm.controls['fathername'].value, 'Mothername': this.horoscopeForm.controls['mothername'].value }]);
+      this.router.navigate(["/horoscopeFree", { "BirthPlace": this.birthplace, 'Fathername': this.horoscopeFormForm.controls['fathername'].value, 'Mothername': this.horoscopeFormForm.controls['mothername'].value }]);
     });
   }
 

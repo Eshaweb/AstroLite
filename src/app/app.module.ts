@@ -46,6 +46,8 @@ import { PaymentComponent } from './payment/payment/payment.component';
 import { PaymentModule } from './payment/payment.module';
 import { SharedModule } from 'src/shared/shared.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ServicesListComponent } from './services-list/services-list.component';
+import { AstroLiteServicesComponent } from './AstroLite-Services/astroLite-services.component';
 
 const generatedRoutes: Routes = [
     {
@@ -54,26 +56,24 @@ const generatedRoutes: Routes = [
         pathMatch: 'full'
     },
     { path: 'horoscope', component: HoroscopeComponent },
-    {
-        path: 'login',
-        component:LoginComponent
-        //loadChildren: './login/login.module#LoginModule'
-    },
-    {
-        path: 'registration',
-        component: RegistrationComponent
-        //loadChildren: './registration/registration.module#RegistrationModule'
-    },
-    { path: 'matchmaking', component: MatchMakingComponent },
-    // { path: 'horoscope', component: HoroscopeComponent },
+    // {
+    //     path: 'login',
+    //     component:LoginComponent
+    // },
+    // {
+    //     path: 'registration',
+    //     component: RegistrationComponent
+    // },
+    // { path: 'matchmaking', component: MatchMakingComponent },
+    // { path: 'deliveryAddress', component: DeliveryAddressComponent },
+    // { path: 'astamangala', component: AstamangalaComponent },
+    // { path: 'loginDemo', component: LoginDemoComponent },
+    // { path: 'regDemo', component: RegistrationDemoComponent },
+    // { path: 'payment', component: PaymentComponent },
     { path: 'horoscopeFree', component: HoroscopeFreeComponent },
     { path: 'horoscopePaid', component: HoroscopePaidServiceComponent },
-    { path: 'deliveryAddress', component: DeliveryAddressComponent },
     { path: 'dashboard', component: DashboardComponent },
-    { path: 'astamangala', component: AstamangalaComponent },
-    { path: 'loginDemo', component: LoginDemoComponent },
-    { path: 'regDemo', component: RegistrationDemoComponent },
-    { path: 'payment', component: PaymentComponent },
+    { path: 'AstroServices', component: AstroLiteServicesComponent },
     { path: 'pagenotfound', component: PageNotFoundComponent },
     { path: '**', redirectTo: 'pagenotfound' }
 ];
@@ -103,7 +103,8 @@ let config = new AuthServiceConfig([
   
 @NgModule({
     declarations: [
-        AppComponent,PageNotFoundComponent
+        AppComponent,PageNotFoundComponent, ServicesListComponent,
+        AstroLiteServicesComponent,ServicesListComponent
     ],
     imports: [IgxProgressBarModule,IgxButtonModule, IgxIconModule, IgxRippleModule,
         AgmCoreModule.forRoot({
@@ -122,14 +123,21 @@ let config = new AuthServiceConfig([
         BrowserModule, ShareButtonsModule.forRoot(),
         CommonModule, InfragisticsImportsModule,
         BrowserAnimationsModule,
-        LoginModule, RegistrationModule,
         RouterModule.forRoot(generatedRoutes),
-        AstamangalaModule,HoroscopePaidServiceModule,
-        DashboardModule,SharedModule,
-        DeliveryAddressModule, PaymentModule,
-        HoroscopeModule,HoroscopeFreeModule,
-        MatchMakingModule, RegistrationDemoModule,
-        ServicesModule, LoginDemoModule
+       // LoginModule, 
+        //RegistrationModule,
+        //AstamangalaModule,
+        HoroscopePaidServiceModule,
+        DashboardModule,
+        SharedModule,
+       // DeliveryAddressModule, 
+        //PaymentModule,
+        HoroscopeModule,
+        HoroscopeFreeModule,
+        //MatchMakingModule, 
+        //RegistrationDemoModule,
+        ServicesModule, 
+        //LoginDemoModule
     ],
     providers: [HoroScopeService,UIService, RegistrationService, SmartHttpClient, LoaderService,
         {
@@ -146,7 +154,7 @@ let config = new AuthServiceConfig([
             provide: AuthServiceConfig,
             useFactory: provideConfig
           }],
-    bootstrap: [AppComponent,PageNotFoundComponent],
+    bootstrap: [AppComponent],
     exports: [
         RouterModule
     ]

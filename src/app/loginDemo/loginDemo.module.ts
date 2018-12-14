@@ -7,13 +7,6 @@ import { Routes, RouterModule } from '../../../node_modules/@angular/router';
 import { IgxButtonModule, IgxDialogModule } from '../../../node_modules/igniteui-angular';
 import { LoginDemoComponent } from './loginDemo/loginDemo.component';
 
-const routes: Routes = [
-    {
-      path: '',
-      component: LoginDemoComponent
-    }
-  ];
-  
 @NgModule({
     imports: [
         CommonModule,IgxButtonModule,
@@ -21,8 +14,7 @@ const routes: Routes = [
         BrowserAnimationsModule,
         ReactiveFormsModule,
         FormsModule,
-        InfragisticsImportsModule,
-        RouterModule.forChild(routes)
+        InfragisticsImportsModule
     ],
     declarations: [LoginDemoComponent],
     exports: [

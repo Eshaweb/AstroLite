@@ -58,7 +58,7 @@ export class HoroscopeFreeComponent implements OnInit, OnDestroy, AfterViewInit 
         //     autoCenter: true
         //   });
     }
-    constructor(private _location: Location,private route: ActivatedRoute, private router: Router, public platform: Platform, private loginService: LoginService, public horoScopeService: HoroScopeService) {
+    constructor(private _location: Location, private route: ActivatedRoute, private router: Router, public platform: Platform, private loginService: LoginService, public horoScopeService: HoroScopeService) {
         //this.navparams = this.navParams.data.data;
         //this.horoInfo = this.navParams.data.horoRequest;
         // this.Name = this.route.snapshot.params['name'];
@@ -71,6 +71,9 @@ export class HoroscopeFreeComponent implements OnInit, OnDestroy, AfterViewInit 
             this.Mothername = params['Mothername'];
             this.BirthPlace = params['BirthPlace'];
         });
+        this.Fathername = this.route.snapshot.params['Fathername'];
+        this.Mothername = this.route.snapshot.params['Mothername'];
+        this.BirthPlace = this.route.snapshot.params['BirthPlace'];
         // this.route.snapshot.data.subscribe(result=>{
         //     this.horoInfo = result['horoRequest'];
         //     this.horoInfo = result['data'];
@@ -82,9 +85,10 @@ export class HoroscopeFreeComponent implements OnInit, OnDestroy, AfterViewInit 
         //     this.BirthPlace = params['BirthPlace'];
         //     // In a real app: dispatch action to load the details here.
         // });
-        this.horoInfo=horoScopeService.horoRequest;
-        this.Name=horoScopeService.horoRequest.Name;
-       this.BDate=horoScopeService.horoRequest.Date
+
+        this.horoInfo = horoScopeService.horoRequest;
+        this.Name = horoScopeService.horoRequest.Name;
+        this.BDate = horoScopeService.horoRequest.Date
         this.Shloka1 = horoScopeService.data.Shloka1;
         this.Shloka2 = horoScopeService.data.Shloka2;
         this.JanmaNakshathra = horoScopeService.data.JanmaNakshathra;
@@ -132,7 +136,7 @@ export class HoroscopeFreeComponent implements OnInit, OnDestroy, AfterViewInit 
             this.router.navigate(["/horoscopePaid", { "HoroInfo": this.horoInfo }]);
         }
     }
-   
+
     ngAfterViewInit(): void {
 
     }
