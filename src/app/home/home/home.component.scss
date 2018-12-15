@@ -236,7 +236,7 @@ color: igx-color($default-palette, grays, 900);
 color: igx-color($default-palette, grays, 900);
 }
 .first-box {
-
+min-width:24%;
 display: flex;
 flex-direction: column;
 padding: 0;
@@ -251,6 +251,7 @@ width: 100%;
 .sunrise-sunset-11-container {
 display: flex;
 flex-direction: row;
+
 justify-content: space-between;
 align-items: center;
 }
@@ -332,7 +333,7 @@ color: igx-color($default-palette, grays, 900);
 }
 .second-box {
 margin-left: 22px;
-
+min-width: 24%;
 display: flex;
 flex-direction: column;
 padding: 0;
@@ -428,6 +429,7 @@ color: igx-color($default-palette, grays, 900);
 }
 .third-box {
 margin-left: 22px;
+min-width: 24%;
 
 display: flex;
 flex-direction: column;
@@ -524,7 +526,7 @@ color: igx-color($default-palette, grays, 900);
 }
 .fourth-box {
 margin-left: 22px;
-
+min-width: 24%;
 display: flex;
 flex-direction: column;
 padding: 0;
@@ -538,11 +540,84 @@ margin-right: 17px;
 margin-left: 17px;
 
 display: flex;
+
+
 flex-direction: row;
+
 flex-shrink: 0;
 padding: 0;
 }
 
+
+@media screen and (max-width: 420px) {
+    .row {
+        flex-direction: column;
+    }
+    .third-box{
+
+        width: 325px;
+        margin-left: 2px;
+    }
+    .first-box{
+
+        width: 325px;
+    }
+
+    .second-box{
+
+        width: 325px;
+        margin-left: 2px;
+    }
+
+    .fourth-box{
+
+        width: 325px;
+        margin-left: 2px;
+    }
+    .mela-meli-1{
+        width: 86%;
+        margin-left: 3px;
+        margin-bottom: 5px;
+    }
+    .astamangala-1{
+        width: 86%;
+        margin-left: 3px;
+        margin-bottom: 5px;
+    }
+    .horoscope-1{
+    width: 86%;
+    margin-left: 3px;
+    margin-bottom: 5px;
+    }
+
+    .centre-box{
+        flex-direction: column;
+        width: 332px;
+        margin-left: 34px;
+    }
+
+    .top-boxes{
+        flex-direction: column;
+        width: 332px;
+        margin-left: 34px;
+    }
+    .mela-meli{
+        width: 86%;
+        margin-left: 3px;
+        margin-bottom: 5px;
+    }
+    .astamangala{
+        width: 86%;
+        margin-left: 3px;
+        margin-bottom: 5px;
+    }
+    .horoscope{
+    width: 86%;
+    margin-left: 3px;
+    margin-bottom: 5px;
+    }
+
+}
 .astrolitein-all-r {
 color: rgb(255, 255, 255);
 margin: auto 392px auto 322px;
@@ -558,9 +633,13 @@ margin: auto 0 0 0;
 
 display: flex;
 flex-direction: column;
-padding: 0;
+padding: 15px;
 flex-shrink: 0;
 background-color: igx-color($default-palette, primary, 700);
+
+margin-top: 9px;
+margin-right: 6px;
+margin-left: 15px;
 }
 
 @function get-palette($palette, $variant: 'light') {

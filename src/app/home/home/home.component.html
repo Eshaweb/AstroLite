@@ -4,12 +4,12 @@
 ></igx-card>
 </div>
 <div class="navigation"><!-- No generator was found, skipping: _Overrides/Navbar/Content/Action Button Icon + Title -->
-<div class="navigation-navbar">
+<!-- <div class="navigation-navbar">
 <igx-navbar 
 title="Home" actionButtonIcon="arrow_back" >
 <igx-icon name="more_vert" ></igx-icon>
 </igx-navbar>
-</div>
+</div> -->
 
 </div>
 <div class="slider-2"><div class="slider">
@@ -38,24 +38,59 @@ title="Home" actionButtonIcon="arrow_back" >
 </div>
 
 </div>
-<div class="top-boxes"><igx-card 
-class="horoscope" ></igx-card>
-<igx-card 
-class="astamangala" ></igx-card>
-<igx-card 
-class="mela-meli" ></igx-card>
+<div class="top-boxes"><igx-card class="horoscope" (click)='OnHoroScope_Click()' ><div class="overflow-hidden">
+    <img src="assets/img/horo.jpg" width="100%" height="100%" >
 </div>
-<div class="centre-box"><igx-card 
-class="horoscope-1" ></igx-card>
-<igx-card 
-class="astamangala-1" ></igx-card>
-<igx-card 
-class="mela-meli-1" ></igx-card>
+<igx-card-header>
+    <h3 class="igx-card-header__title">Horoscope</h3>          
+</igx-card-header></igx-card>
+<igx-card class="astamangala" (click)='OnHoroScope_Click()'><div class="overflow-hidden">
+    <img src="assets/img/asta.jpg" width="100%" height="100%" >
+</div>
+<igx-card-header>
+    <h3 class="igx-card-header__title">Astamangala</h3>          
+</igx-card-header></igx-card>
+<igx-card class="mela-meli" (click)='OnHoroScope_Click()' ><div class="overflow-hidden">
+    <img src="assets/img/match.png" width="100%" height="100%" >
+</div>
+<igx-card-header>
+    <h3 class="igx-card-header__title">Match Making</h3>          
+</igx-card-header></igx-card>
+</div>
+<div class="centre-box">
+
+<igx-card class="horoscope-1" (click)='OnHoroScope_Click()' >
+        <div class="overflow-hidden">
+                <img src="assets/img/pancha.jpg" width="100%" height="100%" >
+            </div>
+            <igx-card-header>
+                <h3 class="igx-card-header__title">Panchangam</h3>          
+            </igx-card-header>
+</igx-card>
+
+<igx-card class="astamangala-1" (click)='OnHoroScope_Click()' >
+
+    <div class="overflow-hidden">
+            <img src="assets/img/muhurth.jpg" width="100%" height="100%" >
+        </div>
+        <igx-card-header>
+            <h3 class="igx-card-header__title">Muhurtha</h3>          
+        </igx-card-header>
+</igx-card>
+<igx-card class="mela-meli-1" (click)='OnHoroScope_Click()'>
+<div class="overflow-hidden">
+    <img src="assets/img/numer.jpg" width="100%" height="100%" >
+</div>
+<igx-card-header>
+    <h3 class="igx-card-header__title">Numerolgy</h3>          
+</igx-card-header>
+
+</igx-card>
 </div>
 <div class="row"><div class="first-box"><div class="sunrise-sunset">
 <igx-list class="sunrise-sunset-1" >
 <igx-list-item isHeader="true" class="sunrise-sunset-3" >
-IMPORT</igx-list-item>
+Sunset and Sunrise</igx-list-item>
 <igx-list-item class="sunrise-sunset-4" >
 <div class="sunrise-sunset-2-container" >
 <div class="sunrise-sunset-2-info" >
@@ -103,7 +138,7 @@ IMPORT</igx-list-item>
 <div class="second-box"><div class="sunrise-sunset-9">
 <igx-list class="sunrise-sunset-10" >
 <igx-list-item isHeader="true" class="sunrise-sunset-12" >
-IMPORT</igx-list-item>
+Panchangam</igx-list-item>
 <igx-list-item class="sunrise-sunset-13" >
 <div class="sunrise-sunset-11-container" >
 <div class="sunrise-sunset-11-info" >
@@ -151,7 +186,7 @@ IMPORT</igx-list-item>
 <div class="third-box"><div class="sunrise-sunset-18">
 <igx-list class="sunrise-sunset-19" >
 <igx-list-item isHeader="true" class="sunrise-sunset-21" >
-IMPORT</igx-list-item>
+Sunset Sunrise</igx-list-item>
 <igx-list-item class="sunrise-sunset-22" >
 <div class="sunrise-sunset-20-container" >
 <div class="sunrise-sunset-20-info" >
@@ -245,6 +280,8 @@ IMPORT</igx-list-item>
 
 </div>
 </div>
-<div class="footer"><h6 class="igx-typography__h6 astrolitein-all-r">Astrolite.in @.All Rights Reserved </h6>
+<div class="footer">
+    <h6 class="igx-typography__h6 astrolitein-all-r">Astrolite.in @.All Rights Reserved </h6>
 </div>
+<div><br><br></div>
 </div></form></main>
