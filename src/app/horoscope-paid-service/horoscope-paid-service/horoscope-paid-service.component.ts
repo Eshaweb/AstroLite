@@ -181,7 +181,8 @@ alert("hello");
       }
       var orderModel = {
         FreeAmount:null,
-        ItemAmount:itemOrdered.SoftCopy,
+        // ItemAmount:itemOrdered.SoftCopy,
+        ItemAmount:itemOrdered.ActualPrice,
         PartyMastId: this.PartyMastId,
         JSONData: this.horoInfo,
         //ItActId: "#SH",
@@ -193,7 +194,8 @@ alert("hello");
       });
     }
     onSoftCopy(softCopyPrice) {
-        var itemOrdered = this.serviceInfo.find(function (obj) { return obj.SoftCopy === softCopyPrice; });
+        // var itemOrdered = this.serviceInfo.find(function (obj) { return obj.SoftCopy === softCopyPrice; });
+        var itemOrdered = this.serviceInfo.find(function (obj) { return obj.ActualPrice === softCopyPrice; });
         var orderModel = {
           FreeAmount:0,
           ItemAmount:softCopyPrice,
@@ -210,7 +212,8 @@ alert("hello");
     });
       }
       onHardCopy(hardCopyPrice) {
-        var itemOrdered = this.serviceInfo.find(function (obj) { return obj.HardCopy === hardCopyPrice; });
+        // var itemOrdered = this.serviceInfo.find(function (obj) { return obj.HardCopy === hardCopyPrice; });
+        var itemOrdered = this.serviceInfo.find(function (obj) { return obj.ActualPrice === hardCopyPrice; });
         var orderModel = {
           FreeAmount:0,
           ItemAmount:hardCopyPrice,

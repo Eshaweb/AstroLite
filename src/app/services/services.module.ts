@@ -14,6 +14,7 @@ import { HoropaidComponent } from '../horopaid/horopaid/horopaid.component';
 import { DeliveryAddressComponent } from '../delivery-address/delivery-address/delivery-address.component';
 import { LoginComponent } from '../login/login/login.component';
 import { PaidervicesComponent } from '../paidervices/paidervices.component';
+import { PaymentComponent } from '../payment/payment/payment.component';
 
 @NgModule({
     imports: [
@@ -47,7 +48,8 @@ import { PaidervicesComponent } from '../paidervices/paidervices.component';
                     { path:'login', component:LoginComponent},
                     { path:'horoscopePaid', component:HoropaidComponent},
                     { path:'deliveryAddress', component:DeliveryAddressComponent},
-                    { path:'paidServices', component:PaidervicesComponent}
+                    { path:'paidServices', component:PaidervicesComponent},
+                    { path: 'payment', component: PaymentComponent },
 
                 ]
             }

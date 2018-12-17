@@ -63,7 +63,7 @@ export class PaidervicesComponent implements OnInit {
           PartyMastId:this.PartyMastId,
           CountryCode:"IN"
       }
-      this.horoScopeService.GetHardCopyPrice(hardCopyPriceRequest, (data) => {
+      this.horoScopeService.GetItemPrice(hardCopyPriceRequest, (data) => {
           this.serviceHardCopy = data;
       });
   }
@@ -193,7 +193,8 @@ export class PaidervicesComponent implements OnInit {
       }
       var orderModel = {
           FreeAmount: null,
-          ItemAmount: itemOrdered.SoftCopy,
+          //ItemAmount: itemOrdered.SoftCopy,
+          ItemAmount: itemOrdered.ActualPrice,
           PartyMastId: this.PartyMastId,
           JSONData: this.horoInfo,
           //ItActId: "#SH",
@@ -205,8 +206,9 @@ export class PaidervicesComponent implements OnInit {
       });
   }
   onSoftCopy(softCopyPrice) {
-      var itemOrdered = this.serviceInfo.find(function (obj) { return obj.SoftCopy === softCopyPrice; });
-      var orderModel = {
+    //   var itemOrdered = this.serviceInfo.find(function (obj) { return obj.SoftCopy === softCopyPrice; });
+    var itemOrdered = this.serviceInfo.find(function (obj) { return obj.ActualPrice === softCopyPrice; });
+    var orderModel = {
           FreeAmount: 0,
           ItemAmount: softCopyPrice,
           PartyMastId: this.loginService.PartyMastId,
@@ -222,8 +224,9 @@ export class PaidervicesComponent implements OnInit {
       });
   }
   onHardCopy(hardCopyPrice) {
-      var itemOrdered = this.serviceInfo.find(function (obj) { return obj.HardCopy === hardCopyPrice; });
-      var orderModel = {
+    //   var itemOrdered = this.serviceInfo.find(function (obj) { return obj.HardCopy === hardCopyPrice; });
+    var itemOrdered = this.serviceInfo.find(function (obj) { return obj.ActualPrice === hardCopyPrice; });
+    var orderModel = {
           FreeAmount: 0,
           ItemAmount: hardCopyPrice,
           PartyMastId: this.loginService.PartyMastId,

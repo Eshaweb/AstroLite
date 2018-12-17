@@ -1,7 +1,7 @@
 <main class="igx-typography"><form>
 <div class="horopaid">
 <div class="navigation"><div class="navigation-navbar">
-<igx-navbar 
+<igx-navbar (click)='backClicked()'
 title="Paid Services" actionButtonIcon="arrow_back" >
 <igx-icon name="more_vert" ></igx-icon>
 </igx-navbar>
@@ -11,7 +11,7 @@ title="Paid Services" actionButtonIcon="arrow_back" >
 <div class="screen-content"><div class="title"><h4 class="igx-typography__h4 horoscope-report-pri">Horoscope Report Pricing</h4>
 </div>
 <div class="body-vertical-centering-wrapper"><div class="body"><div class="full-horoscope"><div class="horoscope-list">
-<!-- <igx-list class="horoscope-list-1" *ngFor="let item of serviceInfo; let i = index">
+<igx-list class="horoscope-list-1" *ngFor="let item of serviceInfo; let i = index">
 <igx-list-item isHeader="true" class="horoscope-list-3" >
 {{item.ItemName}}</igx-list-item>
 <igx-list-item class="horoscope-list-4" >
@@ -47,17 +47,19 @@ title="Paid Services" actionButtonIcon="arrow_back" >
 </igx-list-item>
 <igx-list-item>
     <div class="hardcopy">
-        <igx-checkbox [checked]="checkBoxValue" (click)="hardcopyRequired_Click(item.Id)">Hardcopy Required
+        <!-- <igx-checkbox [checked]="checkBoxValue" (click)="hardcopyRequired_Click(item.Id)">Hardcopy Required
+        </igx-checkbox> -->
+        <igx-checkbox [checked]="item.IsHardCopy" (click)="hardcopyRequired_Click(item.Id)">Hardcopy Required
         </igx-checkbox>
         </div>
 </igx-list-item>
 <igx-list-item>
     
-        <button igxRipple igxButton="raised" (click)="onNext()">Next</button>
+        <button igxRipple igxButton="raised" (click)="onNext(item)">Next</button>
   
 </igx-list-item>
-</igx-list> -->
-<igx-list class="horoscope-list-1">
+</igx-list>
+<!-- <igx-list class="horoscope-list-1">
     <igx-list-item isHeader="true" class="horoscope-list-3" >
     {{service.ItemName}}</igx-list-item>
     <igx-list-item class="horoscope-list-4" >
@@ -102,7 +104,7 @@ title="Paid Services" actionButtonIcon="arrow_back" >
             <button igxRipple igxButton="raised" (click)="onNext()">Next</button>
       
     </igx-list-item>
-    </igx-list>
+    </igx-list> -->
 </div>
 
 <div class="text-display">

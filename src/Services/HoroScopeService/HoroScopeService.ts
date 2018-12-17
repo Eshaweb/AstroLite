@@ -17,6 +17,7 @@ export class HoroScopeService {
     defaultAddress: any;
     paymentModes: any;
     horoRequest: HoroRequest;
+    itemOrdered:ServiceInfo;
     data:any;
     ItActId='#SH';
     //@ViewChild(Nav) nav;
@@ -72,8 +73,8 @@ export class HoroScopeService {
             callback(data);
         });
     }
-    GetHardCopyPrice(HardCopyPriceRequest,callback: (data) => void) {
-        var endPoint = "Item/GetHardCopyPrice";
+    GetItemPrice(HardCopyPriceRequest,callback: (data) => void) {
+        var endPoint = "Item/GetItemPrice";
         this.smartHttpClient.Post(endPoint,HardCopyPriceRequest).subscribe((data: any) => {
             var items = data;
             callback(data);
@@ -239,12 +240,20 @@ export class ServiceInfo {
     // Price: number;
     // Buy: string;
 
+    // Id:string;
+    // ItemName:string;
+    // View:string;
+    // Description:string;
+    // HardCopy: number;
+    // SoftCopy: number;
+
     Id:string;
     ItemName:string;
-    View:string;
+    Link:string;
     Description:string;
-    HardCopy: number;
-    SoftCopy: number;
+    MRP: number;
+    ActualPrice:number;
+
 }
 export class PaymentInfo {
     Title: string;

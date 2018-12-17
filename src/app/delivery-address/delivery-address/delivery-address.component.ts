@@ -10,6 +10,7 @@ import { HoroScopeService } from '../../../Services/HoroScopeService/HoroScopeSe
 import { UIService } from '../../../Services/UIService/ui.service';
 import { ExistingAddress } from '../../../Models/ExistingAddress';
 import { LoginService } from '../../../Services/login/login.service';
+import { Location } from "@angular/common";
 
 
 @Component({
@@ -18,7 +19,6 @@ import { LoginService } from '../../../Services/login/login.service';
     styleUrls: ['./delivery-address.component.scss']
 })
 export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewInit {
-    ItemOrdered: any;
     ngOnInit() {
 
     }
@@ -39,17 +39,15 @@ export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewIni
     customerEMailAddressForm: FormGroup;
     email: any;
     DeliveryAddressRequired: boolean;
-    constructor(private route: ActivatedRoute, private router: Router, private loginService: LoginService,
+    constructor(private _location: Location, private route: ActivatedRoute, private router: Router, private loginService: LoginService,
         public horoScopeService: HoroScopeService, public smartHttpClient: SmartHttpClient,
         public uiService: UIService, public formbuilder: FormBuilder) {
         this.route.params.subscribe(params => {
             //this.id = +params['OrderId']; // (+) converts string 'id' to a number
             this.OrderId = params['OrderId'];
-            this.DeliveryAddressRequired = params['DeliveryAddressRequired'];
-            this.ItemOrdered=params['ItemOrdered'];
+            this.DeliveryAddressRequired = JSON.parse(params['DeliveryAddressRequired']);
             // In a real app: dispatch action to load the details here.
         });
-
         this.customerEMailAddressForm = this.formbuilder.group({
             email: ['', [Validators.required, Validators.pattern("[^ @]*@[^ @]*"), Validators.minLength(6)]]
         });
@@ -192,7 +190,9 @@ export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewIni
             });
         });
     }
-
+    backClicked() {
+        this._location.back();
+    }
     onPlaceOrder() {
         var orderAddress = {
             AddressId: this.Id,
@@ -200,7 +200,7 @@ export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewIni
         }
         this.horoScopeService.UpdateAddressToOrder(orderAddress, (data) => {
             //   this.navCtrl.push(PaymentDetailsPage,{'ItemOrdered':this.navParams.get('ItemOrdered'),'OrderId':this.navParams.get('OrderId')});
-            this.router.navigate(["/payment", { "ItemOrdered": this.ItemOrdered, 'OrderId': this.OrderId}]);
+            this.router.navigate(["/services/payment", { 'OrderId': this.OrderId}]);
 
         });
     }

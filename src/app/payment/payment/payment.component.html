@@ -1,7 +1,7 @@
 <main class="igx-typography"><form>
 <div class="payment-1">
 <div class="navigation"><div class="navigation-navbar">
-<igx-navbar 
+<igx-navbar (click)='backClicked()'
 title="Payment" actionButtonIcon="arrow_back" >
 <igx-icon name="more_vert" ></igx-icon>
 </igx-navbar>
@@ -11,32 +11,38 @@ title="Payment" actionButtonIcon="arrow_back" >
 <div class="screen"><div class="title"><h2 class="igx-typography__h2 payment">Payment </h2>
 </div>
 <div class="content"><span class="igx-typography__body-1 coupon-note">If you have a coupon code please enter here</span>
-<div class="coupon-code-2"><div class="coupon-code">
+<div class="coupon-code-2" [formGroup]="CoupenCodeForm"><div class="coupon-code">
 <igx-input-group type="line" class="coupon-code-1" >
-<input igxInput type="text" value="Enter Coupon Code" />
+<input igxInput type="text" formControlName="couponcode" />
 <label igxLabel>Coupon</label>
 </igx-input-group>
 </div>
 
 <div class="apply-button">
-<button igxRipple class="apply-button-1" igxButton="raised" >Apply</button>
+<button igxRipple class="apply-button-1" igxButton="raised" [disabled]="!CoupenCodeForm.valid" (click)="onClick()">Apply</button>
 </div>
 
 </div>
 <span class="igx-typography__body-1 order-total">Order Total</span>
-<span class="igx-typography__body-1 actual-price1200">Actual Price :   120.00</span>
-<span class="igx-typography__body-1 discount0000">Discount.     :    00.00</span>
-<span class="igx-typography__body-1 total-price1200">Total Price.  :    120.00</span>
+<span class="igx-typography__body-1 actual-price1200">Actual Price :   {{ItemOrdered.ActualPrice}}</span>
+<span class="igx-typography__body-1 discount0000">Discount.     :    {{discountAmount}}</span>
+<span class="igx-typography__body-1 total-price1200">Total Price.  :    {{payableAmount}}</span>
+<p style="color:red" *ngIf="(differenceAmount>0)"> {{'Remaining balance amount '+differenceAmount+' Rs will be deducted from choosen payment modes'}} </p>
+<p style="color:green"> {{selectMeMessage}}</p>
 <div class="astrolite-wallet">
-<igx-checkbox 
->Pay using Astrolite wallet (Wallet Balce )
+<igx-checkbox [checked]="WalletCheckBoxValue" (click)="checkBox_valueChanged($event)">
+Pay using Astrolite wallet (Wallet Balce {{walletbalance}})
 </igx-checkbox>
 </div>
 
-
-<div class="continue-button">
-<button igxRipple igxButton="raised" >Continue</button>
+<div class="payment-mode">
+<igx-combo #combo class="payment-mode-1" width="400px" [itemsMaxHeight]="255"
+            [data]="paymentModes" [displayKey]="'Text'" [valueKey]="'Id'" type="line"
+            placeholder="Location(s)" searchPlaceholder="Search..." (onSelectionChange)="ObjChanged($event)">
+</igx-combo>
 </div>
+<br>
+<button igxRipple igxButton="raised" (click)="onContinue()">Continue</button>
 
 </div>
 </div>

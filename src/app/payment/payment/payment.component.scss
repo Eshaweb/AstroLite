@@ -1,4 +1,6 @@
 @import '~igniteui-angular/lib/core/styles/themes/utilities';
+@import '~igniteui-angular/lib/core/styles/components/combo/combo-component';
+@import '~igniteui-angular/lib/core/styles/components/combo/combo-theme';
 @import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-component';
 @import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-theme';
 @import '~igniteui-angular/lib/core/styles/components/ripple/ripple-component';
@@ -85,14 +87,13 @@ width: 100%;
 
 }
 .apply-button-1 {
-width: 100%;
 height: 39px;
 min-height: 39px;
 
 }
 .coupon-code-2 {
 margin-top: 23px;
-margin-right: 419px;
+margin-right: 405px;
 margin-left: 80px;
 
 display: flex;
@@ -124,6 +125,11 @@ color: igx-color($default-palette, grays, 900);
 margin-left: 107px;
 
 margin-top: 0px;
+}
+.payment-mode-1 {
+width: 376px;
+min-width: 376px;
+
 }
 .content {
 margin-top: 16px;
@@ -189,6 +195,14 @@ $schema: get-schema('dark'),
 $palette: get-palette($default-palette, 'dark')
 );
 
+$payment-mode-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
+);
+
 $continue-button-theme: igx-button-theme(
 $raised-background: igx-color($default-palette, secondary, 600),
 $raised-text-color: rgb(255, 255, 255)
@@ -211,7 +225,6 @@ width: 100%;
 margin-top: 13px;
 margin-left: 61px;
 
-width: 100%;
 }
 
 .astrolite-wallet {
@@ -221,9 +234,16 @@ margin-left: 80px;
 
 }
 
+.payment-mode {
+@include igx-input-group($payment-mode-theme);
+margin-top: 32px;
+margin-left: 78px;
+
+}
+
 .continue-button {
 @include igx-button($continue-button-theme);
-margin-top: 87px;
+margin-top: 98px;
 margin-left: 365px;
 
 }

@@ -12,6 +12,7 @@ import { HoroScopeService } from '../../../Services/HoroScopeService/HoroScopeSe
 import { LoginService } from '../../../Services/login/login.service';
 import { UIService } from '../../../Services/UIService/ui.service';
 import { AuthService, GoogleLoginProvider, FacebookLoginProvider, SocialUser } from '../../../../node_modules/angularx-social-login';
+import { Location } from "@angular/common";
 
 
 @Component({
@@ -67,7 +68,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   Name: any;
   horoInfo: any;
 
-  constructor(private events:EventsService, private route: ActivatedRoute, private router: Router, public http: HttpClient, 
+  constructor(private _location: Location, private events:EventsService, private route: ActivatedRoute, private router: Router, public http: HttpClient, 
     private authService: AuthService, public horoScopeService: HoroScopeService, private loginService: LoginService, 
     public uiService: UIService, public formbuilder: FormBuilder) {
     
@@ -178,8 +179,8 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
         if (this.horoInfo != null) {
 
         //   this.navCtrl.push(ServiceInfoPage, { 'PartyMastId': data.PartyMastId, 'HoroInfo': this.navParams.get('HoroInfo') });
-        // this.router.navigate(["/services/horoscopePaid", { "PartyMastId": data.PartyMastId, 'HoroInfo': this.horoInfo}]);
-        this.router.navigate(["/services/paidServices", { "PartyMastId": data.PartyMastId, 'HoroInfo': this.horoInfo}]);
+        this.router.navigate(["/services/horoscopePaid", { "PartyMastId": data.PartyMastId, 'HoroInfo': this.horoInfo}]);
+        // this.router.navigate(["/services/paidServices", { "PartyMastId": data.PartyMastId, 'HoroInfo': this.horoInfo}]);
 
         //this.viewCtrl.dismiss();
         }
@@ -197,7 +198,9 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
     }
     //loading.dismiss();
   }
-
+  backClicked() {
+    this._location.back();
+}
   goToLoginByOTP() {
     this.isLoginByOTP = true;
   }

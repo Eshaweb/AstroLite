@@ -1,7 +1,7 @@
 <main class="igx-typography"><form>
 <div class="delivery-address-1">
 <div class="navigation"><div class="navigation-navbar">
-<igx-navbar 
+<igx-navbar (click)='backClicked()'
 title="Delivery Address" actionButtonIcon="arrow_back" >
 <igx-icon name="more_vert" ></igx-icon>
 </igx-navbar>
@@ -10,7 +10,8 @@ title="Delivery Address" actionButtonIcon="arrow_back" >
 </div>
 <div class="screen-content"><div class="title"><h4 class="igx-typography__h4 delivery-address">Delivery Address</h4>
 </div>
-<div class="email-2"><div class="email">
+<div class="email-2" [formGroup]="customerEMailAddressForm">
+    <div class="email">
 <igx-input-group type="line" class="email-1" >
 <input igxInput type="text" formControlName="email" [(ngModel)]="email" />
 <label igxLabel>Email</label>
@@ -18,18 +19,28 @@ title="Delivery Address" actionButtonIcon="arrow_back" >
 </div>
 
 </div>
-<div class="address"><igx-card 
-class="address-box" ></igx-card>
+<div class="address" *ngIf="DeliveryAddressRequired">
+    <igx-card class="address-box" *ngIf="existingAddress">
+        <div *ngFor="let order of existingAddress">
+            <div (click)="OnChangeDefaultAddress(order.Id)" [ngClass]="order.Id === Id? 'class-1':'class-2'">
+                <p *ngIf="(order.Id === Id)" style="text-align:center">Default Address</p>
+                <h2 style="text-transform:capitalize;">{{ order.Name }}</h2>
+                <p>City:{{ order.Address1 }}</p>
+                <p>Street/Area:{{ order.Address2 }}</p>
+                <p>House No./Building Name:{{ order.Address3 }}</p>
+            </div>
+        </div>
+    </igx-card>
 <div class="buttons-raised">
-<button igxRipple class="buttons-raised-1" igxButton="raised" (click)="onAddAddress()" >Add Address</button>
+<button igxRipple class="buttons-raised-1" *ngIf="DeliveryAddressRequired" igxButton="raised" (click)="onAddAddress()" >Add Address</button>
 </div>
 
 </div>
-<div class="body">
-    <div class="form-address" [formGroup]="customerAddressForm">
+<div class="body" *ngIf="DeliveryAddressRequired">
+    <div class="form-address" [formGroup]="customerAddressForm" *ngIf="showAddAddressForm">
         <div class="street">
 <igx-input-group type="line" class="street-1" >
-<input igxInput type="text" formControlName="address1" />
+<input igxInput type="text" formControlName="address3" />
 <label igxLabel>Street Address</label>
 </igx-input-group>
 </div>
@@ -55,7 +66,7 @@ class="address-box" ></igx-card>
 
 <div class="city">
 <igx-input-group type="line" class="city-1" >
-<input igxInput type="text" value="address3" />
+<input igxInput type="text" value="address1" />
 <label igxLabel>City</label>
 </igx-input-group>
 </div>
@@ -77,8 +88,13 @@ class="address-box" ></igx-card>
 <div class="button">
 <button igxRipple class="button-1" igxButton="raised" [disabled]="customerAddressForm.invalid" (click)="onSaveAddress()">Save</button>
 </div>
-
+<div class="button">
+<button igxRipple class="button-1" igxButton="raised" (click)="onCancel()">Cancel</button>
 </div>
 </div>
+<br/><br/>
+<button igxRipple igxButton="raised" (click)="onPlaceOrder()">Place Order</button>
+</div>
+<button igxRipple igxButton="raised" (click)="onPlaceOrder()">Place Order</button>
 </div>
 </div></form></main>

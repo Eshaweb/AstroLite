@@ -8,6 +8,7 @@ import 'rxjs/add/observable/merge';
 import { LoginService } from '../../../Services/login/login.service';
 import { HoroScopeService, ServiceInfo, ServiceInformation } from '../../../Services/HoroScopeService/HoroScopeService';
 import { HoroRequest } from '../../../Models/HoroScope/HoroRequest';
+import { Location } from "@angular/common";
 
 
 @Component({
@@ -39,7 +40,7 @@ export class HoropaidComponent implements OnInit {
     PartyMastId: any;
     serviceHardCopy: ServiceInfo[];
 
-    constructor(private route: ActivatedRoute, private router: Router,
+    constructor(private _location: Location, private route: ActivatedRoute, private router: Router,
         private loginService: LoginService, public horoScopeService: HoroScopeService) {
 
         this.route.params.subscribe(params => {
@@ -60,6 +61,9 @@ export class HoropaidComponent implements OnInit {
         /*
         */
     }
+    backClicked() {
+        this._location.back();
+    }
     hardcopyRequired_Click(id) {
         if(this.checkBoxValue== false){
             this.checkBoxValue= true;
@@ -74,7 +78,7 @@ export class HoropaidComponent implements OnInit {
             PartyMastId:this.PartyMastId,
             CountryCode:"IN"
         }
-        // this.horoScopeService.GetHardCopyPrice(hardCopyPriceRequest, (data) => {
+        // this.horoScopeService.GetItemPrice(hardCopyPriceRequest, (data) => {
         //     this.serviceHardCopy = data;
         //     this.serviceInfo = this.serviceInfo.filter(function (obj) {
         //         return obj.Id !== data.Id;
@@ -82,7 +86,7 @@ export class HoropaidComponent implements OnInit {
         //     this.serviceInfo.unshift(data);
         // });
 
-        this.horoScopeService.GetHardCopyPrice(hardCopyPriceRequest, (data) => {
+        this.horoScopeService.GetItemPrice(hardCopyPriceRequest, (data) => {
             this.serviceHardCopy = data;
             // this.serviceInfo = this.serviceInfo.filter(function (obj) {
             //     return obj.Id !== data.Id;
@@ -221,7 +225,8 @@ export class HoropaidComponent implements OnInit {
         }
         var orderModel = {
             FreeAmount: null,
-            ItemAmount: itemOrdered.SoftCopy,
+            //ItemAmount:SoftCopy,
+            ItemAmount: itemOrdered.ActualPrice,
             PartyMastId: this.PartyMastId,
             JSONData: this.horoInfo,
             //ItActId: "#SH",
@@ -233,7 +238,8 @@ export class HoropaidComponent implements OnInit {
         });
     }
     onSoftCopy(softCopyPrice) {
-        var itemOrdered = this.serviceInfo.find(function (obj) { return obj.SoftCopy === softCopyPrice; });
+        // var itemOrdered = this.serviceInfo.find(function (obj) { return obj.SoftCopy === softCopyPrice; });
+        var itemOrdered = this.serviceInfo.find(function (obj) { return obj.ActualPrice === softCopyPrice; });
         var orderModel = {
             FreeAmount: 0,
             ItemAmount: softCopyPrice,
@@ -250,7 +256,8 @@ export class HoropaidComponent implements OnInit {
         });
     }
     onHardCopy(hardCopyPrice) {
-        var itemOrdered = this.serviceInfo.find(function (obj) { return obj.HardCopy === hardCopyPrice; });
+        // var itemOrdered = this.serviceInfo.find(function (obj) { return obj.HardCopy === hardCopyPrice; });
+        var itemOrdered = this.serviceInfo.find(function (obj) { return obj.ActualPrice === hardCopyPrice; });
         var orderModel = {
             FreeAmount: 0,
             ItemAmount: hardCopyPrice,
@@ -266,29 +273,37 @@ export class HoropaidComponent implements OnInit {
             this.router.navigate(["/services/deliveryAddress", { "OrderId": data, 'ItemOrdered': itemOrdered, 'DeliveryAddressRequired': DeliveryAddressRequired }]);
         });
     }
-    onNext() {
+    onNext(item) {
+        this.horoScopeService.itemOrdered = this.serviceInfo.find(function (obj) { return obj.Id === item.Id; });
+
         var orderModel = {
             FreeAmount: 0,
-            ItemAmount: this.totalprice,
+            ItemAmount: item.ActualPrice,
             PartyMastId: this.loginService.PartyMastId,
-            //JSONData: this.horoInfo,
-            JSONData: { Name: "Shamanth", Father: "Rajesh", Mother: "Leelavathi", Gothra: "Vasista", Date: "2018-12-21", EW: "W", Gender: "F", LatDeg: 17, LatMt: 24, LongDeg: 78, LongMt: 25, NS: "N", PN: "+", Time: "18:47:00", TimeFormat: "STANDARD", ZH: 5, ZM: 30 },
+            JSONData: this.horoScopeService.horoRequest,
+            //JSONData: { Name: "Shamanth", Father: "Rajesh", Mother: "Leelavathi", Gothra: "Vasista", Date: "2018-12-21", EW: "W", Gender: "F", LatDeg: 17, LatMt: 24, LongDeg: 78, LongMt: 25, NS: "N", PN: "+", Time: "18:47:00", TimeFormat: "STANDARD", ZH: 5, ZM: 30 },
             //ItActId: "#SH",
             ItActId: this.horoScopeService.ItActId,
             ItMastId: '#HFH'
         }
-        if (this.FH_HardcopySelected == true || this.MH_HardcopySelected == true || this.PH_HardcopySelected == true) {
+        // if (this.FH_HardcopySelected == true || this.MH_HardcopySelected == true || this.PH_HardcopySelected == true) {
+        //     this.requireDeliveryAddress = true;
+        // }
+        // else {
+        //     this.requireDeliveryAddress = false;
+        // }
+        if (item.IsHardCopy == true) {
             this.requireDeliveryAddress = true;
         }
         else {
             this.requireDeliveryAddress = false;
         }
-        var DeliveryAddressRequired = this.requireDeliveryAddress;
-        this.router.navigate(["/services/deliveryAddress", { 'ItemOrdered': '', 'DeliveryAddressRequired': DeliveryAddressRequired }]);
-        // this.horoScopeService.CreateOrder(orderModel, (data) => {
-        //   //this.navCtrl.push(DeliveryAddressPage, { 'OrderId': data, 'ItemOrdered': '','DeliveryAddressRequired':DeliveryAddressRequired  });
-        //   this.router.navigate(["/deliveryAddress", { "OrderId": data, 'ItemOrdered': '','DeliveryAddressRequired':DeliveryAddressRequired }]);
-        // });
+        var DeliveryAddressRequired:boolean = this.requireDeliveryAddress;
+        //this.router.navigate(["/services/deliveryAddress", { 'ItemOrdered': '', 'DeliveryAddressRequired': DeliveryAddressRequired }]);
+        this.horoScopeService.CreateOrder(orderModel, (data) => {
+          //this.navCtrl.push(DeliveryAddressPage, { 'OrderId': data, 'ItemOrdered': '','DeliveryAddressRequired':DeliveryAddressRequired  });
+          this.router.navigate(["/services/deliveryAddress", { "OrderId": data,'DeliveryAddressRequired':DeliveryAddressRequired }]);
+        });
     }
 
 
