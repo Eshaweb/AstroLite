@@ -1,5 +1,5 @@
 <igx-list>
-  <igx-list-item *ngFor="let person of people">
+  <igx-list-item *ngFor="let person of people" (click)="onPersonSelected(person)">
       <section>
           <article>
               <!-- <igx-avatar class="avatar"

@@ -157,7 +157,7 @@ export class LoginDemoComponent implements OnInit, OnDestroy, AfterViewInit {
   //   loading.dismiss();
   // }
 
-  onClick() {
+  Login_Click() {
     // let loading = this.loadingController.create({
     //   content: 'Please wait till we get banks for you'
     // });

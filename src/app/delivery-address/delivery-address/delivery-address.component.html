@@ -10,36 +10,41 @@ title="Delivery Address" actionButtonIcon="arrow_back" >
 </div>
 <div class="screen-content"><div class="title"><h4 class="igx-typography__h4 delivery-address">Delivery Address</h4>
 </div>
-<div class="body"><div class="form-address"><div class="street">
+<div class="email-2"><div class="email">
+<igx-input-group type="line" class="email-1" >
+<input igxInput type="text" formControlName="email" [(ngModel)]="email" />
+<label igxLabel>Email</label>
+</igx-input-group>
+</div>
+
+</div>
+<div class="address"><igx-card 
+class="address-box" ></igx-card>
+<div class="buttons-raised">
+<button igxRipple class="buttons-raised-1" igxButton="raised" (click)="onAddAddress()" >Add Address</button>
+</div>
+
+</div>
+<div class="body">
+    <div class="form-address" [formGroup]="customerAddressForm">
+        <div class="street">
 <igx-input-group type="line" class="street-1" >
-<input igxInput type="text" value="21 Commerce Str." />
-<label igxLabel>Street, P.O. box, etc.</label>
+<input igxInput type="text" formControlName="address1" />
+<label igxLabel>Street Address</label>
 </igx-input-group>
 </div>
 
 <div class="apartment">
 <igx-input-group type="line" class="apartment-1" >
-<input igxInput type="text" value="2nd business floor" />
-<label igxLabel>Apt, suite, unit, etc.</label>
-</igx-input-group>
-</div>
-
-<div class="country">
-<igx-input-group type="line" class="country-1" >
-<input igxInput type="text" value="United States" />
-<label igxLabel>Country</label>
-<igx-suffix>
-<div class="country-2-suffix">
-<igx-icon name="arrow_drop_down" ></igx-icon>
-</div>
-</igx-suffix>
+<input igxInput type="text" formControlName="address2" />
+<label igxLabel>Street or Area</label>
 </igx-input-group>
 </div>
 
 <div class="state">
 <igx-input-group type="line" class="state-1" >
-<input igxInput type="text" value="New Jersey" />
-<label igxLabel>State/Province/County</label>
+<input igxInput type="text" formControlName="state" />
+<label igxLabel>State</label>
 <igx-suffix>
 <div class="state-2-suffix">
 <igx-icon name="arrow_drop_down" ></igx-icon>
@@ -50,26 +55,27 @@ title="Delivery Address" actionButtonIcon="arrow_back" >
 
 <div class="city">
 <igx-input-group type="line" class="city-1" >
-<input igxInput type="text" value="Cranbury" />
+<input igxInput type="text" value="address3" />
 <label igxLabel>City</label>
 </igx-input-group>
 </div>
 
 <div class="postal-code">
 <igx-input-group type="line" class="postal-code-1" >
-<input igxInput type="text" value="08512" />
+<input igxInput type="text" formControlName="pincode" />
 <label igxLabel>Postal Code</label>
 </igx-input-group>
 </div>
 
-<div class="checkbox">
-<igx-checkbox 
-class="checkbox-1" >Set as default shipping address
-</igx-checkbox>
+<div class="postal-code-copy">
+<igx-input-group type="line" class="postal-code-copy-1" >
+<input igxInput type="text" formControlName="name" />
+<label igxLabel>Name of the Reciever</label>
+</igx-input-group>
 </div>
 
 <div class="button">
-<button igxRipple class="button-1" igxButton="raised" >Save</button>
+<button igxRipple class="button-1" igxButton="raised" [disabled]="customerAddressForm.invalid" (click)="onSaveAddress()">Save</button>
 </div>
 
 </div>

@@ -1,0 +1,19 @@
+section {
+    display: flex;
+}
+
+section article {
+    display: flex;
+    flex-direction: row;
+}
+
+secton article .avatar {
+    align-self: center;
+    width: 64px;
+}
+
+section article .name {
+    font-weight: 600;
+    align-self: center;
+    margin-left: 15px;
+}

@@ -6,20 +6,23 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./services-list.component.scss']
 })
 export class ServicesListComponent implements OnInit {
+  @Input()
   people: { id: string; name: string; }[];
+
+
   //people: string[];
   // @Input()
   // people: Person[];
 
-  // @Output()
-  // personSelected: EventEmitter<number> = new EventEmitter<number>();
+  @Output()
+  personSelected: EventEmitter<string> = new EventEmitter<string>();
 
 
-  // onPersonSelected(person: Person) {
-  //     this.personSelected.emit(person.id);
-  // }
+  onPersonSelected(person: { id: string; name: string; }) {
+      this.personSelected.emit(person.id);
+  }
   constructor() { 
-    this.people=[{id:"/horoscope",name:"horoscope"},{id:"/matchmaking",name:"matchmaking"}];
+
   }
 
   ngOnInit() {

@@ -1,20 +1,10 @@
-<main class="igx-typography"><form>
-<div class="services">
-<div class="navigation"><div class="navigation-navbar">
-<igx-navbar 
-title="Services" actionButtonIcon="arrow_back" >
-<igx-icon name="more_vert" ></igx-icon>
-</igx-navbar>
-</div>
-
-</div>
-<div class="background-row">
-<div class="colorswhite">
-</div>
-<div class="colorswhite-1">
-</div>
-<h2 class="igx-typography__h2 our-services">Our Services</h2>
-<div class="colorswhite-2">
-</div>
-</div>
-</div></form></main>
+<main>
+    <nav>
+        <app-services-list (personSelected)='onPersonSelected($event)'
+            [people]='people'>
+        </app-services-list>
+    </nav>
+    <section>
+        <router-outlet></router-outlet>
+    </section>
+</main>

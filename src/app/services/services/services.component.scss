@@ -8,11 +8,19 @@ main {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 	overflow: auto;
     height: 100%;
 }
 
+nav {
+    display: flex;
+    flex-basis: 250px;
+}
+
+section {
+    flex: 1 1 auto;
+}
 form {
     margin: 0;
     padding: 0;

@@ -130,10 +130,10 @@ export class HoroscopeFreeComponent implements OnInit, OnDestroy, AfterViewInit 
             //   };
             //   let profileModal = this.modalCtrl.create(LoginPage, { 'HoroInfo': this.horoInfo }, myModalOptions);
             //   profileModal.present();
-            this.router.navigate(["/loginDemo", { "HoroInfo": this.horoInfo }]);
+            this.router.navigate(["/services/login", { "HoroInfo": this.horoInfo }]);
         }
         else {
-            this.router.navigate(["/horoscopePaid", { "HoroInfo": this.horoInfo }]);
+            this.router.navigate(["/services/horoscopePaid", { "HoroInfo": this.horoInfo }]);
         }
     }
 

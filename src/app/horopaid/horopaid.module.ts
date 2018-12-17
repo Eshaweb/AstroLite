@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InfragisticsImportsModule } from '../infragistics-imports/infragistics-imports.module';
-import { HoroscopePaidServiceComponent } from './horoscope-paid-service/horoscope-paid-service.component';
+import { HoropaidComponent } from './horopaid/horopaid.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -12,10 +12,10 @@ import { HoroscopePaidServiceComponent } from './horoscope-paid-service/horoscop
         FormsModule,
         InfragisticsImportsModule
     ],
-    declarations: [HoroscopePaidServiceComponent],
+    declarations: [HoropaidComponent],
     exports: [
-        HoroscopePaidServiceComponent
+        HoropaidComponent
     ]
 })
-export class HoroscopePaidServiceModule {
+export class HoropaidModule {
 }

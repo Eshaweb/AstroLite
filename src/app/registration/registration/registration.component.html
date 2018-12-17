@@ -8,54 +8,47 @@ title="Registration" actionButtonIcon="arrow_back" >
 </div>
 
 </div>
-<div class="background-row">
-<div class="colorswhite">
+<div class="screen" [formGroup]="registrationForm"><div class="title-1"><h3 class="igx-typography__h3 title">Register </h3>
 </div>
-<div class="card-background">
-</div>
-<div class="mobile-no">
+<div class="content"><div class="mobile-no">
 <igx-input-group type="line" class="mobile-no-1" >
-<input igxInput type="text" value="Enter Mobile No" />
+<input igxInput type="text" formControlName="mobileno" />
 <label igxLabel>Mobile No</label>
 </igx-input-group>
 </div>
 
 <div class="email">
 <igx-input-group type="line" class="email-1" >
-<input igxInput type="text" value="Enter your email here" />
+<input igxInput type="text" formControlName="email" />
 <label igxLabel>Email</label>
 </igx-input-group>
 </div>
 
 <div class="password">
 <igx-input-group type="line" class="password-1" >
-<input igxInput type="text" value="Enter your password here" />
+<input igxInput type="text" formControlName="password" />
 <label igxLabel>Password</label>
 </igx-input-group>
 </div>
 
 <div class="reenter-password">
 <igx-input-group type="line" class="reenter-password-1" >
-<input igxInput type="text" value="Re enter your password" />
+<input igxInput type="text" formControlName="confirm_Password" />
 <label igxLabel>Confirm Password</label>
 </igx-input-group>
 </div>
 
 <div class="reference-code">
 <igx-input-group type="line" class="reference-code-1" >
-<input igxInput type="text" value="Enter refereral code here" />
+<input igxInput type="text"  formControlName="refCode" />
 <label igxLabel>Reference Code</label>
 </igx-input-group>
 </div>
 
 <div class="register">
-<button igxRipple igxButton="raised" >Register</button>
+<button igxRipple igxButton="raised" [disabled]="!registrationForm.valid" (click)='Register_Click()'>Register</button>
 </div>
 
-<h3 class="igx-typography__h3 title">Register </h3>
-<div class="cancel-1">
-<button igxRipple igxButton="flat" >Cancel</button>
 </div>
-
 </div>
 </div></form></main>

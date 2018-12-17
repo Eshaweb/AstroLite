@@ -37,14 +37,19 @@ export class HoroscopePaidServiceComponent implements OnInit {
   PartyMastId: any;
     constructor(private route: ActivatedRoute, private router: Router,
         private loginService: LoginService, public horoScopeService: HoroScopeService) {
-        this.horoScopeService.GetHoroScopeItems((data) => {
-          this.serviceInfo = data;
+          var itemMast = {
+            ItActId: "#SH",
+            PartyMastId: this.PartyMastId,
+            CountryCode: "IN"
+        }
+        this.horoScopeService.GetHoroScopeItems(itemMast, (data) => {
+            this.serviceInfo = data;
         });
+        this.serviceInformation = [{ Id: '', ItemName: 'Horo', MRP: 33, ActualPrice: 44, Description: '', Link: '' }]
         this.route.params.subscribe(params => {
             this.horoInfo = params['horoInfo'];  
             this.PartyMastId= params['PartyMastId'];
         });
-        this.serviceInformation=[{Id:'',ItemName:'Horo',SoftCopy:33,HardCopy:44,Description:'',View:''}]
       }
     ngOnInit(): void {
     /*
@@ -171,7 +176,8 @@ alert("hello");
         ZH: this.horoInfo.ZH,
         ZM: this.horoInfo.ZM,
         PN: this.horoInfo.PN,
-        Gender: "F"
+        Gender: "F",
+        LangCode:"KAN"
       }
       var orderModel = {
         FreeAmount:null,

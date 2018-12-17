@@ -1,9 +1,11 @@
 <main class="igx-typography"><form [formGroup]="horoscopeFormForm">
 <div class="horoscope-1">
 <div class="navigation"><div class="navigation-navbar">
-<igx-navbar 
+<!-- <igx-navbar 
 title="Horoscope" actionButtonIcon="arrow_back" >
 <igx-icon name="more_vert" ></igx-icon>
+</igx-navbar> -->
+<igx-navbar title="Horoscope" >
 </igx-navbar>
 </div>
 
@@ -85,7 +87,8 @@ Female
 </div>
 
 </div>
-<div class="coordinates-row" *ngIf="timeZoneName"><div class="coordinates"><div class="longitude-1"><span class="igx-typography__subtitle-1 longitude">LONGITUDE</span>
+<div class="coordinates-row"><div class="coordinates">
+        <div class="longitude-1" *ngIf="timeZoneName"><span class="igx-typography__subtitle-1 longitude">LONGITUDE</span>
 <div class="logitude1">
 <igx-input-group type="border" class="logitude1-1" >
 <input igxInput type="text" formControlName="LongDeg" [(ngModel)]="horoRequest.LongDeg" [disabled]="!enabletoEdit" />
@@ -145,19 +148,19 @@ Female
 </div>
 
 </div>
+<div *ngIf="timeZoneName">
 <span class="igx-typography__body-1 time-zone">Time Zone    :  {{timeZoneName}}</span>
-<div class="editbutton">
+<div class="editbutton" >
 <igx-checkbox [checked]="checkBoxValue" (click)="checkBoxStateChanged()">Click here to edit
 </igx-checkbox>
 </div>
-
+</div>
 </div>
 <div class="bottom-button">
-    <div class="submit">
-    <button igxRipple igxButton="raised" [disabled]="!horoscopeFormForm.valid" (click)='onClick()'>Submit</button>
-    </div>
-    
-    </div>
+        <div class="submit">
+        <button igxRipple igxButton="raised" [disabled]="!horoscopeFormForm.valid" (click)='onClick()'>Submit</button>
+        </div> 
+        </div>
 </div>
 </div>
 </div>

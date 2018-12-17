@@ -34,7 +34,8 @@ export class HoroScopeService {
     }
     GetHoroReport(){
         var url = "http://www.astrolite.in/wcf/webhoroapi/api/result/horoscopereport";
-        return this.http.get(url, { responseType: "blob", headers:new HttpHeaders().append('Content-Type','application/json') }).catch(this.handleEror);
+        return this.http.get(url).catch(this.handleEror);
+        // return this.http.get(url, { responseType: "blob", headers:new HttpHeaders().append('Content-Type','application/json') }).catch(this.handleEror);
     }
     private handleEror(err:HttpErrorResponse){
         alert(err);
@@ -64,9 +65,16 @@ export class HoroScopeService {
             callback(data);
         });
     }
-    GetHoroScopeItems(callback: (data) => void) {
+    GetHoroScopeItems(ItemMast,callback: (data) => void) {
         var endPoint = "Item/GetHoroScopeItems";
-        this.smartHttpClient.Get(endPoint).subscribe((data: any) => {
+        this.smartHttpClient.Post(endPoint,ItemMast).subscribe((data: any) => {
+            var items = data;
+            callback(data);
+        });
+    }
+    GetHardCopyPrice(HardCopyPriceRequest,callback: (data) => void) {
+        var endPoint = "Item/GetHardCopyPrice";
+        this.smartHttpClient.Post(endPoint,HardCopyPriceRequest).subscribe((data: any) => {
             var items = data;
             callback(data);
         });
@@ -153,7 +161,62 @@ export class HoroScopeService {
         return this.http.get(url);
 
     }
-
+    private handleError(err: HttpErrorResponse) {
+        // in a real world app, we may send the server to some remote logging infrastructure
+        // instead of just logging it to the console
+        let errorMessage = null;
+        if (err.status == 401) {
+            errorMessage = 401;
+            // this.SetRefreshTokenNeeded();
+            // var RefreshToken=localStorage.getItem('refreshToken');
+            // this.GetToken(RefreshToken).subscribe((data: any) => {
+            //     this.SetToken(data.AccessToken);
+            //     this.RefreshToken = data.RefreshToken;
+            //     StorageService.SetItem('refreshToken', this.RefreshToken);
+            // });
+        }
+        else if (err.status == 0) {
+            errorMessage = 'Internal Server Error';
+            console.clear();
+        }
+        else if (err.error instanceof Error) {
+            // A client-side or network error occurred. Handle it accordingly.
+            errorMessage = `An error occurred: ${err.error}`;
+        }
+        else if (err == null || err == undefined) {
+            errorMessage = 'Network Error';
+        }
+        else {
+            if (err.error != null) {
+                if (typeof err.error === 'string') {
+                    errorMessage = err.error;
+                }
+                // else if (err.error instanceof ErrorFromServer) {
+                //     //err.error.find(x => x.username == '2');
+                // }
+                else if (err.error.Errors != undefined) {
+                    for (var i = 0; i < err.error.Errors.length; i++) {
+                        errorMessage = err.error.Errors[i].ErrorString;
+                    }
+                }
+                else {  
+                    errorMessage = err.error;
+                }
+            }
+            else {
+                errorMessage = 'Network Error';
+            }
+        }
+        
+        console.log(errorMessage);
+        // if (errorMessage != '') {
+        if (errorMessage != null) {
+            return Observable.throw(errorMessage);
+        } else {
+            return Observable.throw(err);
+        }
+    }
+    
 
     // getCustomers() {
     //     return customers;
@@ -165,10 +228,10 @@ export class HoroScopeService {
 export class ServiceInformation {
     Id:string;
     ItemName:string;
-    View:string;
+    Link:string;
     Description:string;
-    HardCopy: number;
-    SoftCopy: number;
+    MRP: number;
+    ActualPrice:number;
 }
 export class ServiceInfo {
     // Description: string;

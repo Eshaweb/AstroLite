@@ -1,6 +1,4 @@
 @import '~igniteui-angular/lib/core/styles/themes/utilities';
-@import '~igniteui-angular/lib/core/styles/components/combo/combo-component';
-@import '~igniteui-angular/lib/core/styles/components/combo/combo-theme';
 @import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-component';
 @import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-theme';
 @import '~igniteui-angular/lib/core/styles/components/ripple/ripple-component';
@@ -41,8 +39,8 @@ form {
 }
 
 .navigation {
-margin-top: 7px;
-margin-left: 6px;
+margin-top: 1px;
+margin-left: 3px;
 
 display: flex;
 flex-direction: column;
@@ -62,10 +60,9 @@ font-family: 'Big Caslon', 'Titillium Web', sans-serif;
 font-weight: 500;
 }
 .title {
-position: absolute;
-top: 15px;
-left: 22px;
-z-index: 6;
+margin-top: 19px;
+margin-right: 19px;
+margin-left: 23px;
 
 display: flex;
 flex-direction: column;
@@ -77,25 +74,25 @@ background-color: rgb(255, 255, 255);
 .coupon-note {
 color: igx-color($default-palette, secondary);
 margin-top: 61px;
-margin-left: 80px;
+margin-left: 111px;
 
 height: 28px;
 min-height: 28px;
 
 }
 .coupon-code-1 {
-width: 361px;
-min-width: 361px;
+width: 100%;
 
 }
 .apply-button-1 {
+width: 100%;
 height: 39px;
 min-height: 39px;
 
 }
-.coupon-code-row {
+.coupon-code-2 {
 margin-top: 23px;
-margin-right: 121px;
+margin-right: 419px;
 margin-left: 80px;
 
 display: flex;
@@ -104,11 +101,34 @@ flex-shrink: 0;
 padding: 0;
 }
 
+.order-total {
+color: igx-color($default-palette, secondary);
+margin-top: 27px;
+margin-left: 107px;
+
+}
+.actual-price1200 {
+color: igx-color($default-palette, grays, 900);
+margin-top: 15px;
+margin-left: 106px;
+
+}
+.discount0000 {
+color: igx-color($default-palette, grays, 900);
+margin-left: 107px;
+
+margin-top: 0px;
+}
+.total-price1200 {
+color: igx-color($default-palette, grays, 900);
+margin-left: 107px;
+
+margin-top: 0px;
+}
 .content {
-position: absolute;
-top: 155px;
-left: 22px;
-z-index: 2;
+margin-top: 16px;
+margin-right: 19px;
+margin-left: 23px;
 
 display: flex;
 flex-direction: column;
@@ -117,52 +137,30 @@ flex-shrink: 0;
 background-color: rgb(255, 255, 255);
 }
 
-.actual-price1200 {
-color: igx-color($default-palette, grays, 900);
-position: absolute;
-top: 391px;
-left: 98px;
-z-index: 3;
+.screen {
+margin-top: 2px;
+margin-left: 5px;
 
-margin-top: 0px;
-}
-.order-total {
-color: igx-color($default-palette, secondary);
-position: absolute;
-top: 348px;
-left: 99px;
-z-index: 8;
-
-margin-top: 0px;
-}
-.discount0000 {
-color: igx-color($default-palette, grays, 900);
-position: absolute;
-top: 419px;
-left: 99px;
-z-index: 4;
-
-margin-top: 0px;
-}
-.total-price1200 {
-color: igx-color($default-palette, grays, 900);
-position: absolute;
-top: 447px;
-left: 99px;
-z-index: 5;
-
-margin-top: 0px;
-}
-.combo-line-1 {
-width: 377px;
-min-width: 377px;
-
-}
-.background-row {
-margin-left: 6px;
-
-position: relative;
+display: flex;
+flex-direction: column;
 padding: 0;
+flex-shrink: 0;
+background-color: rgba(igx-color($default-palette, primary), .10);
+}
+
+@function get-palette($palette, $variant: 'light') {
+$p: igx-color($palette, 'primary');
+$s: igx-color($palette, 'secondary');
+@return igx-palette($primary: $p,
+$secondary: $s,
+$grays: if($variant == 'light', #fff, #000)
+);
+}
+@function get-schema($variant: 'light') {
+@return map-get((
+dark: $dark-schema,
+light: $light-schema
+), $variant);
 }
 
 $navigation-navbar-theme: igx-navbar-theme(
@@ -175,7 +173,8 @@ $coupon-code-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: transparent,
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $apply-button-theme: igx-button-theme(
@@ -183,22 +182,16 @@ $raised-background: igx-color($default-palette, secondary, 600),
 $raised-text-color: rgb(255, 255, 255)
 );
 
-$checkbox-theme: igx-checkbox-theme(
+$astrolite-wallet-theme: igx-checkbox-theme(
 $fill-color: igx-color($default-palette, secondary),
 $tick-color: rgb(255, 255, 255),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $continue-button-theme: igx-button-theme(
 $raised-background: igx-color($default-palette, secondary, 600),
 $raised-text-color: rgb(255, 255, 255)
-);
-
-$combo-line-theme: igx-input-group-theme(
-$idle-bottom-line-color: igx-color($default-palette, grays),
-$box-background: transparent,
-$border-background: transparent,
-$variant: 'dark'
 );
 
 
@@ -210,34 +203,28 @@ $variant: 'dark'
 
 .coupon-code {
 @include igx-input-group($coupon-code-theme);
+width: 100%;
 }
 
 .apply-button {
 @include igx-button($apply-button-theme);
-margin: 13px 0 0 auto;
+margin-top: 13px;
+margin-left: 61px;
 
+width: 100%;
 }
 
-.checkbox {
-@include igx-checkbox($checkbox-theme);
-margin-top: 280px;
+.astrolite-wallet {
+@include igx-checkbox($astrolite-wallet-theme);
+margin-top: 126px;
 margin-left: 80px;
 
 }
 
 .continue-button {
 @include igx-button($continue-button-theme);
-margin-top: 170px;
-margin-left: 219px;
-
-}
-
-.combo-line {
-@include igx-input-group($combo-line-theme);
-position: absolute;
-top: 621px;
-left: 108px;
-z-index: 7;
+margin-top: 87px;
+margin-left: 365px;
 
 }
 

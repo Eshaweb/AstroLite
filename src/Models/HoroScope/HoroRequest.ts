@@ -19,6 +19,7 @@ export class HoroRequest{
     ZM:number;
     PN:string;
     Gender:string;
+    LangCode:string;
     // ReportType:string;
     // FormParameter:string;
     // Swarna:number;

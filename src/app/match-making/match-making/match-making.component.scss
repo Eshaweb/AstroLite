@@ -5,8 +5,6 @@
 @import '~igniteui-angular/lib/core/styles/components/button/button-theme';
 @import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-component';
 @import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-theme';
-@import '~igniteui-angular/lib/core/styles/components/combo/combo-component';
-@import '~igniteui-angular/lib/core/styles/components/combo/combo-theme';
 @import '~igniteui-angular/lib/core/styles/components/time-picker/time-picker-component';
 @import '~igniteui-angular/lib/core/styles/components/time-picker/time-picker-theme';
 @import '~igniteui-angular/lib/core/styles/components/date-picker/date-picker-component';
@@ -23,7 +21,7 @@ main {
     padding: 0;
     display: flex;
     flex-direction: column;
-	//overflow: auto;
+	overflow: auto;
     height: 100%;
 }
 
@@ -45,8 +43,6 @@ form {
 }
 
 .navigation {
-margin-top: 7px;
-margin-left: 6px;
 
 display: flex;
 flex-direction: column;
@@ -54,16 +50,6 @@ padding: 0;
 flex-shrink: 0;
 }
 
-.colors-overlay10 {
-position: absolute;
-z-index: 0;
-
-width: 100%;
-height: 961px;
-min-height: 961px;
-
-background-color: rgba(igx-color($default-palette, primary), .10);
-}
 .match-making {
 color: igx-color($default-palette, grays, 900);
 margin-top: 12px;
@@ -73,10 +59,11 @@ font-family: 'Big Caslon', 'Titillium Web', sans-serif;
 font-weight: 500;
 }
 .title {
-position: absolute;
-top: 9px;
-left: 21px;
-z-index: 4;
+height: 105px;
+min-height: 105px;
+margin-top: 9px;
+margin-right: 23px;
+margin-left: 27px;
 
 display: flex;
 flex-direction: column;
@@ -114,21 +101,6 @@ width: 405px;
 min-width: 405px;
 
 }
-.combo-box-1 {
-width: 413px;
-min-width: 413px;
-
-}
-.time-format1 {
-margin-top: 15px;
-margin-left: 37px;
-
-display: flex;
-flex-direction: column;
-padding: 0;
-flex-shrink: 0;
-}
-
 .longitude1 {
 color: igx-color($default-palette, grays, 900);
 margin-top: 8px;
@@ -150,7 +122,7 @@ width: 72px;
 min-width: 72px;
 
 }
-.longitude1-row {
+.logitude {
 margin-left: 4px;
 
 display: flex;
@@ -179,9 +151,8 @@ width: 72px;
 min-width: 72px;
 
 }
-.latitude1-row {
+.latitude {
 margin-top: 12px;
-margin-right: 1px;
 
 display: flex;
 flex-direction: row;
@@ -210,9 +181,8 @@ width: 72px;
 min-width: 72px;
 
 }
-.zone-time1-row {
+.zone {
 margin-top: 13px;
-margin-right: 2px;
 margin-left: 4px;
 
 display: flex;
@@ -231,8 +201,9 @@ min-height: 28px;
 
 }
 .coordinates1 {
-margin-top: 19px;
-margin-right: 26px;
+height: 240px;
+min-height: 240px;
+margin-top: 6px;
 margin-left: 15px;
 
 display: flex;
@@ -241,43 +212,9 @@ padding: 0;
 flex-shrink: 0;
 }
 
-.girl-detail {
+.left {
 height: 667px;
 min-height: 667px;
-position: absolute;
-top: 118px;
-left: 22px;
-z-index: 2;
-
-display: flex;
-flex-direction: column;
-padding: 0;
-flex-shrink: 0;
-background-color: rgb(255, 255, 255);
-}
-
-.combo-box-3 {
-width: 278px;
-min-width: 278px;
-
-}
-.language {
-margin-top: 10px;
-margin-left: 363px;
-
-display: flex;
-flex-direction: column;
-padding: 0;
-flex-shrink: 0;
-}
-
-.bottom-button {
-height: 145px;
-min-height: 145px;
-position: absolute;
-top: 789px;
-left: 22px;
-z-index: 1;
 
 display: flex;
 flex-direction: column;
@@ -289,48 +226,33 @@ background-color: rgb(255, 255, 255);
 .sub-title2 {
 color: igx-color($default-palette, grays, 900);
 margin-top: 8px;
-margin-left: 71px;
+margin-left: 72px;
 
 height: 57px;
 min-height: 57px;
 
 }
 .name-boy-1 {
-width: 375px;
-min-width: 375px;
+width: 379px;
+min-width: 379px;
 
 }
-.inputs-input-date-picker-copy-1 {
-width: 383px;
-min-width: 383px;
+.date1-1 {
+width: 387px;
+min-width: 387px;
 
 }
 .timeof-birth2-1 {
-width: 378px;
-min-width: 378px;
+width: 382px;
+min-width: 382px;
 
 }
 .placeof-birth2-1 {
-width: 382px;
-min-width: 382px;
+width: 386px;
+min-width: 386px;
 
 }
-.combo-box-5 {
-width: 382px;
-min-width: 382px;
-
-}
-.time-format2 {
-margin-top: 18px;
-margin-left: 58px;
-
-display: flex;
-flex-direction: column;
-padding: 0;
-flex-shrink: 0;
-}
-
-.longitude-copy {
+.longitude {
 color: igx-color($default-palette, grays, 900);
 margin-top: 8px;
 
@@ -351,8 +273,7 @@ width: 66px;
 min-width: 66px;
 
 }
-.longitude-copy-row {
-margin-right: 2px;
+.longitude-1 {
 margin-left: 4px;
 
 display: flex;
@@ -381,9 +302,8 @@ width: 66px;
 min-width: 66px;
 
 }
-.latitude-copy-row {
+.latitude-1 {
 margin-top: 11px;
-margin-right: 1px;
 
 display: flex;
 flex-direction: row;
@@ -391,7 +311,7 @@ flex-shrink: 0;
 padding: 0;
 }
 
-.zone-time-copy {
+.zone-time {
 color: igx-color($default-palette, grays, 900);
 margin-top: 8px;
 
@@ -412,7 +332,7 @@ width: 66px;
 min-width: 66px;
 
 }
-.zone-time-copy-row {
+.zone-1 {
 margin-top: 11px;
 margin-left: 4px;
 
@@ -432,9 +352,11 @@ min-height: 28px;
 
 }
 .coordinates2 {
-margin-top: 26px;
-margin-right: 40px;
-margin-left: 35px;
+width: 411px;
+min-width: 411px;
+height: 226px;
+min-height: 226px;
+margin: 16px 40px 0 auto;
 
 display: flex;
 flex-direction: column;
@@ -442,13 +364,18 @@ padding: 0;
 flex-shrink: 0;
 }
 
-.boy-details {
+
+            .right-vertical-centering-wrapper {
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+                justify-content: center;
+            }
+            
+.right {
 height: 666px;
 min-height: 666px;
-position: absolute;
-top: 119px;
-left: 514px;
-z-index: 3;
+margin: auto 0 auto auto;
 
 display: flex;
 flex-direction: column;
@@ -457,11 +384,53 @@ flex-shrink: 0;
 background-color: rgb(255, 255, 255);
 }
 
-.colors-overlay10-row {
-margin-left: 6px;
+.content {
+margin-top: 4px;
+margin-right: 23px;
+margin-left: 28px;
 
-position: relative;
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
 padding: 0;
+}
+
+.bottom {
+height: 152px;
+min-height: 152px;
+margin-top: 4px;
+margin-right: 23px;
+margin-left: 28px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.screen {
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgba(igx-color($default-palette, primary), .10);
+}
+
+@function get-palette($palette, $variant: 'light') {
+$p: igx-color($palette, 'primary');
+$s: igx-color($palette, 'secondary');
+@return igx-palette($primary: $p,
+$secondary: $s,
+$grays: if($variant == 'light', #fff, #000)
+);
+}
+@function get-schema($variant: 'light') {
+@return map-get((
+dark: $dark-schema,
+light: $light-schema
+), $variant);
 }
 
 $navigation-navbar-theme: igx-navbar-theme(
@@ -474,212 +443,219 @@ $girl-name-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: transparent,
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $dateof-birth1-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $timeof-birth1-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $placeof-birth1-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: transparent,
-$variant: 'dark'
-);
-
-$combo-box-theme: igx-input-group-theme(
-$idle-bottom-line-color: igx-color($default-palette, grays, 700),
-$box-background: igx-color($default-palette, grays, 200),
-$border-background: transparent,
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-copy-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-copy2-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-copy5-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-copy4-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-copy3-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-copy6-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-copy7-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-copy8-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $clicktoedit1-theme: igx-checkbox-theme(
 $fill-color: igx-color($default-palette, secondary),
 $tick-color: rgb(255, 255, 255),
-$variant: 'dark'
-);
-
-$combo-box-2-theme: igx-input-group-theme(
-$idle-bottom-line-color: igx-color($default-palette, secondary),
-$box-background: igx-color($default-palette, grays, 200),
-$border-background: transparent,
-$variant: 'dark'
-);
-
-$submit-button-theme: igx-button-theme(
-$raised-background: igx-color($default-palette, secondary, 600),
-$raised-text-color: rgb(255, 255, 255)
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $name-boy-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: transparent,
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
-$inputs-input-date-picker-copy-theme: igx-input-group-theme(
+$date1-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $timeof-birth2-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $placeof-birth2-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: transparent,
-$variant: 'dark'
-);
-
-$combo-box-4-theme: igx-input-group-theme(
-$idle-bottom-line-color: igx-color($default-palette, grays),
-$box-background: igx-color($default-palette, grays, 200),
-$border-background: transparent,
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-copy15-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-copy22-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-copy13-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-copy16-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-copy14-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-copy12-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-copy11-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-copy10-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $inputs-input-border-copy9-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: rgba(0, 0, 0, 0),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $clicktoedit2-theme: igx-checkbox-theme(
 $fill-color: igx-color($default-palette, secondary),
 $tick-color: rgb(255, 255, 255),
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
+);
+
+$submit-button-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, secondary, 600),
+$raised-text-color: rgb(255, 255, 255)
 );
 
 
@@ -715,10 +691,6 @@ margin-left: 50px;
 margin-top: 15px;
 margin-left: 44px;
 
-}
-
-.combo-box {
-@include igx-input-group($combo-box-theme);
 }
 
 .inputs-input-border {
@@ -783,47 +755,32 @@ margin-left: 24px;
 
 }
 
-.combo-box-2 {
-@include igx-input-group($combo-box-2-theme);
-}
-
-.submit-button {
-@include igx-button($submit-button-theme);
-margin-top: 33px;
-margin-left: 364px;
-
-}
-
 .name-boy {
 @include igx-input-group($name-boy-theme);
 margin-top: 11px;
-margin-left: 58px;
+margin-left: 59px;
 
 }
 
-.inputs-input-date-picker-copy {
-@include igx-input-group($inputs-input-date-picker-copy-theme);
+.date1 {
+@include igx-input-group($date1-theme);
 margin-top: 17px;
-margin-left: 53px;
+margin-left: 54px;
 
 }
 
 .timeof-birth2 {
 @include igx-input-group($timeof-birth2-theme);
 margin-top: 15px;
-margin-left: 58px;
+margin-left: 59px;
 
 }
 
 .placeof-birth2 {
 @include igx-input-group($placeof-birth2-theme);
 margin-top: 15px;
-margin-left: 58px;
+margin-left: 59px;
 
-}
-
-.combo-box-4 {
-@include igx-input-group($combo-box-4-theme);
 }
 
 .inputs-input-border-copy15 {
@@ -835,14 +792,14 @@ margin-left: 28px;
 .inputs-input-border-copy22 {
 @include igx-input-group($inputs-input-border-copy22-theme);
 margin-top: 1px;
-margin-left: 32px;
+margin-left: 33px;
 
 }
 
 .inputs-input-border-copy13 {
 @include igx-input-group($inputs-input-border-copy13-theme);
 margin-top: 1px;
-margin-left: 31px;
+margin-left: 33px;
 
 }
 
@@ -854,13 +811,13 @@ margin-left: 32px;
 
 .inputs-input-border-copy14 {
 @include igx-input-group($inputs-input-border-copy14-theme);
-margin-left: 32px;
+margin-left: 33px;
 
 }
 
 .inputs-input-border-copy12 {
 @include igx-input-group($inputs-input-border-copy12-theme);
-margin-left: 32px;
+margin-left: 34px;
 
 }
 
@@ -873,14 +830,14 @@ margin-left: 28px;
 
 .inputs-input-border-copy10 {
 @include igx-input-group($inputs-input-border-copy10-theme);
-margin-left: 32px;
+margin-left: 33px;
 
 }
 
 .inputs-input-border-copy9 {
 @include igx-input-group($inputs-input-border-copy9-theme);
 margin-top: 2px;
-margin-left: 33px;
+margin-left: 35px;
 
 }
 
@@ -888,6 +845,13 @@ margin-left: 33px;
 @include igx-checkbox($clicktoedit2-theme);
 margin-top: 9px;
 margin-left: 22px;
+
+}
+
+.submit-button {
+@include igx-button($submit-button-theme);
+margin-top: 10px;
+margin-left: 364px;
 
 }
 

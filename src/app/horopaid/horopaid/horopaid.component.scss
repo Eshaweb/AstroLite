@@ -40,15 +40,13 @@ form {
 
 
 
-.horoscope-paid-service {
+.horopaid {
     display: flex;
     flex-direction: column;
     flex: 1;
 }
 
 .navigation {
-position: relative;
-z-index: 3;
 
 display: flex;
 flex-direction: column;
@@ -56,23 +54,18 @@ padding: 0;
 flex-shrink: 0;
 }
 
-.horoscope {
+.horoscope-report-pri {
 color: igx-color($default-palette, grays, 900);
-margin-top: 18px;
-margin-left: 35px;
+margin-top: 44px;
+margin-left: 45px;
 
-height: 71px;
-min-height: 71px;
-
-font-family: 'Big Caslon', 'Titillium Web', sans-serif;
-font-weight: 500;
 }
 .title {
-height: 111px;
-min-height: 111px;
-margin-top: 27px;
-margin-right: 16px;
-margin-left: 17px;
+height: 114px;
+min-height: 114px;
+margin-top: 17px;
+margin-right: 28px;
+margin-left: 30px;
 
 display: flex;
 flex-direction: column;
@@ -86,7 +79,8 @@ margin-top: 17px;
 margin-right: 7px;
 margin-left: 11px;
 
-width: 100%;
+width: 379px;
+min-width: 379px;
 height: 269px;
 min-height: 269px;
 
@@ -183,11 +177,12 @@ flex-shrink: 0;
 }
 
 .full-horoscope {
+width: 397px;
+min-width: 397px;
 height: 514px;
 min-height: 514px;
-margin-top: 23px;
-margin-right: 610px;
-margin-left: 17px;
+margin-top: 69px;
+margin-left: 57px;
 
 display: flex;
 flex-direction: column;
@@ -196,27 +191,33 @@ flex-shrink: 0;
 background-color: rgb(255, 255, 255);
 }
 
-.next-button-1 {
-width: 100%;
 
+            .body-vertical-centering-wrapper {
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+                justify-content: center;
+            }
+            
+.body {
+height: 793px;
+min-height: 793px;
+margin: auto 28px auto 30px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
 }
-.screen {
-margin-top: 57px;
-margin-left: -1024px;
+
+.screen-content {
 
 display: flex;
 flex-direction: column;
 padding: 0;
 flex-shrink: 0;
 background-color: rgba(igx-color($default-palette, primary), .10);
-}
-
-.navigation-row {
-
-display: flex;
-flex-direction: row;
-flex-shrink: 0;
-padding: 0;
 }
 
 @function get-palette($palette, $variant: 'light') {
@@ -248,7 +249,14 @@ $item-background-active: rgb(255, 255, 255),
 $background: rgb(255, 255, 255)
 );
 
-$next-button-theme: igx-button-theme(
+$hardcopy-theme: igx-checkbox-theme(
+$fill-color: igx-color($default-palette, secondary),
+$tick-color: rgb(255, 255, 255),
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
+);
+
+$buttons-raised-theme: igx-button-theme(
 $raised-background: igx-color($default-palette, secondary, 600),
 $raised-text-color: rgb(255, 255, 255)
 );
@@ -264,12 +272,17 @@ $raised-text-color: rgb(255, 255, 255)
 @include igx-list($horoscope-list-theme);
 }
 
-.next-button {
-@include igx-button($next-button-theme);
-margin-top: 63px;
-margin-right: 331px;
-margin-bottom: 148px;
-margin-left: 422px;
+.hardcopy {
+@include igx-checkbox($hardcopy-theme);
+margin-top: 19px;
+margin-left: 45px;
+
+}
+
+.buttons-raised {
+@include igx-button($buttons-raised-theme);
+margin-top: 59px;
+margin-left: 414px;
 
 }
 

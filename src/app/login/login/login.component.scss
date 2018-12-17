@@ -15,7 +15,7 @@ main {
     padding: 0;
     display: flex;
     flex-direction: column;
-	//overflow: auto;
+	overflow: auto;
     height: 100%;
 }
 
@@ -30,7 +30,7 @@ form {
 
 
 
-.login-2 {
+.login-1 {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -56,7 +56,7 @@ min-width: 361px;
 }
 .forget-password {
 margin-top: 13px;
-margin-left: 165px;
+margin-left: 41px;
 
 text-decoration: underline;
 color: igx-color($default-palette, primary);
@@ -93,13 +93,22 @@ color: igx-color($default-palette, primary);
 }
 .ifyouare-non-regis-row {
 margin-top: 28px;
-margin-right: 121px;
-margin-left: 124px;
 
 display: flex;
 flex-direction: row;
 flex-shrink: 0;
 padding: 0;
+}
+
+.body {
+margin-top: 241px;
+margin-right: 121px;
+margin-left: 124px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
 }
 
 .content {
@@ -117,8 +126,6 @@ background-color: rgb(255, 255, 255);
 
 .title {
 color: igx-color($default-palette, primary);
-margin-left: 99px;
-
 margin-top: 0px;
 width: 131px;
 min-width: 131px;
@@ -128,17 +135,10 @@ min-height: 57px;
 font-family: 'Helvetica', 'Titillium Web', sans-serif;
 text-align: center;
 }
-.login-1 {
-width: 379px;
-min-width: 379px;
-height: 50px;
-min-height: 50px;
-
-}
 .title-1 {
 position: absolute;
 top: 139px;
-left: 324px;
+left: 423px;
 z-index: 2;
 
 display: flex;
@@ -153,6 +153,21 @@ position: relative;
 padding: 0;
 }
 
+@function get-palette($palette, $variant: 'light') {
+$p: igx-color($palette, 'primary');
+$s: igx-color($palette, 'secondary');
+@return igx-palette($primary: $p,
+$secondary: $s,
+$grays: if($variant == 'light', #fff, #000)
+);
+}
+@function get-schema($variant: 'light') {
+@return map-get((
+dark: $dark-schema,
+light: $light-schema
+), $variant);
+}
+
 $navigation-navbar-theme: igx-navbar-theme(
 $background: igx-color($default-palette, primary),
 $idle-icon-color: rgb(255, 255, 255),
@@ -163,14 +178,21 @@ $mobile-no-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: transparent,
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
 );
 
 $password-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: transparent,
-$variant: 'dark'
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
+);
+
+$login-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, secondary, 400),
+$raised-text-color: rgb(255, 255, 255)
 );
 
 $facebook-theme: igx-button-theme(
@@ -183,11 +205,6 @@ $raised-background: igx-color($default-palette, secondary, 900),
 $raised-text-color: rgb(255, 255, 255)
 );
 
-$login-theme: igx-button-theme(
-$raised-background: igx-color($default-palette, secondary, 400),
-$raised-text-color: rgb(255, 255, 255)
-);
-
 
 :host {
 ::ng-deep {
@@ -197,33 +214,33 @@ $raised-text-color: rgb(255, 255, 255)
 
 .mobile-no {
 @include igx-input-group($mobile-no-theme);
-margin-top: 241px;
-margin-left: 150px;
+margin-left: 26px;
 
 }
 
 .password {
 @include igx-input-group($password-theme);
 margin-top: 51px;
-margin-left: 150px;
+margin-left: 26px;
+
+}
+
+.login {
+@include igx-button($login-theme);
+margin-top: 13px;
+margin-left: 17px;
 
 }
 
 .facebook {
 @include igx-button($facebook-theme);
-margin: 76px auto 0 auto;
+margin: 13px auto 0 auto;
 
 }
 
 .googlelogin {
 @include igx-button($googlelogin-theme);
 margin: 13px auto 0 auto;
-
-}
-
-.login {
-@include igx-button($login-theme);
-margin-top: 347px;
 
 }
 

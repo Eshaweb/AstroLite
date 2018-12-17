@@ -46,34 +46,42 @@ import { PaymentComponent } from './payment/payment/payment.component';
 import { PaymentModule } from './payment/payment.module';
 import { SharedModule } from 'src/shared/shared.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ServicesListComponent } from './services-list/services-list.component';
 import { AstroLiteServicesComponent } from './AstroLite-Services/astroLite-services.component';
+import { HomeComponent } from './home/home/home.component';
+import { HomeModule } from './home/home.module';
+import { HoropaidComponent } from './horopaid/horopaid/horopaid.component';
+import { HoropaidModule } from './horopaid/horopaid.module';
+import { PaidervicesComponent } from './paidervices/paidervices.component';
+import { ServicesComponent } from './services/services/services.component';
 
 const generatedRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'horoscope',
+        redirectTo: 'home',
         pathMatch: 'full'
     },
+    { path: 'home', component: HomeComponent },
     { path: 'horoscope', component: HoroscopeComponent },
-    // {
-    //     path: 'login',
-    //     component:LoginComponent
-    // },
-    // {
-    //     path: 'registration',
-    //     component: RegistrationComponent
-    // },
-    // { path: 'matchmaking', component: MatchMakingComponent },
-    // { path: 'deliveryAddress', component: DeliveryAddressComponent },
+    {
+        path: 'login',
+        component:LoginComponent
+    },
+    {
+        path: 'registration',
+        component: RegistrationComponent
+    },
+     { path: 'matchmaking', component: MatchMakingComponent },
+     { path: 'deliveryAddress', component: DeliveryAddressComponent },
     // { path: 'astamangala', component: AstamangalaComponent },
     // { path: 'loginDemo', component: LoginDemoComponent },
     // { path: 'regDemo', component: RegistrationDemoComponent },
-    // { path: 'payment', component: PaymentComponent },
+    { path: 'payment', component: PaymentComponent },
     { path: 'horoscopeFree', component: HoroscopeFreeComponent },
-    { path: 'horoscopePaid', component: HoroscopePaidServiceComponent },
+    { path: 'horoscopePaid', component: HoropaidComponent },
+    { path: 'paidServices', component: PaidervicesComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'AstroServices', component: AstroLiteServicesComponent },
+    { path: 'services', component:ServicesComponent},
     { path: 'pagenotfound', component: PageNotFoundComponent },
     { path: '**', redirectTo: 'pagenotfound' }
 ];
@@ -103,8 +111,8 @@ let config = new AuthServiceConfig([
   
 @NgModule({
     declarations: [
-        AppComponent,PageNotFoundComponent, ServicesListComponent,
-        AstroLiteServicesComponent,ServicesListComponent
+        AppComponent,PageNotFoundComponent,  
+        AstroLiteServicesComponent, PaidervicesComponent
     ],
     imports: [IgxProgressBarModule,IgxButtonModule, IgxIconModule, IgxRippleModule,
         AgmCoreModule.forRoot({
@@ -124,17 +132,18 @@ let config = new AuthServiceConfig([
         CommonModule, InfragisticsImportsModule,
         BrowserAnimationsModule,
         RouterModule.forRoot(generatedRoutes),
-       // LoginModule, 
-        //RegistrationModule,
+      LoginModule, HomeModule,
+        RegistrationModule,
         //AstamangalaModule,
         HoroscopePaidServiceModule,
+        HoropaidModule,
         DashboardModule,
         SharedModule,
-       // DeliveryAddressModule, 
-        //PaymentModule,
+        DeliveryAddressModule, 
+        PaymentModule,
         HoroscopeModule,
         HoroscopeFreeModule,
-        //MatchMakingModule, 
+        MatchMakingModule, 
         //RegistrationDemoModule,
         ServicesModule, 
         //LoginDemoModule

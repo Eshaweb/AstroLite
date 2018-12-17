@@ -1,5 +1,5 @@
 <main class="igx-typography"><form>
-<div class="login-2">
+<div class="login-1">
 <div class="navigation"><div class="navigation-navbar">
 <igx-navbar 
 title="Login" actionButtonIcon="arrow_back" >
@@ -8,22 +8,26 @@ title="Login" actionButtonIcon="arrow_back" >
 </div>
 
 </div>
-<div class="background-row">
-<div class="content"><div class="mobile-no">
+<div class="background-row" [formGroup]="loginForm">
+<div class="content"><div class="body"><div class="mobile-no">
 <igx-input-group type="line" class="mobile-no-1" >
-<input igxInput type="text" value="Enter your mobile no" />
+<input igxInput type="text" formControlName="mobileno" />
 <label igxLabel>Mobile No</label>
 </igx-input-group>
 </div>
 
 <div class="password">
 <igx-input-group type="line" class="password-1" >
-<input igxInput type="text" value="Enter your password" />
+<input igxInput type="password" formControlName="password" />
 <label igxLabel>Password</label>
 </igx-input-group>
 </div>
 
 <a class="igx-typography__body-1 forget-password" >Forget Password </a>
+<div class="login">
+<button igxRipple igxButton="raised" [disabled]="!loginForm.valid" (click)='Login_Click()'>Login</button>
+</div>
+
 <div class="facebook">
 <button igxRipple class="facebook-1" igxButton="raised" >FACEBOOK</button>
 </div>
@@ -36,11 +40,8 @@ title="Login" actionButtonIcon="arrow_back" >
 <a class="igx-typography__body-1 otp-login" >Click here to login </a>
 </div>
 </div>
-<div class="title-1"><h3 class="igx-typography__h3 title">Login </h3>
-<div class="login">
-<button igxRipple class="login-1" igxButton="raised" >Login</button>
 </div>
-
+<div class="title-1"><h3 class="igx-typography__h3 title">Login </h3>
 </div>
 </div>
 </div></form></main>

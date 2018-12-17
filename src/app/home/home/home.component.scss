@@ -1,0 +1,641 @@
+@import '~igniteui-angular/lib/core/styles/themes/utilities';
+@import '~igniteui-angular/lib/core/styles/components/switch/switch-component';
+@import '~igniteui-angular/lib/core/styles/components/switch/switch-theme';
+@import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-component';
+@import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-theme';
+@import '~igniteui-angular/lib/core/styles/components/badge/badge-component';
+@import '~igniteui-angular/lib/core/styles/components/badge/badge-theme';
+@import '~igniteui-angular/lib/core/styles/components/avatar/avatar-component';
+@import '~igniteui-angular/lib/core/styles/components/avatar/avatar-theme';
+@import '~igniteui-angular/lib/core/styles/components/progress/progress-component';
+@import '~igniteui-angular/lib/core/styles/components/progress/progress-theme';
+@import '~igniteui-angular/lib/core/styles/components/list/list-component';
+@import '~igniteui-angular/lib/core/styles/components/list/list-theme';
+@import '~igniteui-angular/lib/core/styles/components/carousel/carousel-component';
+@import '~igniteui-angular/lib/core/styles/components/carousel/carousel-theme';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-component';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-theme';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-component';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-theme';
+@import '~igniteui-angular/lib/core/styles/components/card/card-component';
+@import '~igniteui-angular/lib/core/styles/components/card/card-theme';
+
+main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+	overflow: auto;
+    height: 100%;
+    background-color: rgba(igx-color($default-palette, primary), .10);
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+
+
+.home-1 {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.logo {
+margin-top: 15px;
+margin-left: 32px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.navigation {
+margin-top: 11px;
+margin-left: 2px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.image-size {
+width: 100%;
+height: 247px;
+}
+
+.image-fit {
+object-fit: cover;
+}
+
+.slider-1 {
+width: 100%;
+height: 247px;
+min-height: 247px;
+
+}
+.slider-2 {
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.horoscope {
+width: 100%;
+
+}
+.astamangala {
+margin-top: 2px;
+margin-left: 132px;
+
+width: 100%;
+
+}
+.mela-meli {
+margin-top: 3px;
+margin-left: 124px;
+
+width: 100%;
+
+}
+.top-boxes {
+margin-top: 24px;
+margin-right: 102px;
+margin-left: 78px;
+
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+padding: 0;
+}
+
+.horoscope-1 {
+width: 100%;
+
+}
+.astamangala-1 {
+margin-top: 2px;
+margin-left: 132px;
+
+width: 100%;
+
+}
+.mela-meli-1 {
+margin-top: 3px;
+margin-left: 124px;
+
+width: 100%;
+
+}
+.centre-box {
+margin-top: 16px;
+margin-right: 102px;
+margin-left: 78px;
+
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+padding: 0;
+}
+
+.sunrise-sunset-1 {
+position: relative;
+z-index: 5;
+
+width: 100%;
+
+}
+.sunrise-sunset-2-container {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}
+.sunrise-sunset-2-info {
+display: flex;
+flex-direction: column;
+flex: 1;
+line-height: 18px;
+}
+.sunrise-sunset-2-details {
+display: flex;
+flex-direction: column;
+}
+.sunrise-sunset-3 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.sunrise-sunset-4 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-1 {
+color: igx-color($default-palette, grays, 900);
+}
+.sunrise-sunset-5 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-2 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-3 {
+color: igx-color($default-palette, grays, 900);
+}
+.sunrise-sunset-6 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-4 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-5 {
+color: igx-color($default-palette, grays, 900);
+}
+.sunrise-sunset-7 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-6 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-7 {
+color: igx-color($default-palette, grays, 900);
+}
+.sunrise-sunset-8 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-8 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-9 {
+color: igx-color($default-palette, grays, 900);
+}
+.colorswhite {
+margin-left: -230px;
+
+width: 230px;
+min-width: 230px;
+height: 292px;
+min-height: 292px;
+
+background-color: rgb(255, 255, 255);
+}
+.todays-panchanga-1 {
+margin-top: 4px;
+margin-left: 21px;
+
+width: 100%;
+
+}
+.todays-panchanga-2-container {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}
+.todays-panchanga-2-info {
+display: flex;
+flex-direction: column;
+flex: 1;
+line-height: 18px;
+}
+.todays-panchanga-2-details {
+display: flex;
+flex-direction: column;
+}
+.todays-panchanga-3 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.todays-panchanga-4 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-10 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-11 {
+color: igx-color($default-palette, grays, 900);
+}
+.todays-panchanga-5 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-12 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-13 {
+color: igx-color($default-palette, grays, 900);
+}
+.todays-panchanga-6 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-14 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-15 {
+color: igx-color($default-palette, grays, 900);
+}
+.todays-panchanga-7 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-16 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-17 {
+color: igx-color($default-palette, grays, 900);
+}
+.todays-panchanga-8 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-18 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-19 {
+color: igx-color($default-palette, grays, 900);
+}
+.tarabala-1 {
+margin-top: 4px;
+margin-left: 25px;
+
+width: 100%;
+
+}
+.tarabala-2-container {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}
+.tarabala-2-info {
+display: flex;
+flex-direction: column;
+flex: 1;
+line-height: 18px;
+}
+.tarabala-2-details {
+display: flex;
+flex-direction: column;
+}
+.tarabala-3 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.tarabala-4 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-20 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-21 {
+color: igx-color($default-palette, grays, 900);
+}
+.tarabala-5 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-22 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-23 {
+color: igx-color($default-palette, grays, 900);
+}
+.tarabala-6 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-24 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-25 {
+color: igx-color($default-palette, grays, 900);
+}
+.tarabala-7 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-26 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-27 {
+color: igx-color($default-palette, grays, 900);
+}
+.tarabala-8 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-28 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-29 {
+color: igx-color($default-palette, grays, 900);
+}
+.moon-1 {
+margin-top: 4px;
+margin-left: 25px;
+
+width: 100%;
+
+}
+.moon-2-container {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}
+.moon-2-info {
+display: flex;
+flex-direction: column;
+flex: 1;
+line-height: 18px;
+}
+.moon-2-details {
+display: flex;
+flex-direction: column;
+}
+.moon-3 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.moon-4 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-30 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-31 {
+color: igx-color($default-palette, grays, 900);
+}
+.moon-5 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-32 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-33 {
+color: igx-color($default-palette, grays, 900);
+}
+.moon-6 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-34 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-35 {
+color: igx-color($default-palette, grays, 900);
+}
+.moon-7 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-36 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-37 {
+color: igx-color($default-palette, grays, 900);
+}
+.moon-8 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-38 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-39 {
+color: igx-color($default-palette, grays, 900);
+}
+.bottom-box {
+margin-top: 12px;
+margin-right: 12px;
+margin-left: 17px;
+
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+padding: 0;
+}
+
+.astrolitein-all-r {
+color: rgb(255, 255, 255);
+margin: auto 392px auto 322px;
+
+width: 100%;
+height: 24px;
+min-height: 24px;
+
+font-weight: 600;
+}
+.footer {
+margin: auto 0 0 0;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: igx-color($default-palette, primary, 700);
+}
+
+@function get-palette($palette, $variant: 'light') {
+$p: igx-color($palette, 'primary');
+$s: igx-color($palette, 'secondary');
+@return igx-palette($primary: $p,
+$secondary: $s,
+$grays: if($variant == 'light', #fff, #000)
+);
+}
+@function get-schema($variant: 'light') {
+@return map-get((
+dark: $dark-schema,
+light: $light-schema
+), $variant);
+}
+
+$navigation-navbar-theme: igx-navbar-theme(
+$background: igx-color($default-palette, primary),
+$idle-icon-color: rgb(255, 255, 255),
+$text-color: rgb(255, 255, 255)
+);
+
+$slider-theme: igx-carousel-theme(
+$button-background: rgb(255, 255, 255),
+$button-arrow-color: igx-color($default-palette, grays, 700),
+$indicator-dot-color: rgb(255, 255, 255),
+$indicator-active-border-color: rgb(255, 255, 255),
+$disable-button-shadow: false
+);
+
+$sunrise-sunset-theme: igx-list-theme(
+$header-background: rgb(255, 255, 255),
+$header-text-color: igx-color($default-palette, secondary),
+$item-text-color: igx-color($default-palette, grays, 900),
+$item-background-active: rgb(255, 255, 255),
+$background: rgb(255, 255, 255)
+);
+
+$todays-panchanga-theme: igx-list-theme(
+$header-background: rgb(255, 255, 255),
+$header-text-color: igx-color($default-palette, secondary),
+$item-text-color: igx-color($default-palette, grays, 900),
+$item-background-active: rgb(255, 255, 255),
+$background: rgb(255, 255, 255)
+);
+
+$tarabala-theme: igx-list-theme(
+$header-background: rgb(255, 255, 255),
+$header-text-color: igx-color($default-palette, secondary),
+$item-text-color: igx-color($default-palette, grays, 900),
+$item-background-active: rgb(255, 255, 255),
+$background: rgb(255, 255, 255)
+);
+
+$moon-theme: igx-list-theme(
+$header-background: rgb(255, 255, 255),
+$header-text-color: igx-color($default-palette, secondary),
+$item-text-color: igx-color($default-palette, grays, 900),
+$item-background-active: rgb(255, 255, 255),
+$background: rgb(255, 255, 255)
+);
+
+
+:host {
+::ng-deep {
+.navigation-navbar {
+@include igx-navbar($navigation-navbar-theme);
+}
+
+.slider {
+@include igx-carousel($slider-theme);
+width: 100%;
+height: 247px;
+min-height: 247px;
+
+}
+
+.sunrise-sunset {
+@include igx-list($sunrise-sunset-theme);
+}
+
+.todays-panchanga {
+@include igx-list($todays-panchanga-theme);
+}
+
+.tarabala {
+@include igx-list($tarabala-theme);
+}
+
+.moon {
+@include igx-list($moon-theme);
+}
+
+}
+}
