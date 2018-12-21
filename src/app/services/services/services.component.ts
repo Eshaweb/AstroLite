@@ -20,9 +20,13 @@ export class ServicesComponent implements OnInit, OnDestroy, AfterViewInit {
 
     constructor(private route: ActivatedRoute, private router: Router,
         private formBuilder: FormBuilder) {
-        this.people = [{ id: "/horoscope", name: "HoroScope" }, 
-                       { id: "/matchmaking", name: "Match Making" },
-                       { id: "/astamangala", name: "Astamangala" },
+        this.people = [
+                    //    { id: "/horoscope", name: "HoroScope" }, 
+                    //    { id: "/matchmaking", name: "Match Making" },
+                    //    { id: "/astamangala", name: "Astamangala" },
+                       { id:"/#SH", name:"HoroScope" },
+                       { id: "/#SM", name: "Match Making" },
+                       { id: "/#SA", name: "Astamangala" },
                       ];
         this.router.events.subscribe((event: Event) => {
             if (event instanceof NavigationEnd) {

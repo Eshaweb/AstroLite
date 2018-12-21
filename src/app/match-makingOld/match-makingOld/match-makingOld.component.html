@@ -1,4 +1,5 @@
-<main class="igx-typography"><form>
+<main class="igx-typography">
+<form>
 <div class="match-making-1">
 <div class="navigation"><div class="navigation-navbar">
 <igx-navbar 
@@ -11,26 +12,25 @@ title="Match Making" actionButtonIcon="menu" >
 <div class="screen"><div class="title"><h2 class="igx-typography__h2 match-making">Match Making</h2>
 </div>
 <div class="content">
-    <div class="left" [formGroup]="femaleMatchMakingForm">
-        <h3 class="igx-typography__h3 sub-title1">Enter Girls Details</h3>
+    <div class="left">
+        <div class="left" [formGroup]="femaleMatchMakingForm">
+    <h3 class="igx-typography__h3 sub-title1">Enter Girls Details</h3>
 <div class="girl-name">
 <igx-input-group type="line" class="girl-name-1" >
-        <input igxInput type="text" formControlName="femaleName"/>
-        <label igxLabel>Name</label>
+<input igxInput type="text" formControlName="femaleName"/>
+<label igxLabel>Name</label>
 </igx-input-group>
-<p style="color:red" id='err_femaleName'></p>
+<p style="color:red" id='err_name'></p>
 </div>
 
 <div class="dateof-birth1">
 <igx-datePicker class="dateof-birth1-1" label="Date" [formatter]="formatter" formControlName="FemaleBdate">
 </igx-datePicker>
-<p style="color:red" id='err_FemaleBdate'></p>
 </div>
 
 <div class="timeof-birth1">
 <igx-time-picker class="timeof-birth1-1" formControlName="FemaleBtime">
 </igx-time-picker>
-<p style="color:red" id='err_FemaleBtime'></p>
 </div>
 
 <div class="placeof-birth1">
@@ -38,22 +38,15 @@ title="Match Making" actionButtonIcon="menu" >
 <input igxInput type="text" formControlName="FemaleBplace"/>
 <label igxLabel>Birth Place</label>
 </igx-input-group>
-<p style="color:red" id='err_FemaleBplace'></p>
 </div>
 
-<div class="time-zone">
-    <igx-combo #combo class="input-container" width="500px" [itemsMaxHeight]="255"
-    [data]="femaletimeformats" [displayKey]="'Text'" [valueKey]="'Id'" formControlName="FemaleTimeformat"
-    placeholder="Select" searchPlaceholder="Search..." (onSelectionChange)="selectionChange($event)">
-</igx-combo>
-<!-- <p style="color:red" id='err_FemaleTimeformat'></p> -->
-</div>
 
 <div class="coordinates1">
-    <div class="logitude" *ngIf="timeZoneName_Female">
+    <div class="logitude">
+        <div class="logitude" *ngIf="timeZoneName_Female">
         <p class="longitude1">Longitude</p>
 <div class="inputs-input-border">
-<igx-input-group type="border" class="inputs-input-border-1" >
+<igx-input-group type="border" class="inputs-input-border-copy15-1" >
 <input igxInput type="text" formControlName="LongDeg" [(ngModel)]="matchRequest.Female.LongDeg" [disabled]="!enabletoEdit_FemaleBDetails" />
 </igx-input-group>
 </div>
@@ -71,7 +64,8 @@ title="Match Making" actionButtonIcon="menu" >
 </div>
 
 </div>
-<div class="latitude" *ngIf="timeZoneName_Female">
+<div class="latitude">
+        <div class="latitude" *ngIf="timeZoneName_Female">
     <p class="latitude1">Latitude</p>
 <div class="inputs-input-border-copy5">
 <igx-input-group type="border" class="inputs-input-border-copy5-1" >
@@ -113,54 +107,44 @@ title="Match Making" actionButtonIcon="menu" >
 </div>
 
 </div>
-<div *ngIf="timeZoneName_Female">
-<span class="igx-typography__body-1 timezone2">Time Zone    :  {{timeZoneName_Female}}</span>
+<span class="igx-typography__body-1 timezone2">Time Zone    : {{timeZoneName}}</span>
 <div class="clicktoedit1">
 <igx-checkbox [checked]="checkBoxValue_Female" (click)="checkBoxStateChanged_Female()">
-Click here to edit
+    Click here to edit
 </igx-checkbox>
 </div>
 </div>
 </div>
 </div>
+</div>
 <div class="right-vertical-centering-wrapper">
-    <div class="right" [formGroup]="maleMatchMakingForm">
+    <div class="right"  [formGroup]="maleMatchMakingForm">
         <h3 class="igx-typography__h3 sub-title2">Enter Boy Details</h3>
 <div class="name-boy">
 <igx-input-group type="line" class="name-boy-1" >
 <input igxInput type="text" formControlName="maleName" />
 <label igxLabel>Name</label>
 </igx-input-group>
-<p style="color:red" id='err_maleName'></p>
+
 </div>
 
 <div class="date1">
 <igx-datePicker class="date1-1" label="Date" [formatter]="formatter" formControlName="MaleBdate">
 </igx-datePicker>
-<p style="color:red" id='err_MaleBdate'></p>
 </div>
 
 <div class="timeof-birth2">
 <igx-time-picker class="timeof-birth2-1" formControlName="MaleBtime">
 </igx-time-picker>
-<p style="color:red" id='err_MaleBtime'></p>
 </div>
 
 <div class="placeof-birth2">
 <igx-input-group type="line" class="placeof-birth2-1" id="txtHome2">
-<input igxInput type="text" formControlName="MaleBplace" />
+<input igxInput type="text" formControlName="MaleBplace"/>
 <label igxLabel>Birth Place</label>
 </igx-input-group>
-<p style="color:red" id='err_MaleBplace'></p>
 </div>
 
-<div class="time-zone-2">
-<igx-combo #combo class="input-container" width="500px" [itemsMaxHeight]="255"
-            [data]="maletimeformats" [displayKey]="'Text'" [valueKey]="'Id'" formControlName="MaleTimeformat"
-            placeholder="Select" searchPlaceholder="Search..." (onSelectionChange)="selectionChange($event)">
-</igx-combo>
-<!-- <p style="color:red" id='err_MaleTimeformat'></p> -->
-</div>
 
 <div class="coordinates2">
     <div class="longitude-1" *ngIf="timeZoneName_Male">
@@ -226,28 +210,22 @@ Click here to edit
 </div>
 
 </div>
-<div *ngIf="timeZoneName_Male">
 <span class="igx-typography__body-1 time-zone2">Time Zone    : {{timeZoneName_Male}}</span>
 <div class="clicktoedit2">
 <igx-checkbox [checked]="checkBoxValue_Male" (click)="checkBoxStateChanged_Male()">
-Click here to edit
+    Click here to edit
 </igx-checkbox>
 </div>
-</div>
+
 </div>
 </div>
 </div>
 </div>
 <div class="bottom">
-    <!-- <div class="language">
-    <igx-combo #combo class="input-container" width="500px" [itemsMaxHeight]="255"
-    [data]="lanuages" [displayKey]="'Text'" [valueKey]="'Id'"
-    placeholder="Select" searchPlaceholder="Search..." (onSelectionChange)="selectionChange($event)">
-</igx-combo>
-</div> -->
-
 <div class="submit-button">
-<button igxRipple igxButton="raised" [disabled]="!femaleMatchMakingForm.valid||!maleMatchMakingForm.valid" (click)='Matchmaking_Click()'>MATCH MAKING</button>
+<button igxRipple igxButton="raised" [disabled]="!femaleMatchMakingForm.valid&&!maleMatchMakingForm.valid" (click)='Matchmaking_Click()'>MATCH MAKING</button>
+</div>
+
 </div>
 
 </div>

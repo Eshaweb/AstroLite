@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChildren, ElementRef, AfterViewInit, Output, EventEmitter, NgZone, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChildren, ElementRef, AfterViewInit, Output, EventEmitter, ChangeDetectorRef, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControlName, FormControl, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -13,19 +13,19 @@ import { SelectBoxModel } from '../../../Models/SelectBoxModel';
 import { MaleMatchMakingRequest } from '../../../Models/MatchMaking/MaleMatchMakingRequest';
 import { FemaleMatchMakingRequest } from '../../../Models/MatchMaking/FemaleMatchMakingRequest';
 import { MatchRequest } from 'src/Models/MatchMaking/MatchRequest';
-import { IgxComboComponent } from 'igniteui-angular';
+
 
 @Component({
-    selector: 'app-match-making',
-    templateUrl: './match-making.component.html',
-    styleUrls: ['./match-making.component.scss']
+    selector: 'app-match-making-old',
+    templateUrl: './match-makingOld.component.html',
+    styleUrls: ['./match-makingOld.component.scss']
 })
-export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
+export class MatchMakingOldComponent implements OnInit, OnDestroy, AfterViewInit {
 
     @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
     matchRequest: MatchRequest;
-    enabletoEdit_MaleBDetails: boolean = false;
-    enabletoEdit_FemaleBDetails: boolean = false;
+    enabletoEdit_MaleBDetails: boolean=false;
+    enabletoEdit_FemaleBDetails: boolean=false;
 
     ngAfterViewInit(): void {
     }
@@ -52,7 +52,7 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
     LatMtMessage: string;
     ngOnInit() {
         this.mapsAPILoader.load().then(() => {
-            let nativeHome1InputBox = document.getElementById('txtHome2').getElementsByTagName('input')[0];
+            let nativeHome1InputBox = document.getElementById('txtHome1').getElementsByTagName('input')[0];
             let autocomplete1 = new google.maps.places.Autocomplete(nativeHome1InputBox, {
                 types: ["address"]
             });
@@ -65,7 +65,7 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
                     this.getTimezone_Male(this.latitude, this.longitude);
                 });
             });
-            let nativeHome2InputBox = document.getElementById('txtHome1').getElementsByTagName('input')[0];
+            let nativeHome2InputBox = document.getElementById('txtHome2').getElementsByTagName('input')[0];
             let autocomplete2 = new google.maps.places.Autocomplete(nativeHome2InputBox, {
                 types: ["address"]
             });
@@ -102,37 +102,11 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
         { Id: "DOUBLE", Text: 'Double Summer Time' },
         { Id: "WAR", Text: 'War Time' }
     ];
-    languages: SelectBoxModel[] = [
-        { Id: "ENG", Text: 'English' },
-        { Id: "HIN", Text: 'Hindi' },
-        { Id: "KAN", Text: 'Kannada' },
-        { Id: "MAL", Text: 'Malayalam' }
-    ];
+    lanuages = [{ "Id": "E", "Text": "English" },
+    { "Id": "H", "Text": "Hindi" },
+    { "Id": "K", "Text": "Kannada" },
+    { "Id": "M", "Text": "Malayalam" }];
 
-    @ViewChild('combo', { read: IgxComboComponent })
-    combo: IgxComboComponent;
-
-    selecting = false;
-    selectionChange(args) {
-        if (!this.selecting) {
-            let removed = false;
-            for (let i = 0; i < args.newSelection.length; i++) {
-                for (let j = 0; j < args.oldSelection.length; j++) {
-                    if (args.oldSelection[j] === args.newSelection[i]) {
-                        args.newSelection.splice(i, 1);
-                        removed = true;
-                    }
-                }
-            }
-
-            if (removed) {
-                this.selecting = true;
-                this.combo.deselectAllItems();
-                this.combo.selectItems(args.newSelection);
-                this.selecting = false;
-            }
-        }
-    }
     constructor(private route: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef,
         private matchMakingService: MatchMakingService, private ngZone: NgZone, private mapsAPILoader: MapsAPILoader,
         public uiService: UIService, public smartHttpClient: SmartHttpClient, public formbuilder: FormBuilder) {
@@ -163,8 +137,6 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
         MaleBtimeContrl.valueChanges.subscribe(value => this.setErrorMessage(MaleBtimeContrl));
         const MaleBplaceContrl = this.maleMatchMakingForm.get('MaleBplace');
         MaleBplaceContrl.valueChanges.subscribe(value => this.setErrorMessage(MaleBplaceContrl));
-        // const MaleTimeformatContrl = this.maleMatchMakingForm.get('MaleTimeformat');
-        // MaleTimeformatContrl.valueChanges.subscribe(value => this.setErrorMessage(MaleTimeformatContrl));
         this.maleMatchMakingRequest = {
             Name: this.maleMatchMakingForm.controls['maleName'].value,
             Father: null,
@@ -219,8 +191,6 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
         FemaleBtimeContrl.valueChanges.subscribe(value => this.setErrorMessage(FemaleBtimeContrl));
         const FemaleBplaceContrl = this.femaleMatchMakingForm.get('FemaleBplace');
         FemaleBplaceContrl.valueChanges.subscribe(value => this.setErrorMessage(FemaleBplaceContrl));
-        // const FemaleTimeformatContrl = this.maleMatchMakingForm.get('FemaleTimeformat');
-        // FemaleTimeformatContrl.valueChanges.subscribe(value => this.setErrorMessage(FemaleTimeformatContrl));
         this.femaleMatchMakingRequest = {
             Name: this.femaleMatchMakingForm.controls['femaleName'].value,
             Father: null,
@@ -249,8 +219,8 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
             // Path:null
         }
         this.matchRequest = {
-            LangCode: null,
-            Male: {
+            LangCode:null,
+            Male:{
                 Name: this.maleMatchMakingForm.controls['maleName'].value,
                 Date: null,
                 Time: null,
@@ -266,7 +236,7 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
                 PN: null,
                 Gender: null,
             },
-            Female: {
+            Female:{
                 Name: this.femaleMatchMakingForm.controls['femaleName'].value,
                 Date: null,
                 Time: null,
@@ -282,8 +252,8 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
                 PN: null,
                 Gender: null,
             }
-
-        }
+            
+          }
     }
     setErrorMessage(c: AbstractControl): void {
         let control = this.uiService.getControlName(c);//gives the control name property from particular service.
@@ -294,10 +264,10 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
         }
     }
     private validationMessages = { //used in above method.
-        maleName_required: '*Enter Male Name',
+        maleName_required: '*Enter Name',
         maleName_minlength: '*Minimum length is 4',
 
-        femaleName_required: '*Enter Female Name',
+        femaleName_required: '*Enter Father Name',
         femaleName_minlength: '*Minimum length is 4',
 
         MaleBdate_required: '*Select Birth Date of Male',
@@ -310,65 +280,34 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
 
         MaleBplace_required: '*Enter Birth Place',
 
-        FemaleBplace_required: '*Enter Birth Place',
-        FemaleTimeformat_required: '*Enter Time Format',
-        MaleTimeformat_required: '*Enter Time Format'
+        FemaleBplace_required: '*Enter Birth Place'
 
     };
     getTimezone_Male(lat, long) {
-        // this.maleMatchMakingRequest.LatDeg = parseInt(lat);
-        // this.maleMatchMakingRequest.LongDeg = parseInt(long);
-        // this.maleMatchMakingRequest.LatMt = parseInt(Math.abs((lat - this.maleMatchMakingRequest.LatDeg) * 60).toString());
-        // this.maleMatchMakingRequest.LongMt = parseInt(Math.abs((long - this.maleMatchMakingRequest.LongDeg) * 60).toString());
-        this.matchRequest.Male.LatDeg = parseInt(lat);
-        this.matchRequest.Male.LongDeg = parseInt(long);
-        this.matchRequest.Male.LatMt = parseInt(Math.abs((lat - this.matchRequest.Male.LatDeg) * 60).toString());
-        this.matchRequest.Male.LongMt = parseInt(Math.abs((long - this.matchRequest.Male.LongDeg) * 60).toString());
-        // if (lat < 0) {
-        //     this.maleMatchMakingRequest.NS = "S";
-        // }
-        // else {
-        //     this.maleMatchMakingRequest.NS = "N";
-        // }
-        // if (long < 0) {
-        //     this.maleMatchMakingRequest.EW = "W";
-        // }
-        // else {
-        //     this.maleMatchMakingRequest.EW = "W";
-        // }
+        this.maleMatchMakingRequest.LatDeg = parseInt(lat);
+        this.maleMatchMakingRequest.LongDeg = parseInt(long);
+        this.maleMatchMakingRequest.LatMt = parseInt(Math.abs((lat - this.maleMatchMakingRequest.LatDeg) * 60).toString());
+        this.maleMatchMakingRequest.LongMt = parseInt(Math.abs((long - this.maleMatchMakingRequest.LongDeg) * 60).toString());
         if (lat < 0) {
-            this.matchRequest.Male.NS = "S";
+            this.maleMatchMakingRequest.NS = "S";
         }
         else {
-            this.matchRequest.Male.NS = "N";
+            this.maleMatchMakingRequest.NS = "N";
         }
         if (long < 0) {
-            this.matchRequest.Male.EW = "W";
+            this.maleMatchMakingRequest.EW = "W";
         }
         else {
-            this.matchRequest.Male.EW = "W";
+            this.maleMatchMakingRequest.EW = "W";
         }
-        // this.matchMakingService.getTimezone(lat, long).subscribe((data: any) => setTimeout(() => {
-        //     this.maleMatchMakingRequest.ZH = parseInt((Math.abs(data.rawOffset) / 3600.00).toString());
-        //     this.maleMatchMakingRequest.ZM = parseInt((((Math.abs(data.rawOffset) / 3600.00) - this.maleMatchMakingRequest.ZH) * 60).toString());
-        //     if (data.rawOffset < 0) {
-        //         this.maleMatchMakingRequest.PN = "-";
-        //     }
-        //     else {
-        //         this.maleMatchMakingRequest.PN = "+";
-        //     }
-        //     this.timeZoneName_Male = data.timeZoneName;
-        //     this.timeZoneId_Male = data.timeZoneId;
-        //     this.cdr.detectChanges();
-        // }));
         this.matchMakingService.getTimezone(lat, long).subscribe((data: any) => setTimeout(() => {
-            this.matchRequest.Male.ZH = parseInt((Math.abs(data.rawOffset) / 3600.00).toString());
-            this.matchRequest.Male.ZM = parseInt((((Math.abs(data.rawOffset) / 3600.00) - this.matchRequest.Male.ZH) * 60).toString());
+            this.maleMatchMakingRequest.ZH = parseInt((Math.abs(data.rawOffset) / 3600.00).toString());
+            this.maleMatchMakingRequest.ZM = parseInt((((Math.abs(data.rawOffset) / 3600.00) - this.maleMatchMakingRequest.ZH) * 60).toString());
             if (data.rawOffset < 0) {
-                this.matchRequest.Male.PN = "-";
+                this.maleMatchMakingRequest.PN = "-";
             }
             else {
-                this.matchRequest.Male.PN = "+";
+                this.maleMatchMakingRequest.PN = "+";
             }
             this.timeZoneName_Male = data.timeZoneName;
             this.timeZoneId_Male = data.timeZoneId;
@@ -376,59 +315,30 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
         }));
     }
     getTimezone_Female(lat, long) {
-        // this.femaleMatchMakingRequest.LatDeg = parseInt(lat);
-        // this.femaleMatchMakingRequest.LongDeg = parseInt(long);
-        // this.femaleMatchMakingRequest.LatMt = parseInt(Math.abs((lat - this.femaleMatchMakingRequest.LatDeg) * 60).toString());
-        // this.femaleMatchMakingRequest.LongMt = parseInt(Math.abs((long - this.femaleMatchMakingRequest.LongDeg) * 60).toString());
-        this.matchRequest.Female.LatDeg = parseInt(lat);
-        this.matchRequest.Female.LongDeg = parseInt(long);
-        this.matchRequest.Female.LatMt = parseInt(Math.abs((lat - this.matchRequest.Female.LatDeg) * 60).toString());
-        this.matchRequest.Female.LongMt = parseInt(Math.abs((long - this.matchRequest.Female.LongDeg) * 60).toString());
-        // if (lat < 0) {
-        //     this.femaleMatchMakingRequest.NS = "S";
-        // }
-        // else {
-        //     this.femaleMatchMakingRequest.NS = "N";
-        // }
-        // if (long < 0) {
-        //     this.femaleMatchMakingRequest.EW = "W";
-        // }
-        // else {
-        //     this.femaleMatchMakingRequest.EW = "W";
-        // }
+        this.femaleMatchMakingRequest.LatDeg = parseInt(lat);
+        this.femaleMatchMakingRequest.LongDeg = parseInt(long);
+        this.femaleMatchMakingRequest.LatMt = parseInt(Math.abs((lat - this.femaleMatchMakingRequest.LatDeg) * 60).toString());
+        this.femaleMatchMakingRequest.LongMt = parseInt(Math.abs((long - this.femaleMatchMakingRequest.LongDeg) * 60).toString());
         if (lat < 0) {
-            this.matchRequest.Female.NS = "S";
+            this.femaleMatchMakingRequest.NS = "S";
         }
         else {
-            this.matchRequest.Female.NS = "N";
+            this.femaleMatchMakingRequest.NS = "N";
         }
         if (long < 0) {
-            this.matchRequest.Female.EW = "W";
+            this.femaleMatchMakingRequest.EW = "W";
         }
         else {
-            this.matchRequest.Female.EW = "W";
+            this.femaleMatchMakingRequest.EW = "W";
         }
-        // this.matchMakingService.getTimezone(lat, long).subscribe((data: any) => setTimeout(() => {
-        //     this.femaleMatchMakingRequest.ZH = parseInt((Math.abs(data.rawOffset) / 3600.00).toString());
-        //     this.femaleMatchMakingRequest.ZM = parseInt((((Math.abs(data.rawOffset) / 3600.00) - this.femaleMatchMakingRequest.ZH) * 60).toString());
-        //     if (data.rawOffset < 0) {
-        //         this.femaleMatchMakingRequest.PN = "-";
-        //     }
-        //     else {
-        //         this.femaleMatchMakingRequest.PN = "+";
-        //     }
-        //     this.timeZoneName_Female = data.timeZoneName;
-        //     this.timeZoneId_Female = data.timeZoneId;
-        //     this.cdr.detectChanges();
-        // }));
         this.matchMakingService.getTimezone(lat, long).subscribe((data: any) => setTimeout(() => {
-            this.matchRequest.Female.ZH = parseInt((Math.abs(data.rawOffset) / 3600.00).toString());
-            this.matchRequest.Female.ZM = parseInt((((Math.abs(data.rawOffset) / 3600.00) - this.matchRequest.Female.ZH) * 60).toString());
+            this.femaleMatchMakingRequest.ZH = parseInt((Math.abs(data.rawOffset) / 3600.00).toString());
+            this.femaleMatchMakingRequest.ZM = parseInt((((Math.abs(data.rawOffset) / 3600.00) - this.femaleMatchMakingRequest.ZH) * 60).toString());
             if (data.rawOffset < 0) {
-                this.matchRequest.Female.PN = "-";
+                this.femaleMatchMakingRequest.PN = "-";
             }
             else {
-                this.matchRequest.Female.PN = "+";
+                this.femaleMatchMakingRequest.PN = "+";
             }
             this.timeZoneName_Female = data.timeZoneName;
             this.timeZoneId_Female = data.timeZoneId;
@@ -439,7 +349,7 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
     private monthFormatter = new Intl.DateTimeFormat("en", { month: "long" });
     public formatter = (date: Date) => {
         return `${date.getDate()} ${this.monthFormatter.format(date)}, ${date.getFullYear()}`;
-    }
+      }
 
     OnMouseUp_Male(event) {
         if (event == null) {
@@ -472,14 +382,14 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
         }
     }
     Matchmaking_Click() {
-        var bdate_Male: Date = this.maleMatchMakingForm.controls['MaleBdate'].value;
-        var btime_Male: Date = this.maleMatchMakingForm.controls['MaleBtime'].value;
-        var bdate_Female: Date = this.femaleMatchMakingForm.controls['FemaleBdate'].value;
-        var btime_Female: Date = this.femaleMatchMakingForm.controls['FemaleBtime'].value;
-        var dateinString_Male = bdate_Male.getFullYear().toString() + "-" + ("0" + ((bdate_Male.getMonth()) + 1)).toString().slice(-2) + "-" + ("0" + bdate_Male.getDate()).toString().slice(-2);
-        var timeinString_Male = ("0" + btime_Male.getHours()).toString().slice(-2) + ":" + ("0" + btime_Male.getMinutes()).toString().slice(-2) + ":" + btime_Male.getSeconds().toString() + "0";
-        var dateinStringFemale = bdate_Female.getFullYear().toString() + "-" + ("0" + ((bdate_Female.getMonth()) + 1)).toString().slice(-2) + "-" + ("0" + bdate_Female.getDate()).toString().slice(-2);
-        var timeinString_Female = ("0" + btime_Female.getHours()).toString().slice(-2) + ":" + ("0" + btime_Female.getMinutes()).toString().slice(-2) + ":" + btime_Female.getSeconds().toString() + "0";
+        var bdate_Male:Date=this.maleMatchMakingForm.controls['MaleBdate'].value;
+    var btime_Male:Date=this.maleMatchMakingForm.controls['MaleBtime'].value;
+    var bdate_Female:Date=this.femaleMatchMakingForm.controls['FemaleBdate'].value;
+    var btime_Female:Date=this.femaleMatchMakingForm.controls['FemaleBtime'].value;
+    var dateinString_Male=bdate_Male.getFullYear().toString()+"-"+("0"+((bdate_Male.getMonth())+1)).toString().slice(-2)+"-"+("0"+bdate_Male.getDate()).toString().slice(-2);
+    var timeinString_Male=("0"+btime_Male.getHours()).toString().slice(-2)+":"+("0"+btime_Male.getMinutes()).toString().slice(-2)+":"+btime_Male.getSeconds().toString()+"0";
+    var dateinStringFemale=bdate_Female.getFullYear().toString()+"-"+("0"+((bdate_Female.getMonth())+1)).toString().slice(-2)+"-"+("0"+bdate_Female.getDate()).toString().slice(-2);
+    var timeinString_Female=("0"+btime_Female.getHours()).toString().slice(-2)+":"+("0"+btime_Female.getMinutes()).toString().slice(-2)+":"+btime_Female.getSeconds().toString()+"0";
         // let loading = this.loadingController.create({
         //   content: 'Loading the Free HoroScope..'
         // });
@@ -518,40 +428,6 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
                 TimeFormat: "STANDARD"
             }
         }
-        this.matchRequest = {
-            LangCode: "KAN",
-            Female: {
-                Date: dateinStringFemale,
-                Time: timeinString_Female,
-                LatDeg: this.femaleMatchMakingForm.controls['LatDeg'].value,
-                LatMt: this.femaleMatchMakingForm.controls['LatMt'].value,
-                LongDeg: this.femaleMatchMakingForm.controls['LongDeg'].value,
-                LongMt: this.femaleMatchMakingForm.controls['LongMt'].value,
-                ZH: this.femaleMatchMakingForm.controls['ZH'].value,
-                ZM: this.femaleMatchMakingForm.controls['ZM'].value,
-                NS: this.femaleMatchMakingForm.controls['NS'].value,
-                EW: this.femaleMatchMakingForm.controls['EW'].value,
-                PN: this.femaleMatchMakingForm.controls['PN'].value,
-                Gender: "F",
-                TimeFormat: this.femaleMatchMakingForm.controls['FemaleTimeformat'].value[0].Id
-            },
-            Male: {
-                Date: dateinString_Male,
-                Time: timeinString_Male,
-                LatDeg: this.maleMatchMakingForm.controls['LatDeg'].value,
-                LatMt: this.maleMatchMakingForm.controls['LatMt'].value,
-                LongDeg: this.maleMatchMakingForm.controls['LongDeg'].value,
-                LongMt: this.maleMatchMakingForm.controls['LongMt'].value,
-                ZH: this.maleMatchMakingForm.controls['ZH'].value,
-                ZM: this.maleMatchMakingForm.controls['ZM'].value,
-                NS: this.maleMatchMakingForm.controls['NS'].value,
-                EW: this.maleMatchMakingForm.controls['EW'].value,
-                PN: this.maleMatchMakingForm.controls['PN'].value,
-                Gender: "M",
-                TimeFormat: this.maleMatchMakingForm.controls['MaleTimeformat'].value[0].Id
-            }
-        }
-        
         // this.maleMatchMakingRequest = {
         //     Name: this.maleMatchMakingForm.controls['maleName'].value,
         //     Father: this.maleMatchMakingForm.controls['fathername'].value,

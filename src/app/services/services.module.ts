@@ -30,12 +30,14 @@ import { PaymentComponent } from '../payment/payment/payment.component';
                 //resolve: { people: PeopleResolverService },
                 children: [
                     {
-                        path: 'horoscope',
+                        //path: 'horoscope',
+                        path:'#SH',
                         component: HoroscopeComponent,
                         //resolve: { person: PersonResolverService }
                     },
                     {
-                        path: 'matchmaking',
+                        //path: 'matchmaking',
+                        path:'#SM',
                         component: MatchMakingComponent,
                         //resolve: { person: PersonResolverService },
                         //canDeactivate: [PeopleEditGuardService],
@@ -46,7 +48,7 @@ import { PaymentComponent } from '../payment/payment/payment.component';
                         //resolve: { person: PersonResolverService }
                     },
                     { path:'login', component:LoginComponent},
-                    { path:'horoscopePaid', component:HoropaidComponent},
+                    { path:'horoscopePaid', component:PaidervicesComponent},
                     { path:'deliveryAddress', component:DeliveryAddressComponent},
                     { path:'paidServices', component:PaidervicesComponent},
                     { path: 'payment', component: PaymentComponent },

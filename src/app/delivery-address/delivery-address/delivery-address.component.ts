@@ -53,6 +53,7 @@ export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewIni
         });
         this.customerAddressForm = this.formbuilder.group({
             name: ['Shailesh', [Validators.required, Validators.minLength(3)]],
+            email: ['', [Validators.required, Validators.pattern("[^ @]*@[^ @]*"), Validators.minLength(6)]],
             address1: ['Bappanadu', [Validators.required, Validators.minLength(3)]],
             address2: ['Temple Street', [Validators.required, Validators.minLength(4)]],
             address3: ['#4/5-2', [Validators.required, Validators.minLength(4)]],
@@ -61,6 +62,8 @@ export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewIni
         });
         const nameContrl = this.customerAddressForm.get('name');
         nameContrl.valueChanges.subscribe(value => this.setErrorMessage(nameContrl));
+        const emailContrl = this.customerAddressForm.get('email');
+        emailContrl.valueChanges.subscribe(value => this.setErrorMessage(emailContrl));
         const address1Contrl = this.customerAddressForm.get('address1');
         address1Contrl.valueChanges.subscribe(value => this.setErrorMessage(address1Contrl));
         const address2Contrl = this.customerAddressForm.get('address2');
@@ -83,38 +86,19 @@ export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewIni
         });
     }
     setErrorMessage(c: AbstractControl): void {
-        this.address1Message = '';//To not display the error message, if there is no error.
-        this.address2Message = '';
-        this.address3Message = '';
-        this.pincodeMessage = '';
-        this.stateMessage = '';
-        this.nameMessage = '';
         let control = this.uiService.getControlName(c);//gives the control name property from particular service.
+        document.getElementById('err_' + control).innerHTML = '';//To not display the error message, if there is no error.
         if ((c.touched || c.dirty) && c.errors) {
-            if (control === 'address1') {
-                this.address1Message = Object.keys(c.errors).map(key => this.validationMessages[control + '_' + key]).join(' ');
-                //maps the error message from validationMessages array. 
-            }
-            else if (control === 'address2') {
-                this.address2Message = Object.keys(c.errors).map(key => this.validationMessages[control + '_' + key]).join(' ');
-            }
-            else if (control === 'address3') {
-                this.address3Message = Object.keys(c.errors).map(key => this.validationMessages[control + '_' + key]).join(' ');
-            }
-            else if (control === 'name') {
-                this.nameMessage = Object.keys(c.errors).map(key => this.validationMessages[control + '_' + key]).join(' ');
-            }
-            else if (control === 'pincode') {
-                this.pincodeMessage = Object.keys(c.errors).map(key => this.validationMessages[control + '_' + key]).join(' ');
-            }
-            else if (control === 'state') {
-                this.stateMessage = Object.keys(c.errors).map(key => this.validationMessages[control + '_' + key]).join(' ');
-            }
+            document.getElementById('err_' + control).innerHTML = Object.keys(c.errors).map(key => this.validationMessages[control + '_' + key]).join(' ');
         }
     }
     private validationMessages = { //used in above method.
         address1_required: '*Enter City',
         address1_minlength: '*Minimum length is 4',
+
+        email_required: 'Enter EMail',
+        email_minlength: 'Minimum length should be 6',
+        email_pattern: 'Do not match with EMail pattern',
 
         address2_required: '*Enter Area/Street Name',
         address2_minlength: '*Minimum length is 4',
@@ -161,13 +145,28 @@ export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewIni
     onAddAddress() {
         this.showAddAddressForm = true;
     }
-    onRemoveAddress() {
+    onRemoveAddress(Id) {
         // var favourites: Favourites = this.storageService.GetFavourite();
         // var PId = order.Id;
         // favourites = favourites.filter(function (obj) {
         //   return obj.Id !== PId;
         // });
         // this.storageService.SetFavourite(JSON.stringify(favourites));
+        var DeleteAddress = {
+            PartyMastId: this.loginService.PartyMastId,
+            AddressId: Id
+        }
+        this.horoScopeService.DeleteAddress(DeleteAddress, (data) => {
+            if (data == true) {
+                this.horoScopeService.GetAllAddress(this.loginService.PartyMastId, (data) => {
+                    this.existingAddress = data;
+                    this.horoScopeService.GetDefaultAddress(this.loginService.PartyMastId, (data) => {
+                        this.Id = String(data);
+                    });
+                });
+            }
+
+        });
     }
     onCancel() {
         this.showAddAddressForm = !this.showAddAddressForm;
@@ -175,6 +174,7 @@ export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewIni
 
     onSaveAddress() {
         var AddressModel = {
+            EMail: this.customerAddressForm.controls['email'].value,
             OrderId: this.OrderId,
             PartyMastId: this.loginService.PartyMastId,
             Name: this.customerAddressForm.controls['name'].value,
@@ -187,6 +187,9 @@ export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewIni
             this.horoScopeService.GetAllAddress(this.loginService.PartyMastId, (data) => {
                 this.existingAddress = data;
                 this.showAddAddressForm = !this.showAddAddressForm;
+                this.horoScopeService.GetDefaultAddress(this.loginService.PartyMastId, (data) => {
+                    this.Id = String(data);
+                });
             });
         });
     }
@@ -200,7 +203,7 @@ export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewIni
         }
         this.horoScopeService.UpdateAddressToOrder(orderAddress, (data) => {
             //   this.navCtrl.push(PaymentDetailsPage,{'ItemOrdered':this.navParams.get('ItemOrdered'),'OrderId':this.navParams.get('OrderId')});
-            this.router.navigate(["/services/payment", { 'OrderId': this.OrderId}]);
+            this.router.navigate(["/services/payment", { 'OrderId': this.OrderId }]);
 
         });
     }

@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HoroRequest } from 'src/Models/HoroScope/HoroRequest';
 import { FormControlName } from '@angular/forms';
 import { HoropaidComponent } from '../horopaid/horopaid/horopaid.component';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-paidervices',
@@ -36,7 +37,7 @@ export class PaidervicesComponent implements OnInit {
   ngAfterViewInit(){
     console.log(this.components);
   }
-  constructor(private route: ActivatedRoute, private router: Router,
+  constructor(private _location: Location, private route: ActivatedRoute, private router: Router,
       private loginService: LoginService, public horoScopeService: HoroScopeService) {
       this.route.params.subscribe(params => {
           this.horoInfo = params['horoInfo'];
@@ -45,17 +46,20 @@ export class PaidervicesComponent implements OnInit {
       var itemMast = {
           ItActId: "#SH",
           PartyMastId: this.PartyMastId,
-          CountryCode: "IN"
+          //CountryCode: "IN"
       }
-      this.horoScopeService.GetHoroScopeItems(itemMast, (data) => {
+      this.horoScopeService.GetPriceListByItActId(itemMast, (data) => {
           this.serviceInfo = data;
       });
-      this.serviceInformation = [{ Id: '', ItemName: 'Horo', MRP: 33, ActualPrice: 44, Description: '', Link: '' }]
-  }
+      this.serviceInformation = [{ ItMastId: '', Name: 'Horo', MRP: 33, Amount: 44, Description: '',PrintMRP:6,PrintAmount:5 }]
+    }
   ngOnInit(): void {
       /*
       */
   }
+  backClicked() {
+    this._location.back();
+}
   hardcopyRequired_Click(id) {
       var hardCopyPriceRequest={
           IsHardCopy:true,
@@ -68,9 +72,17 @@ export class PaidervicesComponent implements OnInit {
       });
   }
   onFHSample() {
-      this.horoScopeService.GetHoroReport().subscribe((data: any) => {
-          var newBlob = new Blob([data], { type: "application/pdf" });
-          alert("hello");
+    this.horoScopeService.ProcessOrder().subscribe((data: any) => {
+        var newBlob = new Blob([data], { type: "application/pdf" });
+        const fileName: string = 'PDFSample.pdf';
+        const a: HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
+        var url = window.URL.createObjectURL(newBlob);
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
       });
   }
   onFH_PDFChanged(event) {
@@ -170,7 +182,7 @@ export class PaidervicesComponent implements OnInit {
       this.totalprice = this.FH_price + this.MH_price + this.PH_price;
   }
   onPDFSample(ItMastId) {
-      var itemOrdered = this.serviceInfo.find(function (obj) { return obj.Id === ItMastId; });
+      var itemOrdered = this.serviceInfo.find(function (obj) { return obj.ItMastId === ItMastId; });
       this.horoRequest = {
           Name: this.horoInfo.Name,
           Father: this.horoInfo.Father,
@@ -194,7 +206,7 @@ export class PaidervicesComponent implements OnInit {
       var orderModel = {
           FreeAmount: null,
           //ItemAmount: itemOrdered.SoftCopy,
-          ItemAmount: itemOrdered.ActualPrice,
+          ItemAmount: itemOrdered.Amount,
           PartyMastId: this.PartyMastId,
           JSONData: this.horoInfo,
           //ItActId: "#SH",
@@ -207,7 +219,7 @@ export class PaidervicesComponent implements OnInit {
   }
   onSoftCopy(softCopyPrice) {
     //   var itemOrdered = this.serviceInfo.find(function (obj) { return obj.SoftCopy === softCopyPrice; });
-    var itemOrdered = this.serviceInfo.find(function (obj) { return obj.ActualPrice === softCopyPrice; });
+    var itemOrdered = this.serviceInfo.find(function (obj) { return obj.Amount === softCopyPrice; });
     var orderModel = {
           FreeAmount: 0,
           ItemAmount: softCopyPrice,
@@ -215,7 +227,7 @@ export class PaidervicesComponent implements OnInit {
           JSONData: this.horoInfo,
           //ItActId: "#SH",
           ItActId: this.horoScopeService.ItActId,
-          ItMastId: itemOrdered.Id
+          ItMastId: itemOrdered.ItMastId
       }
       var DeliveryAddressRequired: boolean = false;
       this.horoScopeService.CreateOrder(orderModel, (data) => {
@@ -225,7 +237,7 @@ export class PaidervicesComponent implements OnInit {
   }
   onHardCopy(hardCopyPrice) {
     //   var itemOrdered = this.serviceInfo.find(function (obj) { return obj.HardCopy === hardCopyPrice; });
-    var itemOrdered = this.serviceInfo.find(function (obj) { return obj.ActualPrice === hardCopyPrice; });
+    var itemOrdered = this.serviceInfo.find(function (obj) { return obj.Amount === hardCopyPrice; });
     var orderModel = {
           FreeAmount: 0,
           ItemAmount: hardCopyPrice,
@@ -233,7 +245,7 @@ export class PaidervicesComponent implements OnInit {
           JSONData: this.horoInfo,
           //ItActId: "#SH",
           ItActId: this.horoScopeService.ItActId,
-          ItMastId: itemOrdered.Id
+          ItMastId: itemOrdered.ItMastId
       }
       var DeliveryAddressRequired: boolean = true;
       this.horoScopeService.CreateOrder(orderModel, (data) => {

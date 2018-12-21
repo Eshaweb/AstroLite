@@ -37,8 +37,6 @@
                   *ngIf="navigationInProgress"
                   style="font-size:96px">
               </i>
-
-              <router-outlet></router-outlet>
               <!-- <share-buttons show="5"></share-buttons>
               <br>
               <share-button
@@ -61,6 +59,8 @@
                 <share-button [url]="onclick()" button="twitter" text="Tweet" [showText]="true"></share-button>
                 <share-button [url]="onclick()" button="whatsapp" text="pin"></share-button>
               </div> -->
+              <router-outlet></router-outlet>
+              
               <igx-toast #toast></igx-toast>
           </section>
       </header>

@@ -22,27 +22,27 @@ export class RegistrationComponent implements OnInit, OnDestroy, AfterViewInit {
     public maxvalue: number;
     public changeIcon() {
         return this.interval ? "pause" : "play_arrow";
-      }
-      public tick() {
+    }
+    public tick() {
         this.currentValue = 0;
         if (this.interval) {
             this.interval = clearInterval(this.interval);
             return;
         }
         this.interval = setInterval(this.updateValue.bind(this), 60);
-      }
-      public updateValue() {
+    }
+    public updateValue() {
         this.circularBar.updateProgressSmoothly(this.currentValue += this.randomIntFromInterval(1, 3), 1);
         if (this.circularBar.value > this.circularBar.max + 3) {
-          this.interval = clearInterval(this.interval);
+            this.interval = clearInterval(this.interval);
         }
-     }
-      public progresChanged(progress) { 
-          
-      }
-      private randomIntFromInterval(min: number, max: number) {
+    }
+    public progresChanged(progress) {
+
+    }
+    private randomIntFromInterval(min: number, max: number) {
         return Math.floor(Math.random() * (max - min + 1) + min);
-      }
+    }
     @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
     registrationForm: FormGroup;
     mobilenoMessage: string;
@@ -112,7 +112,7 @@ export class RegistrationComponent implements OnInit, OnDestroy, AfterViewInit {
         return password === confirmpwd ? null : { notSame: true }
     }
     Register_Click() {
-        this.isLoading=true;
+        this.isLoading = true;
         this.tick();
         var registerModel = {
             Mobile: this.registrationForm.get('mobileno').value,
@@ -120,10 +120,10 @@ export class RegistrationComponent implements OnInit, OnDestroy, AfterViewInit {
             Password: this.registrationForm.get('password').value,
             IntroParty: this.registrationForm.get('refCode').value
         }
-        this.maxvalue=100;
+        this.maxvalue = 100;
         this.registrationService.RegisterParty(registerModel, (data) => {
             //this.toastrService.success('OTP Sent to with Reference No. ', 'Success!');
-        
+
         });
     }
     ngOnInit(): void {

@@ -16,6 +16,7 @@ title="Payment" actionButtonIcon="arrow_back" >
 <input igxInput type="text" formControlName="couponcode" />
 <label igxLabel>Coupon</label>
 </igx-input-group>
+<p style="color:blue" id='err_couponcode'></p>
 </div>
 
 <div class="apply-button">
@@ -24,25 +25,31 @@ title="Payment" actionButtonIcon="arrow_back" >
 
 </div>
 <span class="igx-typography__body-1 order-total">Order Total</span>
-<span class="igx-typography__body-1 actual-price1200">Actual Price :   {{ItemOrdered.ActualPrice}}</span>
+<span class="igx-typography__body-1 actual-price1200">Price :   {{payableAmount}}</span>
 <span class="igx-typography__body-1 discount0000">Discount.     :    {{discountAmount}}</span>
-<span class="igx-typography__body-1 total-price1200">Total Price.  :    {{payableAmount}}</span>
+<span class="igx-typography__body-1 total-price1200">Effective Price.  :    {{payableAmount}}</span>
 <p style="color:red" *ngIf="(differenceAmount>0)"> {{'Remaining balance amount '+differenceAmount+' Rs will be deducted from choosen payment modes'}} </p>
 <p style="color:green"> {{selectMeMessage}}</p>
-<div class="astrolite-wallet">
-<igx-checkbox [checked]="WalletCheckBoxValue" (click)="checkBox_valueChanged($event)">
-Pay using Astrolite wallet (Wallet Balce {{walletbalance}})
-</igx-checkbox>
-</div>
-
-<div class="payment-mode">
 <igx-combo #combo class="payment-mode-1" width="400px" [itemsMaxHeight]="255"
             [data]="paymentModes" [displayKey]="'Text'" [valueKey]="'Id'" type="line"
             placeholder="Location(s)" searchPlaceholder="Search..." (onSelectionChange)="ObjChanged($event)">
 </igx-combo>
+<div class="astrolite-wallet">
+<igx-checkbox [checked]="false" (click)="checkBox_valueChanged($event)">
+Pay using Astrolite wallet (Wallet Balce {{walletbalance}})
+</igx-checkbox>
+
+</div>
+
+<button igxRipple igxButton="raised" (click)="onContinue()">Continue</button>
+
+<div class="payment-mode">
+<!-- <igx-combo #combo class="payment-mode-1" width="400px" [itemsMaxHeight]="255"
+            [data]="paymentModes" [displayKey]="'Text'" [valueKey]="'Id'" type="line"
+            placeholder="Location(s)" searchPlaceholder="Search..." (onSelectionChange)="ObjChanged($event)">
+</igx-combo> -->
 </div>
 <br>
-<button igxRipple igxButton="raised" (click)="onContinue()">Continue</button>
 
 </div>
 </div>

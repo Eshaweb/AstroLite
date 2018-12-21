@@ -155,6 +155,14 @@ Female
 </igx-checkbox>
 </div>
 </div>
+<section class="sample-content" *ngIf='isLoading'>
+        <article class="sample-column">
+          <h5>Text is displayed</h5>
+          <div class="circular-container">
+            <igx-circular-bar [value]="currentValue" [max]="maxvalue" [animate]="true" [textVisibility]="true" (onProgressChanged)="progresChanged($event)"></igx-circular-bar>
+          </div>
+         </article>
+    </section>
 </div>
 <div class="bottom-button">
         <div class="submit">

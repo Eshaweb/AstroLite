@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InfragisticsImportsModule } from '../infragistics-imports/infragistics-imports.module';
-import { MatchMakingComponent } from './match-making/match-making.component';
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule } from '../../../node_modules/@agm/core';
+import { MatchMakingService } from '../../Services/MatchMakingService/MatchMakingService';
+import { MatchMakingOldComponent } from './match-makingOld/match-makingOld.component';
 @NgModule({
     imports: [AgmCoreModule.forRoot({
         // apiKey: "AIzaSyD68pTd0CmqTXSqPHFpLrPWkiClqPBIpLQ",  
@@ -18,10 +19,11 @@ import { AgmCoreModule } from '@agm/core';
         FormsModule,
         InfragisticsImportsModule
     ],
-    declarations: [MatchMakingComponent],
+    declarations: [MatchMakingOldComponent],
+    providers: [MatchMakingService],
     exports: [
-        MatchMakingComponent
+        MatchMakingOldComponent
     ]
 })
-export class MatchMakingModule {
+export class MatchMakingOldModule {
 }

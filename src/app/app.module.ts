@@ -17,8 +17,6 @@ import { DeliveryAddressModule } from './delivery-address/delivery-address.modul
 import { HoroscopeModule } from './horoscope/horoscope.module';
 import { HoroscopeComponent } from './horoscope/horoscope/horoscope.component';
 import { DeliveryAddressComponent } from './delivery-address/delivery-address/delivery-address.component';
-import { MatchMakingModule } from './match-making/match-making.module';
-import { MatchMakingComponent } from './match-making/match-making/match-making.component';
 import { ServicesModule } from './services/services.module';
 import { AgmCoreModule } from '../../node_modules/@agm/core';
 import { ToastrModule } from 'ngx-toastr';
@@ -53,6 +51,9 @@ import { HoropaidComponent } from './horopaid/horopaid/horopaid.component';
 import { HoropaidModule } from './horopaid/horopaid.module';
 import { PaidervicesComponent } from './paidervices/paidervices.component';
 import { ServicesComponent } from './services/services/services.component';
+import { MatchMakingOldModule } from './match-makingOld/match-makingOld.module';
+import { MatchMakingModule } from './match-making/match-making.module';
+import { MatchMakingComponent } from './match-making/match-making/match-making.component';
 
 const generatedRoutes: Routes = [
     {
@@ -144,6 +145,7 @@ let config = new AuthServiceConfig([
         HoroscopeModule,
         HoroscopeFreeModule,
         MatchMakingModule, 
+        MatchMakingOldModule,
         //RegistrationDemoModule,
         ServicesModule, 
         //LoginDemoModule
