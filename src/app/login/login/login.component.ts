@@ -5,15 +5,15 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/observable/merge';
-import { EventsService } from '../../../../node_modules/angular4-events';
-import { OrderModel } from '../../../Models/HoroScope/OrderModel';
-import { HttpClient } from '../../../../node_modules/@angular/common/http';
-import { HoroScopeService } from '../../../Services/HoroScopeService/HoroScopeService';
-import { LoginService } from '../../../Services/login/login.service';
-import { UIService } from '../../../Services/UIService/ui.service';
-import { AuthService, GoogleLoginProvider, FacebookLoginProvider, SocialUser } from '../../../../node_modules/angularx-social-login';
-import { Location } from "@angular/common";
 
+import { Location } from "@angular/common";
+import { SocialUser, AuthService, GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+import { OrderModel } from 'src/Models/HoroScope/OrderModel';
+import { UIService } from 'src/Services/UIService/ui.service';
+import { HoroScopeService } from 'src/Services/HoroScopeService/HoroScopeService';
+import { EventsService } from 'angular4-events';
+import { LoginService } from 'src/Services/login/login.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-login',
@@ -22,6 +22,7 @@ import { Location } from "@angular/common";
 })
 export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
 
+    
     @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
   isLoading: boolean=false;
 

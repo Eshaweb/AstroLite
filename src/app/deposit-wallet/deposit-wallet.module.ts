@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InfragisticsImportsModule } from '../infragistics-imports/infragistics-imports.module';
-import { PaymentComponent } from './payment/payment.component';
+import { DepositWalletComponent } from './deposit-wallet/deposit-wallet.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -12,10 +12,10 @@ import { PaymentComponent } from './payment/payment.component';
         FormsModule,
         InfragisticsImportsModule
     ],
-    declarations: [PaymentComponent],
+    declarations: [DepositWalletComponent],
     exports: [
-        PaymentComponent
+        DepositWalletComponent
     ]
 })
-export class PaymentModule {
+export class DepositWalletModule {
 }

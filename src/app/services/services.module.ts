@@ -5,16 +5,17 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InfragisticsImportsModule } from '../infragistics-imports/infragistics-imports.module';
 import { ServicesComponent } from './services/services.component';
 import { AstamangalaComponent } from '../astamangala/astamangala/astamangala.component';
-import { MatchMakingComponent } from '../match-making/match-making/match-making.component';
-import { HoroscopeComponent } from '../horoscope/horoscope/horoscope.component';
 import { ServicesListComponent } from '../services-list/services-list/services-list.component';
 import { RouterModule } from '@angular/router';
-import { HoroscopeFreeComponent } from '../horoscope-free/horoscope-free/horoscope-free.component';
 import { HoropaidComponent } from '../horopaid/horopaid/horopaid.component';
 import { DeliveryAddressComponent } from '../delivery-address/delivery-address/delivery-address.component';
 import { LoginComponent } from '../login/login/login.component';
 import { PaidervicesComponent } from '../paidervices/paidervices.component';
-import { PaymentComponent } from '../payment/payment/payment.component';
+import { HoroscopeFreeComponent } from '../horoscope-free/horoscope-free/horoscope-free.component';
+import { MatchMakingReportComponent } from '../match-making-report/match-making-report/match-making-report.component';
+import { HoroscopeComponent } from '../horoscope/horoscope/horoscope.component';
+import { PaymentOldComponent } from '../paymentOld/paymentOld/paymentOld.component';
+import { MatchMakingComponent } from '../match-making/match-making/match-making.component';
 
 @NgModule({
     imports: [
@@ -47,11 +48,12 @@ import { PaymentComponent } from '../payment/payment/payment.component';
                         component: HoroscopeFreeComponent,
                         //resolve: { person: PersonResolverService }
                     },
+                    { path:'matchFree', component:MatchMakingReportComponent},
                     { path:'login', component:LoginComponent},
                     { path:'horoscopePaid', component:PaidervicesComponent},
                     { path:'deliveryAddress', component:DeliveryAddressComponent},
                     { path:'paidServices', component:PaidervicesComponent},
-                    { path: 'payment', component: PaymentComponent },
+                    { path: 'payment', component: PaymentOldComponent },
 
                 ]
             }

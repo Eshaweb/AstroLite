@@ -616,7 +616,7 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
             this.matchMakingService.malematchRequest = this.maleMatchMakingRequest;
             //this.horoScopeService.data = data;
             //  this.router.navigate(["services/horoscopeFree", { "BirthPlace": this.birthplace, 'Fathername': this.horoscopeFormForm.controls['fatherName'].value, 'Mothername': this.horoscopeFormForm.controls['motherName'].value }]);
-            this.router.navigate(["services/horoscopeFree"]);
+            this.router.navigate(["/services/matchFree"]);
         });
     }
 }

@@ -16,7 +16,10 @@ main {
 	overflow: auto;
     height: 100%;
 }
-
+.customFont {
+    font-family: "MyWebFont" !important;
+    text-align: center
+    }
 form {
     margin: 0;
     padding: 0;
@@ -78,25 +81,11 @@ min-height: 57px;
 font-family: 'Helvetica', 'Titillium Web', sans-serif;
 font-size: 30px;
 }
-.nakshatra-ashwini {
-color: igx-color($default-palette, primary);
-margin-top: 27px;
-margin-left: 62px;
-
-height: 28px;
-min-height: 28px;
-
-}
-.nakshatra-ashwini-copy {
-color: igx-color($default-palette, primary);
-margin-top: 4px;
-margin-left: 62px;
-
-height: 28px;
-min-height: 28px;
-
-}
 .left {
+width: 481px;
+min-width: 481px;
+height: 667px;
+min-height: 667px;
 
 display: flex;
 flex-direction: column;
@@ -116,17 +105,20 @@ min-height: 57px;
 font-family: 'Helvetica', 'Titillium Web', sans-serif;
 font-size: 30px;
 }
-.nakshatra-ashwini-copy2 {
-color: igx-color($default-palette, primary);
-margin-top: 32px;
-margin-left: 93px;
 
-height: 28px;
-min-height: 28px;
-
-}
+            .right-vertical-centering-wrapper {
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+                justify-content: center;
+            }
+            
 .right {
-margin: 1px 0 0 auto;
+width: 486px;
+min-width: 486px;
+height: 666px;
+min-height: 666px;
+margin: auto 0 auto 6px;
 
 display: flex;
 flex-direction: column;
@@ -136,13 +128,58 @@ background-color: rgb(255, 255, 255);
 }
 
 .content {
-margin-top: 4px;
-margin-right: 23px;
-margin-left: 28px;
+position: absolute;
+z-index: 0;
 
 display: flex;
 flex-direction: row;
 flex-shrink: 0;
+padding: 0;
+}
+
+.nakshatra-ashwini {
+color: igx-color($default-palette, primary);
+position: absolute;
+top: 100px;
+left: 62px;
+z-index: 1;
+
+margin-top: 0px;
+height: 28px;
+min-height: 28px;
+
+}
+.nakshatra-ashwini-copy {
+color: igx-color($default-palette, primary);
+position: absolute;
+top: 132px;
+left: 62px;
+z-index: 3;
+font-family: "MyWebFont" !important;
+text-align: center;
+margin-top: 0px;
+height: 28px;
+min-height: 28px;
+
+}
+.nakshatra-ashwini-copy2 {
+color: igx-color($default-palette, primary);
+position: absolute;
+top: 102px;
+left: 580px;
+z-index: 2;
+
+margin-top: 0px;
+height: 28px;
+min-height: 28px;
+
+}
+.content-row {
+margin-top: 4px;
+margin-right: 23px;
+margin-left: 28px;
+
+position: relative;
 padding: 0;
 }
 

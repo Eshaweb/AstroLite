@@ -13,7 +13,7 @@ main {
     padding: 0;
     display: flex;
     flex-direction: column;
-	//overflow: auto;
+	overflow: auto;
     height: 100%;
 }
 .cover {
@@ -57,8 +57,6 @@ form {
 }
 
 .navigation {
-margin-top: 7px;
-margin-left: 6px;
 
 display: flex;
 flex-direction: column;
@@ -66,64 +64,95 @@ padding: 0;
 flex-shrink: 0;
 }
 
-.colorswhite {
-position: absolute;
-top: 199px;
-left: 49px;
-z-index: 4;
-
-width: 658px;
-min-width: 658px;
-height: 679px;
-min-height: 679px;
-
-background-color: rgb(255, 255, 255);
-}
-.colorswhite-1 {
-position: absolute;
-top: 50px;
-left: 51px;
-z-index: 2;
-
-width: 658px;
-min-width: 658px;
-height: 114px;
-min-height: 114px;
-
-background-color: rgb(255, 255, 255);
-}
-.horoscope-details {
+.title {
 color: igx-color($default-palette, grays, 900);
-position: absolute;
-top: 66px;
-left: 73px;
-z-index: 3;
+margin-top: 16px;
+margin-right: 481px;
+margin-left: 25px;
 
-margin-top: 0px;
+width: 100%;
 height: 71px;
 min-height: 71px;
 
 font-family: 'Big Caslon', 'Titillium Web', sans-serif;
 font-weight: 500;
 }
-.colorswhite-2 {
-position: absolute;
-top: 50px;
-left: 747px;
-z-index: 1;
+.title-1 {
+height: 114px;
+min-height: 114px;
+margin-top: 21px;
+margin-right: 17px;
+margin-left: 26px;
 
-width: 242px;
-min-width: 242px;
-height: 826px;
-min-height: 826px;
-
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
 background-color: rgb(255, 255, 255);
 }
-.background-row {
-margin-left: 6px;
 
-position: relative;
+.horoscope {
+color: igx-color($default-palette, grays, 900);
+margin-top: 25px;
+margin-left: 279px;
+
+height: 112px;
+min-height: 112px;
+
+font-family: 'Helvetica', 'Titillium Web', sans-serif;
+font-size: 40px;
+letter-spacing: -0.63px;
+}
+.body {
+// height: 607px;
+// min-height: 607px;
+margin-top: 12px;
+margin-right: 17px;
+margin-left: 26px;
+
+display: flex;
+flex-direction: column;
 padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.footer {
+height: 151px;
+min-height: 151px;
+margin-top: 31px;
+margin-right: 17px;
+margin-left: 26px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.screen {
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgba(igx-color($default-palette, primary), .10);
+}
+
+@function get-palette($palette, $variant: 'light') {
+$p: igx-color($palette, 'primary');
+$s: igx-color($palette, 'secondary');
+@return igx-palette($primary: $p,
+$secondary: $s,
+$grays: if($variant == 'light', #fff, #000)
+);
+}
+@function get-schema($variant: 'light') {
+@return map-get((
+dark: $dark-schema,
+light: $light-schema
+), $variant);
 }
 
 $navigation-navbar-theme: igx-navbar-theme(
@@ -132,7 +161,7 @@ $idle-icon-color: rgb(255, 255, 255),
 $text-color: rgb(255, 255, 255)
 );
 
-$buttons-raised-theme: igx-button-theme(
+$buy-button-theme: igx-button-theme(
 $raised-background: igx-color($default-palette, secondary, 600),
 $raised-text-color: rgb(255, 255, 255)
 );
@@ -144,12 +173,10 @@ $raised-text-color: rgb(255, 255, 255)
 @include igx-navbar($navigation-navbar-theme);
 }
 
-.buttons-raised {
-@include igx-button($buttons-raised-theme);
-position: absolute;
-top: 735px;
-left: 284px;
-z-index: 5;
+.buy-button {
+@include igx-button($buy-button-theme);
+margin-top: 54px;
+margin-left: 361px;
 
 }
 
