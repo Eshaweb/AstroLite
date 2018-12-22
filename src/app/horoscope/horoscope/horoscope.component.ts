@@ -30,7 +30,6 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
   isLoading: boolean;
   ngOnInit() {
     this.currentValue = 0;
-    alert(this.route.params);
     this.mapsAPILoader.load().then(() => {
       let nativeHomeInputBox = document.getElementById('txtHome').getElementsByTagName('input')[0];
       let autocomplete = new google.maps.places.Autocomplete(nativeHomeInputBox, {

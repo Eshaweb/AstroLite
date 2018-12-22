@@ -32,20 +32,20 @@ export class AstamangalaComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     ngOnInit(){
-        this.mapsAPILoader.load().then(() => {
-          let nativeHomeInputBox = document.getElementById('txtHome').getElementsByTagName('input')[0];
-          let autocomplete = new google.maps.places.Autocomplete(nativeHomeInputBox, {
-            types: ["address"]
-          });
-          autocomplete.addListener("place_changed", () => {
-          this.ngZone.run(() => {
-            let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-            this.latitude = place.geometry.location.lat();
-            this.longitude = place.geometry.location.lng();
-            this.getTimezone(this.latitude,this.longitude);
-          }); 
-        });
-      });
+      //   this.mapsAPILoader.load().then(() => {
+      //     let nativeHomeInputBox = document.getElementById('txtHome').getElementsByTagName('input')[0];
+      //     let autocomplete = new google.maps.places.Autocomplete(nativeHomeInputBox, {
+      //       types: ["address"]
+      //     });
+      //     autocomplete.addListener("place_changed", () => {
+      //     this.ngZone.run(() => {
+      //       let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+      //       this.latitude = place.geometry.location.lat();
+      //       this.longitude = place.geometry.location.lng();
+      //       this.getTimezone(this.latitude,this.longitude);
+      //     }); 
+      //   });
+      // });
       }
       astamangalaForm: FormGroup;
       astamangalaRequest: AstamangalaRequest;

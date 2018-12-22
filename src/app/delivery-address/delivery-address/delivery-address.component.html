@@ -24,7 +24,7 @@ title="Delivery Address" actionButtonIcon="arrow_back" >
         <div *ngFor="let order of existingAddress">
             <div (click)="OnChangeDefaultAddress(order.Id)" [ngClass]="order.Id === Id? 'class-1':'class-2'">
                 <p *ngIf="(order.Id === Id)" style="text-align:center">Default Address</p>
-                <h2 style="text-transform:capitalize;">{{ order.Name }}</h2>
+                <p style="text-transform:capitalize;">{{ order.Name }}</p>
                 <p>EMail:{{ order.EMail }}</p>
                 <p>City:{{ order.Address1 }}</p>
                 <p>Street/Area:{{ order.Address2 }}</p>
