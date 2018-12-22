@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InfragisticsImportsModule } from '../infragistics-imports/infragistics-imports.module';
-import { HoroscopeComponent } from './horoscope/horoscope.component';
 import { AgmCoreModule } from '../../../node_modules/@agm/core';
 import { ToastrModule } from '../../../node_modules/ngx-toastr';
 import { HoroScopeService } from '../../Services/HoroScopeService/HoroScopeService';
 import { PartyService } from '../../Services/PartyService/PartyService';
+import { HoroscopeComponent } from './horoscope/horoscope.component';
 @NgModule({
     imports: [
         AgmCoreModule.forRoot({
@@ -28,7 +28,9 @@ import { PartyService } from '../../Services/PartyService/PartyService';
         InfragisticsImportsModule
     ],
     providers: [HoroScopeService, PartyService],
-    declarations: [HoroscopeComponent],
+    declarations: [
+        HoroscopeComponent
+    ],
     exports: [
         HoroscopeComponent
     ]

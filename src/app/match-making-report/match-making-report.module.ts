@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InfragisticsImportsModule } from '../infragistics-imports/infragistics-imports.module';
-import { HoroscopeFreeComponent } from './horoscope-free/horoscope-free.component';
+import { MatchMakingReportComponent } from './match-making-report/match-making-report.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -12,10 +12,10 @@ import { HoroscopeFreeComponent } from './horoscope-free/horoscope-free.componen
         FormsModule,
         InfragisticsImportsModule
     ],
-    declarations: [HoroscopeFreeComponent],
+    declarations: [MatchMakingReportComponent],
     exports: [
-        HoroscopeFreeComponent
+        MatchMakingReportComponent
     ]
 })
-export class HoroscopeFreeModule {
+export class MatchMakingReportModule {
 }

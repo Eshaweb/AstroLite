@@ -58,13 +58,13 @@ flex-shrink: 0;
 }
 
 .navigation {
-margin-top: 11px;
+margin-top: 10px;
 margin-left: 2px;
 
 display: flex;
-flex-direction: column;
-padding: 0;
+flex-direction: row;
 flex-shrink: 0;
+padding: 0;
 }
 
 .image-size {
@@ -83,6 +83,7 @@ min-height: 247px;
 
 }
 .slider-2 {
+margin-right: 4px;
 
 display: flex;
 flex-direction: column;
@@ -149,9 +150,6 @@ padding: 0;
 }
 
 .sunrise-sunset-1 {
-position: relative;
-z-index: 5;
-
 width: 100%;
 
 }
@@ -237,46 +235,42 @@ color: igx-color($default-palette, grays, 900);
 .list-itemtext-9 {
 color: igx-color($default-palette, grays, 900);
 }
-.colorswhite {
-margin-left: -230px;
+.first-box {
 
-width: 230px;
-min-width: 230px;
-height: 292px;
-min-height: 292px;
-
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
 background-color: rgb(255, 255, 255);
 }
-.todays-panchanga-1 {
-margin-top: 4px;
-margin-left: 21px;
 
+.sunrise-sunset-10 {
 width: 100%;
 
 }
-.todays-panchanga-2-container {
+.sunrise-sunset-11-container {
 display: flex;
 flex-direction: row;
 justify-content: space-between;
 align-items: center;
 }
-.todays-panchanga-2-info {
+.sunrise-sunset-11-info {
 display: flex;
 flex-direction: column;
 flex: 1;
 line-height: 18px;
 }
-.todays-panchanga-2-details {
+.sunrise-sunset-11-details {
 display: flex;
 flex-direction: column;
 }
-.todays-panchanga-3 {
+.sunrise-sunset-12 {
 width: 100%;
 height: 48px;
 min-height: 48px;
 
 }
-.todays-panchanga-4 {
+.sunrise-sunset-13 {
 width: 100%;
 height: 48px;
 min-height: 48px;
@@ -288,7 +282,7 @@ color: igx-color($default-palette, grays, 900);
 .list-itemtext-11 {
 color: igx-color($default-palette, grays, 900);
 }
-.todays-panchanga-5 {
+.sunrise-sunset-14 {
 width: 100%;
 height: 48px;
 min-height: 48px;
@@ -300,7 +294,7 @@ color: igx-color($default-palette, grays, 900);
 .list-itemtext-13 {
 color: igx-color($default-palette, grays, 900);
 }
-.todays-panchanga-6 {
+.sunrise-sunset-15 {
 width: 100%;
 height: 48px;
 min-height: 48px;
@@ -312,7 +306,7 @@ color: igx-color($default-palette, grays, 900);
 .list-itemtext-15 {
 color: igx-color($default-palette, grays, 900);
 }
-.todays-panchanga-7 {
+.sunrise-sunset-16 {
 width: 100%;
 height: 48px;
 min-height: 48px;
@@ -324,7 +318,7 @@ color: igx-color($default-palette, grays, 900);
 .list-itemtext-17 {
 color: igx-color($default-palette, grays, 900);
 }
-.todays-panchanga-8 {
+.sunrise-sunset-17 {
 width: 100%;
 height: 48px;
 min-height: 48px;
@@ -336,36 +330,43 @@ color: igx-color($default-palette, grays, 900);
 .list-itemtext-19 {
 color: igx-color($default-palette, grays, 900);
 }
-.tarabala-1 {
-margin-top: 4px;
-margin-left: 25px;
+.second-box {
+margin-left: 22px;
 
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.sunrise-sunset-19 {
 width: 100%;
 
 }
-.tarabala-2-container {
+.sunrise-sunset-20-container {
 display: flex;
 flex-direction: row;
 justify-content: space-between;
 align-items: center;
 }
-.tarabala-2-info {
+.sunrise-sunset-20-info {
 display: flex;
 flex-direction: column;
 flex: 1;
 line-height: 18px;
 }
-.tarabala-2-details {
+.sunrise-sunset-20-details {
 display: flex;
 flex-direction: column;
 }
-.tarabala-3 {
+.sunrise-sunset-21 {
 width: 100%;
 height: 48px;
 min-height: 48px;
 
 }
-.tarabala-4 {
+.sunrise-sunset-22 {
 width: 100%;
 height: 48px;
 min-height: 48px;
@@ -377,7 +378,7 @@ color: igx-color($default-palette, grays, 900);
 .list-itemtext-21 {
 color: igx-color($default-palette, grays, 900);
 }
-.tarabala-5 {
+.sunrise-sunset-23 {
 width: 100%;
 height: 48px;
 min-height: 48px;
@@ -389,7 +390,7 @@ color: igx-color($default-palette, grays, 900);
 .list-itemtext-23 {
 color: igx-color($default-palette, grays, 900);
 }
-.tarabala-6 {
+.sunrise-sunset-24 {
 width: 100%;
 height: 48px;
 min-height: 48px;
@@ -401,7 +402,7 @@ color: igx-color($default-palette, grays, 900);
 .list-itemtext-25 {
 color: igx-color($default-palette, grays, 900);
 }
-.tarabala-7 {
+.sunrise-sunset-25 {
 width: 100%;
 height: 48px;
 min-height: 48px;
@@ -413,7 +414,7 @@ color: igx-color($default-palette, grays, 900);
 .list-itemtext-27 {
 color: igx-color($default-palette, grays, 900);
 }
-.tarabala-8 {
+.sunrise-sunset-26 {
 width: 100%;
 height: 48px;
 min-height: 48px;
@@ -425,36 +426,43 @@ color: igx-color($default-palette, grays, 900);
 .list-itemtext-29 {
 color: igx-color($default-palette, grays, 900);
 }
-.moon-1 {
-margin-top: 4px;
-margin-left: 25px;
+.third-box {
+margin-left: 22px;
 
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.sunrise-sunset-28 {
 width: 100%;
 
 }
-.moon-2-container {
+.sunrise-sunset-29-container {
 display: flex;
 flex-direction: row;
 justify-content: space-between;
 align-items: center;
 }
-.moon-2-info {
+.sunrise-sunset-29-info {
 display: flex;
 flex-direction: column;
 flex: 1;
 line-height: 18px;
 }
-.moon-2-details {
+.sunrise-sunset-29-details {
 display: flex;
 flex-direction: column;
 }
-.moon-3 {
+.sunrise-sunset-30 {
 width: 100%;
 height: 48px;
 min-height: 48px;
 
 }
-.moon-4 {
+.sunrise-sunset-31 {
 width: 100%;
 height: 48px;
 min-height: 48px;
@@ -466,7 +474,7 @@ color: igx-color($default-palette, grays, 900);
 .list-itemtext-31 {
 color: igx-color($default-palette, grays, 900);
 }
-.moon-5 {
+.sunrise-sunset-32 {
 width: 100%;
 height: 48px;
 min-height: 48px;
@@ -478,7 +486,7 @@ color: igx-color($default-palette, grays, 900);
 .list-itemtext-33 {
 color: igx-color($default-palette, grays, 900);
 }
-.moon-6 {
+.sunrise-sunset-33 {
 width: 100%;
 height: 48px;
 min-height: 48px;
@@ -490,7 +498,7 @@ color: igx-color($default-palette, grays, 900);
 .list-itemtext-35 {
 color: igx-color($default-palette, grays, 900);
 }
-.moon-7 {
+.sunrise-sunset-34 {
 width: 100%;
 height: 48px;
 min-height: 48px;
@@ -502,7 +510,7 @@ color: igx-color($default-palette, grays, 900);
 .list-itemtext-37 {
 color: igx-color($default-palette, grays, 900);
 }
-.moon-8 {
+.sunrise-sunset-35 {
 width: 100%;
 height: 48px;
 min-height: 48px;
@@ -514,9 +522,19 @@ color: igx-color($default-palette, grays, 900);
 .list-itemtext-39 {
 color: igx-color($default-palette, grays, 900);
 }
-.bottom-box {
-margin-top: 12px;
-margin-right: 12px;
+.fourth-box {
+margin-left: 22px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.row {
+margin-top: 16px;
+margin-right: 17px;
 margin-left: 17px;
 
 display: flex;
@@ -582,7 +600,7 @@ $item-background-active: rgb(255, 255, 255),
 $background: rgb(255, 255, 255)
 );
 
-$todays-panchanga-theme: igx-list-theme(
+$sunrise-sunset-9-theme: igx-list-theme(
 $header-background: rgb(255, 255, 255),
 $header-text-color: igx-color($default-palette, secondary),
 $item-text-color: igx-color($default-palette, grays, 900),
@@ -590,7 +608,7 @@ $item-background-active: rgb(255, 255, 255),
 $background: rgb(255, 255, 255)
 );
 
-$tarabala-theme: igx-list-theme(
+$sunrise-sunset-18-theme: igx-list-theme(
 $header-background: rgb(255, 255, 255),
 $header-text-color: igx-color($default-palette, secondary),
 $item-text-color: igx-color($default-palette, grays, 900),
@@ -598,7 +616,7 @@ $item-background-active: rgb(255, 255, 255),
 $background: rgb(255, 255, 255)
 );
 
-$moon-theme: igx-list-theme(
+$sunrise-sunset-27-theme: igx-list-theme(
 $header-background: rgb(255, 255, 255),
 $header-text-color: igx-color($default-palette, secondary),
 $item-text-color: igx-color($default-palette, grays, 900),
@@ -611,6 +629,9 @@ $background: rgb(255, 255, 255)
 ::ng-deep {
 .navigation-navbar {
 @include igx-navbar($navigation-navbar-theme);
+margin-top: 1px;
+margin-left: -298px;
+
 }
 
 .slider {
@@ -625,16 +646,16 @@ min-height: 247px;
 @include igx-list($sunrise-sunset-theme);
 }
 
-.todays-panchanga {
-@include igx-list($todays-panchanga-theme);
+.sunrise-sunset-9 {
+@include igx-list($sunrise-sunset-9-theme);
 }
 
-.tarabala {
-@include igx-list($tarabala-theme);
+.sunrise-sunset-18 {
+@include igx-list($sunrise-sunset-18-theme);
 }
 
-.moon {
-@include igx-list($moon-theme);
+.sunrise-sunset-27 {
+@include igx-list($sunrise-sunset-27-theme);
 }
 
 }

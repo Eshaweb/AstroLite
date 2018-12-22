@@ -16,25 +16,6 @@ main {
 	overflow: auto;
     height: 100%;
 }
-.cover {
-    //overflow:hidden;
-    background-color: lightgray;
-    border: solid 1px black;
-    overflow-y: scroll;
-    padding: 5px;
-  
-  }
-  .page {
-    //overflow:hidden;
-    background-color: white;
-    border: solid 1px gray;
-    font-weight: bold;
-    text-align: center;
-    font-size: 18px;
-    overflow-y: scroll;
-    padding: 5px;
-  //  line-height: 100px;
-  }
 .customFont {
     font-family: "MyWebFont" !important;
     text-align: center
@@ -50,7 +31,7 @@ form {
 
 
 
-.horoscope-free {
+.match-making-report {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -64,25 +45,23 @@ padding: 0;
 flex-shrink: 0;
 }
 
-.title {
+.match-report {
 color: igx-color($default-palette, grays, 900);
-margin-top: 16px;
-margin-right: 481px;
-margin-left: 25px;
+margin-top: 19px;
+margin-right: 144px;
+margin-left: 33px;
 
 width: 100%;
-height: 71px;
-min-height: 71px;
 
 font-family: 'Big Caslon', 'Titillium Web', sans-serif;
 font-weight: 500;
+font-size: 40px;
+letter-spacing: -0.33px;
 }
-.title-1 {
-height: 114px;
-min-height: 114px;
-margin-top: 21px;
-margin-right: 17px;
-margin-left: 26px;
+.title {
+margin-top: 9px;
+margin-right: 23px;
+margin-left: 27px;
 
 display: flex;
 flex-direction: column;
@@ -91,24 +70,22 @@ flex-shrink: 0;
 background-color: rgb(255, 255, 255);
 }
 
-.horoscope {
+.sub-title1 {
 color: igx-color($default-palette, grays, 900);
-margin-top: 25px;
-margin-left: 279px;
+margin-top: 16px;
+margin-left: 45px;
 
-height: 112px;
-min-height: 112px;
+height: 57px;
+min-height: 57px;
 
 font-family: 'Helvetica', 'Titillium Web', sans-serif;
-font-size: 40px;
-letter-spacing: -0.63px;
+font-size: 30px;
 }
-.body {
-// height: 607px;
-// min-height: 607px;
-margin-top: 12px;
-margin-right: 17px;
-margin-left: 26px;
+.left {
+width: 481px;
+min-width: 481px;
+height: 667px;
+min-height: 667px;
 
 display: flex;
 flex-direction: column;
@@ -117,12 +94,99 @@ flex-shrink: 0;
 background-color: rgb(255, 255, 255);
 }
 
-.footer {
-height: 151px;
-min-height: 151px;
-margin-top: 31px;
-margin-right: 17px;
-margin-left: 26px;
+.sub-title2 {
+color: igx-color($default-palette, grays, 900);
+margin-top: 12px;
+margin-left: 72px;
+
+height: 57px;
+min-height: 57px;
+
+font-family: 'Helvetica', 'Titillium Web', sans-serif;
+font-size: 30px;
+}
+
+            .right-vertical-centering-wrapper {
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+                justify-content: center;
+            }
+            
+.right {
+width: 486px;
+min-width: 486px;
+height: 666px;
+min-height: 666px;
+margin: auto 0 auto 6px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.content {
+position: absolute;
+z-index: 0;
+
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+padding: 0;
+}
+
+.nakshatra-ashwini {
+color: igx-color($default-palette, primary);
+position: absolute;
+top: 100px;
+left: 62px;
+z-index: 1;
+
+margin-top: 0px;
+height: 28px;
+min-height: 28px;
+
+}
+.nakshatra-ashwini-copy {
+color: igx-color($default-palette, primary);
+position: absolute;
+top: 132px;
+left: 62px;
+z-index: 3;
+font-family: "MyWebFont" !important;
+text-align: center;
+margin-top: 0px;
+height: 28px;
+min-height: 28px;
+
+}
+.nakshatra-ashwini-copy2 {
+color: igx-color($default-palette, primary);
+position: absolute;
+top: 102px;
+left: 580px;
+z-index: 2;
+
+margin-top: 0px;
+height: 28px;
+min-height: 28px;
+
+}
+.content-row {
+margin-top: 4px;
+margin-right: 23px;
+margin-left: 28px;
+
+position: relative;
+padding: 0;
+}
+
+.bottom {
+margin-top: 4px;
+margin-right: 23px;
+margin-left: 28px;
 
 display: flex;
 flex-direction: column;
@@ -161,7 +225,7 @@ $idle-icon-color: rgb(255, 255, 255),
 $text-color: rgb(255, 255, 255)
 );
 
-$buy-button-theme: igx-button-theme(
+$submit-button-theme: igx-button-theme(
 $raised-background: igx-color($default-palette, secondary, 600),
 $raised-text-color: rgb(255, 255, 255)
 );
@@ -173,10 +237,10 @@ $raised-text-color: rgb(255, 255, 255)
 @include igx-navbar($navigation-navbar-theme);
 }
 
-.buy-button {
-@include igx-button($buy-button-theme);
-margin-top: 54px;
-margin-left: 361px;
+.submit-button {
+@include igx-button($submit-button-theme);
+margin-top: 81px;
+margin-left: 364px;
 
 }
 

@@ -3,6 +3,8 @@
 @import '~igniteui-angular/lib/core/styles/components/ripple/ripple-theme';
 @import '~igniteui-angular/lib/core/styles/components/button/button-component';
 @import '~igniteui-angular/lib/core/styles/components/button/button-theme';
+@import '~igniteui-angular/lib/core/styles/components/combo/combo-component';
+@import '~igniteui-angular/lib/core/styles/components/combo/combo-theme';
 @import '~igniteui-angular/lib/core/styles/components/input/input-group-component';
 @import '~igniteui-angular/lib/core/styles/components/input/input-group-theme';
 @import '~igniteui-angular/lib/core/styles/components/icon/icon-component';
@@ -30,7 +32,7 @@ form {
 
 
 
-.login-2 {
+.deposit-wallet {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -44,99 +46,23 @@ padding: 0;
 flex-shrink: 0;
 }
 
-.colors-overlay10 {
-position: absolute;
-z-index: 0;
+.title {
+color: igx-color($default-palette, grays, 900);
+margin-top: 16px;
+margin-left: 25px;
 
-width: 100%;
-height: 100%;
+height: 71px;
+min-height: 71px;
 
-background-color: rgba(igx-color($default-palette, primary), .10);
+font-family: 'Big Caslon', 'Titillium Web', sans-serif;
+font-weight: 500;
 }
-.mobile-no-1 {
-width: 100%;
-
-}
-.password-1 {
-width: 100%;
-
-}
-.forget-password {
-margin-top: 13px;
-margin-right: 40px;
-
-width: 100%;
-
-text-decoration: underline;
-color: igx-color($default-palette, primary);
-}
-.login-1 {
-width: 100%;
-height: 50px;
-min-height: 50px;
-
-}
-.facebook-1 {
-width: 100%;
-height: 50px;
-min-height: 50px;
-
-}
-.googlelogin-1 {
-width: 100%;
-height: 50px;
-min-height: 50px;
-
-}
-.ifyouare-non-regis {
-color: igx-color($default-palette, secondary);
-margin-top: 0px;
-width: 100%;
-height: 48px;
-min-height: 48px;
-
-}
-.otp-login {
-position: relative;
-top: 23px;
-left: -379px;
-z-index: 2;
-
-width: 100%;
-
-text-decoration: underline;
-color: igx-color($default-palette, primary);
-}
-.ifyouare-non-regis-row {
-margin-top: 28px;
-
-display: flex;
-flex-direction: row;
-flex-shrink: 0;
-padding: 0;
-}
-
-.body {
-margin-top: 241px;
-margin-right: 138px;
-margin-bottom: 59px;
-margin-left: 141px;
-
-display: flex;
-flex-direction: column;
-padding: 0;
-flex-shrink: 0;
-}
-
-.content {
-width: 658px;
-min-width: 658px;
-height: 810px;
-min-height: 810px;
-position: absolute;
-top: 69px;
-left: 183px;
-z-index: 1;
+.title-1 {
+height: 114px;
+min-height: 114px;
+margin-top: 21px;
+margin-right: 17px;
+margin-left: 26px;
 
 display: flex;
 flex-direction: column;
@@ -145,33 +71,39 @@ flex-shrink: 0;
 background-color: rgb(255, 255, 255);
 }
 
-.title {
-color: igx-color($default-palette, primary);
-margin-top: 0px;
-width: 131px;
-min-width: 131px;
-height: 57px;
-min-height: 57px;
+.enter-amount-1 {
+width: 382px;
+min-width: 382px;
 
-font-family: 'Helvetica', 'Titillium Web', sans-serif;
-text-align: center;
 }
-.title-1 {
-position: absolute;
-top: 139px;
-left: 423px;
-z-index: 2;
+.payment-type-1 {
+width: 388px;
+min-width: 388px;
+}
+
+[_nghost-c2] .payment-type .igx-input-group__bundle{
+widows: 32% !important;
+
+}
+
+.body {
+margin-top: 19px;
+margin-left: 26px;
+margin-right: 20px;
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.screen {
 
 display: flex;
 flex-direction: column;
 padding: 0;
 flex-shrink: 0;
-}
-
-.colors-overlay10-row {
-
-position: relative;
-padding: 0;
+background-color: rgba(igx-color($default-palette, primary), .10);
 }
 
 @function get-palette($palette, $variant: 'light') {
@@ -195,7 +127,7 @@ $idle-icon-color: rgb(255, 255, 255),
 $text-color: rgb(255, 255, 255)
 );
 
-$mobile-no-theme: igx-input-group-theme(
+$enter-amount-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: transparent,
@@ -203,7 +135,7 @@ $schema: get-schema('dark'),
 $palette: get-palette($default-palette, 'dark')
 );
 
-$password-theme: igx-input-group-theme(
+$payment-type-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: transparent,
@@ -211,18 +143,8 @@ $schema: get-schema('dark'),
 $palette: get-palette($default-palette, 'dark')
 );
 
-$login-theme: igx-button-theme(
-$raised-background: igx-color($default-palette, secondary, 400),
-$raised-text-color: rgb(255, 255, 255)
-);
-
-$facebook-theme: igx-button-theme(
-$raised-background: igx-color($default-palette, info),
-$raised-text-color: rgb(255, 255, 255)
-);
-
-$googlelogin-theme: igx-button-theme(
-$raised-background: igx-color($default-palette, secondary, 900),
+$buy-button-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, secondary, 600),
 $raised-text-color: rgb(255, 255, 255)
 );
 
@@ -233,33 +155,24 @@ $raised-text-color: rgb(255, 255, 255)
 @include igx-navbar($navigation-navbar-theme);
 }
 
-.mobile-no {
-@include igx-input-group($mobile-no-theme);
-width: 100%;
-}
-
-.password {
-@include igx-input-group($password-theme);
-margin-top: 51px;
-
-width: 100%;
-}
-
-.login {
-@include igx-button($login-theme);
-margin-top: 13px;
+.enter-amount {
+@include igx-input-group($enter-amount-theme);
+margin-top: 143px;
+margin-left: 300px;
 
 }
 
-.facebook {
-@include igx-button($facebook-theme);
-margin-top: 13px;
+.payment-type {
+@include igx-input-group($payment-type-theme);
+margin-top: 38px;
+margin-left: 300px;
 
 }
 
-.googlelogin {
-@include igx-button($googlelogin-theme);
-margin-top: 13px;
+.buy-button {
+@include igx-button($buy-button-theme);
+margin-top: 119px;
+margin-left: 359px;
 
 }
 

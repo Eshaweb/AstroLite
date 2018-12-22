@@ -13,14 +13,15 @@ import { HoroScopeService, ServiceInfo } from 'src/Services/HoroScopeService/Hor
 import { Platform } from '@angular/cdk/platform';
 import { PayCode } from 'src/Models/Sales/PayCode';
 import { IgxComboComponent } from 'igniteui-angular';
+declare var Razorpay: any; 
 
 
 @Component({
-  selector: 'app-payment',
-  templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.scss']
+  selector: 'app-payment-old',
+  templateUrl: './paymentOld.component.html',
+  styleUrls: ['./paymentOld.component.scss']
 })
-export class PaymentComponent implements OnInit, OnDestroy, AfterViewInit {
+export class PaymentOldComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
   WalletCheckBoxValue: boolean = false;
   paymentModes: any;
@@ -282,7 +283,12 @@ export class PaymentComponent implements OnInit, OnDestroy, AfterViewInit {
       this.selectMeMessage = '';
     }
   }
+  // var rzp1 = new Razorpay(options);
 
+  // document.getElementById('rzp-button1').onclick = function(e){
+  //     rzp1.open();
+  //     e.preventDefault();
+  // }
   pay() {
     var options = {
       description: 'Credits towards AstroLite',
@@ -305,15 +311,20 @@ export class PaymentComponent implements OnInit, OnDestroy, AfterViewInit {
         }
       }
     };
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+    // document.getElementById('rzp-button1').onclick = function(e){
+    //     rzp1.open();
+    //     e.preventDefault();
+    // }
+    // var successCallback = (payment_id) => {
+    //   alert('payment_id: ' + payment_id);
+    // };
 
-    var successCallback = (payment_id) => {
-      alert('payment_id: ' + payment_id);
-    };
-
-    var cancelCallback = (error) => {
-      alert(error.description + ' (Error ' + error.code + ')');
-    };
-    // RazorpayCheckout.open(options, successCallback, cancelCallback);
+    // var cancelCallback = (error) => {
+    //   alert(error.description + ' (Error ' + error.code + ')');
+    // };
+    //  RazorpayCheckout.open(options, successCallback, cancelCallback);
   }
 }
 

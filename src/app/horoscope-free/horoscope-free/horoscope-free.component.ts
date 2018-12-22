@@ -5,11 +5,12 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/observable/merge';
+import { ServiceInfo, HoroScopeService } from 'src/Services/HoroScopeService/HoroScopeService';
+import { HoroRequest } from 'src/Models/HoroScope/HoroRequest';
 import { Platform } from '@angular/cdk/platform';
 import { LoginService } from 'src/Services/login/login.service';
-import { HoroScopeService, ServiceInfo } from 'src/Services/HoroScopeService/HoroScopeService';
-import { HoroRequest } from 'src/Models/HoroScope/HoroRequest';
 import { Location } from "@angular/common";
+
 
 @Component({
     selector: 'app-horoscope-free',

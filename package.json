@@ -38,6 +38,7 @@
     "igniteui-angular": "6.2.3",
     "jszip": "^3.1.5",
     "ngx-toastr": "^9.1.1",
+    "razorpay": "^2.0.3",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.3.3",
     "web-animations-js": "^2.3.1",

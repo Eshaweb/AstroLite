@@ -2,10 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginModule } from './login/login.module';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '../../node_modules/@angular/common';
-import { LoginComponent } from './login/login/login.component';
 import { UIService } from '../Services/UIService/ui.service';
 import { ShareButtonsModule } from '@ngx-share/buttons';
 import { InfragisticsImportsModule } from './infragistics-imports/infragistics-imports.module';
@@ -14,8 +12,6 @@ import { AstamangalaComponent } from './astamangala/astamangala/astamangala.comp
 import { DashboardModule } from './dashboard/dashboard.module';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { DeliveryAddressModule } from './delivery-address/delivery-address.module';
-import { HoroscopeModule } from './horoscope/horoscope.module';
-import { HoroscopeComponent } from './horoscope/horoscope/horoscope.component';
 import { DeliveryAddressComponent } from './delivery-address/delivery-address/delivery-address.component';
 import { ServicesModule } from './services/services.module';
 import { AgmCoreModule } from '../../node_modules/@agm/core';
@@ -36,24 +32,30 @@ import { RegistrationDemoComponent } from './registrationDemo/registrationDemo/r
 import { RegistrationDemoModule } from './registrationDemo/registrationDemo.module';
 import { RegistrationComponent } from './registration/registration/registration.component';
 import { RegistrationModule } from './registration/registration.module';
-import { HoroscopeFreeComponent } from './horoscope-free/horoscope-free/horoscope-free.component';
-import { HoroscopeFreeModule } from './horoscope-free/horoscope-free.module';
 import { HoroscopePaidServiceComponent } from './horoscope-paid-service/horoscope-paid-service/horoscope-paid-service.component';
 import { HoroscopePaidServiceModule } from './horoscope-paid-service/horoscope-paid-service.module';
-import { PaymentComponent } from './payment/payment/payment.component';
-import { PaymentModule } from './payment/payment.module';
 import { SharedModule } from 'src/shared/shared.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AstroLiteServicesComponent } from './AstroLite-Services/astroLite-services.component';
-import { HomeComponent } from './home/home/home.component';
-import { HomeModule } from './home/home.module';
 import { HoropaidComponent } from './horopaid/horopaid/horopaid.component';
 import { HoropaidModule } from './horopaid/horopaid.module';
 import { PaidervicesComponent } from './paidervices/paidervices.component';
 import { ServicesComponent } from './services/services/services.component';
-import { MatchMakingOldModule } from './match-makingOld/match-makingOld.module';
 import { MatchMakingModule } from './match-making/match-making.module';
 import { MatchMakingComponent } from './match-making/match-making/match-making.component';
+import { HoroscopeFreeComponent } from './horoscope-free/horoscope-free/horoscope-free.component';
+import { HoroscopeFreeModule } from './horoscope-free/horoscope-free.module';
+import { LoginModule } from './login/login.module';
+import { LoginComponent } from './login/login/login.component';
+import { HomeModule } from './home/home.module';
+import { HomeComponent } from './home/home/home.component';
+import { DepositWalletModule } from './deposit-wallet/deposit-wallet.module';
+import { DepositWalletComponent } from './deposit-wallet/deposit-wallet/deposit-wallet.component';
+import { MatchMakingReportModule } from './match-making-report/match-making-report.module';
+import { MatchMakingReportComponent } from './match-making-report/match-making-report/match-making-report.component';
+import { HoroscopeModule } from './horoscope/horoscope.module';
+import { LoginService } from 'src/Services/login/login.service';
+import { PaymentOldModule } from './paymentOld/paymentOld.module';
 
 const generatedRoutes: Routes = [
     {
@@ -62,21 +64,19 @@ const generatedRoutes: Routes = [
         pathMatch: 'full'
     },
     { path: 'home', component: HomeComponent },
-    { path: 'horoscope', component: HoroscopeComponent },
-    {
-        path: 'login',
-        component:LoginComponent
-    },
+    { path: 'login', component:LoginComponent },
     {
         path: 'registration',
         component: RegistrationComponent
     },
      { path: 'matchmaking', component: MatchMakingComponent },
+     { path: 'matchmakingReport', component: MatchMakingReportComponent },
      { path: 'deliveryAddress', component: DeliveryAddressComponent },
+     { path: 'depoToWallet', component: DepositWalletComponent },
     // { path: 'astamangala', component: AstamangalaComponent },
     // { path: 'loginDemo', component: LoginDemoComponent },
     // { path: 'regDemo', component: RegistrationDemoComponent },
-    { path: 'payment', component: PaymentComponent },
+    //{ path: 'payment', component: PaymentComponent },
     { path: 'horoscopeFree', component: HoroscopeFreeComponent },
     { path: 'horoscopePaid', component: HoropaidComponent },
     { path: 'paidServices', component: PaidervicesComponent },
@@ -133,7 +133,8 @@ let config = new AuthServiceConfig([
         CommonModule, InfragisticsImportsModule,
         BrowserAnimationsModule,
         RouterModule.forRoot(generatedRoutes),
-      LoginModule, HomeModule,
+        LoginModule,
+        HomeModule, 
         RegistrationModule,
         //AstamangalaModule,
         HoroscopePaidServiceModule,
@@ -141,16 +142,18 @@ let config = new AuthServiceConfig([
         DashboardModule,
         SharedModule,
         DeliveryAddressModule, 
-        PaymentModule,
+        PaymentOldModule,
         HoroscopeModule,
         HoroscopeFreeModule,
         MatchMakingModule, 
-        MatchMakingOldModule,
+        MatchMakingReportModule,
+        DepositWalletModule,
         //RegistrationDemoModule,
+        //LoginOldModule,
         ServicesModule, 
         //LoginDemoModule
     ],
-    providers: [HoroScopeService,UIService, RegistrationService, SmartHttpClient, LoaderService,
+    providers: [LoginService,HoroScopeService,UIService, RegistrationService, SmartHttpClient, LoaderService,
         {
             provide: SmartHttpClient,
             useFactory: applicationHttpClientCreator,

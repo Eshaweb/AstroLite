@@ -30,7 +30,7 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
   isLoading: boolean;
   ngOnInit() {
     this.currentValue = 0;
-    alert(this.route.params);
+    //alert(this.route.params);
     this.mapsAPILoader.load().then(() => {
       let nativeHomeInputBox = document.getElementById('txtHome').getElementsByTagName('input')[0];
       let autocomplete = new google.maps.places.Autocomplete(nativeHomeInputBox, {
@@ -333,7 +333,7 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   onClick() {
     this.isLoading = true;
-    this.tick();
+    //this.tick();
 
     this.maxvalue = 100;
     var bdate: Date = this.horoscopeFormForm.controls['birthDate'].value;
