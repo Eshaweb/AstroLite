@@ -30,10 +30,10 @@ title="Payment" actionButtonIcon="arrow_back" >
 <span class="igx-typography__body-1 total-price1200">Effective Price.  :    {{payableAmount}}</span>
 <p style="color:red" *ngIf="(differenceAmount>0)"> {{'Remaining balance amount '+differenceAmount+' Rs will be deducted from choosen payment modes'}} </p>
 <p style="color:green"> {{selectMeMessage}}</p>
-<igx-combo #combo class="payment-mode-1" width="400px" [itemsMaxHeight]="255"
+<!-- <igx-combo #combo class="payment-mode-1" width="400px" [itemsMaxHeight]="255"
             [data]="paymentModes" [displayKey]="'Text'" [valueKey]="'Id'" type="line"
             placeholder="Location(s)" searchPlaceholder="Search..." (onSelectionChange)="ObjChanged($event)">
-</igx-combo>
+</igx-combo> -->
 <div class="astrolite-wallet">
 <igx-checkbox [checked]="false" (click)="checkBox_valueChanged($event)">
 Pay using Astrolite wallet (Wallet Balce {{walletbalance}})
@@ -44,12 +44,14 @@ Pay using Astrolite wallet (Wallet Balce {{walletbalance}})
 <button igxRipple igxButton="raised" (click)="onContinue()">Continue</button>
 
 <div class="payment-mode">
-<!-- <igx-combo #combo class="payment-mode-1" width="400px" [itemsMaxHeight]="255"
+<igx-combo #combo class="payment-mode-1" width="400px" [itemsMaxHeight]="255"
             [data]="paymentModes" [displayKey]="'Text'" [valueKey]="'Id'" type="line"
             placeholder="Location(s)" searchPlaceholder="Search..." (onSelectionChange)="ObjChanged($event)">
-</igx-combo> -->
-</div>
+</igx-combo>
+
 <br>
+</div>
+
 
 </div>
 </div>

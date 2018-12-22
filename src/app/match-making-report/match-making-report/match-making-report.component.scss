@@ -1,0 +1,211 @@
+@import '~igniteui-angular/lib/core/styles/themes/utilities';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-component';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-theme';
+@import '~igniteui-angular/lib/core/styles/components/button/button-component';
+@import '~igniteui-angular/lib/core/styles/components/button/button-theme';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-component';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-theme';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-component';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-theme';
+
+main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+	overflow: auto;
+    height: 100%;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+
+
+.match-making-report {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.navigation {
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.match-report {
+color: igx-color($default-palette, grays, 900);
+margin-top: 19px;
+margin-right: 144px;
+margin-left: 33px;
+
+width: 100%;
+
+font-family: 'Big Caslon', 'Titillium Web', sans-serif;
+font-weight: 500;
+font-size: 40px;
+letter-spacing: -0.33px;
+}
+.title {
+margin-top: 9px;
+margin-right: 23px;
+margin-left: 27px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.sub-title1 {
+color: igx-color($default-palette, grays, 900);
+margin-top: 16px;
+margin-left: 45px;
+
+height: 57px;
+min-height: 57px;
+
+font-family: 'Helvetica', 'Titillium Web', sans-serif;
+font-size: 30px;
+}
+.nakshatra-ashwini {
+color: igx-color($default-palette, primary);
+margin-top: 27px;
+margin-left: 62px;
+
+height: 28px;
+min-height: 28px;
+
+}
+.nakshatra-ashwini-copy {
+color: igx-color($default-palette, primary);
+margin-top: 4px;
+margin-left: 62px;
+
+height: 28px;
+min-height: 28px;
+
+}
+.left {
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.sub-title2 {
+color: igx-color($default-palette, grays, 900);
+margin-top: 12px;
+margin-left: 72px;
+
+height: 57px;
+min-height: 57px;
+
+font-family: 'Helvetica', 'Titillium Web', sans-serif;
+font-size: 30px;
+}
+.nakshatra-ashwini-copy2 {
+color: igx-color($default-palette, primary);
+margin-top: 32px;
+margin-left: 93px;
+
+height: 28px;
+min-height: 28px;
+
+}
+.right {
+margin: 1px 0 0 auto;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.content {
+margin-top: 4px;
+margin-right: 23px;
+margin-left: 28px;
+
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+padding: 0;
+}
+
+.bottom {
+margin-top: 4px;
+margin-right: 23px;
+margin-left: 28px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.screen {
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgba(igx-color($default-palette, primary), .10);
+}
+
+@function get-palette($palette, $variant: 'light') {
+$p: igx-color($palette, 'primary');
+$s: igx-color($palette, 'secondary');
+@return igx-palette($primary: $p,
+$secondary: $s,
+$grays: if($variant == 'light', #fff, #000)
+);
+}
+@function get-schema($variant: 'light') {
+@return map-get((
+dark: $dark-schema,
+light: $light-schema
+), $variant);
+}
+
+$navigation-navbar-theme: igx-navbar-theme(
+$background: igx-color($default-palette, primary),
+$idle-icon-color: rgb(255, 255, 255),
+$text-color: rgb(255, 255, 255)
+);
+
+$submit-button-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, secondary, 600),
+$raised-text-color: rgb(255, 255, 255)
+);
+
+
+:host {
+::ng-deep {
+.navigation-navbar {
+@include igx-navbar($navigation-navbar-theme);
+}
+
+.submit-button {
+@include igx-button($submit-button-theme);
+margin-top: 81px;
+margin-left: 364px;
+
+}
+
+}
+}
