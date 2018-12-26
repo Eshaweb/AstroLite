@@ -35,8 +35,8 @@ export class HoroscopePaidServiceComponent implements OnInit {
     totalprice: number=0;
     requireDeliveryAddress: boolean;
   PartyMastId: any;
-    constructor(private route: ActivatedRoute, private router: Router,
-        private loginService: LoginService, public horoScopeService: HoroScopeService) {
+    constructor(public route: ActivatedRoute, public router: Router,
+      public loginService: LoginService, public horoScopeService: HoroScopeService) {
           var itemMast = {
             ItActId: "#SH",
             PartyMastId: this.PartyMastId,

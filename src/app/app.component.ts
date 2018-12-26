@@ -39,7 +39,7 @@ export class AppComponent {
     text: string,
     link: string
   }> = [];
-  constructor(private event: EventsService, private router: Router, private pubSubService: PubSubService) {
+  constructor(public event: EventsService, public router: Router, public pubSubService: PubSubService) {
     this.event.subscribe('REFRESH_DIGIPARTYNAME', () => {
       this.isLogOut = true;
     });

@@ -9,7 +9,7 @@ import { HoroScopeService } from 'src/Services/HoroScopeService/HoroScopeService
 export class PaymentProcessingComponent implements OnInit {
   ShowMessage: string;
 
-  constructor(private horoScopeService:HoroScopeService) { 
+  constructor(public horoScopeService:HoroScopeService) { 
     // var Payment = {
     //   PaymentId:this.horoScopeService.PaymentId
     // }

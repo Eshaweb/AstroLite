@@ -45,9 +45,9 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   paksha: string;
 
 
-    constructor(private route: ActivatedRoute, private router: Router,public uiService: UIService,
-            private formbuilder: FormBuilder, private ngZone: NgZone, 
-            private mapsAPILoader: MapsAPILoader,public horoScopeService: HoroScopeService) {
+    constructor(public route: ActivatedRoute, public router: Router,public uiService: UIService,
+      public formbuilder: FormBuilder, public ngZone: NgZone, 
+      public mapsAPILoader: MapsAPILoader,public horoScopeService: HoroScopeService) {
                 this.tithi='Sapthami';
                 this.day='Friday';
                 this.nakshathra='Hubba';

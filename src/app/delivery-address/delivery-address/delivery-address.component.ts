@@ -39,7 +39,7 @@ export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewIni
     customerEMailAddressForm: FormGroup;
     email: any;
     DeliveryAddressRequired: boolean;
-    constructor(private _location: Location, private route: ActivatedRoute, private router: Router, private loginService: LoginService,
+    constructor(public _location: Location, public route: ActivatedRoute, public router: Router, public loginService: LoginService,
         public horoScopeService: HoroScopeService, public smartHttpClient: SmartHttpClient,
         public uiService: UIService, public formbuilder: FormBuilder) {
         this.route.params.subscribe(params => {

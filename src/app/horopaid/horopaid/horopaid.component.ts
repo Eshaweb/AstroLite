@@ -44,8 +44,8 @@ export class HoropaidComponent implements OnInit {
     SoftCopyDifference: number;
     HardCopyDifference: number;
     itemAmount: number;
-    constructor(private _location: Location, private route: ActivatedRoute, private router: Router,
-        private loginService: LoginService, public horoScopeService: HoroScopeService) {
+    constructor(public _location: Location, public route: ActivatedRoute, public router: Router,
+        public loginService: LoginService, public horoScopeService: HoroScopeService) {
 
         // this.SoftCopyDifference = this.service.MRP - this.service.Amount;
         // this.HardCopyDifference = this.service.PrintMRP - this.service.PrintAmount;

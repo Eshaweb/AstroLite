@@ -149,8 +149,8 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
       return isNumeric(value);
     });
   }
-  constructor(private toastrService: ToastrService, private route: ActivatedRoute, private router: Router, private formBuilder: FormBuilder,
-    private cdr: ChangeDetectorRef, private partyService: PartyService, public horoScopeService: HoroScopeService, public uiService: UIService,
+  constructor(public toastrService: ToastrService, public route: ActivatedRoute, private router: Router, public formBuilder: FormBuilder,
+    private cdr: ChangeDetectorRef, public partyService: PartyService, public horoScopeService: HoroScopeService, public uiService: UIService,
     public smartHttpClient: SmartHttpClient, private ngZone: NgZone, private mapsAPILoader: MapsAPILoader, public formbuilder: FormBuilder) {
     var genders = [{ Id: "M", Text: "Male" },
     { Id: "F", Text: "Female" }];

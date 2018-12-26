@@ -40,9 +40,9 @@ export class PaymentOldComponent implements OnInit, OnDestroy, AfterViewInit {
   OrderId: string;
   paymentId: any;
 
-  constructor(private _location: Location, private route: ActivatedRoute, private router: Router,
-    private formBuilder: FormBuilder, private platform: Platform, public formbuilder: FormBuilder,
-    private loginService: LoginService, public horoScopeService: HoroScopeService,
+  constructor(public _location: Location, public route: ActivatedRoute, public router: Router,
+    public formBuilder: FormBuilder, public platform: Platform, public formbuilder: FormBuilder,
+    public loginService: LoginService, public horoScopeService: HoroScopeService,
     public smartHttpClient: SmartHttpClient, public uiService: UIService) {
     this.discountAmount = "0";
     // let loading = this.loadingController.create({

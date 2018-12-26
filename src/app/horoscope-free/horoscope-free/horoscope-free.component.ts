@@ -59,7 +59,7 @@ export class HoroscopeFreeComponent implements OnInit, OnDestroy, AfterViewInit 
         //     autoCenter: true
         //   });
     }
-    constructor(private _location: Location, private route: ActivatedRoute, private router: Router, public platform: Platform, private loginService: LoginService, public horoScopeService: HoroScopeService) {
+    constructor(public _location: Location, public route: ActivatedRoute, public router: Router, public platform: Platform, public loginService: LoginService, public horoScopeService: HoroScopeService) {
         //this.navparams = this.navParams.data.data;
         //this.horoInfo = this.navParams.data.horoRequest;
         // this.Name = this.route.snapshot.params['name'];

@@ -52,9 +52,9 @@ export class RegistrationComponent implements OnInit, OnDestroy, AfterViewInit {
     refCodeMessage: string;
     isLoading: boolean;
 
-    constructor(public uiService: UIService, private registrationService: RegistrationService,
-        private route: ActivatedRoute, private _location: Location,
-        private router: Router, private formBuilder: FormBuilder) {
+    constructor(public uiService: UIService, public registrationService: RegistrationService,
+        public route: ActivatedRoute, public _location: Location,
+        public router: Router, public formBuilder: FormBuilder) {
 
         this.registrationForm = this.formBuilder.group({
             mobileno: [8660506866, [Validators.required, Validators.minLength(10)]],

@@ -18,9 +18,9 @@ export class MatchMakingReportComponent implements OnInit, OnDestroy, AfterViewI
 
 
     constructor(
-        private route: ActivatedRoute,
-        private router: Router,
-            private formBuilder: FormBuilder) {
+        public route: ActivatedRoute,
+        public router: Router,
+        public formBuilder: FormBuilder) {
     }
 
     ngOnInit(): void {

@@ -69,8 +69,8 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   Name: any;
   horoInfo: any;
 
-  constructor(private _location: Location, private events:EventsService, private route: ActivatedRoute, private router: Router, public http: HttpClient, 
-    private authService: AuthService, public horoScopeService: HoroScopeService, private loginService: LoginService, 
+  constructor(public _location: Location, public events:EventsService, public route: ActivatedRoute, public router: Router, public http: HttpClient, 
+    public authService: AuthService, public horoScopeService: HoroScopeService, public loginService: LoginService, 
     public uiService: UIService, public formbuilder: FormBuilder) {
     
     this.route.params.subscribe(params => {

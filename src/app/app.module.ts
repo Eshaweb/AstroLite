@@ -52,24 +52,20 @@ const generatedRoutes: Routes = [
         pathMatch: 'full'
     },
     { path: 'home', component: HomeComponent },
-    { path: 'login', component:LoginComponent },
-    {
-        path: 'registration',
-        component: RegistrationComponent
-    },
-     { path: 'matchmaking', component: MatchMakingComponent },
-     { path: 'matchmakingReport', component: MatchMakingReportComponent },
-     { path: 'deliveryAddress', component: DeliveryAddressComponent },
-     { path: 'depoToWallet', component: DepositWalletComponent },
-    // { path: 'astamangala', component: AstamangalaComponent },
-    // { path: 'loginDemo', component: LoginDemoComponent },
-    // { path: 'regDemo', component: RegistrationDemoComponent },
-    //{ path: 'payment', component: PaymentComponent },
-    { path: 'horoscopeFree', component: HoroscopeFreeComponent },
-    { path: 'horoscopePaid', component: HoropaidComponent },
-    { path: 'paidServices', component: PaidervicesComponent },
-    { path: 'dashboard', component: DashboardComponent },
-    { path: 'AstroServices', component: AstroLiteServicesComponent },
+    // { path: 'login', component:LoginComponent },
+    // {
+    //     path: 'registration',
+    //     component: RegistrationComponent
+    // },
+    //  { path: 'matchmaking', component: MatchMakingComponent },
+    //  { path: 'matchmakingReport', component: MatchMakingReportComponent },
+    //  { path: 'deliveryAddress', component: DeliveryAddressComponent },
+    //  { path: 'depoToWallet', component: DepositWalletComponent },
+    // { path: 'horoscopeFree', component: HoroscopeFreeComponent },
+    // { path: 'horoscopePaid', component: HoropaidComponent },
+    // { path: 'paidServices', component: PaidervicesComponent },
+    // { path: 'dashboard', component: DashboardComponent },
+    // { path: 'AstroServices', component: AstroLiteServicesComponent },
     { 
         path: 'services', 
         //component:ServicesComponent

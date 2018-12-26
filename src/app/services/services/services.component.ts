@@ -18,8 +18,8 @@ export class ServicesComponent implements OnInit, OnDestroy, AfterViewInit {
     people: { id: string; name: string; }[];
 
 
-    constructor(private route: ActivatedRoute, private router: Router,
-        private formBuilder: FormBuilder) {
+    constructor(public route: ActivatedRoute, public router: Router,
+        public formBuilder: FormBuilder) {
         this.people = [
                     //    { id: "/horoscope", name: "HoroScope" }, 
                     //    { id: "/matchmaking", name: "Match Making" },
