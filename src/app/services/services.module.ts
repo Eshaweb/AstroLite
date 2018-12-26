@@ -15,13 +15,7 @@ import { MatchMakingReportComponent } from '../match-making-report/match-making-
 import { HoroscopeComponent } from '../horoscope/horoscope/horoscope.component';
 import { PaymentOldComponent } from '../paymentOld/paymentOld/paymentOld.component';
 import { MatchMakingComponent } from '../match-making/match-making/match-making.component';
-import { DeliveryAddressModule } from '../delivery-address/delivery-address.module';
 import { PaymentOldModule } from '../paymentOld/paymentOld.module';
-import { HoroscopeFreeModule } from '../horoscope-free/horoscope-free.module';
-import { MatchMakingModule } from '../match-making/match-making.module';
-import { MatchMakingReportModule } from '../match-making-report/match-making-report.module';
-import { HoropaidModule } from '../horopaid/horopaid.module';
-import { HoroscopePaidServiceModule } from '../horoscope-paid-service/horoscope-paid-service.module';
 import { PaymentProcessingComponent } from '../payment-processing/payment-processing.component';
 import { HoroscopePaidServiceComponent } from '../horoscope-paid-service/horoscope-paid-service/horoscope-paid-service.component';
 import { AgmCoreModule } from '@agm/core';
