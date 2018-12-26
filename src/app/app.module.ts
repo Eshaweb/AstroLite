@@ -130,7 +130,8 @@ let config = new AuthServiceConfig([
         }),
         SocialLoginModule,
         EventsModule.forRoot(),
-        BrowserModule, ShareButtonsModule.forRoot(),
+        BrowserModule.withServerTransition({appId: 'my-app'}),
+         ShareButtonsModule.forRoot(),
         CommonModule, InfragisticsImportsModule,
         BrowserAnimationsModule,
         RouterModule.forRoot(generatedRoutes, {
