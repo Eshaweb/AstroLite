@@ -42,28 +42,29 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     longitude: number;
     horoscopeForm: FormGroup;
     horoRequest: HoroRequest;
+  paksha: string;
 
 
     constructor(private route: ActivatedRoute, private router: Router,public uiService: UIService,
             private formbuilder: FormBuilder, private ngZone: NgZone, 
             private mapsAPILoader: MapsAPILoader,public horoScopeService: HoroScopeService) {
-                this.tithi='Chathurdashi';
-                this.day='SaturDay';
-                this.nakshathra='Moola';
-                this.yoga='Shobhana';
-                this.karana='Taitila';
+                this.tithi='Sapthami';
+                this.day='Friday';
+                this.nakshathra='Hubba';
+                this.yoga='Aayushmaan';
+                this.karana='Bhadra';
 
                 this.shaaliVahanaShaka='1960';
                 this.samvathsara='Vilambi';
                 this.ruthu='Hemantha';
-                this.sauraMasa='Meena';
+                this.sauraMasa='Dhanu';
                 this.chaandraMasa='MargaShira';
 
-                this.sunRise='05:54 AM';
-                this.sunSet='06:35 PM';
-                this.dayTime='12:02:10';
-                this.moonRise='10:22:54';
-                this.moonSet='21:11:56';
+                this.sunRise='06:40 AM';
+                this.sunSet='06:02 PM';
+                this.paksha='Krishna';
+                this.moonRise='11:45 PM';
+                this.moonSet='11:38 AM';
 
                 this.raahuKaala='';
                 this.gulikaKaala='';
