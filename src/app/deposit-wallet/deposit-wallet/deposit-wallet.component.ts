@@ -42,12 +42,12 @@ export class DepositWalletComponent {
     const amountContrl = this.depositToWalletForm.get('amount');
     amountContrl.valueChanges.subscribe(value => this.setErrorMessage(amountContrl));
   
-    // this.horoScopeService.GetPayCodes((data) => {
-    //   this.paymentModes = data;
-    // });
-    this.horoScopeService.GetPayCodes().subscribe((data:any)=>{
+    this.horoScopeService.GetPayCodes((data) => {
       this.paymentModes = data;
     });
+    // this.horoScopeService.GetPayCodes().subscribe((data:any)=>{
+    //   this.paymentModes = data;
+    // });
   }
   setErrorMessage(c: AbstractControl): void {
     this.amountMessage = '';

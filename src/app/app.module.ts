@@ -51,6 +51,7 @@ import { HoroscopeModule } from './horoscope/horoscope.module';
 import { LoginService } from 'src/Services/login/login.service';
 import { PaymentOldModule } from './paymentOld/paymentOld.module';
 import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { PaymentProcessingComponent } from './payment-processing/payment-processing.component';
 
 
 const generatedRoutes: Routes = [

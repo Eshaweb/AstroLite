@@ -163,18 +163,18 @@ export class HoropaidComponent implements OnInit {
             //     document.body.removeChild(a);
             //     URL.revokeObjectURL(url);
             // });
-            // this.horoScopeService.TestById(this.horoScopeService.OrderId.toString()).subscribe((data: any) => {
-            //     var newBlob = new Blob([data], { type: "application/pdf" });
-            //         const fileName: string = 'FullHoroscope.pdf';
-            //         const a: HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
-            //         var url = window.URL.createObjectURL(newBlob);
-            //         a.href = url;
-            //         a.download = fileName;
-            //         document.body.appendChild(a);
-            //         a.click();
-            //         document.body.removeChild(a);
-            //         URL.revokeObjectURL(url);
-            // });
+            this.horoScopeService.TestById(this.horoScopeService.OrderId.toString()).subscribe((data: any) => {
+                var newBlob = new Blob([data], { type: "application/pdf" });
+                    const fileName: string = 'FullHoroscope.pdf';
+                    const a: HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
+                    var url = window.URL.createObjectURL(newBlob);
+                    a.href = url;
+                    a.download = fileName;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+            });
             // this.horoScopeService.ProcessOrder(FreePDF, (data) => {
             //     var newBlob = new Blob([data], { type: "application/pdf" });
             //     const fileName: string = 'FullHoroscope.pdf';
@@ -187,7 +187,7 @@ export class HoropaidComponent implements OnInit {
             //     document.body.removeChild(a);
             //     URL.revokeObjectURL(url);
             // });
-            this.router.navigate(["/services/deliveryAddress", { 'DeliveryAddressRequired': DeliveryAddressRequired }]);
+            //this.router.navigate(["/services/deliveryAddress", { 'DeliveryAddressRequired': DeliveryAddressRequired }]);
         });
     }
 

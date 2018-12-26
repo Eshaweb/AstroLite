@@ -69,11 +69,11 @@ export class HoroScopeService {
         alert(err);
         return "";
     }
-    GetPayCodes() {
-        var url = "http://astroliteapi.azurewebsites.net/api/Sales/GetPayCodes";
-        var endPoint = "Sales/GetPayCodes";
-        return this.http.get(url);
-      }
+    // GetPayCodes() {
+    //     var url = "http://astroliteapi.azurewebsites.net/api/Sales/GetPayCodes";
+    //     var endPoint = "Sales/GetPayCodes";
+    //     return this.http.get(url);
+    //   }
     CreateOrder(orderModel, callback: (data) => void) {
         var endPoint = "Order/CreateOrder";
         return this.smartHttpClient.Post(endPoint, orderModel).subscribe((data: any) => {
@@ -171,13 +171,13 @@ export class HoroScopeService {
     // }
 
     
-    // GetPayCodes(callback: (data) => void){
-    //     var endPoint = "Sales/GetPayCodes";
-    // this.smartHttpClient.Get(endPoint).subscribe((data: any) => {
-    //   this.paymentModes = data;
-    //   callback(data);
-    // });
-    // }
+    GetPayCodes(callback: (data) => void){
+        var endPoint = "Sales/GetPayCodes";
+    this.smartHttpClient.Get(endPoint).subscribe((data: any) => {
+      this.paymentModes = data;
+      callback(data);
+    });
+    }
     GetWalletBalance(PartyMastId,callback: (data) => void){
         var endPoint = "Wallet/GetWalletBalance";
         var data = "PartyMastId=" + PartyMastId;

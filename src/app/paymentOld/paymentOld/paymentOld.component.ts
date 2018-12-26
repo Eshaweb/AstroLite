@@ -58,15 +58,15 @@ export class PaymentOldComponent implements OnInit, OnDestroy, AfterViewInit {
     else{
       this.payableAmount = this.horoScopeService.itemOrdered.PrintAmount;
     }
-    // this.horoScopeService.GetPayCodes((data) => {
-    //   this.paymentModes = data;
-    //   this.GetWalletBalance();
-    //   //loading.dismiss();
-    // });
-    this.horoScopeService.GetPayCodes().subscribe((data:any)=>{
+    this.horoScopeService.GetPayCodes((data) => {
       this.paymentModes = data;
       this.GetWalletBalance();
+      //loading.dismiss();
     });
+    // this.horoScopeService.GetPayCodes().subscribe((data:any)=>{
+    //   this.paymentModes = data;
+    //   this.GetWalletBalance();
+    // });
     this.CoupenCodeForm = this.formbuilder.group({
       couponcode: ['', [Validators.required, Validators.minLength(6)]],
     });

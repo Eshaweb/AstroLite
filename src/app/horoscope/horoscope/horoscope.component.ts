@@ -30,7 +30,6 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
     this.currentValue = 0;
     //alert(this.route.params);
-    
   
     this.mapsAPILoader.load().then(() => {
       let nativeHomeInputBox = document.getElementById('txtHome').getElementsByTagName('input')[0];
@@ -49,18 +48,18 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
       });
     });
 
-    this.horoScopeService.TestById('88').subscribe((data: any) => {
-      var newBlob = new Blob([data], { type: "application/pdf" });
-          const fileName: string = 'FullHoroscope.pdf';
-          const a: HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
-          var url = window.URL.createObjectURL(newBlob);
-          a.href = url;
-          a.download = fileName;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          URL.revokeObjectURL(url);
-  });
+  //   this.horoScopeService.TestById('88').subscribe((data: any) => {
+  //     var newBlob = new Blob([data], { type: "application/pdf" });
+  //         const fileName: string = 'FullHoroscope.pdf';
+  //         const a: HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
+  //         var url = window.URL.createObjectURL(newBlob);
+  //         a.href = url;
+  //         a.download = fileName;
+  //         document.body.appendChild(a);
+  //         a.click();
+  //         document.body.removeChild(a);
+  //         URL.revokeObjectURL(url);
+  // });
   }
   ngAfterViewInit(): void {
 
@@ -166,10 +165,10 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
     this.using = ["AstroLite Wallet", "Payment Gateway"];
     //this.horoRequest=this.horoScopeService.horoRequest;
     this.horoscopeFormForm = this.formbuilder.group({
-      name: ['Shamanth', [Validators.required, Validators.minLength(4)]],
-      fatherName: ['Rajesh'],
-      motherName: ['Leelavathi'],
-      gotra: ['Vasista'],
+      name: ['', [Validators.required, Validators.minLength(4)]],
+      fatherName: [''],
+      motherName: [''],
+      gotra: [''],
       birthDate: [null, [Validators.required]],
       birthTime: ['', [Validators.required]],
       //timeformat: ['', [Validators.required]],

@@ -26,7 +26,7 @@ export class ServicesComponent implements OnInit, OnDestroy, AfterViewInit {
                     //    { id: "/astamangala", name: "Astamangala" },
                        { id:"/#SH", name:"HoroScope" },
                        { id: "/#SM", name: "Match Making" },
-                       { id: "/#SA", name: "Astamangala" },
+                       //{ id: "/#SA", name: "Astamangala" },
                       ];
         this.router.events.subscribe((event: Event) => {
             if (event instanceof NavigationEnd) {
