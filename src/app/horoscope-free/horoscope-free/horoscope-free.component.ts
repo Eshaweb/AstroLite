@@ -81,7 +81,7 @@ export class HoroscopeFreeComponent implements OnInit, OnDestroy, AfterViewInit 
 
         this.Fathername = this.horoScopeService.Mothername;
         this.Mothername = this.horoScopeService.Fathername;
-        this.BirthPlace = this.horoScopeService.birthplace;
+        this.BirthPlace = this.horoScopeService.birthplaceShort;
         // this.route.snapshot.data.subscribe(result=>{
         //     this.horoInfo = result['horoRequest'];
         //     this.horoInfo = result['data'];

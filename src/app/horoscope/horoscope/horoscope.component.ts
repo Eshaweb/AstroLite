@@ -387,6 +387,8 @@ export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
 
 
     var horoRequest = this.horoRequest;
+    this.horoScopeService.Fathername=this.horoRequest.Father;
+    this.horoScopeService.Mothername=this.horoRequest.Mother;
     //this.BDate = this.horoscopeForm.controls['Bdate'].value;
     // this.horoScopeService.Test((data) => {
     //   var fff=data;
