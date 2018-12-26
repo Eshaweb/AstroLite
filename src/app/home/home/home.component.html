@@ -87,10 +87,12 @@ title="Home" actionButtonIcon="arrow_back" >
 
 </igx-card>
 </div>
-<div class="row"><div class="first-box"><div class="sunrise-sunset">
+<div class="row">
+    <div class="first-box">
+        <div class="sunrise-sunset">
 <igx-list class="sunrise-sunset-1" >
 <igx-list-item isHeader="true" class="sunrise-sunset-3" >
-Sunset and Sunrise</igx-list-item>
+Dina Vishesha</igx-list-item>
 <igx-list-item class="sunrise-sunset-4" >
 <div class="sunrise-sunset-2-container" >
 <div class="sunrise-sunset-2-info" >
@@ -138,7 +140,7 @@ Sunset and Sunrise</igx-list-item>
 <div class="second-box"><div class="sunrise-sunset-9">
 <igx-list class="sunrise-sunset-10" >
 <igx-list-item isHeader="true" class="sunrise-sunset-12" >
-Panchangam</igx-list-item>
+Dina Vishesha</igx-list-item>
 <igx-list-item class="sunrise-sunset-13" >
 <div class="sunrise-sunset-11-container" >
 <div class="sunrise-sunset-11-info" >
@@ -186,7 +188,7 @@ Panchangam</igx-list-item>
 <div class="third-box"><div class="sunrise-sunset-18">
 <igx-list class="sunrise-sunset-19" >
 <igx-list-item isHeader="true" class="sunrise-sunset-21" >
-Sunset Sunrise</igx-list-item>
+Dina Vishesha</igx-list-item>
 <igx-list-item class="sunrise-sunset-22" >
 <div class="sunrise-sunset-20-container" >
 <div class="sunrise-sunset-20-info" >
@@ -206,9 +208,9 @@ Sunset Sunrise</igx-list-item>
 <igx-list-item class="sunrise-sunset-24" >
 <div class="sunrise-sunset-20-container" >
 <div class="sunrise-sunset-20-info" >
-<span class="list-itemtext-24 igx-typography__subtitle-1">Day Time</span>
+<span class="list-itemtext-24 igx-typography__subtitle-1">Paksha</span>
 </div>
-<span class="list-itemtext-25 igx-typography__subtitle-2">{{dayTime}}</span>
+<span class="list-itemtext-25 igx-typography__subtitle-2">{{paksha}}</span>
 </div>
 </igx-list-item>
 <igx-list-item class="sunrise-sunset-25" >
@@ -231,16 +233,17 @@ Sunset Sunrise</igx-list-item>
 </div>
 
 </div>
-<div class="fourth-box"><div class="sunrise-sunset-27">
+<div class="fourth-box">
+    <div class="sunrise-sunset-27">
 <igx-list class="sunrise-sunset-28" >
 <igx-list-item isHeader="true" class="sunrise-sunset-30" >
-IMPORT</igx-list-item>
+Dina Vishesha</igx-list-item>
 <igx-list-item class="sunrise-sunset-31" >
 <div class="sunrise-sunset-29-container" >
 <div class="sunrise-sunset-29-info" >
 <span class="list-itemtext-30 igx-typography__subtitle-1">Raahu Kaala</span>
 </div>
-<span class="list-itemtext-31 igx-typography__subtitle-2">12</span>
+<span class="list-itemtext-31 igx-typography__subtitle-2"></span>
 </div>
 </igx-list-item>
 <igx-list-item class="sunrise-sunset-32" >
@@ -248,7 +251,7 @@ IMPORT</igx-list-item>
 <div class="sunrise-sunset-29-info" >
 <span class="list-itemtext-32 igx-typography__subtitle-1">Gulika Kaala</span>
 </div>
-<span class="list-itemtext-33 igx-typography__subtitle-2">7.10</span>
+<span class="list-itemtext-33 igx-typography__subtitle-2"></span>
 </div>
 </igx-list-item>
 <igx-list-item class="sunrise-sunset-33" >
@@ -256,7 +259,7 @@ IMPORT</igx-list-item>
 <div class="sunrise-sunset-29-info" >
 <span class="list-itemtext-34 igx-typography__subtitle-1">Yamakantaka</span>
 </div>
-<span class="list-itemtext-35 igx-typography__subtitle-2">12.5</span>
+<span class="list-itemtext-35 igx-typography__subtitle-2"></span>
 </div>
 </igx-list-item>
 <igx-list-item class="sunrise-sunset-34" >
@@ -264,7 +267,7 @@ IMPORT</igx-list-item>
 <div class="sunrise-sunset-29-info" >
 <span class="list-itemtext-36 igx-typography__subtitle-1">Taara Bala</span>
 </div>
-<span class="list-itemtext-37 igx-typography__subtitle-2">11.20</span>
+<span class="list-itemtext-37 igx-typography__subtitle-2"></span>
 </div>
 </igx-list-item>
 <igx-list-item class="sunrise-sunset-35" >
@@ -272,8 +275,43 @@ IMPORT</igx-list-item>
 <div class="sunrise-sunset-29-info" >
 <span class="list-itemtext-38 igx-typography__subtitle-1">Chandra Bala</span>
 </div>
-<span class="list-itemtext-39 igx-typography__subtitle-2">10.11</span>
+<span class="list-itemtext-39 igx-typography__subtitle-2"></span>
 </div>
+</igx-list-item>
+</igx-list>
+</div>
+
+</div>
+<div class="first-box">
+        <div class="sunrise-sunset">
+<igx-list class="sunrise-sunset-1" >
+<igx-list-item class="sunrise-sunset-4" >
+<div>
+<igx-datePicker class="dateof-bith-1" name="date" [formatter]="formatter">
+</igx-datePicker>
+</div>
+</igx-list-item>
+<igx-list-item class="sunrise-sunset-3" >
+<div>
+    <igx-input-group type="line" class="birth-place-1" id="txtHome">
+        <input igxInput type="text" name="place"/>
+        <!-- <label igxLabel>Select Place</label> -->
+    </igx-input-group>
+</div>
+</igx-list-item>
+<igx-list-item class="sunrise-sunset-5">
+    <div>
+        <button igxRipple igxButton="raised" (click)='Submit_Click()'>Submit</button>
+    </div>
+</igx-list-item>
+<igx-list-item class="sunrise-sunset-6" >
+
+</igx-list-item>
+<igx-list-item class="sunrise-sunset-7" >
+
+</igx-list-item>
+<igx-list-item class="sunrise-sunset-8" >
+
 </igx-list-item>
 </igx-list>
 </div>

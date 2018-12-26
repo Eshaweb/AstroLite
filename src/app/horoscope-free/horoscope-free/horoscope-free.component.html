@@ -31,8 +31,8 @@ title="Horoscope Details" actionButtonIcon="arrow_back" >
                     <p class="customFont">{{Shloka1}} {{Shloka2}}</p>
                     <span class="customFont">ºÉ¸ÀgÀÄ : </span><span>{{Name}}</span>
                     <p style="text-align:center"><span class="customFont">ºÉ¸ÀgÀÄ : </span><span>{{horoInfo.Name}}</span><span class="customFont">(¥ÀÄgÀÄµÀ)</span></p>
-                    <p><span class="customFont">vÀAzÉ : </span><span>{{Father}}</span></p>
-                    <p><span class="customFont">vÁ¬Ä : </span><span>{{horoInfo.Mother}}</span><span><em style="margin-left: 1250px">swipe here for Next Page</em></span></p>
+                    <p><span class="customFont">vÀAzÉ : </span><span>{{Fathername}}</span></p>
+                    <p><span class="customFont">vÁ¬Ä : </span><span>{{Mothername}}</span><span><em style="margin-left: 1250px">swipe here for Next Page</em></span></p>
                 
                   </div>
                 <div class="page">
@@ -44,7 +44,7 @@ title="Horoscope Details" actionButtonIcon="arrow_back" >
                     <p><span class="customFont">¸ÀªÀÄAiÀÄªÀÄAqÀ® :</span><span>{{horoInfo.ZH}} : {{horoInfo.ZM}} : {{horoInfo.PN}} </span><span class="customFont">¸ÀªÀÄAiÀÄ ¥ÀzÀÞw :</span><span>{{horoInfo.TimeFormat}}</span></p>
                     <p><span class="customFont">¸ÀÆAiÉÆÃðzÀAiÀÄ : {{SunRise}} </span><span class="customFont">¸ÀÆAiÀiÁð¸ÀÛ : {{SunSet}}</span></p>
                     <p><span class="customFont">¢£ÀªÀiÁ£À :</span><span>{{DinaMana}} </span><span class="customFont">UÀvÀPÀ°¢£À :</span><span></span></p>
-                  <h2 class="customFont">¤vÀå ¥ÀAZÁAUÀ</h2>
+                  <!-- <h2 class="customFont">¤vÀå ¥ÀAZÁAUÀ</h2> -->
                   <p><span class="customFont">UÀvÀ±Á°ªÁºÀ£À ±ÀPÀªÀµÀð : {{ShakaVarsha}}</span><span class="customFont">PÉÆÃ®A§ªÀµÀð : {{Kollam}}</span></p>
                   <p><span class="customFont">¸ÀAªÀvÀìg : {{Samvathsara}}</span><span class="customFont">CAiÀÄ£À : {{Aayana}}</span></p>   
                   <p><span class="customFont">IÄvÀÄ : {{Ruthu}}</span><span class="customFont">ZÁAzÀæªÀiÁ¸À : {{ChandraMasa}}</span></p>   
@@ -85,7 +85,7 @@ title="Horoscope Details" actionButtonIcon="arrow_back" >
 </div>
 <div class="body">
   <!-- <h1 class="igx-typography__h1 horoscope">Horoscope</h1> -->
-    <div id="flipbook" style=" width: 70%; margin-left: 14%;">
+    <!-- <div id="flipbook" style=" width: 70%; margin-left: 14%;">
         <div class="cover"> 
             <p>Date : {{BDate}}</p>
             <p class="customFont">|| GªÀiÁªÀÄºÉÃ±ÀégË ¥Àæ¹ÃzÀvÁªÀiï ||</p>
@@ -106,7 +106,7 @@ title="Horoscope Details" actionButtonIcon="arrow_back" >
             <p class="customFont">{{Shloka1}} {{Shloka2}}</p>
             <span class="customFont">ºÉ¸ÀgÀÄ : </span><span>{{Name}}</span>
             <p style="text-align:center"><span class="customFont">ºÉ¸ÀgÀÄ : </span><span>{{horoInfo.Name}}</span><span class="customFont">(¥ÀÄgÀÄµÀ)</span></p>
-            <p><span class="customFont">vÀAzÉ : </span><span>{{Father}}</span></p>
+            <p><span class="customFont">vÀAzÉ : </span><span>{{Fathername}}</span></p>
             <p><span class="customFont">vÁ¬Ä : </span><span>{{horoInfo.Mother}}</span><span><em style="margin-left: 1250px">swipe here for Next Page</em></span></p>
         
           </div>
@@ -157,7 +157,7 @@ title="Horoscope Details" actionButtonIcon="arrow_back" >
         </div>
         <div class="page"> Page 4 </div>
         <div class="cover"> The end </div>  
-      </div>
+      </div> -->
 </div>
 <div class="footer"><div class="buy-button">
 <button igxRipple igxButton="raised" (click)="onClick()">Buy Now</button>

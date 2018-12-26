@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HoroscopeFreeComponent } from './horoscope-free.component';
+import { PaymentProcessingComponent } from './payment-processing.component';
 
-describe('HoroscopeFreeComponent', () => {
-  let component: HoroscopeFreeComponent;
-  let fixture: ComponentFixture<HoroscopeFreeComponent>;
+describe('PaymentProcessingComponent', () => {
+  let component: PaymentProcessingComponent;
+  let fixture: ComponentFixture<PaymentProcessingComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HoroscopeFreeComponent ]
+      declarations: [ PaymentProcessingComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HoroscopeFreeComponent);
+    fixture = TestBed.createComponent(PaymentProcessingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

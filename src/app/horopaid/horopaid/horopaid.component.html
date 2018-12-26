@@ -28,13 +28,14 @@ title="Paid Services" actionButtonIcon="arrow_back" >
     </div>
     </div>
     </igx-list-item>
-    <igx-list-item class="horoscope-list-5" >
-            <div class="horoscope-list-2-container" >
-            <div class="horoscope-list-2-info" >
-            <a class="list-itemtext-1 igx-typography__subtitle-1" (click)='onSamplePDF(service)'>Click here to view Sample PDF/SoftCopy</a>
+    <igx-list-item class="horoscope-list-5">
+        <div class="horoscope-list-2-container">
+            <div class="horoscope-list-2-info">
+                <a class="list-itemtext-1 igx-typography__subtitle-1" (click)='onSamplePDF(service)'>Click here to view
+                    Sample PDF/SoftCopy</a>
             </div>
-            </div>
-            </igx-list-item>
+        </div>
+    </igx-list-item>
     <igx-list-item class="horoscope-list-5" >
     <div class="horoscope-list-2-container" style="text-decoration: line-through">
     <div class="horoscope-list-2-info" >
@@ -63,15 +64,16 @@ title="Paid Services" actionButtonIcon="arrow_back" >
 
 </div>
     </igx-list-item>
-    <igx-list-item>
+    <!-- <igx-list-item>
         <div class="hardcopy">
             <igx-checkbox [checked]="false" (click)="hardcopyRequired_Click(service.ItMastId)">Hardcopy Required
             </igx-checkbox>
             </div>
-    </igx-list-item>
+    </igx-list-item> -->
     <igx-list-item>
 
-            <button igxRipple igxButton="raised" (click)="onNext(service)">Next</button>
+            <!-- <button igxRipple igxButton="raised" (click)="onNext(service)">Next</button> -->
+            <button igxRipple igxButton="raised" (click)="onNext(service)">Download</button>
 
     </igx-list-item>
     </igx-list>

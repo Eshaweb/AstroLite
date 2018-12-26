@@ -44,10 +44,10 @@ export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewIni
         public uiService: UIService, public formbuilder: FormBuilder) {
         this.route.params.subscribe(params => {
             //this.id = +params['OrderId']; // (+) converts string 'id' to a number
-            this.OrderId = params['OrderId'];
             this.DeliveryAddressRequired = JSON.parse(params['DeliveryAddressRequired']);
             // In a real app: dispatch action to load the details here.
         });
+        this.OrderId = this.horoScopeService.OrderId;
         this.customerEMailAddressForm = this.formbuilder.group({
             email: ['', [Validators.required, Validators.pattern("[^ @]*@[^ @]*"), Validators.minLength(6)]]
         });
@@ -203,9 +203,13 @@ export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewIni
         }
         this.horoScopeService.UpdateAddressToOrder(orderAddress, (data) => {
             //   this.navCtrl.push(PaymentDetailsPage,{'ItemOrdered':this.navParams.get('ItemOrdered'),'OrderId':this.navParams.get('OrderId')});
-            this.router.navigate(["/services/payment", { 'OrderId': this.OrderId }]);
+            this.router.navigate(["/services/payment"]);
 
         });
     }
+
+    trackByFn(index, item) {    
+        return item.id; // unique id corresponding to the item
+     }
 }
 

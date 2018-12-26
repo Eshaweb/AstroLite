@@ -38,7 +38,8 @@ title="Horoscope" actionButtonIcon="arrow_back" >
 </div>
 
 </div>
-<div class="dateand-time"><div class="dateof-bith">
+<div class="dateand-time">
+        <div class="dateof-bith">
 <igx-datePicker class="dateof-bith-1" name="birthDate" [formatter]="formatter" formControlName="birthDate" >
 </igx-datePicker>
 <p style="color:red" id='err_birthDate'></p>
@@ -81,13 +82,19 @@ Female
 <div class="birth-place">
 <igx-input-group type="line" class="birth-place-1" id="txtHome">
 <input igxInput type="text" name="birthPlace" formControlName="birthPlace" />
-<label igxLabel>Birth Place</label>
+<!-- <label igxLabel>Birth Place</label> -->
 </igx-input-group>
 <p style="color:red" id='err_birthPlace'></p>
 </div>
-
+<!-- <div class="time-zone">
+        <igx-combo #combo class="input-container" width="500px" [itemsMaxHeight]="255" [data]="timeformats"
+                [displayKey]="'Text'" [valueKey]="'Id'" formControlName="FemaleTimeformat" placeholder="Select"
+                searchPlaceholder="Search..." (onSelectionChange)="selectionChange($event)">
+        </igx-combo>
+</div> -->
 </div>
-<div class="coordinates-row"><div class="coordinates">
+<div class="coordinates-row">
+        <div class="coordinates">
         <div class="longitude-1" *ngIf="timeZoneName"><span class="igx-typography__subtitle-1 longitude">LONGITUDE</span>
 <div class="logitude1">
 <igx-input-group type="border" class="logitude1-1" >

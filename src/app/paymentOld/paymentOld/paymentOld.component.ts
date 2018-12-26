@@ -37,7 +37,8 @@ export class PaymentOldComponent implements OnInit, OnDestroy, AfterViewInit {
   paymentmodeSelected: boolean = false;
   ShowMessage: string;
   selectboxdisabled: boolean = false;
-  OrderId: any;
+  OrderId: string;
+  paymentId: any;
 
   constructor(private _location: Location, private route: ActivatedRoute, private router: Router,
     private formBuilder: FormBuilder, private platform: Platform, public formbuilder: FormBuilder,
@@ -48,9 +49,7 @@ export class PaymentOldComponent implements OnInit, OnDestroy, AfterViewInit {
     //     content: 'Loading the Free HoroScope..'
     // });
     // loading.present();
-    this.route.params.subscribe(params => {
-      this.OrderId = params['OrderId'];
-    });
+    this.OrderId = this.horoScopeService.OrderId;
     this.ItemOrdered = this.horoScopeService.itemOrdered;
     //this.payableAmount = this.ItemOrdered.SoftCopy;
     if(this.horoScopeService.IsDeliverable==false){
@@ -64,6 +63,10 @@ export class PaymentOldComponent implements OnInit, OnDestroy, AfterViewInit {
       this.GetWalletBalance();
       //loading.dismiss();
     });
+    // this.horoScopeService.GetPayCodes().subscribe((data:any)=>{
+    //   this.paymentModes = data;
+    //   this.GetWalletBalance();
+    // });
     this.CoupenCodeForm = this.formbuilder.group({
       couponcode: ['', [Validators.required, Validators.minLength(6)]],
     });
@@ -162,7 +165,7 @@ export class PaymentOldComponent implements OnInit, OnDestroy, AfterViewInit {
                 Amount: this.differenceAmount,
                 PayCode: data.PayModes[i]
               }
-              this.pay();
+              this.pay(Payment);
               this.horoScopeService.PaymentComplete(Payment, (data) => {
                 if (data == true) {
                   this.ShowMessage = "Payment Completed";
@@ -206,19 +209,18 @@ export class PaymentOldComponent implements OnInit, OnDestroy, AfterViewInit {
           //loading.dismiss();
           //after 3 min delay,rise below method
           if (data.Status == "P" && data.PayModes[0] == "L") {
+            this.horoScopeService.ExtCode=data.ExtCode;
+            this.router.navigate(['/services/paymentProcessing']);
             var Payment = {
-              ExtCode: data.ExtCode,
-              Amount: this.payableAmount,
-              //PayCode: this.paycodes[0].Code
-              PayCode: data.PayModes[0]
+              PaymentId:this.paymentId
             }
-            this.pay();
-            // this.horoScopeService.PaymentComplete(Payment, (data) => {
-            //   if (data == true) {
-            //     this.ShowMessage = "Payment Completed";
-            //     this.navCtrl.push(PaymentSuccessPage);
-            //   }
-            // });
+            this.pay(Payment);
+            this.horoScopeService.PaymentComplete(Payment, (data) => {
+              if (data == true) {
+                this.ShowMessage = "Payment Completed";
+                //this.navCtrl.push(PaymentSuccessPage);
+              }
+            });
           }
           else if (data.Status == "P" && data.PayModes[0] == "C") {
             this.ShowMessage = "Hi, Order Placed. You will get the product once after your payment done through Cash";
@@ -283,24 +285,28 @@ export class PaymentOldComponent implements OnInit, OnDestroy, AfterViewInit {
       this.selectMeMessage = '';
     }
   }
-  // var rzp1 = new Razorpay(options);
-
-  // document.getElementById('rzp-button1').onclick = function(e){
-  //     rzp1.open();
-  //     e.preventDefault();
-  // }
-  pay() {
+  
+  // pay(Payment, callback: (data) => void) {
+    pay(Payment) {
     var options = {
       description: 'Credits towards AstroLite',
       image: 'https://i.imgur.com/3g7nmJC.png',
       currency: 'INR',
-      key: 'rzp_test_pqy8JaqakPcPA3',
+      key: 'rzp_test_fg8RMT6vcRs4DP',
       amount: 1 * 100,
       name: 'Shailesh',
+      "handler": function (response){
+        this.paymentId=response.razorpay_payment_id;
+        person.fullName();
+        //this.next(Payment);
+    },
       prefill: {
         email: 'shailesh@eshaweb.com',
         contact: '9731927204',
         name: 'Shailesh'
+      },
+      notes: {
+        order_id:this.OrderId,
       },
       theme: {
         color: '#F37254'
@@ -311,20 +317,37 @@ export class PaymentOldComponent implements OnInit, OnDestroy, AfterViewInit {
         }
       }
     };
-    var rzp1 = new Razorpay(options);
+    var rzp1 = new Razorpay(options, successCallback, cancelCallback);
     rzp1.open();
+    //callback(data);
+    var person = {
+      firstName:"John",
+      lastName: "Doe",
+      fullName: function () {
+        return this.firstName + " " + this.lastName;
+      }
+    }
     // document.getElementById('rzp-button1').onclick = function(e){
     //     rzp1.open();
     //     e.preventDefault();
     // }
-    // var successCallback = (payment_id) => {
-    //   alert('payment_id: ' + payment_id);
-    // };
+    var successCallback = (payment_id) => {
+      alert('payment_id: ' + payment_id);
+    };
 
-    // var cancelCallback = (error) => {
-    //   alert(error.description + ' (Error ' + error.code + ')');
-    // };
+    var cancelCallback = (error) => {
+      alert(error.description + ' (Error ' + error.code + ')');
+    };
     //  RazorpayCheckout.open(options, successCallback, cancelCallback);
+  }
+
+  next(Payment){
+    this.horoScopeService.PaymentComplete(Payment, (data) => {
+      if (data == true) {
+        this.ShowMessage = "Payment Completed";
+        //this.router.navigate(['/services/fffff']);
+      }
+    });
   }
 }
 
