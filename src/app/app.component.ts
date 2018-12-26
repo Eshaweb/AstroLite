@@ -19,7 +19,7 @@ import { PubSubService } from 'src/shared/pub-sub.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'AstroLiteInIndigo';
+  title = 'Astrolite';
   name = 'https://twitter.com/';
   isEnabled: boolean = false;
   isLogOut: boolean;

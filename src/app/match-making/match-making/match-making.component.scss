@@ -922,5 +922,22 @@ margin-left: 364px;
 
 }
 
+.inputs-input-border-copy5 {
+    margin-left: 48px !important;
+}
+
+.inputs-input-border-copy16 {
+    margin-left: 47px !important;
+}
+@media screen and (max-width: 420px) {
+    .content{
+        flex-direction: column;
+    }
+    .right{
+
+        margin-top: 10px;
+    }
+
+}
 }
 }

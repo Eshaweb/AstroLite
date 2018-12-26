@@ -205,5 +205,9 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     ngOnDestroy(): void {
     }
 
+    OnHoroScope_Click(){
+        this.router.navigate(["/services/#SH"]);
+        }
+
 }
 
