@@ -20,27 +20,41 @@ import { PaymentOldModule } from '../paymentOld/paymentOld.module';
 import { HoroscopeFreeModule } from '../horoscope-free/horoscope-free.module';
 import { MatchMakingModule } from '../match-making/match-making.module';
 import { MatchMakingReportModule } from '../match-making-report/match-making-report.module';
-import { HoroscopeModule } from '../horoscope/horoscope.module';
 import { HoropaidModule } from '../horopaid/horopaid.module';
 import { HoroscopePaidServiceModule } from '../horoscope-paid-service/horoscope-paid-service.module';
 import { PaymentProcessingComponent } from '../payment-processing/payment-processing.component';
+import { HoroscopePaidServiceComponent } from '../horoscope-paid-service/horoscope-paid-service/horoscope-paid-service.component';
+import { AgmCoreModule } from '@agm/core';
+import { HoroScopeService } from 'src/Services/HoroScopeService/HoroScopeService';
+import { MatchMakingService } from 'src/Services/MatchMakingService/MatchMakingService';
+import { LoginService } from 'src/Services/login/login.service';
+import { PartyService } from 'src/Services/PartyService/PartyService';
+import { RegistrationComponent } from '../registration/registration/registration.component';
+import { DashboardComponent } from '../dashboard/dashboard/dashboard.component';
+import { DepositWalletComponent } from '../deposit-wallet/deposit-wallet/deposit-wallet.component';
 
 
 @NgModule({
     imports: [
+        AgmCoreModule.forRoot({
+            // apiKey: "AIzaSyD68pTd0CmqTXSqPHFpLrPWkiClqPBIpLQ",  
+            // apiKey: "AIzaSyC0nx6AjTNNb24ZEnah5hRBqL0ehgrZ3es",
+            apiKey: "AIzaSyC0nx6AjTNNb24ZEnah5hRBqL0ehgrZ3es",
+            libraries: ["places"]
+          }),
         CommonModule,
         BrowserAnimationsModule,
         ReactiveFormsModule,
         FormsModule,
         InfragisticsImportsModule,
-        DeliveryAddressModule, 
-        PaymentOldModule,
-        HoroscopeModule,
-        HoroscopeFreeModule,
-        HoroscopePaidServiceModule,
-        HoropaidModule,
-        MatchMakingModule, 
-        MatchMakingReportModule,
+        //DeliveryAddressModule, 
+        //PaymentOldModule,
+        //HoroscopeModule,
+        //HoroscopeFreeModule,
+        //HoroscopePaidServiceModule,
+        //HoropaidModule,
+        //MatchMakingModule, 
+        //MatchMakingReportModule,
         RouterModule.forChild([
             {
                 path: 'services',
@@ -76,7 +90,22 @@ import { PaymentProcessingComponent } from '../payment-processing/payment-proces
             }, 
         ])
     ],
-    declarations: [ServicesComponent,ServicesListComponent, PaidervicesComponent],
+    declarations: [HoroscopeComponent,
+        MatchMakingComponent,
+        DeliveryAddressComponent,
+        PaymentOldComponent,
+        HoroscopeFreeComponent,
+        HoroscopePaidServiceComponent,
+        HoropaidComponent,
+        MatchMakingComponent,
+        LoginComponent,
+        RegistrationComponent,
+        DashboardComponent,
+        //DepositWalletComponent,
+        MatchMakingReportComponent,
+        ServicesComponent,ServicesListComponent, PaidervicesComponent],
+        providers:[HoroScopeService,MatchMakingService,LoginService,
+        PartyService],
     exports: [
         ServicesComponent,ServicesListComponent, PaidervicesComponent
     ]

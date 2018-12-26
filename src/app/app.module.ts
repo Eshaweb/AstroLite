@@ -47,7 +47,6 @@ import { DepositWalletModule } from './deposit-wallet/deposit-wallet.module';
 import { DepositWalletComponent } from './deposit-wallet/deposit-wallet/deposit-wallet.component';
 import { MatchMakingReportModule } from './match-making-report/match-making-report.module';
 import { MatchMakingReportComponent } from './match-making-report/match-making-report/match-making-report.component';
-import { HoroscopeModule } from './horoscope/horoscope.module';
 import { LoginService } from 'src/Services/login/login.service';
 import { PaymentOldModule } from './paymentOld/paymentOld.module';
 import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
@@ -137,12 +136,12 @@ let config = new AuthServiceConfig([
         RouterModule.forRoot(generatedRoutes, {
             preloadingStrategy: PreloadAllModules
         }),
-        LoginModule,
+        //LoginModule,
         HomeModule, 
-        RegistrationModule,
+        //RegistrationModule,
         //MatchMakingModule,
         //AstamangalaModule,
-        DashboardModule,
+        //DashboardModule,
         SharedModule,
         ServicesModule, 
         DepositWalletModule,
