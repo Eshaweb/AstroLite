@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.yoga='Aayushmaan';
                 this.karana='Bhadra';
 
-                this.shaaliVahanaShaka='1960';
+                this.shaaliVahanaShaka='1940';
                 this.samvathsara='Vilambi';
                 this.ruthu='Hemantha';
                 this.sauraMasa='Dhanu';
