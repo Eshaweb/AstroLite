@@ -1,10 +1,10 @@
-<main class="igx-typography"><form>
+<main class="igx-typography"><form [formGroup]="depositToWalletForm">
 <div class="deposit-wallet">
 <div class="navigation"><div class="navigation-navbar">
-<igx-navbar 
+<!-- <igx-navbar 
 title="Wallet Deposit" actionButtonIcon="arrow_back" >
 <igx-icon name="more_vert" ></igx-icon>
-</igx-navbar>
+</igx-navbar> -->
 </div>
 
 </div>
@@ -12,19 +12,22 @@ title="Wallet Deposit" actionButtonIcon="arrow_back" >
 </div>
 <div class="body"><div class="enter-amount">
 <igx-input-group type="line" class="enter-amount-1" >
-<input igxInput type="text" value="Enter Amount" />
+<input igxInput type="text" formControlName="amount" (keyup)="onAmount($event.target.value)" />
 <label igxLabel>Amount</label>
 </igx-input-group>
+<p style="color: red" *ngIf="showError">Amount should be in the range Rs.50-Rs.20000</p>
+<p style="color: red" *ngIf="walletAmount!=null">BonusAmount: {{bonusAmount| number: '1.0-0'}}</p>
 </div>
 
 <div class="payment-type">
-<igx-combo type="line" 
-class="payment-type-1" >
+<igx-combo type="line" class="payment-type-1" #combo width="500px" [itemsMaxHeight]="255"
+[data]="paymentModes" [displayKey]="'Text'" [valueKey]="'Id'" formControlName="FemaleTimeformat"
+placeholder="Select" searchPlaceholder="Search..." (onSelectionChange)="ObjChanged($event)">
 </igx-combo>
 </div>
 
 <div class="buy-button">
-<button igxRipple igxButton="raised" >Go</button>
+<button igxRipple igxButton="raised" [disabled]="!depositToWalletForm.valid" type="default" (click)="onClick()">Go</button>
 </div>
 
 </div>

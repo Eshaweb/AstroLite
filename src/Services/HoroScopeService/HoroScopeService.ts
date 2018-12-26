@@ -9,11 +9,16 @@ import { HoroRequest } from "src/Models/HoroScope/HoroRequest";
 
 @Injectable()
 export class HoroScopeService {
+    PaymentId:string;
+    ExtCode:string;
+    OrderId:string;
+    Fathername:string;
+    Mothername:string;
+    birthplace:string;
     IsDeliverable:boolean;
     Shloka1: string;
     Shloka2: string;
-    JanmaNakshatra: any;
-    OrderId: any;
+    JanmaNakshatra: string;
     existingAddress: any;
     defaultAddress: any;
     paymentModes: any;
@@ -21,6 +26,7 @@ export class HoroScopeService {
     itemOrdered:ServiceInfo;
     data:any;
     ItActId='#SH';
+  birthplaceShort: string;
     //@ViewChild(Nav) nav;
     // constructor(public navCtrl: NavController,public smartHttpClient: SmartHttpClient) {
     constructor(handler: HttpBackend, public http: HttpClient, public smartHttpClient: SmartHttpClient) {
@@ -33,10 +39,15 @@ export class HoroScopeService {
 
             callback(data);
         });
+
     }
-    // ProcessOrder(callback: (data) => void){
-        ProcessOrder(){
-        //var url = "http://www.astrolite.in/wcf/webhoroapi/api/result/horoscopereport";
+    //  GetFreeData(horoRequest) {
+    //     var url = "http://astroliteapi.azurewebsites.net/api/HoroScope/GetFreeData";
+    //     var endPoint = "HoroScope/GetFreeData";
+    //     return this.http.post(url, horoRequest);
+    // }
+    // ProcessOrder(FreePDF, callback: (data) => void){
+        ProcessOrder(FreePDF){
         var url = "http://astroliteapi.azurewebsites.net/api/Result/ProcessOrder";
         var endPoint = "Result/ProcessOrder";
         //return this.http.get(url).catch(this.handleEror);
@@ -45,20 +56,47 @@ export class HoroScopeService {
         //     var gg = data;
         //     callback(data);
         //   });
-       return this.http.get(url, { responseType: "blob"});
-    }
+        return this.http.post(url, FreePDF,{ responseType: "blob"});
+        //  return this.smartHttpClient.Post(endPoint, FreePDF).subscribe((data: any) => {
+        //     var yyy = data;
+        // });
+}
     GetSample(horoSample){
         var url = "http://astroliteapi.azurewebsites.net/api/Result/GetSample";
         return this.http.post(url, horoSample, { responseType: "blob"});
     }
     private handleEror(err:HttpErrorResponse){
         alert(err);
-        return ""
+        return "";
     }
+    GetPayCodes() {
+        var url = "http://astroliteapi.azurewebsites.net/api/Sales/GetPayCodes";
+        var endPoint = "Sales/GetPayCodes";
+        return this.http.get(url);
+      }
     CreateOrder(orderModel, callback: (data) => void) {
         var endPoint = "Order/CreateOrder";
         return this.smartHttpClient.Post(endPoint, orderModel).subscribe((data: any) => {
             this.OrderId = data;
+            callback(data);
+        });
+    }
+    TestById(OrderId){
+        var url = "http://astroliteapi.azurewebsites.net/api/Result/Test?";
+        //var url = "http://astroliteapi.azurewebsites.net/api/Result/Test";
+        var endPoint = "Result/Test";
+        var data = "Id=" + OrderId;
+        //return this.http.get(url+ data, { responseType: "blob"});
+        return this.http.get(url+data, { responseType: "blob"});
+        // this.smartHttpClient.GetById(endPoint, data).subscribe((data: any) => {
+        //     var balance = data;
+        //     console.log(data);
+        //     callback(data);
+        // });
+    }
+    Test(callback: (data) => void){
+        var endPoint = "HoroScope/Test";
+        return this.smartHttpClient.Get(endPoint).subscribe((data: any) => {
             callback(data);
         });
     }
@@ -124,13 +162,22 @@ export class HoroScopeService {
             callback(data);
         });
     }
-    GetPayCodes(callback: (data) => void){
-        var endPoint = "Sales/GetPayCodes";
-    this.smartHttpClient.Get(endPoint).subscribe((data: any) => {
-      this.paymentModes = data;
-      callback(data);
-    });
-    }
+    // PaymentComplete(, callback: (data) => void){
+    //     var endPoint = "Order/PaymentComplete";
+    //     return this.smartHttpClient.Post(endPoint, orderAddress).subscribe((data: any) => {
+    //         var hh = data;
+    //         callback(data);
+    //     });
+    // }
+
+    
+    // GetPayCodes(callback: (data) => void){
+    //     var endPoint = "Sales/GetPayCodes";
+    // this.smartHttpClient.Get(endPoint).subscribe((data: any) => {
+    //   this.paymentModes = data;
+    //   callback(data);
+    // });
+    // }
     GetWalletBalance(PartyMastId,callback: (data) => void){
         var endPoint = "Wallet/GetWalletBalance";
         var data = "PartyMastId=" + PartyMastId;

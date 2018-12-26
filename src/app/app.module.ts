@@ -2,13 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { CommonModule } from '../../node_modules/@angular/common';
 import { UIService } from '../Services/UIService/ui.service';
 import { ShareButtonsModule } from '@ngx-share/buttons';
 import { InfragisticsImportsModule } from './infragistics-imports/infragistics-imports.module';
-import { AstamangalaModule } from './astamangala/astamangala.module';
-import { AstamangalaComponent } from './astamangala/astamangala/astamangala.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { DeliveryAddressModule } from './delivery-address/delivery-address.module';
@@ -26,10 +24,6 @@ import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider } from "angularx-social-login";
 import { HoroScopeService } from '../Services/HoroScopeService/HoroScopeService';
 import { IgxProgressBarModule, IgxButtonModule, IgxIconModule, IgxRippleModule } from '../../node_modules/igniteui-angular';
-import { LoginDemoComponent } from './loginDemo/loginDemo/loginDemo.component';
-import { LoginDemoModule } from './loginDemo/loginDemo.module';
-import { RegistrationDemoComponent } from './registrationDemo/registrationDemo/registrationDemo.component';
-import { RegistrationDemoModule } from './registrationDemo/registrationDemo.module';
 import { RegistrationComponent } from './registration/registration/registration.component';
 import { RegistrationModule } from './registration/registration.module';
 import { HoroscopePaidServiceComponent } from './horoscope-paid-service/horoscope-paid-service/horoscope-paid-service.component';
@@ -56,6 +50,7 @@ import { MatchMakingReportComponent } from './match-making-report/match-making-r
 import { HoroscopeModule } from './horoscope/horoscope.module';
 import { LoginService } from 'src/Services/login/login.service';
 import { PaymentOldModule } from './paymentOld/paymentOld.module';
+import { PaymentProcessingComponent } from './payment-processing/payment-processing.component';
 
 const generatedRoutes: Routes = [
     {
@@ -82,7 +77,11 @@ const generatedRoutes: Routes = [
     { path: 'paidServices', component: PaidervicesComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'AstroServices', component: AstroLiteServicesComponent },
-    { path: 'services', component:ServicesComponent},
+    { 
+        path: 'services', 
+        //component:ServicesComponent
+        loadChildren: './services/services.module#ServicesModule' 
+    },
     { path: 'pagenotfound', component: PageNotFoundComponent },
     { path: '**', redirectTo: 'pagenotfound' }
 ];
@@ -113,9 +112,9 @@ let config = new AuthServiceConfig([
 @NgModule({
     declarations: [
         AppComponent,PageNotFoundComponent,  
-        AstroLiteServicesComponent, PaidervicesComponent
-    ],
-    imports: [IgxProgressBarModule,IgxButtonModule, IgxIconModule, IgxRippleModule,
+        AstroLiteServicesComponent, PaymentProcessingComponent
+        ],
+    imports: [
         AgmCoreModule.forRoot({
             // apiKey: 'AIzaSyD68pTd0CmqTXSqPHFpLrPWkiClqPBIpLQ',  
             // apiKey: 'AIzaSyC0nx6AjTNNb24ZEnah5hRBqL0ehgrZ3es',
@@ -132,25 +131,20 @@ let config = new AuthServiceConfig([
         BrowserModule, ShareButtonsModule.forRoot(),
         CommonModule, InfragisticsImportsModule,
         BrowserAnimationsModule,
-        RouterModule.forRoot(generatedRoutes),
+        RouterModule.forRoot(generatedRoutes, {
+            preloadingStrategy: PreloadAllModules
+        }),
         LoginModule,
         HomeModule, 
         RegistrationModule,
+        //MatchMakingModule,
         //AstamangalaModule,
-        HoroscopePaidServiceModule,
-        HoropaidModule,
         DashboardModule,
         SharedModule,
-        DeliveryAddressModule, 
-        PaymentOldModule,
-        HoroscopeModule,
-        HoroscopeFreeModule,
-        MatchMakingModule, 
-        MatchMakingReportModule,
+        ServicesModule, 
         DepositWalletModule,
         //RegistrationDemoModule,
         //LoginOldModule,
-        ServicesModule, 
         //LoginDemoModule
     ],
     providers: [LoginService,HoroScopeService,UIService, RegistrationService, SmartHttpClient, LoaderService,

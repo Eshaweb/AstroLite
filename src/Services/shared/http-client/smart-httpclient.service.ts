@@ -19,7 +19,15 @@ export interface IRequestOptions {
   withCredentials?: boolean;
   body?: any;
 }
-
+export interface IRequestOptions2{
+  headers?: HttpHeaders;
+  observe?: 'body';
+  params?: HttpParams;
+  reportProgress?: boolean;
+  responseType?: string;
+  withCredentials?: boolean;
+  body?: any;
+}
 
 export function applicationHttpClientCreator(http: HttpClient, loaderService: LoaderService) {
   return new SmartHttpClient(http, loaderService);
@@ -94,6 +102,16 @@ export class SmartHttpClient {
     ).catch(this.handleError);
   }
 
+
+  // public PostProcessOrder<T>(endPoint: string, params: Object, options?: IRequestOptions2): Observable<T> {
+  //   options.responseType='blob';
+  //   return this.http.post<T>(this.api + endPoint, params,options).pipe(finalize(() => {
+  //   })).pipe(tap((data: any) => {
+     
+  //   })
+      
+  //   ).catch(this.handleError);
+  // }
   // instanceOfError(object: any): object is Error {
   //   return 'Type' in object;
   // }

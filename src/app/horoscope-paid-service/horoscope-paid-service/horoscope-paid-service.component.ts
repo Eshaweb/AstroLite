@@ -56,18 +56,18 @@ export class HoroscopePaidServiceComponent implements OnInit {
     */
     }
     onFHSample(){
-      this.horoScopeService.ProcessOrder().subscribe((data: any) => {
-        var newBlob = new Blob([data], { type: "application/pdf" });
-        const fileName: string = 'PDFSample.pdf';
-        const a: HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
-        var url = window.URL.createObjectURL(newBlob);
-        a.href = url;
-        a.download = fileName;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      });
+      // this.horoScopeService.ProcessOrder().subscribe((data: any) => {
+      //   var newBlob = new Blob([data], { type: "application/pdf" });
+      //   const fileName: string = 'PDFSample.pdf';
+      //   const a: HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
+      //   var url = window.URL.createObjectURL(newBlob);
+      //   a.href = url;
+      //   a.download = fileName;
+      //   document.body.appendChild(a);
+      //   a.click();
+      //   document.body.removeChild(a);
+      //   URL.revokeObjectURL(url);
+      // });
     }
     onFH_PDFChanged(event){
       this.FH_PDFSelected=event.value;
@@ -185,7 +185,16 @@ export class HoroscopePaidServiceComponent implements OnInit {
         ZM: this.horoInfo.ZM,
         PN: this.horoInfo.PN,
         Gender: "F",
-        LangCode:"KAN"
+        LangCode:"KAN",
+        Place:this.horoInfo.Place,
+        ReportType:this.horoInfo.ReportType,
+        ReportSize:this.horoInfo.ReportSize,
+        FormParameter:this.horoInfo.FormParameter,
+        Swarna:this.horoInfo.Swarna,
+        Pruchaka:this.horoInfo.Pruchaka,
+        JanmaRashi:this.horoInfo.JanmaRashi,
+        AshtaMangalaNo:this.horoInfo.AshtaMangalaNo,
+        IsMarried:this.horoInfo.IsMarried,
       }
       var orderModel = {
         FreeAmount:null,

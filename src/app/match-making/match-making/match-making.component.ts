@@ -183,14 +183,6 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
             ZM: null,
             PN: null,
             Gender: null,
-            // ReportType:null,
-            // FormParameter:null,
-            // Swarna:null,
-            // Pruchaka:null,
-            // JanmaRashi:null,
-            // AshtaManagalaNo:null,
-            // IsMarried:null,
-            // Path:null
         }
         this.femaleMatchMakingForm = this.formbuilder.group({
             femaleName: ['Shamanth', [Validators.required, Validators.minLength(4)]],
@@ -239,14 +231,6 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
             ZM: null,
             PN: null,
             Gender: null,
-            // ReportType:null,
-            // FormParameter:null,
-            // Swarna:null,
-            // Pruchaka:null,
-            // JanmaRashi:null,
-            // AshtaManagalaNo:null,
-            // IsMarried:null,
-            // Path:null
         }
         this.matchRequest = {
             LangCode: null,
@@ -552,64 +536,7 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
             }
         }
         
-        // this.maleMatchMakingRequest = {
-        //     Name: this.maleMatchMakingForm.controls['maleName'].value,
-        //     Father: this.maleMatchMakingForm.controls['fathername'].value,
-        //     Mother: this.maleMatchMakingForm.controls['mothername'].value,
-        //     Gothra: this.maleMatchMakingForm.controls['gothra'].value,
-        //     Date: this.maleMatchMakingForm.controls['MaleBdate'].value,
-        //     Time: this.maleMatchMakingForm.controls['MaleBtime'].value,
-        //     //DOB:this.horoscopeForm.controls['Bdate'].value.toISOString(),
-        //     TimeFormat: this.maleMatchMakingForm.controls['timeformat'].value,
-        //     LatDeg: this.maleMatchMakingForm.controls['LatDeg'].value,
-        //     LatMt: this.maleMatchMakingForm.controls['LatMt'].value,
-        //     LongDeg: this.maleMatchMakingForm.controls['LongDeg'].value,
-        //     LongMt: this.maleMatchMakingForm.controls['LongMt'].value,
-        //     NS: this.maleMatchMakingForm.controls['NS'].value,
-        //     EW: this.maleMatchMakingForm.controls['EW'].value,
-        //     ZH: this.maleMatchMakingForm.controls['ZH'].value,
-        //     ZM: this.maleMatchMakingForm.controls['ZM'].value,
-        //     PN: this.maleMatchMakingForm.controls['PN'].value,
-        //     Gender: "M",
-        //     // ReportType:null,
-        //     // FormParameter:null,
-        //     // Swarna:null,
-        //     // Pruchaka:null,
-        //     // JanmaRashi:null,
-        //     // AshtaManagalaNo:null,
-        //     // IsMarried:null,
-        //     // Path:null
-        // }
-        // this.femaleMatchMakingRequest = {
-        //     Name: this.femaleMatchMakingForm.controls['femaleName'].value,
-        //     Father: this.femaleMatchMakingForm.controls['fathername'].value,
-        //     Mother: this.femaleMatchMakingForm.controls['mothername'].value,
-        //     Gothra: this.femaleMatchMakingForm.controls['gothra'].value,
-        //     Date: this.femaleMatchMakingForm.controls['FemaleBdate'].value,
-        //     Time: this.femaleMatchMakingForm.controls['FemaleBtime'].value,
-        //     //DOB:this.horoscopeForm.controls['Bdate'].value.toISOString(),
-        //     TimeFormat: this.femaleMatchMakingForm.controls['timeformat'].value,
-        //     LatDeg: this.femaleMatchMakingForm.controls['LatDeg'].value,
-        //     LatMt: this.femaleMatchMakingForm.controls['LatMt'].value,
-        //     LongDeg: this.femaleMatchMakingForm.controls['LongDeg'].value,
-        //     LongMt: this.femaleMatchMakingForm.controls['LongMt'].value,
-        //     NS: this.femaleMatchMakingForm.controls['NS'].value,
-        //     EW: this.femaleMatchMakingForm.controls['EW'].value,
-        //     ZH: this.femaleMatchMakingForm.controls['ZH'].value,
-        //     ZM: this.femaleMatchMakingForm.controls['ZM'].value,
-        //     PN: this.femaleMatchMakingForm.controls['PN'].value,
-        //     Gender: "F",
-        //     // ReportType:null,
-        //     // FormParameter:null,
-        //     // Swarna:null,
-        //     // Pruchaka:null,
-        //     // JanmaRashi:null,
-        //     // AshtaManagalaNo:null,
-        //     // IsMarried:null,
-        //     // Path:null
-        // }
-        // var maleMatchMakingRequest = this.maleMatchMakingRequest;
-        // this.BDate = this.maleMatchMakingForm.controls['Bdate'].value;
+            // this.BDate = this.maleMatchMakingForm.controls['Bdate'].value;
         this.matchMakingService.GetFreeData(this.matchRequest, (data) => {
             //loading.dismiss();
             // this.navCtrl.push(MatchResultPage, { maleMatchMakingRequest, data, "BirthPlace": this.horoscopeForm.controls['bplace'].value, 'Fathername': this.horoscopeForm.controls['fathername'].value, 'Mothername': this.horoscopeForm.controls['mothername'].value })

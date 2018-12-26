@@ -52,10 +52,13 @@ class="astamangala-1" ></igx-card>
 <igx-card 
 class="mela-meli-1" ></igx-card>
 </div>
-<div class="row"><div class="first-box"><div class="sunrise-sunset">
+<div class="row">
+    <div class="first-box">
+        <div class="sunrise-sunset">
 <igx-list class="sunrise-sunset-1" >
 <igx-list-item isHeader="true" class="sunrise-sunset-3" >
-IMPORT</igx-list-item>
+IMPORT
+</igx-list-item>
 <igx-list-item class="sunrise-sunset-4" >
 <div class="sunrise-sunset-2-container" >
 <div class="sunrise-sunset-2-info" >
@@ -196,7 +199,8 @@ IMPORT</igx-list-item>
 </div>
 
 </div>
-<div class="fourth-box"><div class="sunrise-sunset-27">
+<div class="fourth-box">
+    <div class="sunrise-sunset-27">
 <igx-list class="sunrise-sunset-28" >
 <igx-list-item isHeader="true" class="sunrise-sunset-30" >
 IMPORT</igx-list-item>
@@ -239,6 +243,41 @@ IMPORT</igx-list-item>
 </div>
 <span class="list-itemtext-39 igx-typography__subtitle-2">10.11</span>
 </div>
+</igx-list-item>
+</igx-list>
+</div>
+
+</div>
+<div class="first-box">
+        <div class="sunrise-sunset">
+<igx-list class="sunrise-sunset-1" >
+<igx-list-item class="sunrise-sunset-4" >
+<div>
+<igx-datePicker class="dateof-bith-1" name="date" [formatter]="formatter">
+</igx-datePicker>
+</div>
+</igx-list-item>
+<igx-list-item class="sunrise-sunset-3" >
+<div>
+    <igx-input-group type="line" class="birth-place-1" id="txtHome">
+        <input igxInput type="text" name="place"/>
+        <!-- <label igxLabel>Select Place</label> -->
+    </igx-input-group>
+</div>
+</igx-list-item>
+<igx-list-item class="sunrise-sunset-5">
+    <div>
+        <button igxRipple igxButton="raised" (click)='Submit_Click()'>Submit</button>
+    </div>
+</igx-list-item>
+<igx-list-item class="sunrise-sunset-6" >
+
+</igx-list-item>
+<igx-list-item class="sunrise-sunset-7" >
+
+</igx-list-item>
+<igx-list-item class="sunrise-sunset-8" >
+
 </igx-list-item>
 </igx-list>
 </div>

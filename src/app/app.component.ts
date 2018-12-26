@@ -51,6 +51,7 @@ export class AppComponent {
     this.navigationItems.push({ icon: 'people.png', text: 'Services', link: '/services' });
     this.navigationItems.push({ icon: 'sales.png', text: 'Register', link: '/registration' });
     this.navigationItems.push({ icon: 'people.png', text: 'Login', link: '/login' });
+    this.navigationItems.push({ icon: 'sales.png', text: 'Wallet Deposit', link: '/depoToWallet' });
 
     router.events.subscribe((routerEvent: Event) => {
       this.processRouterEvent(routerEvent);

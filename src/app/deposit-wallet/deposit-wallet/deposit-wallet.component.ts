@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChildren, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChildren, ElementRef, AfterViewInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControlName, FormControl, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -10,6 +10,8 @@ import { ServtrDet } from 'src/Models/Sales/SalesModel';
 import { SalesService } from 'src/Services/sales/sales.service';
 import { SmartHttpClient } from 'src/Services/shared/http-client/smart-httpclient.service';
 import { UIService } from 'src/Services/UIService/ui.service';
+import { IgxComboComponent } from 'igniteui-angular';
+import { HoroScopeService } from 'src/Services/HoroScopeService/HoroScopeService';
 
 
 @Component({
@@ -30,7 +32,7 @@ export class DepositWalletComponent {
   servtrDets: ServtrDet[];
 
 
-  constructor(private route: ActivatedRoute, private router: Router, public salesService:SalesService,
+  constructor(private horoScopeService:HoroScopeService,private route: ActivatedRoute, private router: Router, public salesService:SalesService,
     public smartHttpClient: SmartHttpClient, public uiService: UIService, public formbuilder: FormBuilder) {
     var endPoint = "Sales/GetPayCodes";
     this.depositToWalletForm = this.formbuilder.group({
@@ -40,19 +42,12 @@ export class DepositWalletComponent {
     const amountContrl = this.depositToWalletForm.get('amount');
     amountContrl.valueChanges.subscribe(value => this.setErrorMessage(amountContrl));
   
-    this.smartHttpClient.Get(endPoint).subscribe((data: any) => {
-    //   this.paymentModes = new DataSource({
-    //     store: {
-    //         type: 'array',
-    //         data: data,
-    //         key: "Id"
-    //     },
-    //     sort: [
-    //       { selector: "Text", desc: false }
-    //     ]
+    // this.horoScopeService.GetPayCodes((data) => {
+    //   this.paymentModes = data;
     // });
+    this.horoScopeService.GetPayCodes().subscribe((data:any)=>{
+      this.paymentModes = data;
     });
-  
   }
   setErrorMessage(c: AbstractControl): void {
     this.amountMessage = '';
@@ -97,11 +92,35 @@ export class DepositWalletComponent {
     this.salesService.Sale(SalesModel);
 
   }
+
+  @ViewChild('combo', { read: IgxComboComponent })
+    combo: IgxComboComponent;
+
+    selecting = false;
   ObjChanged(event) {
     this.paycode = [{
       Code: event.value,
       Amount: this.depositToWalletForm.controls['amount'].value
-    }]
+    }];
+
+    if (!this.selecting) {
+      let removed = false;
+      for (let i = 0; i < event.newSelection.length; i++) {
+          for (let j = 0; j < event.oldSelection.length; j++) {
+              if (event.oldSelection[j] === event.newSelection[i]) {
+                event.newSelection.splice(i, 1);
+                  removed = true;
+              }
+          }
+      }
+
+      if (removed) {
+          this.selecting = true;
+          this.combo.deselectAllItems();
+          this.combo.selectItems(event.newSelection);
+          this.selecting = false;
+      }
+  }
   }
   onAmount(value) {
     if (value < 50 || value > 20000) {

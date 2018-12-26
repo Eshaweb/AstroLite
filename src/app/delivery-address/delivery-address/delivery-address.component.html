@@ -21,7 +21,8 @@ title="Delivery Address" actionButtonIcon="arrow_back" >
 </div>
 <div class="address" *ngIf="DeliveryAddressRequired">
     <igx-card class="address-box" *ngIf="existingAddress">
-        <div *ngFor="let order of existingAddress">
+            <!-- <p style="color:red">You can change the default Address by clicking on particular Address list item</p> -->
+        <div *ngFor="let order of existingAddress; trackBy: trackByFn">
             <div (click)="OnChangeDefaultAddress(order.Id)" [ngClass]="order.Id === Id? 'class-1':'class-2'">
                 <p *ngIf="(order.Id === Id)" style="text-align:center">Default Address</p>
                 <p style="text-transform:capitalize;">{{ order.Name }}</p>

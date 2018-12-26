@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InfragisticsImportsModule } from '../infragistics-imports/infragistics-imports.module';
 import { DepositWalletComponent } from './deposit-wallet/deposit-wallet.component';
+import { SalesService } from 'src/Services/sales/sales.service';
 @NgModule({
     imports: [
         CommonModule,
@@ -12,6 +13,7 @@ import { DepositWalletComponent } from './deposit-wallet/deposit-wallet.componen
         FormsModule,
         InfragisticsImportsModule
     ],
+    providers:[SalesService],
     declarations: [DepositWalletComponent],
     exports: [
         DepositWalletComponent

@@ -67,14 +67,21 @@ export class HoroscopeFreeComponent implements OnInit, OnDestroy, AfterViewInit 
         //this.horoInfo = this.route.snapshot.data[JSON.parse("horoRequest")];
         //this.horoInfo = this.route.snapshot.params[JSON.parse("horoRequest")];
         // var cccc=this.route.queryParams;
-        this.route.queryParams.subscribe(params => {
-            this.Fathername = params['Fathername'];
-            this.Mothername = params['Mothername'];
-            this.BirthPlace = params['BirthPlace'];
-        });
-        this.Fathername = this.route.snapshot.params['Fathername'];
-        this.Mothername = this.route.snapshot.params['Mothername'];
-        this.BirthPlace = this.route.snapshot.params['BirthPlace'];
+
+
+        // this.route.queryParams.subscribe(params => {
+        //     this.Fathername = params['Fathername'];
+        //     this.Mothername = params['Mothername'];
+        // });
+
+        
+        // this.Fathername = this.route.snapshot.params['Fathername'];
+        // this.Mothername = this.route.snapshot.params['Mothername'];
+        // this.BirthPlace = this.route.snapshot.params['BirthPlace'];
+
+        this.Fathername = this.horoScopeService.Mothername;
+        this.Mothername = this.horoScopeService.Fathername;
+        this.BirthPlace = this.horoScopeService.birthplace;
         // this.route.snapshot.data.subscribe(result=>{
         //     this.horoInfo = result['horoRequest'];
         //     this.horoInfo = result['data'];
@@ -131,10 +138,10 @@ export class HoroscopeFreeComponent implements OnInit, OnDestroy, AfterViewInit 
             //   };
             //   let profileModal = this.modalCtrl.create(LoginPage, { 'HoroInfo': this.horoInfo }, myModalOptions);
             //   profileModal.present();
-            this.router.navigate(["/services/login", { "HoroInfo": this.horoInfo }]);
+            this.router.navigate(["/services/login"]);
         }
         else {
-            this.router.navigate(["/services/horoscopePaid", { "HoroInfo": this.horoInfo }]);
+            this.router.navigate(["/services/horoscopePaid"]);
         }
     }
 

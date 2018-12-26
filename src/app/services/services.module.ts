@@ -4,9 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InfragisticsImportsModule } from '../infragistics-imports/infragistics-imports.module';
 import { ServicesComponent } from './services/services.component';
-import { AstamangalaComponent } from '../astamangala/astamangala/astamangala.component';
 import { ServicesListComponent } from '../services-list/services-list/services-list.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HoropaidComponent } from '../horopaid/horopaid/horopaid.component';
 import { DeliveryAddressComponent } from '../delivery-address/delivery-address/delivery-address.component';
 import { LoginComponent } from '../login/login/login.component';
@@ -16,6 +15,16 @@ import { MatchMakingReportComponent } from '../match-making-report/match-making-
 import { HoroscopeComponent } from '../horoscope/horoscope/horoscope.component';
 import { PaymentOldComponent } from '../paymentOld/paymentOld/paymentOld.component';
 import { MatchMakingComponent } from '../match-making/match-making/match-making.component';
+import { DeliveryAddressModule } from '../delivery-address/delivery-address.module';
+import { PaymentOldModule } from '../paymentOld/paymentOld.module';
+import { HoroscopeFreeModule } from '../horoscope-free/horoscope-free.module';
+import { MatchMakingModule } from '../match-making/match-making.module';
+import { MatchMakingReportModule } from '../match-making-report/match-making-report.module';
+import { HoroscopeModule } from '../horoscope/horoscope.module';
+import { HoropaidModule } from '../horopaid/horopaid.module';
+import { HoroscopePaidServiceModule } from '../horoscope-paid-service/horoscope-paid-service.module';
+import { PaymentProcessingComponent } from '../payment-processing/payment-processing.component';
+
 
 @NgModule({
     imports: [
@@ -24,6 +33,14 @@ import { MatchMakingComponent } from '../match-making/match-making/match-making.
         ReactiveFormsModule,
         FormsModule,
         InfragisticsImportsModule,
+        DeliveryAddressModule, 
+        PaymentOldModule,
+        HoroscopeModule,
+        HoroscopeFreeModule,
+        HoroscopePaidServiceModule,
+        HoropaidModule,
+        MatchMakingModule, 
+        MatchMakingReportModule,
         RouterModule.forChild([
             {
                 path: 'services',
@@ -54,14 +71,14 @@ import { MatchMakingComponent } from '../match-making/match-making/match-making.
                     { path:'deliveryAddress', component:DeliveryAddressComponent},
                     { path:'paidServices', component:PaidervicesComponent},
                     { path: 'payment', component: PaymentOldComponent },
-
+                    { path:'paymentProcessing', component:PaymentProcessingComponent}
                 ]
-            }
+            }, 
         ])
     ],
-    declarations: [ServicesComponent,ServicesListComponent],
+    declarations: [ServicesComponent,ServicesListComponent, PaidervicesComponent],
     exports: [
-        ServicesComponent,ServicesListComponent
+        ServicesComponent,ServicesListComponent, PaidervicesComponent
     ]
 })
 export class ServicesModule {

@@ -8,6 +8,7 @@ export class HoroRequest{
     Time:string;
     //Date:Date;
     //Time:Date;
+    Place:string;
     TimeFormat:string;
     LatDeg:number;
     LatMt:number;
@@ -20,12 +21,14 @@ export class HoroRequest{
     PN:string;
     Gender:string;
     LangCode:string;
-    // ReportType:string;
-    // FormParameter:string;
-    // Swarna:number;
-    // Pruchaka:number;
-    // JanmaRashi:number;
-    // AshtaManagalaNo:string;
-    // IsMarried:boolean;
+    ReportType:string;
+    ReportSize:string;
+    IsMarried:boolean;
+
+    FormParameter:string;
+    Swarna:number;
+    Pruchaka:number;
+    JanmaRashi:number;
+    AshtaMangalaNo:string;
     // Path:string;
 }
