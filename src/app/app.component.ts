@@ -49,6 +49,7 @@ export class AppComponent {
     // this.navigationItems.push({ icon: 'people.png', text: 'Astamangala', link: '/astamangala' });
     this.navigationItems.push({ icon: 'sales.png', text: 'Home', link: '/home' });
     this.navigationItems.push({ icon: 'people.png', text: 'Services', link: '/services' });
+    this.navigationItems.push({ icon: 'people.png', text: 'Horoscope', link: '/services/#SH' });
     this.navigationItems.push({ icon: 'sales.png', text: 'Register', link: '/registration' });
     this.navigationItems.push({ icon: 'people.png', text: 'Login', link: '/login' });
 

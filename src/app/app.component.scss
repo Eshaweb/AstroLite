@@ -35,6 +35,7 @@ nav header section {
 img {
     width: 32px;
     height: 32px;
+    padding-right: 15px;
 }
 
 ng-template header {
@@ -64,4 +65,19 @@ ng-template header {
 .igx-navbar__title {
     margin: 0;
     color: #fff;
+
+
+}
+
+.menulogo{
+
+    width: 280px;
+    height: 59px;
+
+}
+
+.ng-star-inserted {
+    box-shadow: 1px 1px 1px 0px #ccc;
+    margin-bottom: 6px;
+    /* height: 17%; */
 }
