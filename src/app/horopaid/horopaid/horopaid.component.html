@@ -10,9 +10,9 @@ title="Paid Services" actionButtonIcon="arrow_back" >
 
 </div> -->
 <div class="screen-content">
-    <!-- <div class="title">
+    <div class="title">
         <h4 class="igx-typography__h4 horoscope-report-pri">Horoscope Report Pricing</h4>
-</div> -->
+</div>
 <div class="body-vertical-centering-wrapper">
     <div class="body">
         <div class="full-horoscope">
@@ -61,21 +61,22 @@ title="Paid Services" actionButtonIcon="arrow_back" >
     </div>
     <span class="list-itemtext-6 igx-typography__subtitle-2" *ngIf='!checkBoxValue'>{{service.Amount}}</span>
     <span class="list-itemtext-6 igx-typography__subtitle-2" *ngIf='checkBoxValue'>{{service.PrintAmount}}</span>
-
 </div>
+
     </igx-list-item>
-    <!-- <igx-list-item>
+    <igx-list-item>
         <div class="hardcopy">
             <igx-checkbox [checked]="false" (click)="hardcopyRequired_Click(service.ItMastId)">Hardcopy Required
             </igx-checkbox>
             </div>
-    </igx-list-item> -->
+    </igx-list-item>
     <igx-list-item>
 
-            <!-- <button igxRipple igxButton="raised" (click)="onNext(service)">Next</button> -->
-            <button igxRipple igxButton="raised" (click)="onNext(service)">Download</button>
+            <button igxRipple igxButton="raised" (click)="onNext(service)">Next</button>
+            <!-- <button igxRipple igxButton="raised" (click)="onNext(service)">Download</button> -->
 
     </igx-list-item>
+    <!-- <p *ngIf='isLoading'>Downloading....</p> -->
     </igx-list>
     <div class="text-display">
             <p class="eligibility">Delivery Service is Applicable for Customers Within India</p>
@@ -91,4 +92,6 @@ title="Paid Services" actionButtonIcon="arrow_back" >
 </div>
 </div>
 </div>
-</div></form></main>
+</div></form>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+</main>

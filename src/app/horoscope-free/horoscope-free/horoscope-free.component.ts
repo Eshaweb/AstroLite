@@ -119,11 +119,7 @@ export class HoroscopeFreeComponent implements OnInit, OnDestroy, AfterViewInit 
         this.Karana = horoScopeService.data.Karana;
         this.VishaGhati = horoScopeService.data.VishaGhati;
         this.AmrithaGhati = horoScopeService.data.AmrithaGhati;
-        //this.serviceInfo =  horoScopeService.getCustomers();
-
-        // this.horoScopeService.GetHoroScopeItems((data) => {
-        //   this.serviceInfo = data;
-        // });
+        
     }
     backClicked() {
         this._location.back();
@@ -141,7 +137,7 @@ export class HoroscopeFreeComponent implements OnInit, OnDestroy, AfterViewInit 
             this.router.navigate(["/services/login"]);
         }
         else {
-            this.router.navigate(["/services/horoscopePaid"]);
+            this.router.navigate(["/services/horoscopePaid", { "PartyMastId": this.loginService.PartyMastId}]);
         }
     }
 

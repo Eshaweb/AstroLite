@@ -1,0 +1,55 @@
+<main class="igx-typography"><form>
+<div class="payment-1">
+<div class="navigation"><div class="navigation-navbar">
+<!-- <igx-navbar 
+title="Payment" actionButtonIcon="arrow_back" >
+<igx-icon name="more_vert" ></igx-icon>
+</igx-navbar> -->
+</div>
+
+</div>
+<div class="screen"><div class="title"><h2 class="igx-typography__h2 payment">Payment </h2>
+</div>
+<div class="content-centering-wrapper"><div class="content"><span class="igx-typography__body-1 coupon-note">If you have a coupon code please enter here</span>
+<div class="coupon-code-2" [formGroup]="CoupenCodeForm"><div class="coupon-code">
+<igx-input-group type="line" class="coupon-code-1" >
+<input igxInput type="text" formControlName="couponcode" />
+<label igxLabel>Coupon</label>
+</igx-input-group>
+<p style="color:blue" id='err_couponcode'></p>
+</div>
+
+<div class="apply-button">
+<button igxRipple class="apply-button-1" igxButton="raised" [disabled]="!CoupenCodeForm.valid" (click)="onClick()">Apply</button>
+</div>
+
+</div>
+<span class="igx-typography__body-1 order-total">Order Total</span>
+<span class="igx-typography__body-1 actual-price">Price              :         {{payableAmount}}</span>
+<span class="igx-typography__body-1 coupon-discount">Coupon Discount      :          {{discountAmount}}</span>
+<span class="igx-typography__body-1 total-price">Effective Price                :          {{payableAmount}}</span>
+<p style="color:red" *ngIf="(differenceAmount>0)"> {{'Remaining balance amount '+differenceAmount+' Rs will be deducted from choosen payment modes'}} </p>
+<p style="color:green"> {{selectMeMessage}}</p>
+<div class="astrolite-wallet">
+<igx-checkbox [checked]="false" (click)="checkBox_valueChanged($event)">
+Pay using Astrolite wallet (Wallet Balce {{walletbalance}})
+</igx-checkbox>
+</div>
+
+<div class="payment-mode">
+<igx-combo #combo class="payment-mode-1"
+            [data]="paymentModes" [displayKey]="'Text'" [valueKey]="'Id'" type="line"
+            placeholder="Location(s)" searchPlaceholder="Search..." (onSelectionChange)="ObjChanged($event)">
+</igx-combo>
+</div>
+
+<div class="continue-button">
+<button igxRipple igxButton="raised" (click)="onContinue()">Continue</button>
+</div>
+
+</div>
+</div>
+</div>
+</div></form>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+</main>

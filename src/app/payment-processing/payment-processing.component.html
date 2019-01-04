@@ -1,3 +1,7 @@
-<p>
-  payment-processing works!
-</p>
+<main>
+        <button igxRipple class="apply-button-1" igxButton="raised" [disabled]="!enableDownload" (click)="Download_Click()">{{buttonName}}</button>
+
+        <button igxRipple class="apply-button-1" igxButton="raised" [disabled]="!enableRefresh" (click)="Refresh_Click()">Refresh</button>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+</main>
+

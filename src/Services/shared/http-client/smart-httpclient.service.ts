@@ -24,7 +24,7 @@ export interface IRequestOptions2{
   observe?: 'body';
   params?: HttpParams;
   reportProgress?: boolean;
-  responseType?: string;
+  responseType?: 'blob';
   withCredentials?: boolean;
   body?: any;
 }
@@ -37,6 +37,8 @@ export function applicationHttpClientCreator(http: HttpClient, loaderService: Lo
 export class SmartHttpClient {
 
   private api = 'https://astroliteapi.azurewebsites.net/api/';
+  //private api = 'https://testastroapi.azurewebsites.net/api/';
+
   salesResponse: SalesResponse;
   xxx: any;
   // private api = 'https://www.igniteui.com/api/';
@@ -89,7 +91,7 @@ export class SmartHttpClient {
     // return this.http.post<T>(this.api + endPoint, params, options).pipe( finalize(()=>{
     //   //this.hideLoader();
     // }));
-    return this.http.post<T>(this.api + endPoint, params, options).pipe(finalize(() => {
+    return this.http.post<T>(this.api + endPoint, params,options).pipe(finalize(() => {
     })).pipe(tap((data: any) => {
       // if (this.instanceOfError(data)) {
       //   alert((data as Error).ErrorString);
@@ -102,19 +104,20 @@ export class SmartHttpClient {
     ).catch(this.handleError);
   }
 
+/**
+   * DownloadResultById request
+   * @param {string} endPoint end point of the api
+   * @param {Object} params body of the request.
+   * @param {IRequestOptions2} options2 options of the request like headers, body, etc.
+   * @returns {Observable<T>}
+   */
+  public DownloadResultById(endPoint: string, params: Object, options2?: IRequestOptions2) {
+    return this.http.get(this.api + endPoint + "?" + params, { responseType: "blob" }).catch(this.handleError);
+  }
 
-  // public PostProcessOrder<T>(endPoint: string, params: Object, options?: IRequestOptions2): Observable<T> {
-  //   options.responseType='blob';
-  //   return this.http.post<T>(this.api + endPoint, params,options).pipe(finalize(() => {
-  //   })).pipe(tap((data: any) => {
-     
-  //   })
-      
-  //   ).catch(this.handleError);
-  // }
-  // instanceOfError(object: any): object is Error {
-  //   return 'Type' in object;
-  // }
+  instanceOfError(object: any): object is Error {
+    return 'Type' in object;
+  }
   private handleErrorOld(err: HttpErrorResponse) {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console

@@ -1,0 +1,184 @@
+<main class="igx-typography"><form [formGroup]="horoscopeFormForm">
+<div class="horoscope-1">
+<div class="navigation"><div class="navigation-navbar">
+<!-- <igx-navbar 
+title="Horoscope" actionButtonIcon="arrow_back" >
+<igx-icon name="more_vert" ></igx-icon>
+</igx-navbar> -->
+<!-- <igx-navbar title="Horoscope" >
+</igx-navbar> -->
+</div>
+
+</div>
+<div class="screen"><div class="title"><h2 class="igx-typography__h2 horoscope">Horoscope</h2>
+</div>
+<div class="content"><h3 class="igx-typography__h3 sub-title">Enter Details</h3>
+<div class="name-2"><div class="name">
+<igx-input-group type="line" class="name-1" >
+<input igxInput type="text" name="name" formControlName="name" />
+<label igxLabel>Name</label>
+</igx-input-group>
+<p style="color:red" id='err_name'></p>
+</div>
+
+<div class="father-name">
+<igx-input-group type="line" class="father-name-1" >
+<input igxInput type="text" name="fatherName" formControlName="fatherName" />
+<label igxLabel>Father Name</label>
+</igx-input-group>
+<p style="color:red" id='err_fatherName'></p>
+</div>
+
+<div class="mother-name">
+<igx-input-group type="line" class="mother-name-1" >
+<input igxInput type="text" name="motherName" formControlName="motherName" />
+<label igxLabel>Mother Name</label>
+</igx-input-group>
+<p style="color:red" id='err_motherName'></p>
+</div>
+
+</div>
+<div class="dateand-time">
+        <div class="dateof-bith">
+<igx-datePicker class="dateof-bith-1" name="birthDate" [formatter]="formatter" formControlName="birthDate" >
+</igx-datePicker>
+<p style="color:red" id='err_birthDate'></p>
+</div>
+
+<div class="timeof-birth">
+<igx-time-picker class="timeof-birth-1" name="birthTime" formControlName="birthTime" >
+</igx-time-picker>
+<p style="color:red" id='err_birthTime'></p>
+</div>
+
+<div class="gotra">
+<igx-input-group type="line" class="gotra-1" >
+<input igxInput type="text" name="gotra" formControlName="gotra" />
+<label igxLabel>Gotra</label>
+</igx-input-group>
+<p style="color:red" id='err_gotra'></p>
+</div>
+
+</div>
+<div class="gender"><span class="igx-typography__subtitle-1 gender-label">Gender</span>
+<div 
+class="gender-button"><igx-radio-group formControlName="gender">
+<div class="gender-button-1">
+<igx-radio value="M">
+Male
+</igx-radio>
+</div>
+
+<div class="gender-button-2">
+<igx-radio value="F">
+Female
+</igx-radio>
+</div>
+<p style="color:red" id='err_gender'></p>
+</igx-radio-group>
+
+</div>
+ 
+<div class="birth-place">
+<igx-input-group type="line" class="birth-place-1" id="txtHome">
+<input igxInput type="text" name="birthPlace" formControlName="birthPlace" />
+<!-- <label igxLabel>Birth Place</label> -->
+</igx-input-group>
+<p style="color:red" id='err_birthPlace'></p>
+</div>
+<!-- <div class="time-zone">
+        <igx-combo #combo class="input-container" width="500px" [itemsMaxHeight]="255" [data]="timeformats"
+                [displayKey]="'Text'" [valueKey]="'Id'" formControlName="FemaleTimeformat" placeholder="Select"
+                searchPlaceholder="Search..." (onSelectionChange)="selectionChange($event)">
+        </igx-combo>
+</div> -->
+</div>
+<div class="coordinates-row">
+        <div class="coordinates">
+        <div class="longitude-1" *ngIf="timeZoneName"><span class="igx-typography__subtitle-1 longitude">LONGITUDE</span>
+<div class="logitude1">
+<igx-input-group type="border" class="logitude1-1" >
+<input igxInput type="text" formControlName="LongDeg" [(ngModel)]="horoRequest.LongDeg" [disabled]="!enabletoEdit" />
+</igx-input-group>
+</div>
+
+<div class="longitude2">
+<igx-input-group type="border" class="longitude2-1" >
+<input igxInput type="text" formControlName="LongMt" [(ngModel)]="horoRequest.LongMt" [disabled]="!enabletoEdit" />
+</igx-input-group>
+</div>
+
+<div class="logitude3">
+<igx-input-group type="border" class="logitude3-1" >
+<input igxInput type="text" formControlName="EW" [(ngModel)]="horoRequest.EW" [disabled]="!enabletoEdit"/>
+</igx-input-group>
+</div>
+
+</div>
+<div class="latitude-1" *ngIf="timeZoneName"><span class="igx-typography__subtitle-1 latitude">LATITUDE</span>
+<div class="lattitude1">
+<igx-input-group type="border" class="lattitude1-1" >
+<input igxInput type="text" formControlName="LatDeg" [(ngModel)]="horoRequest.LatDeg" [disabled]="!enabletoEdit"/>
+</igx-input-group>
+</div>
+
+<div class="latitude2">
+<igx-input-group type="border" class="latitude2-1" >
+<input igxInput type="text" formControlName="LatMt" [(ngModel)]="horoRequest.LatMt" [disabled]="!enabletoEdit" />
+</igx-input-group>
+</div>
+
+<div class="latitude3">
+<igx-input-group type="border" class="latitude3-1" >
+<input igxInput type="text" formControlName="NS" [(ngModel)]="horoRequest.NS" [disabled]="!enabletoEdit"/>
+</igx-input-group>
+</div>
+
+</div>
+<div class="zone-1" *ngIf="timeZoneName"><span class="igx-typography__subtitle-1 zone">ZONE</span>
+<div class="zone1">
+<igx-input-group type="border" class="zone1-1" >
+<input igxInput type="text" formControlName="ZH" [(ngModel)]="horoRequest.ZH" [disabled]="!enabletoEdit" />
+</igx-input-group>
+</div>
+
+<div class="zone2">
+<igx-input-group type="border" class="zone2-1" >
+<input igxInput type="text" formControlName="ZM" [(ngModel)]="horoRequest.ZM" [disabled]="!enabletoEdit"/>
+</igx-input-group>
+</div>
+
+<div class="zone3">
+<igx-input-group type="border" class="zone3-1" >
+<input igxInput type="text" formControlName="PN" [(ngModel)]="horoRequest.PN" [disabled]="!enabletoEdit" />
+</igx-input-group>
+</div>
+
+</div>
+<div *ngIf="timeZoneName">
+<span class="igx-typography__body-1 time-zone">Time Zone    :  {{timeZoneName}}</span>
+<div class="editbutton" >
+<igx-checkbox [checked]="checkBoxValue" (click)="checkBoxStateChanged()">Click here to edit
+</igx-checkbox>
+</div>
+</div>
+<!-- <section class="sample-content" *ngIf='isLoading'>
+        <article class="sample-column">
+          <h5>Text is displayed</h5>
+          <div class="circular-container">
+            <igx-circular-bar [value]="currentValue" [max]="maxvalue" [animate]="true" [textVisibility]="true" (onProgressChanged)="progresChanged($event)"></igx-circular-bar>
+          </div>
+         </article>
+    </section> -->
+</div>
+<div class="bottom-button">
+        <div class="submit">
+        <button igxRipple igxButton="raised" [disabled]="!horoscopeFormForm.valid" (click)='onClick()'>Submit</button>
+        </div> 
+        </div>
+</div>
+</div>
+</div>
+</div></form>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+</main>

@@ -4,18 +4,22 @@ import { Observable } from "rxjs";
 import { SalesResponse } from "../../Models/Sales/SalesResponse";
 import { HttpClient, HttpBackend, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { HoroRequest } from "src/Models/HoroScope/HoroRequest";
+import { OrderResponse } from "src/Models/OrderResponse";
+import { ResultResponse } from "src/Models/ResultResponse";
 
 
 
 @Injectable()
 export class HoroScopeService {
-    PaymentId:string;
-    ExtCode:string;
-    OrderId:string;
-    Fathername:string;
-    Mothername:string;
-    birthplace:string;
-    IsDeliverable:boolean;
+    resultResponse:ResultResponse;
+    orderResponse:OrderResponse;
+    PaymentId: string;
+    ExtCode: string;
+    OrderId: string;
+    Fathername: string;
+    Mothername: string;
+    birthplace: string;
+    IsDeliverable: boolean;
     Shloka1: string;
     Shloka2: string;
     JanmaNakshatra: string;
@@ -23,10 +27,10 @@ export class HoroScopeService {
     defaultAddress: any;
     paymentModes: any;
     horoRequest: HoroRequest;
-    itemOrdered:ServiceInfo;
-    data:any;
-    ItActId='#SH';
-  birthplaceShort: string;
+    itemOrdered: ServiceInfo;
+    data: any;
+    ItActId = '#SH';
+    birthplaceShort: string;
     //@ViewChild(Nav) nav;
     // constructor(public navCtrl: NavController,public smartHttpClient: SmartHttpClient) {
     constructor(handler: HttpBackend, public http: HttpClient, public smartHttpClient: SmartHttpClient) {
@@ -41,31 +45,77 @@ export class HoroScopeService {
         });
 
     }
+
+    private api = 'https://astroliteapi.azurewebsites.net/api/';
+    // ProcessOrder(){
+    //     return this.http.get(this.api + 'Test/ProcessOrder').catch(this.handleError); 
+    //   }
+    //   ProcessOrders(TestDTO){
+    //     return this.http.post(this.api + 'Test/ProcessOrders', TestDTO).catch(this.handleError); 
+    //   }
+    // ProcessOrder(callback: (data) => void){
+    //     var endPoint = "Test/ProcessOrder";
+    //     return this.smartHttpClient.Get(endPoint).subscribe((data: any) => {
+    //         callback(data);
+    //     });
+    // }
+    //   ProcessOrders(TestDTO, callback: (data) => void){
+    //     var endPoint = "Test/ProcessOrders";
+    //     return this.smartHttpClient.Post(endPoint, TestDTO).subscribe((data: any) => {
+    //         var fff = data;
+    //         callback(data);
+    //     });      
+    // }
     //  GetFreeData(horoRequest) {
     //     var url = "http://astroliteapi.azurewebsites.net/api/HoroScope/GetFreeData";
     //     var endPoint = "HoroScope/GetFreeData";
     //     return this.http.post(url, horoRequest);
     // }
-    // ProcessOrder(FreePDF, callback: (data) => void){
-        ProcessOrder(FreePDF){
-        var url = "http://astroliteapi.azurewebsites.net/api/Result/ProcessOrder";
-        var endPoint = "Result/ProcessOrder";
-        //return this.http.get(url).catch(this.handleEror);
-        // return this.http.get(url, { responseType: "blob", headers:new HttpHeaders().append('Content-Type','application/json') }).catch(this.handleEror);
-        // this.smartHttpClient.Get(endPoint).subscribe((data: any) => {
-        //     var gg = data;
-        //     callback(data);
-        //   });
-        return this.http.post(url, FreePDF,{ responseType: "blob"});
+     //ProcessOrder(FreePDF, callback: (data) => void){
+    ProcessOrder(FreePDF) {
+        //  var url = "https://testastroapi.azurewebsites.net/api/Result/ProcessOrder";
+        var url = "https://astroliteapi.azurewebsites.net/api/Result/ProcessOrder";
+        //     var endPoint = "Result/ProcessOrder";
+    //     //return this.http.get(url).catch(this.handleEror);
+    //     // return this.http.get(url, { responseType: "blob", headers:new HttpHeaders().append('Content-Type','application/json') }).catch(this.handleEror);
+    //     // this.smartHttpClient.Get(endPoint).subscribe((data: any) => {
+    //     //     var gg = data;
+    //     //     callback(data);
+    //     //   });
+        return this.http.post(url, FreePDF, { responseType: "blob" });
         //  return this.smartHttpClient.Post(endPoint, FreePDF).subscribe((data: any) => {
         //     var yyy = data;
         // });
-}
-    GetSample(horoSample){
-        var url = "http://astroliteapi.azurewebsites.net/api/Result/GetSample";
-        return this.http.post(url, horoSample, { responseType: "blob"});
     }
-    private handleEror(err:HttpErrorResponse){
+    // DownloadResult(AstroReportId){
+    //     var url = "http://astroliteapi.azurewebsites.net/api/Order/DownloadResult?";
+    //     var data = "AstroReportId=" + AstroReportId;
+    //     return this.http.get(url + data, { responseType: "blob" });
+    // }
+    DownloadResult(AstroReportId, callback: (data) => void){
+        var url = "https://astroliteapi.azurewebsites.net/api/Order/DownloadResult?";
+        var endPoint = "Order/DownloadResult";
+        var data = "AstroReportId=" + AstroReportId;
+        this.smartHttpClient.DownloadResultById(endPoint, data).subscribe((data: any) => {
+            this.existingAddress = data;
+            callback(data);
+        });
+    }
+    Test(AstroReportId, callback: (data) => void){
+        var url = "https://astroliteapi.azurewebsites.net/api/Order/Test?";
+        var endPoint = "Order/Test";
+        var data = "AstroReportId=" + AstroReportId;
+        return this.smartHttpClient.DownloadResultById(endPoint, data).subscribe((data: any) => {
+            this.existingAddress = data;
+            callback(data);
+        });
+        //return this.http.get(url + data, { responseType: "blob" });
+    }
+    GetSample(horoSample) {
+        var url = "http://astroliteapi.azurewebsites.net/api/Result/GetSample";
+        return this.http.post(url, horoSample, { responseType: "blob" });
+    }
+    private handleEror(err: HttpErrorResponse) {
         alert(err);
         return "";
     }
@@ -79,27 +129,30 @@ export class HoroScopeService {
         return this.smartHttpClient.Post(endPoint, orderModel).subscribe((data: any) => {
             this.OrderId = data;
             callback(data);
+        },
+        (error)=>{
+
         });
     }
-    TestById(OrderId){
+    TestById(OrderId) {
         var url = "http://astroliteapi.azurewebsites.net/api/Result/Test?";
         //var url = "http://astroliteapi.azurewebsites.net/api/Result/Test";
         var endPoint = "Result/Test";
         var data = "Id=" + OrderId;
         //return this.http.get(url+ data, { responseType: "blob"});
-        return this.http.get(url+data, { responseType: "blob"});
+        return this.http.get(url + data, { responseType: "blob" });
         // this.smartHttpClient.GetById(endPoint, data).subscribe((data: any) => {
         //     var balance = data;
         //     console.log(data);
         //     callback(data);
         // });
     }
-    Test(callback: (data) => void){
-        var endPoint = "HoroScope/Test";
-        return this.smartHttpClient.Get(endPoint).subscribe((data: any) => {
-            callback(data);
-        });
-    }
+    // Test(callback: (data) => void) {
+    //     var endPoint = "HoroScope/Test";
+    //     return this.smartHttpClient.Get(endPoint).subscribe((data: any) => {
+    //         callback(data);
+    //     });
+    // }
     GetAllAddress(PartyMastId, callback: (data) => void) {
         var endPoint = "Address/GetAllAddress";
         var data = "PartyMastId=" + PartyMastId;
@@ -108,7 +161,7 @@ export class HoroScopeService {
             callback(data);
         });
     }
-    GetDefaultAddress(PartyMastId, callback: (data) => void){ 
+    GetDefaultAddress(PartyMastId, callback: (data) => void) {
         var endPoint = "Address/GetDefaultAddress";
         var data = "PartyMastId=" + PartyMastId;
         this.smartHttpClient.GetById(endPoint, data).subscribe((data: any) => {
@@ -117,16 +170,16 @@ export class HoroScopeService {
             callback(data);
         });
     }
-    GetPriceListByItActId(ItemMast,callback: (data) => void) {
+    GetPriceListByItActId(ItemMast, callback: (data) => void) {
         var endPoint = "Item/GetPriceListByItActId";
-        this.smartHttpClient.Post(endPoint,ItemMast).subscribe((data: any) => {
+        this.smartHttpClient.Post(endPoint, ItemMast).subscribe((data: any) => {
             var items = data;
             callback(data);
         });
     }
-    GetItemPrice(HardCopyPriceRequest,callback: (data) => void) {
+    GetItemPrice(HardCopyPriceRequest, callback: (data) => void) {
         var endPoint = "Item/GetItemPrice";
-        this.smartHttpClient.Post(endPoint,HardCopyPriceRequest).subscribe((data: any) => {
+        this.smartHttpClient.Post(endPoint, HardCopyPriceRequest).subscribe((data: any) => {
             var items = data;
             callback(data);
         });
@@ -135,7 +188,7 @@ export class HoroScopeService {
         var endPoint = "Address/CreateAddress";
         return this.smartHttpClient.Post(endPoint, addessModel).subscribe((data: any) => {
             var gg = data;
-            var PartyMastId="1";
+            var PartyMastId = "1";
             // this.smartHttpClient.GetById(endPoint, data).subscribe((data: any) => {
             //     this.existingAddress = data;
             // });
@@ -147,15 +200,15 @@ export class HoroScopeService {
         return this.smartHttpClient.Post(endPoint, addessModel).subscribe((data: any) => {
             callback(data);
         });
-    } 
-    CreateAndUpdateOrder(addessModel, callback: (data) => void){
+    }
+    CreateAndUpdateOrder(addessModel, callback: (data) => void) {
         var endPoint = "Address/CreateAndUpdateOrder";
         return this.smartHttpClient.Post(endPoint, addessModel).subscribe((data: any) => {
             var hh = data;
             callback(data);
         });
     }
-    UpdateAddressToOrder(orderAddress, callback: (data) => void){
+    UpdateAddressToOrder(orderAddress, callback: (data) => void) {
         var endPoint = "Order/UpdateAddressToOrder";
         return this.smartHttpClient.Post(endPoint, orderAddress).subscribe((data: any) => {
             var hh = data;
@@ -170,15 +223,15 @@ export class HoroScopeService {
     //     });
     // }
 
-    
-    GetPayCodes(callback: (data) => void){
+
+    GetPayCodes(callback: (data) => void) {
         var endPoint = "Sales/GetPayCodes";
-    this.smartHttpClient.Get(endPoint).subscribe((data: any) => {
-      this.paymentModes = data;
-      callback(data);
-    });
+        this.smartHttpClient.Get(endPoint).subscribe((data: any) => {
+            this.paymentModes = data;
+            callback(data);
+        });
     }
-    GetWalletBalance(PartyMastId,callback: (data) => void){
+    GetWalletBalance(PartyMastId, callback: (data) => void) {
         var endPoint = "Wallet/GetWalletBalance";
         var data = "PartyMastId=" + PartyMastId;
         this.smartHttpClient.GetById(endPoint, data).subscribe((data: any) => {
@@ -187,21 +240,21 @@ export class HoroScopeService {
             callback(data);
         });
     }
-    ValidateCouponCode(orderAddress, callback: (data) => void){
+    ValidateCouponCode(orderAddress, callback: (data) => void) {
         var endPoint = "Sales/ValidateCouponCode";
         return this.smartHttpClient.Post(endPoint, orderAddress).subscribe((data: any) => {
             var hh = data;
             callback(data);
         });
     }
-    CreateBillPayModeToOrder(orderAddress, callback: (data) => void){
+    CreateBillPayModeToOrder(orderAddress, callback: (data) => void) {
         var endPoint = "Order/CreateBillPayModeToOrder";
         return this.smartHttpClient.Post(endPoint, orderAddress).subscribe((data: any) => {
             var hh = data;
             callback(data);
         });
     }
-    PaymentComplete(payment, callback: (data) => void){
+    PaymentComplete(payment, callback: (data) => void) {
         var endPoint = "Order/PaymentComplete";
         return this.smartHttpClient.Post(endPoint, payment).subscribe((data: any) => {
             var hh = data;
@@ -209,7 +262,17 @@ export class HoroScopeService {
         });
 
     }
-    GetEMailAddress(PartyMastId,callback: (data) => void){
+    CheckForResult(OrderId, callback: (data) => void) {
+        var endPoint = "Order/CheckForResult";
+        var data = "OrderId=" + OrderId;
+        this.smartHttpClient.GetById(endPoint, data).subscribe((data: any) => {
+            var balance = data;
+            console.log(data);
+            callback(data);
+        });
+    }
+
+    GetEMailAddress(PartyMastId, callback: (data) => void) {
         var endPoint = "Party/GetEMailAddress";
         var data = "PartyMastId=" + PartyMastId;
         this.smartHttpClient.GetById(endPoint, data).subscribe((data: any) => {
@@ -266,7 +329,7 @@ export class HoroScopeService {
                         errorMessage = err.error.Errors[i].ErrorString;
                     }
                 }
-                else {  
+                else {
                     errorMessage = err.error;
                 }
             }
@@ -274,7 +337,7 @@ export class HoroScopeService {
                 errorMessage = 'Network Error';
             }
         }
-        
+
         console.log(errorMessage);
         // if (errorMessage != '') {
         if (errorMessage != null) {
@@ -283,7 +346,7 @@ export class HoroScopeService {
             return Observable.throw(err);
         }
     }
-    
+
 
     // getCustomers() {
     //     return customers;
@@ -300,13 +363,13 @@ export class ServiceInformation {
     // MRP: number;
     // ActualPrice:number;
 
-    ItMastId:string;
-    Name:string;
-    Description:string;
+    ItMastId: string;
+    Name: string;
+    Description: string;
     MRP: number;
-    Amount:number;
+    Amount: number;
     PrintMRP: number;
-    PrintAmount:number;
+    PrintAmount: number;
 }
 export class ServiceInfo {
     // Description: string;
@@ -321,14 +384,14 @@ export class ServiceInfo {
     // HardCopy: number;
     // SoftCopy: number;
 
-    ItMastId:string;
-    Name:string;
-    Description:string;
+    ItMastId: string;
+    Name: string;
+    Description: string;
     MRP: number;
-    Amount:number;
+    Amount: number;
     PrintMRP: number;
-    PrintAmount:number;
-    IsHardCopy?:boolean;
+    PrintAmount: number;
+    IsHardCopy?: boolean;
 }
 export class PaymentInfo {
     Title: string;

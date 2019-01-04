@@ -12,10 +12,7 @@ import { LoginComponent } from '../login/login/login.component';
 import { PaidervicesComponent } from '../paidervices/paidervices.component';
 import { HoroscopeFreeComponent } from '../horoscope-free/horoscope-free/horoscope-free.component';
 import { MatchMakingReportComponent } from '../match-making-report/match-making-report/match-making-report.component';
-import { HoroscopeComponent } from '../horoscope/horoscope/horoscope.component';
-import { PaymentOldComponent } from '../paymentOld/paymentOld/paymentOld.component';
 import { MatchMakingComponent } from '../match-making/match-making/match-making.component';
-import { PaymentOldModule } from '../paymentOld/paymentOld.module';
 import { PaymentProcessingComponent } from '../payment-processing/payment-processing.component';
 import { HoroscopePaidServiceComponent } from '../horoscope-paid-service/horoscope-paid-service/horoscope-paid-service.component';
 import { AgmCoreModule } from '@agm/core';
@@ -23,9 +20,14 @@ import { HoroScopeService } from 'src/Services/HoroScopeService/HoroScopeService
 import { MatchMakingService } from 'src/Services/MatchMakingService/MatchMakingService';
 import { LoginService } from 'src/Services/login/login.service';
 import { PartyService } from 'src/Services/PartyService/PartyService';
-import { RegistrationComponent } from '../registration/registration/registration.component';
 import { DashboardComponent } from '../dashboard/dashboard/dashboard.component';
 import { DepositWalletComponent } from '../deposit-wallet/deposit-wallet/deposit-wallet.component';
+import { NgxLoadingModule } from 'ngx-loading';
+import { HoroscopeOldComponent } from '../horoscopeOld/horoscopeOld/horoscopeOld.component';
+import { ToastrModule } from 'ng6-toastr-notifications';
+import { RegistrationService } from 'src/Services/registration/registration.service';
+import { PaymentComponent } from '../payment/payment/payment.component';
+import { RegistrationComponent } from '../registration/registration/registration.component';
 
 
 @NgModule({
@@ -35,8 +37,10 @@ import { DepositWalletComponent } from '../deposit-wallet/deposit-wallet/deposit
             // apiKey: "AIzaSyC0nx6AjTNNb24ZEnah5hRBqL0ehgrZ3es",
             apiKey: "AIzaSyC0nx6AjTNNb24ZEnah5hRBqL0ehgrZ3es",
             libraries: ["places"]
-          }),
+        }),
+        NgxLoadingModule.forRoot({}),
         CommonModule,
+        //ToastrModule.forRoot(),
         BrowserAnimationsModule,
         ReactiveFormsModule,
         FormsModule,
@@ -57,13 +61,13 @@ import { DepositWalletComponent } from '../deposit-wallet/deposit-wallet/deposit
                 children: [
                     {
                         //path: 'horoscope',
-                        path:'#SH',
-                        component: HoroscopeComponent,
+                        path: '#SH',
+                        component: HoroscopeOldComponent,
                         //resolve: { person: PersonResolverService }
                     },
                     {
                         //path: 'matchmaking',
-                        path:'#SM',
+                        path: '#SM',
                         component: MatchMakingComponent,
                         //resolve: { person: PersonResolverService },
                         //canDeactivate: [PeopleEditGuardService],
@@ -73,21 +77,22 @@ import { DepositWalletComponent } from '../deposit-wallet/deposit-wallet/deposit
                         component: HoroscopeFreeComponent,
                         //resolve: { person: PersonResolverService }
                     },
-                    { path:'matchFree', component:MatchMakingReportComponent},
-                    { path:'login', component:LoginComponent},
-                    { path:'horoscopePaid', component:PaidervicesComponent},
-                    { path:'deliveryAddress', component:DeliveryAddressComponent},
-                    { path:'paidServices', component:PaidervicesComponent},
-                    { path: 'payment', component: PaymentOldComponent },
-                    { path:'paymentProcessing', component:PaymentProcessingComponent}
+                    { path: 'registration', component: RegistrationComponent },
+                    { path: 'matchFree', component: MatchMakingReportComponent },
+                    { path: 'login', component: LoginComponent },
+                    { path: 'horoscopePaid', component: PaidervicesComponent },
+                    { path: 'deliveryAddress', component: DeliveryAddressComponent },
+                    { path: 'paidServices', component: PaidervicesComponent },
+                    { path: 'payment', component: PaymentComponent },
+                    { path: 'paymentProcessing', component: PaymentProcessingComponent }
                 ]
-            }, 
+            },
         ])
     ],
-    declarations: [HoroscopeComponent,
+    declarations: [HoroscopeOldComponent,
         MatchMakingComponent,
         DeliveryAddressComponent,
-        PaymentOldComponent,
+        PaymentComponent,
         HoroscopeFreeComponent,
         HoroscopePaidServiceComponent,
         HoropaidComponent,
@@ -97,11 +102,14 @@ import { DepositWalletComponent } from '../deposit-wallet/deposit-wallet/deposit
         DashboardComponent,
         //DepositWalletComponent,
         MatchMakingReportComponent,
-        ServicesComponent,ServicesListComponent, PaidervicesComponent],
-        providers:[HoroScopeService,MatchMakingService,LoginService,
-        PartyService],
+        ServicesComponent, ServicesListComponent, PaidervicesComponent],
+
+    providers: [
+        HoroScopeService, MatchMakingService, LoginService,
+        PartyService, RegistrationService
+    ],
     exports: [
-        ServicesComponent,ServicesListComponent, PaidervicesComponent
+        ServicesComponent, ServicesListComponent, PaidervicesComponent
     ]
 })
 export class ServicesModule {

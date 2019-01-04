@@ -16,10 +16,12 @@ title="Delivery Address" actionButtonIcon="arrow_back" >
 <input igxInput type="text" formControlName="email" [(ngModel)]="email" />
 <label igxLabel>Email</label>
 </igx-input-group>
+<p>You are purchasing {{ItName}}. You will get it to above EMail Address</p>
 </div>
 
 </div>
 <div class="address" *ngIf="DeliveryAddressRequired">
+    <p *ngIf="DeliveryAddressRequired">Since you need printed copy, we will send it in post within 3-4 business days</p>
     <igx-card class="address-box" *ngIf="existingAddress">
             <!-- <p style="color:red">You can change the default Address by clicking on particular Address list item</p> -->
         <div *ngFor="let order of existingAddress; trackBy: trackByFn">

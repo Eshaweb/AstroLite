@@ -14,6 +14,7 @@ import { HoroScopeService } from 'src/Services/HoroScopeService/HoroScopeService
 import { EventsService } from 'angular4-events';
 import { LoginService } from 'src/Services/login/login.service';
 import { HttpClient } from '@angular/common/http';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
     selector: 'app-login',
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
     
     @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
   isLoading: boolean=false;
+  loading: boolean=false;
 
     login(){
         this.isLoading=true;
@@ -69,7 +71,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   Name: any;
   horoInfo: any;
 
-  constructor(public _location: Location, public events:EventsService, public route: ActivatedRoute, public router: Router, public http: HttpClient, 
+  constructor(public toastrService: ToastrManager, public _location: Location, public events:EventsService, public route: ActivatedRoute, public router: Router, public http: HttpClient, 
     public authService: AuthService, public horoScopeService: HoroScopeService, public loginService: LoginService, 
     public uiService: UIService, public formbuilder: FormBuilder) {
     
@@ -164,12 +166,15 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
     //   content: 'Please wait till we get banks for you'
     // });
     // loading.present();
+    
     if (this.isOTPRequested == false) {
+      this.loading = true;
       const loginModel = {
         MobileNo: this.loginForm.get('mobileno').value,
         Password: this.loginForm.get('password').value
       }
       this.loginService.Login(loginModel, (data) => {
+        this.loginService.PartyMastId=data.PartyMastId;
         //   this.orderModel.PartyMastId=data.PartyMastId;
         //   if(this.orderModel!=null){
         //   this.horoScopeService.CreateOrder(this.orderModel,(data) => {
@@ -178,17 +183,18 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
         // });
         // }
         if (this.horoScopeService.horoRequest != null) {
-
         //   this.navCtrl.push(ServiceInfoPage, { 'PartyMastId': data.PartyMastId, 'HoroInfo': this.navParams.get('HoroInfo') });
         this.router.navigate(["/services/horoscopePaid", { "PartyMastId": data.PartyMastId}]);
         // this.router.navigate(["/services/paidServices", { "PartyMastId": data.PartyMastId, 'HoroInfo': this.horoInfo}]);
 
         //this.viewCtrl.dismiss();
         }
+        this.toastrService.successToastr('You Successfully logined.', 'Success!', { position: 'top-center' });
       });
 
     }
     else {
+      this.loading = true;
       this.oTPRef = this.loginService.oTPRef;
       const oTPModel = {
         MobileNo: this.loginForm.get('mobileno').value,
@@ -197,6 +203,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
       }
       this.loginService.ValidateOTP(oTPModel);
     }
+    this.loading = false;
     //loading.dismiss();
   }
   backClicked() {
