@@ -36,7 +36,11 @@ form {
     flex: 1;
 }
 
-.navigation {
+.navigation-navbar-1 {
+width: 100%;
+
+}
+.navigation-chrome {
 
 display: flex;
 flex-direction: column;
@@ -44,14 +48,16 @@ padding: 0;
 flex-shrink: 0;
 }
 
-.colors-overlay10 {
-position: absolute;
-z-index: 0;
+.title {
+color: igx-color($default-palette, primary);
+margin-left: 6px;
 
+margin-top: 0px;
 width: 100%;
-height: 100%;
+height: 40px;
+min-height: 40px;
 
-background-color: rgba(igx-color($default-palette, primary), .10);
+font-family: 'Helvetica', 'Titillium Web', sans-serif;
 }
 .mobile-no-1 {
 width: 100%;
@@ -61,9 +67,10 @@ width: 100%;
 width: 100%;
 
 }
-.forget-password {
-margin-top: 13px;
-margin-right: 40px;
+.forgot-password {
+margin-top: 21px;
+margin-right: 8px;
+margin-left: 2px;
 
 width: 100%;
 
@@ -72,55 +79,39 @@ color: igx-color($default-palette, primary);
 }
 .login-1 {
 width: 100%;
-height: 50px;
-min-height: 50px;
+height: 40px;
+min-height: 40px;
 
 }
 .facebook-1 {
 width: 100%;
-height: 50px;
-min-height: 50px;
+height: 40px;
+min-height: 40px;
 
 }
-.googlelogin-1 {
+.google-1 {
 width: 100%;
-height: 50px;
-min-height: 50px;
+height: 40px;
+min-height: 40px;
 
 }
-.ifyouare-non-regis {
+.note {
 color: igx-color($default-palette, secondary);
-margin-top: 0px;
-width: 100%;
-height: 48px;
-min-height: 48px;
+margin-top: 24px;
+margin-left: 3px;
 
 }
-.otp-login {
-position: relative;
-top: 23px;
-left: -379px;
-z-index: 2;
-
-width: 100%;
+.clickhere {
+margin-left: 3px;
 
 text-decoration: underline;
 color: igx-color($default-palette, primary);
 }
-.ifyouare-non-regis-row {
-margin-top: 28px;
-
-display: flex;
-flex-direction: row;
-flex-shrink: 0;
-padding: 0;
-}
-
-.body {
-margin-top: 241px;
-margin-right: 138px;
-margin-bottom: 59px;
-margin-left: 141px;
+.content {
+margin-top: 22px;
+margin-right: 16px;
+margin-bottom: 19px;
+margin-left: 36px;
 
 display: flex;
 flex-direction: column;
@@ -128,15 +119,12 @@ padding: 0;
 flex-shrink: 0;
 }
 
-.content {
-width: 658px;
-min-width: 658px;
-height: 810px;
-min-height: 810px;
-position: absolute;
-top: 69px;
-left: 183px;
-z-index: 1;
+.signup {
+width: 357px;
+min-width: 357px;
+height: 565px;
+min-height: 565px;
+margin: 21px auto 0 auto;
 
 display: flex;
 flex-direction: column;
@@ -145,33 +133,13 @@ flex-shrink: 0;
 background-color: rgb(255, 255, 255);
 }
 
-.title {
-color: igx-color($default-palette, primary);
-margin-top: 0px;
-width: 131px;
-min-width: 131px;
-height: 57px;
-min-height: 57px;
-
-font-family: 'Helvetica', 'Titillium Web', sans-serif;
-text-align: center;
-}
-.title-1 {
-position: absolute;
-top: 139px;
-left: 423px;
-z-index: 2;
+.screen {
 
 display: flex;
 flex-direction: column;
 padding: 0;
 flex-shrink: 0;
-}
-
-.colors-overlay10-row {
-
-position: relative;
-padding: 0;
+background-color: igx-color($default-palette, primary, 100);
 }
 
 @function get-palette($palette, $variant: 'light') {
@@ -212,7 +180,7 @@ $palette: get-palette($default-palette, 'dark')
 );
 
 $login-theme: igx-button-theme(
-$raised-background: igx-color($default-palette, secondary, 400),
+$raised-background: igx-color($default-palette, primary),
 $raised-text-color: rgb(255, 255, 255)
 );
 
@@ -221,7 +189,7 @@ $raised-background: igx-color($default-palette, info),
 $raised-text-color: rgb(255, 255, 255)
 );
 
-$googlelogin-theme: igx-button-theme(
+$google-theme: igx-button-theme(
 $raised-background: igx-color($default-palette, secondary, 900),
 $raised-text-color: rgb(255, 255, 255)
 );
@@ -235,31 +203,42 @@ $raised-text-color: rgb(255, 255, 255)
 
 .mobile-no {
 @include igx-input-group($mobile-no-theme);
+margin-top: 31px;
+margin-right: 8px;
+
 width: 100%;
 }
 
 .password {
 @include igx-input-group($password-theme);
-margin-top: 51px;
+margin-top: 31px;
+margin-right: 6px;
+margin-left: 2px;
 
 width: 100%;
 }
 
 .login {
 @include igx-button($login-theme);
-margin-top: 13px;
+margin-top: 21px;
+margin-right: 7px;
+margin-left: 1px;
 
 }
 
 .facebook {
 @include igx-button($facebook-theme);
-margin-top: 13px;
+margin-top: 12px;
+margin-right: 7px;
+margin-left: 1px;
 
 }
 
-.googlelogin {
-@include igx-button($googlelogin-theme);
-margin-top: 13px;
+.google {
+@include igx-button($google-theme);
+margin-top: 12px;
+margin-right: 7px;
+margin-left: 1px;
 
 }
 

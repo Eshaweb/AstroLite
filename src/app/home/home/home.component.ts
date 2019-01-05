@@ -207,7 +207,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     OnHoroScope_Click(){
+        // this.router.navigate(["/services/#SH", {outlets: {right: null}}], { replaceUrl: true });
+        //this.router.navigate(["/services/#SH", {outlets: {right: null, primary: ['/services/#SH']}}]);
         this.router.navigate(["/services/#SH"]);
+        //this.router.navigateByUrl("/services/#SH");
         }
 
 }

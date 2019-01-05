@@ -9,16 +9,14 @@
 @import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-theme';
 @import '~igniteui-angular/lib/core/styles/components/badge/badge-component';
 @import '~igniteui-angular/lib/core/styles/components/badge/badge-theme';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-component';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-theme';
 @import '~igniteui-angular/lib/core/styles/components/avatar/avatar-component';
 @import '~igniteui-angular/lib/core/styles/components/avatar/avatar-theme';
 @import '~igniteui-angular/lib/core/styles/components/progress/progress-component';
 @import '~igniteui-angular/lib/core/styles/components/progress/progress-theme';
 @import '~igniteui-angular/lib/core/styles/components/list/list-component';
 @import '~igniteui-angular/lib/core/styles/components/list/list-theme';
-@import '~igniteui-angular/lib/core/styles/components/icon/icon-component';
-@import '~igniteui-angular/lib/core/styles/components/icon/icon-theme';
-@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-component';
-@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-theme';
 
 main {
     margin: 0;
@@ -27,6 +25,7 @@ main {
     flex-direction: column;
 	overflow: auto;
     height: 100%;
+    background-color: rgba(igx-color($default-palette, primary), .10);
 }
 
 form {
@@ -40,18 +39,10 @@ form {
 
 
 
-.horopaid {
+.screen-content {
     display: flex;
     flex-direction: column;
     flex: 1;
-}
-
-.navigation {
-
-display: flex;
-flex-direction: column;
-padding: 0;
-flex-shrink: 0;
 }
 
 .horoscope-pricing {
@@ -212,15 +203,6 @@ flex-shrink: 0;
 background-color: rgb(255, 255, 255);
 }
 
-.screen-content {
-
-display: flex;
-flex-direction: column;
-padding: 0;
-flex-shrink: 0;
-background-color: rgba(igx-color($default-palette, primary), .10);
-}
-
 @function get-palette($palette, $variant: 'light') {
 $p: igx-color($palette, 'primary');
 $s: igx-color($palette, 'secondary');
@@ -235,12 +217,6 @@ dark: $dark-schema,
 light: $light-schema
 ), $variant);
 }
-
-$navigation-navbar-theme: igx-navbar-theme(
-$background: igx-color($default-palette, primary),
-$idle-icon-color: rgb(255, 255, 255),
-$text-color: rgb(255, 255, 255)
-);
 
 $horoscope-list-theme: igx-list-theme(
 $header-background: rgb(255, 255, 255),
@@ -265,10 +241,6 @@ $raised-text-color: rgb(255, 255, 255)
 
 :host {
 ::ng-deep {
-.navigation-navbar {
-@include igx-navbar($navigation-navbar-theme);
-}
-
 .horoscope-list {
 @include igx-list($horoscope-list-theme);
 }

@@ -2,96 +2,69 @@
 <div class="horopaid">
 <!-- <div class="navigation">
     <div class="navigation-navbar">
-<igx-navbar (click)='backClicked()'
-title="Paid Services" actionButtonIcon="arrow_back" >
+<igx-navbar 
+title="Horoscope Pricing" actionButtonIcon="arrow_back" >
 <igx-icon name="more_vert" ></igx-icon>
 </igx-navbar>
 </div>
-
 </div> -->
 <div class="screen-content">
-    <div class="title">
-        <h4 class="igx-typography__h4 horoscope-report-pri">Horoscope Report Pricing</h4>
+    <!-- <div class="title">
+        <h4 class="igx-typography__h4 horoscope-pricing">Horoscope Pricing</h4>
+</div> -->
+<div class="body"><div class="full-horoscope"><div class="horoscope-list">
+<igx-list class="horoscope-list-1" >
+<igx-list-item isHeader="true" class="horoscope-list-3" >
+{{service.Name}}</igx-list-item>
+<igx-list-item class="horoscope-list-4" >
+<div class="horoscope-list-2-container" >
+<div class="horoscope-list-2-info" >
+<span class="list-itemtext igx-typography__subtitle-1">{{service.Description}}</span>
 </div>
-<div class="body-vertical-centering-wrapper">
-    <div class="body">
-        <div class="full-horoscope">
-            <div class="horoscope-list">
-
-<igx-list class="horoscope-list-1">
-    <igx-list-item isHeader="true" class="horoscope-list-3" >
-    {{service.Name}}</igx-list-item>
-    <igx-list-item class="horoscope-list-4" >
-    <div class="horoscope-list-2-container" >
-    <div class="horoscope-list-2-info" >
-    <span class="list-itemtext igx-typography__subtitle-1">{{service.Description}}</span>
-    </div>
-    </div>
-    </igx-list-item>
-    <igx-list-item class="horoscope-list-5">
-        <div class="horoscope-list-2-container">
-            <div class="horoscope-list-2-info">
-                <a class="list-itemtext-1 igx-typography__subtitle-1" (click)='onSamplePDF(service)'>Click here to view
-                    Sample PDF/SoftCopy</a>
-            </div>
-        </div>
-    </igx-list-item>
-    <igx-list-item class="horoscope-list-5" >
-    <div class="horoscope-list-2-container" style="text-decoration: line-through">
-    <div class="horoscope-list-2-info" >
-    <span class="list-itemtext-1 igx-typography__subtitle-1">MRP</span>
-    </div>
-    <span class="list-itemtext-2 igx-typography__subtitle-2" *ngIf='!checkBoxValue'>{{service.MRP}}</span>
-    <span class="list-itemtext-2 igx-typography__subtitle-2" *ngIf='checkBoxValue'>{{service.PrintMRP}}</span>
-    </div>
-    </igx-list-item>
-    <igx-list-item class="horoscope-list-6" >
-    <div class="horoscope-list-2-container" >
-    <div class="horoscope-list-2-info" >
-    <span class="list-itemtext-3 igx-typography__subtitle-1">Discount</span>
-    </div>
-    <span class="list-itemtext-4 igx-typography__subtitle-2" *ngIf='!checkBoxValue'>{{SoftCopyDifference}}</span>
-    <span class="list-itemtext-4 igx-typography__subtitle-2" *ngIf='checkBoxValue'>{{HardCopyDifference}}</span>
-    </div>
-    </igx-list-item>
-    <igx-list-item class="horoscope-list-7" >
-    <div class="horoscope-list-2-container" >
-    <div class="horoscope-list-2-info" >
-    <span class="list-itemtext-5 igx-typography__subtitle-1">Actual Price</span>
-    </div>
-    <span class="list-itemtext-6 igx-typography__subtitle-2" *ngIf='!checkBoxValue'>{{service.Amount}}</span>
-    <span class="list-itemtext-6 igx-typography__subtitle-2" *ngIf='checkBoxValue'>{{service.PrintAmount}}</span>
+</div>
+</igx-list-item>
+<igx-list-item class="horoscope-list-5" style="text-decoration: line-through">
+<div class="horoscope-list-2-container" >
+<div class="horoscope-list-2-info" >
+<span class="list-itemtext-1 igx-typography__subtitle-1">MRP</span>
+</div>
+<span class="list-itemtext-2 igx-typography__subtitle-2" *ngIf='!checkBoxValue'>{{service.MRP}}</span>
+<span class="list-itemtext-2 igx-typography__subtitle-2" *ngIf='checkBoxValue'>{{service.PrintMRP}}</span></div>
+</igx-list-item>
+<igx-list-item class="horoscope-list-6" >
+<div class="horoscope-list-2-container" >
+<div class="horoscope-list-2-info" >
+<span class="list-itemtext-3 igx-typography__subtitle-1">Discount</span>
+</div>
+<span class="list-itemtext-4 igx-typography__subtitle-2" *ngIf='!checkBoxValue'>{{SoftCopyDifference}}</span>
+    <span class="list-itemtext-4 igx-typography__subtitle-2" *ngIf='checkBoxValue'>{{HardCopyDifference}}</span></div>
+</igx-list-item>
+<igx-list-item class="horoscope-list-7" >
+<div class="horoscope-list-2-container" >
+<div class="horoscope-list-2-info" >
+<span class="list-itemtext-5 igx-typography__subtitle-1">Actual Price</span>
+</div>
+<span class="list-itemtext-6 igx-typography__subtitle-2" *ngIf='!checkBoxValue'>{{service.Amount}}</span>
+    <span class="list-itemtext-6 igx-typography__subtitle-2" *ngIf='checkBoxValue'>{{service.PrintAmount}}</span></div>
+</igx-list-item>
+</igx-list>
 </div>
 
-    </igx-list-item>
-    <igx-list-item>
-        <div class="hardcopy">
-            <igx-checkbox [checked]="false" (click)="hardcopyRequired_Click(service.ItMastId)">Hardcopy Required
-            </igx-checkbox>
-            </div>
-    </igx-list-item>
-    <igx-list-item>
-
-            <button igxRipple igxButton="raised" (click)="onNext(service)">Next</button>
-            <!-- <button igxRipple igxButton="raised" (click)="onNext(service)">Download</button> -->
-
-    </igx-list-item>
-    <!-- <p *ngIf='isLoading'>Downloading....</p> -->
-    </igx-list>
-    <div class="text-display">
-            <p class="eligibility">Delivery Service is Applicable for Customers Within India</p>
-        <p class="total" *ngIf='!checkBoxValue'>Total Price   :{{service.Amount}}</p>
-        <p class="total" *ngIf='checkBoxValue'>Total Price   :{{service.PrintAmount}}</p>
-        
-        </div>
+<div class="hardcopy">
+<igx-checkbox [checked]="false" (click)="hardcopyRequired_Click(service.ItMastId)">
+    Hardcopy Required
+</igx-checkbox>
 </div>
 
-
+<div class="text-display"><span class="igx-typography__body-1 eligible">Delivery Service is Applicable for Customers Within India</span>
+    <p class="total" *ngIf='!checkBoxValue'>Total Price   :{{service.Amount}}</p>
+    <p class="total" *ngIf='checkBoxValue'>Total Price   :{{service.PrintAmount}}</p>
+</div>
+<div class="submit-button">
+<button igxRipple igxButton="raised"  (click)="onNext(service)">Next</button>
 </div>
 
 </div>
 </div>
 </div>
-</div></form>
-<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
-</main>
+</div></form></main>

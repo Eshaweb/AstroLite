@@ -332,7 +332,7 @@ export class PaymentComponent implements OnInit, OnDestroy, AfterViewInit {
       // else{
 
       // }
-      this.router.navigate(['/services/paymentProcessing']);
+      this.router.navigate(['/services/paymentProcessing'], { skipLocationChange: true });
         // if (data == true) {
         //   this.ShowMessage = "Payment Completed";
         //   this.loading = false;

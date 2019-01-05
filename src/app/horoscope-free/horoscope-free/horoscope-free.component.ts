@@ -137,7 +137,7 @@ export class HoroscopeFreeComponent implements OnInit, OnDestroy, AfterViewInit 
             this.router.navigate(["/services/login"]);
         }
         else {
-            this.router.navigate(["/services/horoscopePaid", { "PartyMastId": this.loginService.PartyMastId}]);
+            this.router.navigate(["/services/paidServices", { "PartyMastId": this.loginService.PartyMastId}]);
         }
     }
 

@@ -184,7 +184,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
         // }
         if (this.horoScopeService.horoRequest != null) {
         //   this.navCtrl.push(ServiceInfoPage, { 'PartyMastId': data.PartyMastId, 'HoroInfo': this.navParams.get('HoroInfo') });
-        this.router.navigate(["/services/horoscopePaid", { "PartyMastId": data.PartyMastId}]);
+        this.router.navigate(["/services/paidServices", { "PartyMastId": data.PartyMastId}]);
         // this.router.navigate(["/services/paidServices", { "PartyMastId": data.PartyMastId, 'HoroInfo': this.horoInfo}]);
 
         //this.viewCtrl.dismiss();
@@ -212,5 +212,6 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   goToLoginByOTP() {
     this.isLoginByOTP = true;
   }
+
 }
 

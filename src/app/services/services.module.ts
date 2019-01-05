@@ -23,11 +23,11 @@ import { PartyService } from 'src/Services/PartyService/PartyService';
 import { DashboardComponent } from '../dashboard/dashboard/dashboard.component';
 import { DepositWalletComponent } from '../deposit-wallet/deposit-wallet/deposit-wallet.component';
 import { NgxLoadingModule } from 'ngx-loading';
-import { HoroscopeOldComponent } from '../horoscopeOld/horoscopeOld/horoscopeOld.component';
 import { ToastrModule } from 'ng6-toastr-notifications';
 import { RegistrationService } from 'src/Services/registration/registration.service';
 import { PaymentComponent } from '../payment/payment/payment.component';
 import { RegistrationComponent } from '../registration/registration/registration.component';
+import { HoroscopeComponent } from '../horoscope/horoscope/horoscope.component';
 
 
 @NgModule({
@@ -62,7 +62,7 @@ import { RegistrationComponent } from '../registration/registration/registration
                     {
                         //path: 'horoscope',
                         path: '#SH',
-                        component: HoroscopeOldComponent,
+                        component: HoroscopeComponent,
                         //resolve: { person: PersonResolverService }
                     },
                     {
@@ -89,7 +89,8 @@ import { RegistrationComponent } from '../registration/registration/registration
             },
         ])
     ],
-    declarations: [HoroscopeOldComponent,
+    declarations: [
+        HoroscopeComponent,
         MatchMakingComponent,
         DeliveryAddressComponent,
         PaymentComponent,
