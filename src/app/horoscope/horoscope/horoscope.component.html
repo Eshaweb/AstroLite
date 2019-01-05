@@ -50,8 +50,8 @@
 
 </div>
 <div class="fourth-row"><span class="igx-typography__body-1 gender-text">Gender</span>
-<div 
-class="gender-option"><igx-radio-group formControlName="gender">
+<div class="gender-option">
+<igx-radio-group formControlName="gender">
 <div class="gender-option-1">
 <igx-radio value="M">
 Male
@@ -66,12 +66,19 @@ Female
 <p style="color:red" id='err_gender'></p>
 </igx-radio-group>
 </div>
- 
+<!-- <igx-radio-group formControlName="gender">
+<igx-radio *ngFor="let gender of genders"
+    name="gender"
+    [value]="gender.hex"
+    [(ngModel)]="selectedColor">
+    {{gender.name}}
+</igx-radio>
+</igx-radio-group> -->
 </div>
 <div class="sixth-row">
     <div class="time-zone">
-        <igx-combo type="box" #combo [data]="timeformats" [displayKey]="'Text'" [valueKey]="'Id'" class="time-zone-1" placeholder="Select Time Format"
-            (onSelectionChange)="selectionChange($event)" formControlName="timeformat" value="'timeformats[0].Id'">
+        <igx-combo type="box" #timeFormatCombo [data]="timeformats" [displayKey]="'Text'" [valueKey]="'Id'" class="time-zone-1" placeholder="Select Time Format"
+            (onSelectionChange)="timeFormat_selectionChange($event)" formControlName="timeformat" value="'timeformats[0].Id'">
         </igx-combo>
     </div>
 <!-- <div class="time-zone">
@@ -81,7 +88,7 @@ Female
         </igx-combo>
 </div> -->
 <div class="pagesize">
-<igx-combo type="box" #combo (onSelectionChange)="selectionChange($event)" formControlName="pageSize"
+<igx-combo type="box" #pageSizecombo (onSelectionChange)="pageSize_selectionChange($event)" formControlName="pageSize"
 [data]="pageSizes" [displayKey]="'Text'" [valueKey]="'Id'" class="pagesize-1" placeholder="Page Size" >
 </igx-combo>
 </div>
@@ -102,7 +109,7 @@ Female
 </div>
 
 <div class="language">
-<igx-combo type="box" #combo (onSelectionChange)="selectionChange($event)" formControlName="language"
+<igx-combo type="box" #languagecombo (onSelectionChange)="language_selectionChange($event)" formControlName="language"
 [data]="languages" [displayKey]="'Text'" [valueKey]="'Id'" class="language-1" placeholder="Select Language" >
 </igx-combo>
 </div>

@@ -30,6 +30,13 @@ isLoading: boolean;
 public loading = false;
 intLongDeg: number;
 intLatDeg: number;
+
+@ViewChild('timeFormatCombo', { read: IgxComboComponent })
+timeFormatCombo: IgxComboComponent;
+@ViewChild('pageSizecombo', { read: IgxComboComponent })
+pageSizecombo: IgxComboComponent;
+@ViewChild('languagecombo', { read: IgxComboComponent })
+languagecombo: IgxComboComponent;
 ngOnInit() {
   this.currentValue = 0;
 //   this.horoScopeService.Test('57', (data) => {
@@ -64,7 +71,9 @@ ngOnInit() {
 
 }
 ngAfterViewInit(): void {
-
+  this.timeFormatCombo.dropdown.setSelectedItem('STANDARD');
+  this.pageSizecombo.dropdown.setSelectedItem('A4');
+  this.languagecombo.dropdown.setSelectedItem('KAN');
 }
 
 ngOnDestroy(): void {
@@ -103,22 +112,31 @@ getTimezone(lat, long) {
     this.cdr.detectChanges();
   });
 }
+public genders = [{
+  hex: "#7bc96f",
+  name: "Grass"
+},
+{
+  hex: "transparent",
+  name: "No color"
+}];
 
+public selectedColor: string = 'transparent';
 horoscopeForm: FormGroup;
 latitude: number;
 longitude: number;
 timeZoneName: string;
 timeZoneId: any;
 languages : SelectBoxModel[] =[
-{ Id: "E", Text: "English" },
-{ Id: "H", Text: "Hindi" },
-{ Id: "K", Text: "Kannada" },
-{ Id: "M", Text: "Malayalam" }];
+{ Id: "ENG", Text: "English" },
+{ Id: "HIN", Text: "Hindi" },
+{ Id: "KAN", Text: "Kannada" },
+{ Id: "MAL", Text: "Malayalam" }];
 pageSizes : SelectBoxModel[] =[
-    { Id: "E", Text: "A4" },
-    { Id: "H", Text: "A5" },
-    { Id: "K", Text: "A6" },
-    { Id: "M", Text: "Small" }];
+    { Id: "A4", Text: "A4" },
+    { Id: "A5", Text: "A5" },
+    { Id: "A6", Text: "A6" },
+    { Id: "Small", Text: "Small" }];
 public checkBoxValue: boolean = false;
 public enabletoEdit: boolean = false;
 long: number;
@@ -132,7 +150,7 @@ timeformats: SelectBoxModel[] = [
   { Id: "DOUBLE", Text: 'Double Summer Time' },
   { Id: "WAR", Text: 'War Time' }
 ];
-genders: string[];
+//genders: string[];
 //genders: SelectBoxModel[];
 payusing: PaymentInfo[];
 using: string[];
@@ -166,7 +184,7 @@ constructor(public toastr: ToastrManager, public route: ActivatedRoute, private 
   { Id: "F", Text: "Female" }];
   //this.serviceInfo =  horoScopeService.getCustomers();
   this.payusing = horoScopeService.getInfo();
-  this.genders = this.enumToKeyValues(Gender);
+  //this.genders = this.enumToKeyValues(Gender);
   // this.genders=[{Id:"M",Text:"Male"},
   //   {Id:"F",Text:"Female"}];
   // this.genders=[{"Id":"M","Text":"Male"},
@@ -221,7 +239,7 @@ constructor(public toastr: ToastrManager, public route: ActivatedRoute, private 
   birthPlaceContrl.valueChanges.subscribe(value => this.setErrorMessage(birthPlaceContrl));
   // const languageContrl = this.horoscopeForm.get('language');
   // languageContrl.valueChanges.subscribe(value => this.setErrorMessage(languageContrl));
-
+  
   this.horoRequest = {
     Name: this.horoscopeForm.controls['name'].value,
     Father: null,
@@ -370,9 +388,9 @@ submit_click() {
     Date: dateinString,
     Time: timeinString,
     //DOB:this.horoscopeForm.controls['Bdate'].value.toISOString(),
-    TimeFormat: "STANDARD",
+    //TimeFormat: "STANDARD",
     Place: this.horoScopeService.birthplaceShort,
-    //TimeFormat: this.horoscopeFormForm.controls['timeformat'].value[0].Id,
+    TimeFormat: this.horoscopeForm.controls['timeformat'].value[0].Id,
     LatDeg: this.horoscopeForm.controls['LatDeg'].value,
     LatMt: this.horoscopeForm.controls['LatMt'].value,
     LongDeg: this.horoscopeForm.controls['LongDeg'].value,
@@ -383,10 +401,10 @@ submit_click() {
     ZM: this.horoscopeForm.controls['ZM'].value,
     PN: this.horoscopeForm.controls['PN'].value,
     Gender: this.horoscopeForm.controls['gender'].value,
-    LangCode: "KAN",
+    LangCode: this.horoscopeForm.controls['language'].value[0].Id,
     FormParameter: 'H',
     ReportType: '#HFH',
-    ReportSize: 'A4',
+    ReportSize: this.horoscopeForm.controls['pageSize'].value[0].Id,
     Swarna: 0,
     Pruchaka: 0,
     JanmaRashi: 0,
@@ -440,11 +458,10 @@ submit_click() {
 }
 
 
-@ViewChild('combo', { read: IgxComboComponent })
-combo: IgxComboComponent;
-selecting = false;
-selectionChange(args) {
-  if (!this.selecting) {
+
+selecting_timeFormat = false;
+timeFormat_selectionChange(args) {
+  if (!this.selecting_timeFormat) {
     let removed = false;
     for (let i = 0; i < args.newSelection.length; i++) {
       for (let j = 0; j < args.oldSelection.length; j++) {
@@ -456,21 +473,56 @@ selectionChange(args) {
     }
 
     if (removed) {
-      this.selecting = true;
-      this.combo.deselectAllItems();
-      this.combo.selectItems(args.newSelection);
-      this.selecting = false;
+      this.selecting_timeFormat = true;
+      this.timeFormatCombo.deselectAllItems();
+      this.timeFormatCombo.selectItems(args.newSelection);
+      this.selecting_timeFormat = false;
     }
   }
 }
-get values() {
-    return this.combo.selectedItems();
-    //let comboValue = this.combo.value;
-    //let comboValue = this.timeformats[0].Id;
 
+selecting_pageSize = false;
+pageSize_selectionChange(args) {
+  if (!this.selecting_pageSize) {
+    let removed = false;
+    for (let i = 0; i < args.newSelection.length; i++) {
+      for (let j = 0; j < args.oldSelection.length; j++) {
+        if (args.oldSelection[j] === args.newSelection[i]) {
+          args.newSelection.splice(i, 1);
+          removed = true;
+        }
+      }
+    }
+
+    if (removed) {
+      this.selecting_pageSize = true;
+      this.pageSizecombo.deselectAllItems();
+      this.pageSizecombo.selectItems(args.newSelection);
+      this.selecting_pageSize = false;
+    }
+  }
 }
-set values(newValues: Array<any>) {
-    this.combo.selectItems(newValues);
+
+selecting_language = false;
+language_selectionChange(args) {
+  if (!this.selecting_language) {
+    let removed = false;
+    for (let i = 0; i < args.newSelection.length; i++) {
+      for (let j = 0; j < args.oldSelection.length; j++) {
+        if (args.oldSelection[j] === args.newSelection[i]) {
+          args.newSelection.splice(i, 1);
+          removed = true;
+        }
+      }
+    }
+
+    if (removed) {
+      this.selecting_language = true;
+      this.languagecombo.deselectAllItems();
+      this.languagecombo.selectItems(args.newSelection);
+      this.selecting_language = false;
+    }
+  }
 }
 }
 
