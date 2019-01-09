@@ -25,6 +25,7 @@ export class HoropaidComponent implements OnInit {
     serviceInfo: ServiceInfo[];
     serviceInformation: ServiceInformation[];
     horoInfo: any;
+    public loading = false;
     horoRequest: HoroRequest;
     checkBoxValue: boolean = false;
     FH_PDFSelected: boolean = false;
@@ -44,8 +45,9 @@ export class HoropaidComponent implements OnInit {
     SoftCopyDifference: number;
     HardCopyDifference: number;
     itemAmount: number;
-    constructor(private _location: Location, private route: ActivatedRoute, private router: Router,
-        private loginService: LoginService, public horoScopeService: HoroScopeService) {
+    isLoading: boolean;
+    constructor(public _location: Location, public route: ActivatedRoute, public router: Router,
+        public loginService: LoginService, public horoScopeService: HoroScopeService) {
 
         // this.SoftCopyDifference = this.service.MRP - this.service.Amount;
         // this.HardCopyDifference = this.service.PrintMRP - this.service.PrintAmount;
@@ -58,6 +60,27 @@ export class HoropaidComponent implements OnInit {
     ngOnInit(): void {
         this.SoftCopyDifference = this.service.MRP - this.service.Amount;
         this.HardCopyDifference = this.service.PrintMRP - this.service.PrintAmount;
+        // this.horoScopeService.DownloadResult('57', (data) => {
+        //     //var newBlob = new Blob([data.PDF], { type: "application/octet-stream" });
+        //     //let contentType = base64.split(';')[0];
+        //     // let byteCharacters = atob(data.PDF);
+        //     // let byteNumbers = new Array(byteCharacters.length);
+        //     // for (var i = 0; i < byteCharacters.length; i++){
+        //     //     byteNumbers[i] = byteCharacters.charCodeAt(i);
+        //     // }
+        //     // let byteArray = new Uint8Array(byteNumbers);
+        //     var newBlob = new Blob([data], { type: "application/pdf" });
+        //     const fileName: string = 'PDFSample.pdf';
+        //     const a: HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
+        //     var url = window.URL.createObjectURL(newBlob);
+        //     a.href = url;
+        //     a.download = fileName;
+        //     document.body.appendChild(a);
+        //     a.click();
+        //     document.body.removeChild(a);
+        //     URL.revokeObjectURL(url);
+        // });
+
     }
     backClicked() {
         this._location.back();
@@ -121,21 +144,22 @@ export class HoropaidComponent implements OnInit {
 
 
     onNext(item) {
+        this.loading = true;
         // this.horoScopeService.itemOrdered = this.serviceInfo.find(function (obj) { return obj.ItMastId === item.ItMastId; });
         this.horoScopeService.itemOrdered = item;
-        this.horoScopeService.horoRequest.ReportType=item.ItMastId;
+        this.horoScopeService.horoRequest.ReportType = item.ItMastId;
         if (this.checkBoxValue == false) {
             this.itemAmount = item.Amount;
             this.requireDeliveryAddress = false;
-            this.horoScopeService.IsDeliverable=false;
+            this.horoScopeService.IsDeliverable = false;
         }
         else {
             this.itemAmount = item.PrintAmount;
             this.requireDeliveryAddress = true;
-            this.horoScopeService.IsDeliverable=true;
+            this.horoScopeService.IsDeliverable = true;
         }
         var orderModel = {
-            IsDeliverable:this.checkBoxValue,
+            IsDeliverable: this.checkBoxValue,
             FreeAmount: 0,
             ItemAmount: this.itemAmount,
             PartyMastId: this.loginService.PartyMastId,
@@ -143,51 +167,18 @@ export class HoropaidComponent implements OnInit {
             //JSONData: { Name: "Shamanth", Father: "Rajesh", Mother: "Leelavathi", Gothra: "Vasista", Date: "2018-12-21", EW: "W", Gender: "F", LatDeg: 17, LatMt: 24, LongDeg: 78, LongMt: 25, NS: "N", PN: "+", Time: "18:47:00", TimeFormat: "STANDARD", ZH: 5, ZM: 30 },
             //ItActId: "#SH",
             ItActId: this.horoScopeService.ItActId,
-            ItMastId: '#HFH'
+            ItMastId: item.ItMastId,
+            OrderId: this.horoScopeService.OrderId
         }
         var DeliveryAddressRequired: boolean = this.requireDeliveryAddress;
         this.horoScopeService.CreateOrder(orderModel, (data) => {
-            this.horoScopeService.OrderId=data;
+            this.horoScopeService.OrderId = data.OrderId;
+            this.horoScopeService.orderResponse = data;
             var FreePDF = {
                 OrderId: this.horoScopeService.OrderId.toString()
             }
-            // this.horoScopeService.ProcessOrder(FreePDF).subscribe((data: any) => {
-            //     var newBlob = new Blob([data], { type: "application/pdf" });
-            //     const fileName: string = 'FullHoroscope.pdf';
-            //     const a: HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
-            //     var url = window.URL.createObjectURL(newBlob);
-            //     a.href = url;
-            //     a.download = fileName;
-            //     document.body.appendChild(a);
-            //     a.click();
-            //     document.body.removeChild(a);
-            //     URL.revokeObjectURL(url);
-            // });
-            this.horoScopeService.TestById(this.horoScopeService.OrderId.toString()).subscribe((data: any) => {
-                var newBlob = new Blob([data], { type: "application/pdf" });
-                    const fileName: string = 'FullHoroscope.pdf';
-                    const a: HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
-                    var url = window.URL.createObjectURL(newBlob);
-                    a.href = url;
-                    a.download = fileName;
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    URL.revokeObjectURL(url);
-            });
-            // this.horoScopeService.ProcessOrder(FreePDF, (data) => {
-            //     var newBlob = new Blob([data], { type: "application/pdf" });
-            //     const fileName: string = 'FullHoroscope.pdf';
-            //     const a: HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
-            //     var url = window.URL.createObjectURL(newBlob);
-            //     a.href = url;
-            //     a.download = fileName;
-            //     document.body.appendChild(a);
-            //     a.click();
-            //     document.body.removeChild(a);
-            //     URL.revokeObjectURL(url);
-            // });
-            //this.router.navigate(["/services/deliveryAddress", { 'DeliveryAddressRequired': DeliveryAddressRequired }]);
+            this.isLoading = false;  
+            this.router.navigate(["/services/deliveryAddress", { 'DeliveryAddressRequired': DeliveryAddressRequired }]);
         });
     }
 

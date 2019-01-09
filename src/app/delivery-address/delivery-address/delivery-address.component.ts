@@ -19,6 +19,7 @@ import { Location } from "@angular/common";
     styleUrls: ['./delivery-address.component.scss']
 })
 export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewInit {
+    ItName: string;
     ngOnInit() {
 
     }
@@ -34,12 +35,11 @@ export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewIni
     existingAddress: ExistingAddress[];
     showAddAddressForm: boolean = false;
     nameMessage: string;
-    defaultAddress: any;
     Id: any;
     customerEMailAddressForm: FormGroup;
-    email: any;
+    email: string;
     DeliveryAddressRequired: boolean;
-    constructor(private _location: Location, private route: ActivatedRoute, private router: Router, private loginService: LoginService,
+    constructor(public _location: Location, public route: ActivatedRoute, public router: Router, public loginService: LoginService,
         public horoScopeService: HoroScopeService, public smartHttpClient: SmartHttpClient,
         public uiService: UIService, public formbuilder: FormBuilder) {
         this.route.params.subscribe(params => {
@@ -48,6 +48,7 @@ export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewIni
             // In a real app: dispatch action to load the details here.
         });
         this.OrderId = this.horoScopeService.OrderId;
+        this.ItName=this.horoScopeService.orderResponse.ItName;
         this.customerEMailAddressForm = this.formbuilder.group({
             email: ['', [Validators.required, Validators.pattern("[^ @]*@[^ @]*"), Validators.minLength(6)]]
         });
@@ -202,9 +203,7 @@ export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewIni
             OrderId: this.OrderId
         }
         this.horoScopeService.UpdateAddressToOrder(orderAddress, (data) => {
-            //   this.navCtrl.push(PaymentDetailsPage,{'ItemOrdered':this.navParams.get('ItemOrdered'),'OrderId':this.navParams.get('OrderId')});
             this.router.navigate(["/services/payment"]);
-
         });
     }
 

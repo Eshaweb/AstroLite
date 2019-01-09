@@ -30,15 +30,17 @@ form {
 
 
 
-.registration {
+.i-phone8 {
     display: flex;
     flex-direction: column;
     flex: 1;
 }
 
-.navigation {
-margin-top: 7px;
-margin-left: 6px;
+.navigation-navbar-1 {
+width: 100%;
+
+}
+.navigation-chrome {
 
 display: flex;
 flex-direction: column;
@@ -48,61 +50,59 @@ flex-shrink: 0;
 
 .title {
 color: igx-color($default-palette, primary);
-margin-top: 27px;
-margin-left: 259px;
+margin-left: 9px;
 
-width: 193px;
-min-width: 193px;
-height: 57px;
-min-height: 57px;
+margin-top: 0px;
+width: 100%;
+height: 40px;
+min-height: 40px;
 
 font-family: 'Helvetica', 'Titillium Web', sans-serif;
-text-align: center;
 }
-.title-1 {
-height: 99px;
-min-height: 99px;
-margin-top: 50px;
-margin-right: 136px;
-margin-left: 138px;
+.mobile-no-1 {
+width: 100%;
+
+}
+.email-1 {
+width: 100%;
+
+}
+.password-1 {
+width: 100%;
+
+}
+.confirm-password-1 {
+width: 100%;
+
+}
+.reference-code-1 {
+width: 100%;
+
+}
+.signup-1 {
+width: 100%;
+height: 40px;
+min-height: 40px;
+
+}
+.content {
+margin-top: 19px;
+margin-right: 18px;
+margin-bottom: 54px;
+margin-left: 31px;
 
 display: flex;
 flex-direction: column;
 padding: 0;
 flex-shrink: 0;
-background-color: rgb(255, 255, 255);
 }
 
-.mobile-no-1 {
-width: 405px;
-min-width: 405px;
-
-}
-.email-1 {
-width: 405px;
-min-width: 405px;
-
-}
-.password-1 {
-width: 405px;
-min-width: 405px;
-
-}
-.reenter-password-1 {
-width: 405px;
-min-width: 405px;
-
-}
-.reference-code-1 {
-width: 405px;
-min-width: 405px;
-
-}
-.content {
-height: 725px;
-min-height: 725px;
-margin-right: 136px;
-margin-left: 138px;
+.signup-2 {
+width: 357px;
+min-width: 357px;
+height: 565px;
+min-height: 565px;
+margin: 26px auto 0 auto;
 
 display: flex;
 flex-direction: column;
@@ -112,13 +112,12 @@ background-color: rgb(255, 255, 255);
 }
 
 .screen {
-margin-left: 6px;
 
 display: flex;
 flex-direction: column;
 padding: 0;
 flex-shrink: 0;
-background-color: rgba(igx-color($default-palette, primary), .10);
+background-color: igx-color($default-palette, primary, 100);
 }
 
 @function get-palette($palette, $variant: 'light') {
@@ -166,7 +165,7 @@ $schema: get-schema('dark'),
 $palette: get-palette($default-palette, 'dark')
 );
 
-$reenter-password-theme: igx-input-group-theme(
+$confirm-password-theme: igx-input-group-theme(
 $idle-bottom-line-color: igx-color($default-palette, grays),
 $box-background: transparent,
 $border-background: transparent,
@@ -182,9 +181,9 @@ $schema: get-schema('dark'),
 $palette: get-palette($default-palette, 'dark')
 );
 
-$register-theme: igx-button-theme(
-$raised-background: igx-color($default-palette, secondary, 600),
-$raised-text-color: rgb(255, 255, 255)
+$signup-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, primary),
+$raised-text-color: igx-color($default-palette, grays, 900)
 );
 
 
@@ -196,43 +195,48 @@ $raised-text-color: rgb(255, 255, 255)
 
 .mobile-no {
 @include igx-input-group($mobile-no-theme);
-margin-top: 75px;
-margin-left: 175px;
+margin-top: 31px;
+margin-right: 11px;
 
+width: 100%;
 }
 
 .email {
 @include igx-input-group($email-theme);
-margin-top: 41px;
-margin-left: 175px;
+margin-top: 20px;
+margin-right: 11px;
 
+width: 100%;
 }
 
 .password {
 @include igx-input-group($password-theme);
-margin-top: 41px;
-margin-left: 175px;
+margin-top: 31px;
+margin-right: 11px;
 
+width: 100%;
 }
 
-.reenter-password {
-@include igx-input-group($reenter-password-theme);
-margin-top: 41px;
-margin-left: 175px;
+.confirm-password {
+@include igx-input-group($confirm-password-theme);
+margin-top: 20px;
+margin-right: 11px;
 
+width: 100%;
 }
 
 .reference-code {
 @include igx-input-group($reference-code-theme);
-margin-top: 41px;
-margin-left: 175px;
+margin-top: 20px;
+margin-right: 11px;
 
+width: 100%;
 }
 
-.register {
-@include igx-button($register-theme);
-margin-top: 72px;
-margin-left: 175px;
+.signup {
+@include igx-button($signup-theme);
+margin-top: 60px;
+margin-right: 11px;
 
 }
 

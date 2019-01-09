@@ -1,0 +1,263 @@
+@import '~igniteui-angular/lib/core/styles/themes/utilities';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-component';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-theme';
+@import '~igniteui-angular/lib/core/styles/components/button/button-component';
+@import '~igniteui-angular/lib/core/styles/components/button/button-theme';
+@import '~igniteui-angular/lib/core/styles/components/switch/switch-component';
+@import '~igniteui-angular/lib/core/styles/components/switch/switch-theme';
+@import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-component';
+@import '~igniteui-angular/lib/core/styles/components/checkbox/checkbox-theme';
+@import '~igniteui-angular/lib/core/styles/components/badge/badge-component';
+@import '~igniteui-angular/lib/core/styles/components/badge/badge-theme';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-component';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-theme';
+@import '~igniteui-angular/lib/core/styles/components/avatar/avatar-component';
+@import '~igniteui-angular/lib/core/styles/components/avatar/avatar-theme';
+@import '~igniteui-angular/lib/core/styles/components/progress/progress-component';
+@import '~igniteui-angular/lib/core/styles/components/progress/progress-theme';
+@import '~igniteui-angular/lib/core/styles/components/list/list-component';
+@import '~igniteui-angular/lib/core/styles/components/list/list-theme';
+
+main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+	overflow: auto;
+    height: 100%;
+    background-color: rgba(igx-color($default-palette, primary), .10);
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+
+
+.screen-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.horoscope-pricing {
+color: igx-color($default-palette, grays, 900);
+margin-top: 45px;
+margin-right: 354px;
+margin-left: 17px;
+
+width: 100%;
+height: 40px;
+min-height: 40px;
+
+font-family: 'Helvetica', 'Titillium Web', sans-serif;
+font-size: 30px;
+letter-spacing: 0.22px;
+}
+.title {
+margin-top: 17px;
+margin-right: 28px;
+margin-left: 30px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.horoscope-list-1 {
+margin-top: 17px;
+margin-right: 7px;
+margin-left: 11px;
+
+width: 379px;
+min-width: 379px;
+
+}
+.horoscope-list-2-container {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}
+.horoscope-list-2-info {
+display: flex;
+flex-direction: column;
+flex: 1;
+line-height: 18px;
+}
+.horoscope-list-2-details {
+display: flex;
+flex-direction: column;
+}
+.horoscope-list-3 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.horoscope-list-4 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext {
+color: igx-color($default-palette, grays, 900);
+}
+.horoscope-list-5 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-1 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-2 {
+color: igx-color($default-palette, grays, 900);
+}
+.horoscope-list-6 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-3 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-4 {
+color: igx-color($default-palette, grays, 900);
+}
+.horoscope-list-7 {
+width: 100%;
+height: 48px;
+min-height: 48px;
+
+}
+.list-itemtext-5 {
+color: igx-color($default-palette, grays, 900);
+}
+.list-itemtext-6 {
+color: igx-color($default-palette, grays, 900);
+}
+.eligible {
+color: igx-color($default-palette, secondary);
+margin-left: 1px;
+
+margin-top: 0px;
+height: 28px;
+min-height: 28px;
+
+}
+.total {
+color: igx-color($default-palette, secondary);
+margin-top: 15px;
+
+height: 24px;
+min-height: 24px;
+
+font-weight: 600;
+}
+.text-display {
+margin-top: 17px;
+margin-left: 26px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.full-horoscope {
+width: 397px;
+min-width: 397px;
+height: 546px;
+min-height: 546px;
+margin-top: 20px;
+margin-left: 15px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.body {
+margin-top: 17px;
+margin-right: 28px;
+margin-bottom: 20px;
+margin-left: 30px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+@function get-palette($palette, $variant: 'light') {
+$p: igx-color($palette, 'primary');
+$s: igx-color($palette, 'secondary');
+@return igx-palette($primary: $p,
+$secondary: $s,
+$grays: if($variant == 'light', #fff, #000)
+);
+}
+@function get-schema($variant: 'light') {
+@return map-get((
+dark: $dark-schema,
+light: $light-schema
+), $variant);
+}
+
+$horoscope-list-theme: igx-list-theme(
+$header-background: rgb(255, 255, 255),
+$header-text-color: igx-color($default-palette, secondary),
+$item-text-color: igx-color($default-palette, grays, 900),
+$item-background-active: rgb(255, 255, 255),
+$background: rgb(255, 255, 255)
+);
+
+$hardcopy-theme: igx-checkbox-theme(
+$fill-color: igx-color($default-palette, secondary),
+$tick-color: rgb(255, 255, 255),
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
+);
+
+$submit-button-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, secondary, 600),
+$raised-text-color: rgb(255, 255, 255)
+);
+
+
+:host {
+::ng-deep {
+.horoscope-list {
+@include igx-list($horoscope-list-theme);
+}
+
+.hardcopy {
+@include igx-checkbox($hardcopy-theme);
+margin-top: 21px;
+margin-left: 28px;
+
+}
+
+.submit-button {
+@include igx-button($submit-button-theme);
+margin-top: 57px;
+margin-left: 111px;
+
+}
+
+}
+}

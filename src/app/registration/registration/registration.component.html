@@ -1,18 +1,17 @@
-<main class="igx-typography"><form>
-<div class="registration">
-<div class="navigation"><div class="navigation-navbar">
-<!-- <igx-navbar title="Registration" actionButtonIcon="arrow_back" > -->
-    <!-- <igx-navbar title="Registration"> -->
-    <!-- <igx-icon name="more_vert" ></igx-icon> -->
-<!-- </igx-navbar> -->
+<main class="igx-typography"><form [formGroup]="registrationForm">
+<div class="i-phone8">
+<div class="navigation-chrome"><div class="navigation-navbar">
+<!-- <igx-navbar 
+class="navigation-navbar-1" title="Register" isActionButtonVisible="false" >
+<igx-icon name="more_vert" ></igx-icon>
+</igx-navbar> -->
 </div>
 
 </div>
-<div class="screen" [formGroup]="registrationForm"><div class="title-1"><h3 class="igx-typography__h3 title">Register </h3>
-</div>
-<div class="content"><div class="mobile-no">
+<div class="screen"><div class="signup-2"><div class="content"><h4 class="igx-typography__h4 title">Register</h4>
+<div class="mobile-no">
 <igx-input-group type="line" class="mobile-no-1" >
-<input igxInput type="text" formControlName="mobileno" />
+<input igxInput type="text" name="mobileno" formControlName="mobileno" />
 <label igxLabel>Mobile No</label>
 </igx-input-group>
 <p style="color:red" id='err_mobileno'></p>
@@ -20,7 +19,7 @@
 
 <div class="email">
 <igx-input-group type="line" class="email-1" >
-<input igxInput type="text" formControlName="email" />
+<input igxInput type="text" name="username" formControlName="email" />
 <label igxLabel>Email</label>
 </igx-input-group>
 <p style="color:red" id='err_email'></p>
@@ -28,15 +27,15 @@
 
 <div class="password">
 <igx-input-group type="line" class="password-1" >
-<input igxInput type="password" formControlName="password" />
+<input igxInput type="password" name="password" formControlName="password" />
 <label igxLabel>Password</label>
 </igx-input-group>
 <p style="color:red" id='err_password'></p>
 </div>
 
-<div class="reenter-password">
-<igx-input-group type="line" class="reenter-password-1" >
-<input igxInput type="password" formControlName="confirm_Password" />
+<div class="confirm-password">
+<igx-input-group type="line" class="confirm-password-1" >
+<input igxInput type="password" name="confirm_Password" formControlName="confirm_Password" />
 <label igxLabel>Confirm Password</label>
 </igx-input-group>
 <p style="color:red" id='err_confirm_Password'></p>
@@ -44,23 +43,27 @@
 
 <div class="reference-code">
 <igx-input-group type="line" class="reference-code-1" >
-<input igxInput type="text"  formControlName="refCode" />
+<input igxInput type="password" name="refCode" formControlName="refCode" />
 <label igxLabel>Reference Code</label>
 </igx-input-group>
 <p style="color:red" id='err_refCode'></p>
 </div>
-<section class="sample-content" *ngIf='isLoading'>
+<section class="sample-content" *ngIf='registrationService.isLoading'>
     <article class="sample-column">
-      <h5>Text is displayed</h5>
-      <div class="circular-container">
+      <h5>Registered Succesfully</h5>
+      <!-- <div class="circular-container">
         <igx-circular-bar [value]="currentValue" [max]="maxvalue" [animate]="true" [textVisibility]="true" (onProgressChanged)="progresChanged($event)"></igx-circular-bar>
-      </div>
+      </div> -->
      </article>
 </section>
-<div class="register">
-<button igxRipple igxButton="raised" [disabled]="!registrationForm.valid" (click)='Register_Click()'>Register</button>
+<p style="color:red" *ngIf='registrationService.errorMessage'>{{registrationService.errorMessage}}</p>
+<div class="signup">
+<button igxRipple class="signup-1" igxButton="raised" [disabled]="!registrationForm.valid" (click)='Register_Click()'>Register</button>
 </div>
 
 </div>
 </div>
-</div></form></main>
+</div>
+</div></form>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+</main>

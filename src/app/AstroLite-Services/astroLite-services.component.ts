@@ -15,9 +15,9 @@ export class AstroLiteServicesComponent {
     // private addPersonRequested: Subscription;
     // private personCollectionUpdatedRequested: Subscription;
 
-    constructor(private route: ActivatedRoute,
-        private router: Router,
-        private pubSubService: PubSubService,
+    constructor(public route: ActivatedRoute,
+        public router: Router,
+        public pubSubService: PubSubService,
         // private peopleService: PeopleService,
         // private errorHandler: AppErrorHandler
         ) {

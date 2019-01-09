@@ -133,8 +133,8 @@ export class MatchMakingComponent implements OnInit, OnDestroy, AfterViewInit {
             }
         }
     }
-    constructor(private route: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef,
-        private matchMakingService: MatchMakingService, private ngZone: NgZone, private mapsAPILoader: MapsAPILoader,
+    constructor(public route: ActivatedRoute, public router: Router, public cdr: ChangeDetectorRef,
+        public matchMakingService: MatchMakingService, public ngZone: NgZone, public mapsAPILoader: MapsAPILoader,
         public uiService: UIService, public smartHttpClient: SmartHttpClient, public formbuilder: FormBuilder) {
         this.maleMatchMakingForm = this.formbuilder.group({
             maleName: ['Shamanth', [Validators.required, Validators.minLength(4)]],

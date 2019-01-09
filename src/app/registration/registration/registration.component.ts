@@ -8,7 +8,7 @@ import { Location } from "@angular/common";
 import { UIService } from '../../../Services/UIService/ui.service';
 import { RegistrationService } from '../../../Services/registration/registration.service';
 import { IgxCircularProgressBarComponent } from '../../../../node_modules/igniteui-angular';
-
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
     selector: 'app-registration',
@@ -16,6 +16,7 @@ import { IgxCircularProgressBarComponent } from '../../../../node_modules/ignite
     styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit, OnDestroy, AfterViewInit {
+    public loading = false;
     public currentValue: number;
     public interval: any;
     @ViewChild(IgxCircularProgressBarComponent) public circularBar: IgxCircularProgressBarComponent;
@@ -52,13 +53,13 @@ export class RegistrationComponent implements OnInit, OnDestroy, AfterViewInit {
     refCodeMessage: string;
     isLoading: boolean;
 
-    constructor(public uiService: UIService, private registrationService: RegistrationService,
-        private route: ActivatedRoute, private _location: Location,
-        private router: Router, private formBuilder: FormBuilder) {
+    constructor(public toastrService: ToastrManager, public uiService: UIService, public registrationService: RegistrationService,
+    public route: ActivatedRoute, public _location: Location,
+        public router: Router, public formBuilder: FormBuilder) {
 
         this.registrationForm = this.formBuilder.group({
             mobileno: [8660506866, [Validators.required, Validators.minLength(10)]],
-            email: ['shailesh@gmail.com', [Validators.required, Validators.pattern("[^ @]*@[^ @]*"), Validators.minLength(6)]],
+            email: ['shailesh81094@gmail.com', [Validators.required, Validators.pattern("[^ @]*@[^ @]*"), Validators.minLength(6)]],
             password: ['Auto@123', [Validators.required, Validators.minLength(4)]],
             confirm_Password: ['Auto@123', [Validators.required, Validators.minLength(4)]],
             refCode: ['', [Validators.minLength(6)]]
@@ -112,8 +113,8 @@ export class RegistrationComponent implements OnInit, OnDestroy, AfterViewInit {
         return password === confirmpwd ? null : { notSame: true }
     }
     Register_Click() {
-        this.isLoading = true;
-        this.tick();
+        //this.tick();
+        this.loading = true;
         var registerModel = {
             Mobile: this.registrationForm.get('mobileno').value,
             EMail: this.registrationForm.get('email').value,
@@ -122,8 +123,8 @@ export class RegistrationComponent implements OnInit, OnDestroy, AfterViewInit {
         }
         this.maxvalue = 100;
         this.registrationService.RegisterParty(registerModel, (data) => {
-            //this.toastrService.success('OTP Sent to with Reference No. ', 'Success!');
-
+            this.loading = false;
+            this.toastrService.successToastr('You Successfully registered.', 'Success!');
         });
     }
     ngOnInit(): void {

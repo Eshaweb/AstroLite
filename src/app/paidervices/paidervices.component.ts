@@ -37,8 +37,8 @@ export class PaidervicesComponent implements OnInit {
   ngAfterViewInit(){
     console.log(this.components);
   }
-  constructor(private _location: Location, private route: ActivatedRoute, private router: Router,
-      private loginService: LoginService, public horoScopeService: HoroScopeService) {
+  constructor(public _location: Location, public route: ActivatedRoute, public router: Router,
+    public loginService: LoginService, public horoScopeService: HoroScopeService) {
       this.route.params.subscribe(params => {
           this.PartyMastId = params['PartyMastId'];
       });

@@ -1,19 +1,17 @@
-<main class="igx-typography"><form>
+<main class="igx-typography"><form [formGroup]="loginForm">
 <div class="login-2">
-<div class="navigation"><div class="navigation-navbar">
-<!-- <igx-navbar (click)='backClicked()'
-title="Login" actionButtonIcon="arrow_back" >
+<div class="navigation-chrome"><div class="navigation-navbar">
+<!-- <igx-navbar 
+class="navigation-navbar-1" title="Login" isActionButtonVisible="false" >
 <igx-icon name="more_vert" ></igx-icon>
 </igx-navbar> -->
 </div>
 
 </div>
-<div class="colors-overlay10-row"><div class="colors-overlay10">
-</div>
-<div class="content"><div class="body" [formGroup]="loginForm" >
-    <div class="mobile-no">
+<div class="screen"><div class="signup"><div class="content"><h4 class="igx-typography__h4 title">Login</h4>
+<div class="mobile-no">
 <igx-input-group type="line" class="mobile-no-1" >
-<input igxInput type="text" formControlName="mobileno" />
+<input igxInput type="text" name="username" formControlName="mobileno" />
 <label igxLabel>Mobile No</label>
 </igx-input-group>
 <p style="color:red" id='err_mobileno'></p>
@@ -21,31 +19,30 @@ title="Login" actionButtonIcon="arrow_back" >
 
 <div class="password">
 <igx-input-group type="line" class="password-1" >
-<input igxInput type="password" formControlName="password" />
+<input igxInput type="password" name="password" formControlName="password" />
 <label igxLabel>Password</label>
 </igx-input-group>
 <p style="color:red" id='err_password'></p>
 </div>
 
-<a class="igx-typography__body-1 forget-password" >Forget Password </a>
+<a class="igx-typography__body-1 forgot-password" >Forgot Password </a>
 <div class="login">
 <button igxRipple class="login-1" igxButton="raised" [disabled]="!loginForm.valid" (click)='Login_Click()'>Login</button>
 </div>
 
 <div class="facebook">
-<button igxRipple class="facebook-1" igxButton="raised" (click)="signInWithFB()">FACEBOOK</button>
+<button igxRipple class="facebook-1" igxButton="raised" (click)="signInWithFB()">Facebook</button>
 </div>
 
-<div class="googlelogin">
-<button igxRipple class="googlelogin-1" igxButton="raised" (click)="signInWithGoogle()">GOOGLE</button>
+<div class="google">
+<button igxRipple class="google-1" igxButton="raised" (click)="signInWithGoogle()">Google</button>
 </div>
 
-<div class="ifyouare-non-regis-row"><span class="igx-typography__subtitle-1 ifyouare-non-regis">If you are Non-Registred user you can login through OTP</span>
-<a class="igx-typography__body-1 otp-login" >Click here to login </a>
+<span class="igx-typography__body-1 note">Non- Registered user can login through Otp</span>
+<a class="igx-typography__body-1 clickhere" >Click Here to login</a>
 </div>
 </div>
 </div>
-<div class="title-1"><h3 class="igx-typography__h3 title">Login </h3>
-</div>
-</div>
-</div></form></main>
+</div></form>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+</main>

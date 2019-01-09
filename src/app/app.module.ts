@@ -7,12 +7,13 @@ import { CommonModule } from '../../node_modules/@angular/common';
 import { UIService } from '../Services/UIService/ui.service';
 import { ShareButtonsModule } from '@ngx-share/buttons';
 import { InfragisticsImportsModule } from './infragistics-imports/infragistics-imports.module';
-import { DashboardModule } from './dashboard/dashboard.module';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { DeliveryAddressComponent } from './delivery-address/delivery-address/delivery-address.component';
 import { ServicesModule } from './services/services.module';
 import { AgmCoreModule } from '../../node_modules/@agm/core';
-import { ToastrModule } from 'ngx-toastr';
+//import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from 'ng6-toastr-notifications';
+import { NgxLoadingModule } from 'ngx-loading';
 import { RegistrationService } from '../Services/registration/registration.service';
 import { SmartHttpClient, applicationHttpClientCreator } from '../Services/shared/http-client/smart-httpclient.service';
 import { LoaderService } from '../Services/shared/loader.service';
@@ -23,7 +24,6 @@ import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider } from "angularx-social-login";
 import { HoroScopeService } from '../Services/HoroScopeService/HoroScopeService';
 import { IgxProgressBarModule, IgxButtonModule, IgxIconModule, IgxRippleModule } from '../../node_modules/igniteui-angular';
-import { RegistrationComponent } from './registration/registration/registration.component';
 import { HoroscopePaidServiceComponent } from './horoscope-paid-service/horoscope-paid-service/horoscope-paid-service.component';
 import { SharedModule } from 'src/shared/shared.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -40,9 +40,9 @@ import { DepositWalletModule } from './deposit-wallet/deposit-wallet.module';
 import { DepositWalletComponent } from './deposit-wallet/deposit-wallet/deposit-wallet.component';
 import { MatchMakingReportComponent } from './match-making-report/match-making-report/match-making-report.component';
 import { LoginService } from 'src/Services/login/login.service';
-import { PaymentOldModule } from './paymentOld/paymentOld.module';
 import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { PaymentProcessingComponent } from './payment-processing/payment-processing.component';
+import { RegistrationComponent } from './registration/registration/registration.component';
 
 
 const generatedRoutes: Routes = [
@@ -57,19 +57,15 @@ const generatedRoutes: Routes = [
         path: 'registration',
         component: RegistrationComponent
     },
-     { path: 'matchmaking', component: MatchMakingComponent },
-     { path: 'matchmakingReport', component: MatchMakingReportComponent },
-     { path: 'deliveryAddress', component: DeliveryAddressComponent },
-     { path: 'depoToWallet', component: DepositWalletComponent },
-    // { path: 'astamangala', component: AstamangalaComponent },
-    // { path: 'loginDemo', component: LoginDemoComponent },
-    // { path: 'regDemo', component: RegistrationDemoComponent },
-    //{ path: 'payment', component: PaymentComponent },
-    { path: 'horoscopeFree', component: HoroscopeFreeComponent },
-    { path: 'horoscopePaid', component: HoropaidComponent },
-    { path: 'paidServices', component: PaidervicesComponent },
-    { path: 'dashboard', component: DashboardComponent },
-    { path: 'AstroServices', component: AstroLiteServicesComponent },
+    //  { path: 'matchmaking', component: MatchMakingComponent },
+    //  { path: 'matchmakingReport', component: MatchMakingReportComponent },
+    //  { path: 'deliveryAddress', component: DeliveryAddressComponent },
+      { path: 'depoToWallet', component: DepositWalletComponent },
+    // { path: 'horoscopeFree', component: HoroscopeFreeComponent },
+    // { path: 'horoscopePaid', component: HoropaidComponent },
+    // { path: 'paidServices', component: PaidervicesComponent },
+    // { path: 'dashboard', component: DashboardComponent },
+    // { path: 'AstroServices', component: AstroLiteServicesComponent },
     { 
         path: 'services', 
         //component:ServicesComponent
@@ -108,17 +104,19 @@ let config = new AuthServiceConfig([
         AstroLiteServicesComponent, PaymentProcessingComponent
         ],
     imports: [
+        NgxLoadingModule.forRoot({}),
+        ToastrModule.forRoot(),
         AgmCoreModule.forRoot({
             // apiKey: 'AIzaSyD68pTd0CmqTXSqPHFpLrPWkiClqPBIpLQ',  
             // apiKey: 'AIzaSyC0nx6AjTNNb24ZEnah5hRBqL0ehgrZ3es',
             apiKey: 'AIzaSyC0nx6AjTNNb24ZEnah5hRBqL0ehgrZ3es',
             libraries: ['places']
         }),
-        ToastrModule.forRoot({
-            timeOut: 5000,
-            positionClass: 'toast-bottom-center',
-            preventDuplicates: true,
-        }),
+        // ToastrModule.forRoot({
+        //     timeOut: 5000,
+        //     positionClass: 'toast-bottom-center',
+        //     preventDuplicates: true,
+        // }),
         SocialLoginModule,
         EventsModule.forRoot(),
         BrowserModule.withServerTransition({appId: 'my-app'}),

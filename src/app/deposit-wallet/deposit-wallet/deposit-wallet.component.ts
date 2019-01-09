@@ -32,7 +32,7 @@ export class DepositWalletComponent {
   servtrDets: ServtrDet[];
 
 
-  constructor(private horoScopeService:HoroScopeService,private route: ActivatedRoute, private router: Router, public salesService:SalesService,
+  constructor(public horoScopeService:HoroScopeService,public route: ActivatedRoute, public router: Router, public salesService:SalesService,
     public smartHttpClient: SmartHttpClient, public uiService: UIService, public formbuilder: FormBuilder) {
     var endPoint = "Sales/GetPayCodes";
     this.depositToWalletForm = this.formbuilder.group({

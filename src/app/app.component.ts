@@ -35,11 +35,10 @@ export class AppComponent {
   @ViewChild('toast') toast: IgxToastComponent;
 
   public navigationItems: Array<{
-    icon: string,
     text: string,
     link: string
   }> = [];
-  constructor(private event: EventsService, private router: Router, private pubSubService: PubSubService) {
+  constructor(public event: EventsService, public router: Router, public pubSubService: PubSubService) {
     this.event.subscribe('REFRESH_DIGIPARTYNAME', () => {
       this.isLogOut = true;
     });
@@ -47,12 +46,12 @@ export class AppComponent {
      // this.navigationItems.push({ icon: 'people.png', text: 'HoroScope', link: '/horoscope' });
     // this.navigationItems.push({ icon: 'sales.png', text: 'Match Making', link: '/matchmaking' });
     // this.navigationItems.push({ icon: 'people.png', text: 'Astamangala', link: '/astamangala' });
-    this.navigationItems.push({ icon: 'sales.png', text: 'Home', link: '/home' });
-    this.navigationItems.push({ icon: 'people.png', text: 'Services', link: '/services' });
-    this.navigationItems.push({ icon: 'people.png', text: 'Horoscope', link: '/services/#SH' });
-    this.navigationItems.push({ icon: 'sales.png', text: 'Register', link: '/registration' });
-    this.navigationItems.push({ icon: 'people.png', text: 'Login', link: '/login' });
-    this.navigationItems.push({ icon: 'sales.png', text: 'Wallet Deposit', link: '/depoToWallet' });
+    this.navigationItems.push({ text: 'Home', link: '/home' });
+    this.navigationItems.push({ text: 'HoroScope', link: '/services/#SH' });
+    this.navigationItems.push({ text: 'Match Making', link: '/services/#SM' });
+    this.navigationItems.push({ text: 'Register', link: '/registration' });
+    this.navigationItems.push({ text: 'Login', link: '/login' });
+    this.navigationItems.push({ text: 'Wallet Deposit', link: '/depoToWallet' });
 
     router.events.subscribe((routerEvent: Event) => {
       this.processRouterEvent(routerEvent);

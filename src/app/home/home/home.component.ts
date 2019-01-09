@@ -45,9 +45,9 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   paksha: string;
 
 
-    constructor(private route: ActivatedRoute, private router: Router,public uiService: UIService,
-            private formbuilder: FormBuilder, private ngZone: NgZone, 
-            private mapsAPILoader: MapsAPILoader,public horoScopeService: HoroScopeService) {
+    constructor(public route: ActivatedRoute, public router: Router,public uiService: UIService,
+      public formbuilder: FormBuilder, public ngZone: NgZone, 
+      public mapsAPILoader: MapsAPILoader,public horoScopeService: HoroScopeService) {
                 this.tithi='Sapthami';
                 this.day='Friday';
                 this.nakshathra='Hubba';
@@ -207,7 +207,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     OnHoroScope_Click(){
+        // this.router.navigate(["/services/#SH", {outlets: {right: null}}], { replaceUrl: true });
+        //this.router.navigate(["/services/#SH", {outlets: {right: null, primary: ['/services/#SH']}}]);
         this.router.navigate(["/services/#SH"]);
+        //this.router.navigateByUrl("/services/#SH");
         }
 
 }
