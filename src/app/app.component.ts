@@ -13,6 +13,7 @@ import {
 import { IgxToastComponent } from 'igniteui-angular';
 import { Subscription } from 'rxjs';
 import { PubSubService } from 'src/shared/pub-sub.service';
+import { LocationStrategy } from '@angular/common';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -38,7 +39,7 @@ export class AppComponent {
     text: string,
     link: string
   }> = [];
-  constructor(public event: EventsService, public router: Router, public pubSubService: PubSubService) {
+  constructor(private location: LocationStrategy, public event: EventsService, public router: Router, public pubSubService: PubSubService) {
     this.event.subscribe('REFRESH_DIGIPARTYNAME', () => {
       this.isLogOut = true;
     });

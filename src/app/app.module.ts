@@ -43,6 +43,7 @@ import { LoginService } from 'src/Services/login/login.service';
 import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { PaymentProcessingComponent } from './payment-processing/payment-processing.component';
 import { RegistrationComponent } from './registration/registration/registration.component';
+import { HoroscopeComponent } from './horoscope/horoscope/horoscope.component';
 
 
 const generatedRoutes: Routes = [
@@ -51,7 +52,11 @@ const generatedRoutes: Routes = [
         redirectTo: 'home',
         pathMatch: 'full'
     },
-    { path: 'home', component: HomeComponent },
+    //{ path: 'home', component: HomeComponent },
+    { 
+        path: 'home', 
+        loadChildren: './home/home.module#HomeModule' 
+    },
     { path: 'login', component:LoginComponent },
     {
         path: 'registration',
@@ -154,7 +159,8 @@ let config = new AuthServiceConfig([
         {
             provide: AuthServiceConfig,
             useFactory: provideConfig
-          }],
+          }
+        ],
     bootstrap: [AppComponent],
     exports: [
         RouterModule

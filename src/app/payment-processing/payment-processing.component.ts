@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HoroScopeService } from 'src/Services/HoroScopeService/HoroScopeService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment-processing',
   templateUrl: './payment-processing.component.html',
   styleUrls: ['./payment-processing.component.scss']
 })
-export class PaymentProcessingComponent implements OnInit {
+export class PaymentProcessingComponent implements OnInit, OnDestroy {
   ShowMessage: string;
   enableDownload: boolean;
   enableRefresh: boolean;
@@ -14,7 +15,7 @@ export class PaymentProcessingComponent implements OnInit {
   buttonId: any;
   loading: boolean;
 
-  constructor(public horoScopeService: HoroScopeService) {
+  constructor(public router: Router, public horoScopeService: HoroScopeService) {
     this.enableDownload = true;
     if (this.horoScopeService.resultResponse.Refresh == true) {
       this.enableRefresh = true;
@@ -46,6 +47,12 @@ export class PaymentProcessingComponent implements OnInit {
   }
   ngOnInit() {
 
+  }
+
+  ngOnDestroy(): void {
+     //window.history.go(-1);
+    // this.router.navigate(['/services/#SH']);
+    this.router.navigate(['/home'], { replaceUrl: true });
   }
   Download_Click() {
     this.loading=true;

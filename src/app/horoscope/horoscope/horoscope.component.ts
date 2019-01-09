@@ -16,13 +16,16 @@ import { isNumeric } from 'rxjs/util/isNumeric';
 import { Gender } from 'src/Enums/gender';
 import { IgxCircularProgressBarComponent, IgxComboComponent } from 'igniteui-angular';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import { LocationStrategy } from '@angular/common';
 
 @Component({
     selector: 'app-horoscope',
     templateUrl: './horoscope.component.html',
     styleUrls: ['./horoscope.component.scss']
 })
-export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit {
+export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit  {
+ 
+  
 //public date: Date;
 @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 dateModel: string;
@@ -77,8 +80,15 @@ ngAfterViewInit(): void {
 }
 
 ngOnDestroy(): void {
-
+  // window.onbeforeunload = function(){
+  //   return 'Are you sure you want to leave?';
+  // };
+  // history.pushState(null, null, location.href);
+  //   window.onpopstate = function () {
+  //       history.go(1);
+  //   };
 }
+
 getTimezone(lat, long) {
   this.horoRequest.LatDeg = Math.abs(parseInt(lat));
   this.horoRequest.LongDeg = Math.abs(parseInt(long));

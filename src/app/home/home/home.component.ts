@@ -9,6 +9,9 @@ import { MapsAPILoader } from '@agm/core';
 import { HoroScopeService } from 'src/Services/HoroScopeService/HoroScopeService';
 import { HoroRequest } from 'src/Models/HoroScope/HoroRequest';
 import { UIService } from 'src/Services/UIService/ui.service';
+import { HostListener } from '@angular/core';
+import { Location } from "@angular/common";
+
 
 
 @Component({
@@ -44,8 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     horoRequest: HoroRequest;
   paksha: string;
 
-
-    constructor(public route: ActivatedRoute, public router: Router,public uiService: UIService,
+    constructor(public location: Location, public route: ActivatedRoute, public router: Router,public uiService: UIService,
       public formbuilder: FormBuilder, public ngZone: NgZone, 
       public mapsAPILoader: MapsAPILoader,public horoScopeService: HoroScopeService) {
                 this.tithi='Sapthami';
@@ -70,6 +72,11 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.gulikaKaala='';
                 this.yamaKantaka='';
 
+              //   location.onPopState(() => {
+
+              //     this.router.navigate(['/home'], { replaceUrl: true });
+          
+              // });
                 // this.horoscopeForm = this.formbuilder.group({
                 //     birthDate: [null, [Validators.required]],
                 //     birthTime: ['', [Validators.required]],
@@ -204,6 +211,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     ngOnDestroy(): void {
+        this.location.subscribe(
+          // x=> history.pushState(null, null, window.location.pathname)
+          x=> history.pushState(null, null, '/home')
+          );
     }
 
     OnHoroScope_Click(){
