@@ -48,7 +48,7 @@ export class AppComponent {
     // this.navigationItems.push({ icon: 'sales.png', text: 'Match Making', link: '/matchmaking' });
     // this.navigationItems.push({ icon: 'people.png', text: 'Astamangala', link: '/astamangala' });
     this.navigationItems.push({ text: 'Home', link: '/home' });
-    this.navigationItems.push({ text: 'HoroScope', link: '/services/#SH' });
+    this.navigationItems.push({ text: 'Horoscope', link: '/services/#SH' });
     this.navigationItems.push({ text: 'Match Making', link: '/services/#SM' });
     this.navigationItems.push({ text: 'Register', link: '/registration' });
     this.navigationItems.push({ text: 'Login', link: '/login' });

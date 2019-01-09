@@ -328,7 +328,7 @@ flex-shrink: 0;
             }
             
 .signup-2 {
-width: 402px;
+width: 800px;
 min-width: 402px;
 height: 722px;
 min-height: 722px;
@@ -337,7 +337,19 @@ flex-direction: column;
 padding: 0;
 flex-shrink: 0;
 background-color: rgb(255, 255, 255);
+margin-bottom: 10px
 }
+
+@media screen and (max-width: 420px) {
+
+    .signup-2 {
+        width: 400px;
+        
+    }
+
+}
+
+
 
 @function get-palette($palette, $variant: 'light') {
 $p: igx-color($palette, 'primary');
