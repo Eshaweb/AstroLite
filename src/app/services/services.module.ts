@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, LocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InfragisticsImportsModule } from '../infragistics-imports/infragistics-imports.module';
@@ -107,7 +107,11 @@ import { HoroscopeComponent } from '../horoscope/horoscope/horoscope.component';
 
     providers: [
         HoroScopeService, MatchMakingService, LoginService,
-        PartyService, RegistrationService
+        PartyService, RegistrationService,
+        //   {
+        //       provide:LocationStrategy,
+        //       useClass:HoroscopeComponent 
+        //     },
     ],
     exports: [
         ServicesComponent, ServicesListComponent, PaidervicesComponent

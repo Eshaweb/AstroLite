@@ -5,6 +5,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InfragisticsImportsModule } from '../infragistics-imports/infragistics-imports.module';
 import { HomeComponent } from './home/home.component';
 import { AgmCoreModule } from '@agm/core';
+import { RouterModule } from '@angular/router';
+import { NgxLoadingModule } from 'ngx-loading';
 @NgModule({
     imports: [
         AgmCoreModule.forRoot({
@@ -17,7 +19,14 @@ import { AgmCoreModule } from '@agm/core';
         BrowserAnimationsModule,
         ReactiveFormsModule,
         FormsModule,
-        InfragisticsImportsModule
+        InfragisticsImportsModule,
+        //NgxLoadingModule.forRoot({}),
+        RouterModule.forChild([
+            {
+                path: 'home',
+                component: HomeComponent
+            },
+        ])
     ],
     declarations: [HomeComponent],
     exports: [
