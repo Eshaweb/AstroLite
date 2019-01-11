@@ -71,12 +71,47 @@ ngOnInit() {
       });
     });
   });
-
+if(this.horoScopeService.horoRequest!=null){
+  this.horoscopeForm.patchValue({
+    name: this.horoScopeService.horoRequest.Name,
+    fatherName: this.horoScopeService.horoRequest.Father,
+    motherName: this.horoScopeService.horoRequest.Mother,
+    gotra: this.horoScopeService.horoRequest.Gothra,
+    birthDate:this.horoScopeService.birthDateinDateFormat,
+    birthTime:this.horoScopeService.birthTimeinDateFormat,
+    timeformat: this.horoScopeService.horoRequest.TimeFormat,
+    pageSize:this.horoScopeService.horoRequest.ReportSize,
+    birthPlace: this.horoScopeService.birthplace,
+    language: this.horoScopeService.horoRequest.LangCode,
+    LatDeg:this.horoScopeService.horoRequest.LatDeg,
+    LongDeg: this.horoScopeService.horoRequest.LongDeg,
+    LatMt: this.horoScopeService.horoRequest.LatMt,
+    LongMt: this.horoScopeService.horoRequest.LongMt,
+    NS: this.horoScopeService.horoRequest.NS,
+    EW: this.horoScopeService.horoRequest.EW,
+    ZH: this.horoScopeService.horoRequest.ZH,
+    ZM: this.horoScopeService.horoRequest.ZM,
+    PN: this.horoScopeService.horoRequest.PN
+  });
+}
 }
 ngAfterViewInit(): void {
   this.timeFormatCombo.dropdown.setSelectedItem('STANDARD');
-  this.pageSizecombo.dropdown.setSelectedItem('A4');
-  this.languagecombo.dropdown.setSelectedItem('KAN');
+    this.pageSizecombo.dropdown.setSelectedItem('A5');
+    this.languagecombo.dropdown.setSelectedItem('KAN');
+  // if(this.horoScopeService.horoRequest!=null){
+  //   this.timeFormatCombo.dropdown.setSelectedItem(this.horoScopeService.horoRequest.TimeFormat);
+  //   this.pageSizecombo.dropdown.setSelectedItem(this.horoScopeService.horoRequest.ReportSize);
+  //   this.languagecombo.dropdown.setSelectedItem(this.horoScopeService.horoRequest.LangCode);
+  //   // this.timeFormatCombo.dropdown.setSelectedItem(this.horoScopeService.horoRequest.TimeFormat[0].Id);
+  //   // this.pageSizecombo.dropdown.setSelectedItem(this.horoScopeService.horoRequest.ReportSize[0].Id);
+  //   // this.languagecombo.dropdown.setSelectedItem(this.horoScopeService.horoRequest.LangCode[0].Id);
+  // }
+  // else{
+  //   this.timeFormatCombo.dropdown.setSelectedItem('STANDARD');
+  //   this.pageSizecombo.dropdown.setSelectedItem('A4');
+  //   this.languagecombo.dropdown.setSelectedItem('KAN');
+  // }
 }
 
 ngOnDestroy(): void {
@@ -120,6 +155,17 @@ getTimezone(lat, long) {
     this.timeZoneName = data.timeZoneName;
     this.timeZoneId = data.timeZoneId;
     this.cdr.detectChanges();
+    this.horoscopeForm.patchValue({
+      LatDeg:this.horoRequest.LatDeg,
+      LongDeg: this.horoRequest.LongDeg,
+      LatMt: this.horoRequest.LatMt,
+      LongMt: this.horoRequest.LongMt,
+      NS: this.horoRequest.NS,
+      EW: this.horoRequest.EW,
+      ZH: this.horoRequest.ZH,
+      ZM: this.horoRequest.ZM,
+      PN: this.horoRequest.PN
+    });
   });
 }
 public genders = [{
@@ -141,12 +187,12 @@ languages : SelectBoxModel[] =[
 { Id: "ENG", Text: "English" },
 { Id: "HIN", Text: "Hindi" },
 { Id: "KAN", Text: "Kannada" },
-{ Id: "MAL", Text: "Malayalam" }];
+{ Id: "MAL", Text: "Malayalam" },
+{ Id: "TAM", Text: "Tamil" }];
 pageSizes : SelectBoxModel[] =[
     { Id: "A4", Text: "A4" },
     { Id: "A5", Text: "A5" },
-    { Id: "A6", Text: "A6" },
-    { Id: "Small", Text: "Small" }];
+    { Id: "A6", Text: "Small(6incX5inc)" }];
 public checkBoxValue: boolean = false;
 public enabletoEdit: boolean = false;
 long: number;
@@ -207,7 +253,9 @@ constructor(public toastr: ToastrManager, public route: ActivatedRoute, private 
     fatherName: ['Prashanth'],
     motherName: ['Leelavathi'],
     gotra: ['Vasista'],
-    birthDate: [null, [Validators.required]],
+    birthDate:new Date(),
+    //birthTime: new Date(),
+    //birthDate: [null, [Validators.required]],
     birthTime: ['', [Validators.required]],
     timeformat: ['', [Validators.required]],
     pageSize:['', [Validators.required]],
@@ -217,7 +265,7 @@ constructor(public toastr: ToastrManager, public route: ActivatedRoute, private 
     latitude: [''],
     longitude: [''],
     gender: ['', [Validators.required]],
-    LatDeg: ['', [Validators.min(0), Validators.max(90)]],
+    LatDeg: [null, [Validators.min(0), Validators.max(90)]],
     LongDeg: ['', [Validators.min(0), Validators.max(180)]],
     LatMt: ['', [Validators.min(0), Validators.max(59)]],
     LongMt: ['', [Validators.min(0), Validators.max(59)]],
@@ -433,7 +481,9 @@ submit_click() {
   // this.horoScopeService.Test((data) => {
   //   var fff=data;
   // });
-
+  this.horoScopeService.horoRequest = this.horoRequest;
+  this.horoScopeService.birthDateinDateFormat=bdate;
+  this.horoScopeService.birthTimeinDateFormat=btime;
   this.horoScopeService.GetFreeData(this.horoRequest, (data) => {
     let navigationExtras: NavigationExtras = {
       // queryParams: {
@@ -445,7 +495,6 @@ submit_click() {
       // queryParams:{horoRequest:JSON.stringify(horoRequest),"data":data}
     };
     //this.router.navigate(["/horoscopeFree",  {"horoRequest":horoRequest,queryParams:horoRequest, "data":data, navigationExtras,"BirthPlace": this.horoscopeForm.controls['bplace'].value, 'Fathername': this.horoscopeForm.controls['fathername'].value, 'Mothername': this.horoscopeForm.controls['mothername'].value }]);
-    this.horoScopeService.horoRequest = this.horoRequest;
     this.horoScopeService.data = data;
     this.loading = false;
     this.router.navigate(["/services/horoscopeFree"]);

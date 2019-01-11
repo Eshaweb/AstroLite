@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.raahuKaala='';
                 this.gulikaKaala='';
                 this.yamaKantaka='';
-
+                
               //   location.onPopState(() => {
 
               //     this.router.navigate(['/home'], { replaceUrl: true });
@@ -211,10 +211,29 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     ngOnDestroy(): void {
-        this.location.subscribe(
-          // x=> history.pushState(null, null, window.location.pathname)
-          x=> history.pushState(null, null, '/home')
-          );
+      window.addEventListener('popstate', function(event) {    
+            // Stay on the current page.
+            //history.pushState(null, null, window.location.pathname);
+            if(window.location.pathname=='/home'){
+              //window.history.forward();
+              history.pushState(null, null, window.location.pathname);
+            }
+    }, false);
+          // window.addEventListener('popstate', (response)=> {
+          //   this.location.subscribe(
+          //     // x=> history.pushState(null, null, window.location.pathname)
+          //     //x=> history.pushState(null, null, '/home')
+          //      //x=>window.location.replace('pageName.html')
+          //      x=>history.go(-(history.length - 1))
+          //     );
+          // }
+          // this.location.subscribe(
+          //   //x=> history.pushState(null, null, window.location.pathname)
+          //  //x=> history.pushState(null, null, '/home')
+          //   //x=>window.location.replace('pageName.html')
+          //   //x=>history.go(-(history.length - 1))
+          //     x=>window.history.forward()  
+          //  );
     }
 
     OnHoroScope_Click(){

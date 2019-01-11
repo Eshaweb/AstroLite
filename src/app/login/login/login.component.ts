@@ -139,6 +139,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    //this.router.navigate(['/home'], { replaceUrl: true });
   }
   signInWithFB() {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);

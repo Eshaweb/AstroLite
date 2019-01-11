@@ -9,7 +9,7 @@ export class HoroRequest{
     //Date:Date;
     //Time:Date;
     Place:string;
-    TimeFormat:string;
+    TimeFormat:any;
     LatDeg:number;
     LatMt:number;
     LongDeg:number;
@@ -20,9 +20,9 @@ export class HoroRequest{
     ZM:number;
     PN:string;
     Gender:string;
-    LangCode:string;
+    LangCode:any;
     ReportType:string;
-    ReportSize:string;
+    ReportSize:any;
     IsMarried:boolean;
 
     FormParameter:string;

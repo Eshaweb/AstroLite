@@ -323,6 +323,9 @@ export class PaymentComponent implements OnInit, OnDestroy, AfterViewInit {
       this.loading = true;
       this.horoScopeService.PaymentComplete(Payment, (data) => {
       this.horoScopeService.resultResponse=data;
+      if(data.AstroReportId.length != 0){
+        this.horoScopeService.AstroReportId = data.AstroReportId[0].split('_')[0];
+      }
       // if(data.Refresh==true){
       //   // this.horoScopeService.CheckForResult(this.horoScopeService.OrderId, (data) => {
 

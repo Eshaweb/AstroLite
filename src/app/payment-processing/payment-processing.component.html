@@ -1,7 +1,18 @@
 <main>
-        <button igxRipple class="apply-button-1" igxButton="raised" [disabled]="!enableDownload" (click)="Download_Click()">{{buttonName}}</button>
+    <p></p>
+        <!-- <button igxRipple class="apply-button-1" igxButton="raised" [disabled]="!enableDownload" (click)="Download_Click()">{{buttonName}}</button>
 
-        <button igxRipple class="apply-button-1" igxButton="raised" [disabled]="!enableRefresh" (click)="Refresh_Click()">Refresh</button>
+        <button igxRipple class="apply-button-1" igxButton="raised" [disabled]="!enableRefresh" (click)="Refresh_Click()">Refresh</button> -->
     <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+    <!-- <div class="dialog-sample">
+        <button igxButton="raised" igxRipple="white" (click)="dialog.open()">LogOut</button>
+    </div>
+        <igx-dialog #dialog title="Confirmation"
+        leftButtonLabel="Cancel"
+        (onLeftButtonSelect)="dialog.close()"
+        rightButtonLabel="OK"
+        (onRightButtonSelect)="onDialogOKSelected($event)"
+        message="Are you sure LogOut..?">
+    </igx-dialog> -->
 </main>
 

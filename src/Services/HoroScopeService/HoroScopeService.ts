@@ -27,6 +27,9 @@ export class HoroScopeService {
     defaultAddress: any;
     paymentModes: any;
     horoRequest: HoroRequest;
+    birthDateinDateFormat:Date;
+    birthTimeinDateFormat:Date;
+    AstroReportId:string;
     itemOrdered: ServiceInfo;
     data: any;
     ItActId = '#SH';
