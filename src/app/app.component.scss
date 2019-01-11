@@ -81,3 +81,14 @@ ng-template header {
     margin-bottom: 6px;
     /* height: 17%; */
 }
+
+.igx-navbar__title {
+    
+    color: #fff !important;
+}
+
+.igx-navbar__left igx-icon {
+    cursor: pointer;
+    color: #f7f4f4;
+    
+}
