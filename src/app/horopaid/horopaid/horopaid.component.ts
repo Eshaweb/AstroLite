@@ -9,7 +9,7 @@ import { LoginService } from '../../../Services/login/login.service';
 import { HoroScopeService, ServiceInfo, ServiceInformation } from '../../../Services/HoroScopeService/HoroScopeService';
 import { HoroRequest } from '../../../Models/HoroScope/HoroRequest';
 import { Location } from "@angular/common";
-import { IgxListComponent } from 'igniteui-angular';
+import { IgxListComponent, IgxDialogComponent } from 'igniteui-angular';
 
 
 @Component({
@@ -18,7 +18,7 @@ import { IgxListComponent } from 'igniteui-angular';
     styleUrls: ['./horopaid.component.scss']
 })
 export class HoropaidComponent implements OnInit {
-
+    @ViewChild("dialog") public dialog: IgxDialogComponent;  
     @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
     @Input()
     service: ServiceInfo;
@@ -46,6 +46,7 @@ export class HoropaidComponent implements OnInit {
     HardCopyDifference: number;
     itemAmount: number;
     isLoading: boolean;
+    errorMessage: any;
     constructor(public _location: Location, public route: ActivatedRoute, public router: Router,
         public loginService: LoginService, public horoScopeService: HoroScopeService) {
 
@@ -172,13 +173,20 @@ export class HoropaidComponent implements OnInit {
         }
         var DeliveryAddressRequired: boolean = this.requireDeliveryAddress;
         this.horoScopeService.CreateOrder(orderModel, (data) => {
+            if(data.Error==undefined){
             this.horoScopeService.OrderId = data.OrderId;
             this.horoScopeService.orderResponse = data;
             var FreePDF = {
                 OrderId: this.horoScopeService.OrderId.toString()
             }
             this.isLoading = false;  
-            this.router.navigate(["/services/deliveryAddress", { 'DeliveryAddressRequired': DeliveryAddressRequired }]);
+            // this.router.navigate(["/services/deliveryAddress", { 'DeliveryAddressRequired': DeliveryAddressRequired }]);
+            this.router.navigate(["/services/deliveryAddress"]);
+        }
+        else{
+          this.errorMessage=data.Error;
+          this.dialog.open();
+        }
         });
     }
 

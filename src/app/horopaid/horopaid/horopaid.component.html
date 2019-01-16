@@ -67,4 +67,12 @@ title="Horoscope Pricing" actionButtonIcon="arrow_back" >
 </div>
 </div>
 </div>
-</div></form></main>
+</div></form>
+<igx-dialog #dialog title="Error Message Alert"
+    leftButtonLabel="Cancel"
+    (onLeftButtonSelect)="dialog.close()"
+    rightButtonLabel="OK"
+    (onRightButtonSelect)="onDialogOKSelected($event)"
+    message="'errorMessage'">
+</igx-dialog>
+</main>

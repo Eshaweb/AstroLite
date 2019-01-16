@@ -12,7 +12,7 @@ import { UIService } from 'src/Services/UIService/ui.service';
 import { HoroScopeService, ServiceInfo } from 'src/Services/HoroScopeService/HoroScopeService';
 import { Platform } from '@angular/cdk/platform';
 import { PayCode } from 'src/Models/Sales/PayCode';
-import { IgxComboComponent } from 'igniteui-angular';
+import { IgxComboComponent, IgxDialogComponent } from 'igniteui-angular';
 declare var Razorpay: any;
 
 
@@ -22,7 +22,7 @@ declare var Razorpay: any;
     styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit, OnDestroy, AfterViewInit {
-
+  @ViewChild("dialog") public dialog: IgxDialogComponent;  
     @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
     WalletCheckBoxValue: boolean = false;
     loading: boolean = false;
@@ -41,6 +41,7 @@ export class PaymentComponent implements OnInit, OnDestroy, AfterViewInit {
     selectboxdisabled: boolean = false;
     OrderId: string;
     paymentId: any;
+  errorMessage: any;
   
     constructor(public _location: Location, public route: ActivatedRoute, public router: Router,
       public formBuilder: FormBuilder, public platform: Platform, public formbuilder: FormBuilder,
@@ -58,8 +59,14 @@ export class PaymentComponent implements OnInit, OnDestroy, AfterViewInit {
         this.payableAmount = this.horoScopeService.itemOrdered.PrintAmount;
       }
       this.horoScopeService.GetPayCodes((data) => {
+      if(data.Error==undefined){
         this.paymentModes = data;
         this.GetWalletBalance();
+      }
+      else{
+        this.errorMessage=data.Error;
+        this.dialog.open();
+      }
       });
       this.CoupenCodeForm = this.formbuilder.group({
         couponcode: ['', [Validators.required, Validators.minLength(6)]],
@@ -96,8 +103,14 @@ export class PaymentComponent implements OnInit, OnDestroy, AfterViewInit {
     };
     GetWalletBalance() {
       this.horoScopeService.GetWalletBalance(this.loginService.PartyMastId, (data) => {
+      if(data.Error==undefined){
         this.walletbalance = data;
         // this.walletbalance = 100;
+      }
+      else{
+        this.errorMessage=data.Error;
+        this.dialog.open();
+      }
       });
     }
     onClick() {
@@ -148,6 +161,7 @@ export class PaymentComponent implements OnInit, OnDestroy, AfterViewInit {
             PayCodes: this.paycodes
           }
           this.horoScopeService.CreateBillPayModeToOrder(OrderBillPayMode, (data) => {
+          if(data.Error==undefined){
             for (var i = 0; i < data.PayModes.length; i++) {
               if (data.PayModes[i] == "L") {
                 var Payment = {
@@ -159,7 +173,11 @@ export class PaymentComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.pay();
               }
             }
-  
+          }
+          else{
+            this.errorMessage=data.Error;
+            this.dialog.open();
+          }
           });
         }
         else if (this.differenceAmount > 0 && this.paymentmodeSelected == false) {
@@ -193,6 +211,7 @@ export class PaymentComponent implements OnInit, OnDestroy, AfterViewInit {
             PayCodes: this.paycodes
           }
           this.horoScopeService.CreateBillPayModeToOrder(OrderBillPayMode, (data) => {
+            if(data.Error==undefined){
             //loading.dismiss();
             //after 3 min delay,rise below method
             if (data.Status == "P" && data.PayModes[0] == "L") {
@@ -214,6 +233,11 @@ export class PaymentComponent implements OnInit, OnDestroy, AfterViewInit {
               this.ShowMessage = "Payment Completed";
               this.router.navigate(['/services/paymentProcessing']);
             }
+          }
+          else{
+            this.errorMessage=data.Error;
+            this.dialog.open();
+          }
           });
         }
         else {
@@ -322,30 +346,19 @@ export class PaymentComponent implements OnInit, OnDestroy, AfterViewInit {
     next(Payment) {
       this.loading = true;
       this.horoScopeService.PaymentComplete(Payment, (data) => {
+      if(data.Error==undefined){
       this.horoScopeService.resultResponse=data;
       if(data.AstroReportId.length != 0){
         this.horoScopeService.AstroReportId = data.AstroReportId[0].split('_')[0];
       }
-      // if(data.Refresh==true){
-      //   // this.horoScopeService.CheckForResult(this.horoScopeService.OrderId, (data) => {
-
-      //   // });
-
-      // }
-      // else{
-
-      // }
+      this.loading = false;
       this.router.navigate(['/services/paymentProcessing'], { skipLocationChange: true });
-        // if (data == true) {
-        //   this.ShowMessage = "Payment Completed";
-        //   this.loading = false;
-        //   this.router.navigate(['/services/paymentProcessing']);
-        // }
-        // else{
-        //   this.ShowMessage = "Payment not Completed";
-        //   this.loading = false;
-        // }
-      });
+    }
+    else{
+      this.errorMessage=data.Error;
+      this.dialog.open();
+    }
+    });
     }
 
 }

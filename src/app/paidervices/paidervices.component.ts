@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChildren, QueryList, ViewChild } from '@angular/core';
 import { ServiceInfo, HoroScopeService, ServiceInformation } from 'src/Services/HoroScopeService/HoroScopeService';
 import { LoginService } from 'src/Services/login/login.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,6 +6,7 @@ import { HoroRequest } from 'src/Models/HoroScope/HoroRequest';
 import { FormControlName } from '@angular/forms';
 import { HoropaidComponent } from '../horopaid/horopaid/horopaid.component';
 import { Location } from "@angular/common";
+import { IgxDialogComponent } from 'igniteui-angular';
 
 @Component({
   selector: 'app-paidervices',
@@ -15,7 +16,7 @@ import { Location } from "@angular/common";
 export class PaidervicesComponent implements OnInit {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
   @ViewChildren('cmp') components: ElementRef;
-
+  @ViewChild("dialog") public dialog: IgxDialogComponent;  
   serviceInfo: ServiceInfo[];
   serviceInformation: ServiceInformation[];
   horoInfo: any;
@@ -34,22 +35,29 @@ export class PaidervicesComponent implements OnInit {
   requireDeliveryAddress: boolean;
   PartyMastId: string;
   serviceHardCopy: ServiceInfo[];
+    errorMessage: any;
   ngAfterViewInit(){
     console.log(this.components);
   }
   constructor(public _location: Location, public route: ActivatedRoute, public router: Router,
     public loginService: LoginService, public horoScopeService: HoroScopeService) {
-      this.route.params.subscribe(params => {
-          this.PartyMastId = params['PartyMastId'];
-      });
+    //   this.route.params.subscribe(params => {
+    //       this.PartyMastId = params['PartyMastId'];
+    //   });
       this.horoInfo = horoScopeService.horoRequest;
       var itemMast = {
           ItActId: "#SH",
-          PartyMastId: this.PartyMastId,
+          PartyMastId: loginService.PartyMastId,
           //CountryCode: "IN"
       }
       this.horoScopeService.GetPriceListByItActId(itemMast, (data) => {
-          this.serviceInfo = data;
+        if(data.Error==undefined){  
+        this.serviceInfo = data;
+    }
+    else{
+      this.errorMessage=data.Error;
+      this.dialog.open();
+    }
       });
       this.serviceInformation = [{ ItMastId: '', Name: 'Horo', MRP: 33, Amount: 44, Description: '',PrintMRP:6,PrintAmount:5 }]
     }

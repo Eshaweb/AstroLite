@@ -14,7 +14,7 @@ import { HoroRequest } from '../../../Models/HoroScope/HoroRequest';
 import { SelectBoxModel } from '../../../Models/SelectBoxModel';
 import { isNumeric } from 'rxjs/util/isNumeric';
 import { Gender } from 'src/Enums/gender';
-import { IgxCircularProgressBarComponent, IgxComboComponent } from 'igniteui-angular';
+import { IgxCircularProgressBarComponent, IgxComboComponent, ISelectionEventArgs, IgxDropDownComponent, IgxDialogComponent } from 'igniteui-angular';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import { LocationStrategy } from '@angular/common';
 
@@ -24,15 +24,15 @@ import { LocationStrategy } from '@angular/common';
     styleUrls: ['./horoscope.component.scss']
 })
 export class HoroscopeComponent implements OnInit, OnDestroy, AfterViewInit  {
- 
-  
-//public date: Date;
+@ViewChild("dialog") public dialog: IgxDialogComponent;  
 @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
+genders: SelectBoxModel[];
 dateModel: string;
 isLoading: boolean;
 public loading = false;
 intLongDeg: number;
 intLatDeg: number;
+@ViewChild(IgxDropDownComponent) public igxDropDown: IgxDropDownComponent;
 
 @ViewChild('timeFormatCombo', { read: IgxComboComponent })
 timeFormatCombo: IgxComboComponent;
@@ -40,8 +40,13 @@ timeFormatCombo: IgxComboComponent;
 pageSizecombo: IgxComboComponent;
 @ViewChild('languagecombo', { read: IgxComboComponent })
 languagecombo: IgxComboComponent;
+  value: string;
+  birthDateinDateFormat: Date;
+  birthTimeinDateFormat: Date;
+  errorMessage: any;
 ngOnInit() {
   this.currentValue = 0;
+  this.value = this.timeformats[0].Id;
 //   this.horoScopeService.Test('57', (data) => {
 //     var newBlob = new Blob([data], { type: "application/pdf" });
 //     const fileName: string = 'PDFSample.pdf';
@@ -71,47 +76,19 @@ ngOnInit() {
       });
     });
   });
-if(this.horoScopeService.horoRequest!=null){
-  this.horoscopeForm.patchValue({
-    name: this.horoScopeService.horoRequest.Name,
-    fatherName: this.horoScopeService.horoRequest.Father,
-    motherName: this.horoScopeService.horoRequest.Mother,
-    gotra: this.horoScopeService.horoRequest.Gothra,
-    birthDate:this.horoScopeService.birthDateinDateFormat,
-    birthTime:this.horoScopeService.birthTimeinDateFormat,
-    timeformat: this.horoScopeService.horoRequest.TimeFormat,
-    pageSize:this.horoScopeService.horoRequest.ReportSize,
-    birthPlace: this.horoScopeService.birthplace,
-    language: this.horoScopeService.horoRequest.LangCode,
-    LatDeg:this.horoScopeService.horoRequest.LatDeg,
-    LongDeg: this.horoScopeService.horoRequest.LongDeg,
-    LatMt: this.horoScopeService.horoRequest.LatMt,
-    LongMt: this.horoScopeService.horoRequest.LongMt,
-    NS: this.horoScopeService.horoRequest.NS,
-    EW: this.horoScopeService.horoRequest.EW,
-    ZH: this.horoScopeService.horoRequest.ZH,
-    ZM: this.horoScopeService.horoRequest.ZM,
-    PN: this.horoScopeService.horoRequest.PN
-  });
 }
-}
+
 ngAfterViewInit(): void {
-  this.timeFormatCombo.dropdown.setSelectedItem('STANDARD');
-    this.pageSizecombo.dropdown.setSelectedItem('A5');
-    this.languagecombo.dropdown.setSelectedItem('KAN');
-  // if(this.horoScopeService.horoRequest!=null){
-  //   this.timeFormatCombo.dropdown.setSelectedItem(this.horoScopeService.horoRequest.TimeFormat);
-  //   this.pageSizecombo.dropdown.setSelectedItem(this.horoScopeService.horoRequest.ReportSize);
-  //   this.languagecombo.dropdown.setSelectedItem(this.horoScopeService.horoRequest.LangCode);
-  //   // this.timeFormatCombo.dropdown.setSelectedItem(this.horoScopeService.horoRequest.TimeFormat[0].Id);
-  //   // this.pageSizecombo.dropdown.setSelectedItem(this.horoScopeService.horoRequest.ReportSize[0].Id);
-  //   // this.languagecombo.dropdown.setSelectedItem(this.horoScopeService.horoRequest.LangCode[0].Id);
-  // }
-  // else{
-  //   this.timeFormatCombo.dropdown.setSelectedItem('STANDARD');
-  //   this.pageSizecombo.dropdown.setSelectedItem('A4');
-  //   this.languagecombo.dropdown.setSelectedItem('KAN');
-  // }
+  if(this.horoScopeService.horoRequest!=null){
+    this.timeFormatCombo.dropdown.setSelectedItem(this.horoScopeService.horoRequest.TimeFormat);
+    this.pageSizecombo.dropdown.setSelectedItem(this.horoScopeService.horoRequest.ReportSize);
+    this.languagecombo.dropdown.setSelectedItem(this.horoScopeService.horoRequest.LangCode);
+  }
+  else{
+    this.timeFormatCombo.selectItems([this.timeformats[0]]);
+    this.pageSizecombo.selectItems([this.pageSizes[1]]);
+    this.languagecombo.selectItems([this.languages[2]]);
+  }
 }
 
 ngOnDestroy(): void {
@@ -155,28 +132,8 @@ getTimezone(lat, long) {
     this.timeZoneName = data.timeZoneName;
     this.timeZoneId = data.timeZoneId;
     this.cdr.detectChanges();
-    this.horoscopeForm.patchValue({
-      LatDeg:this.horoRequest.LatDeg,
-      LongDeg: this.horoRequest.LongDeg,
-      LatMt: this.horoRequest.LatMt,
-      LongMt: this.horoRequest.LongMt,
-      NS: this.horoRequest.NS,
-      EW: this.horoRequest.EW,
-      ZH: this.horoRequest.ZH,
-      ZM: this.horoRequest.ZM,
-      PN: this.horoRequest.PN
-    });
   });
 }
-public genders = [{
-  hex: "#7bc96f",
-  name: "Grass"
-},
-{
-  hex: "transparent",
-  name: "No color"
-}];
-
 public selectedColor: string = 'transparent';
 horoscopeForm: FormGroup;
 latitude: number;
@@ -206,8 +163,6 @@ timeformats: SelectBoxModel[] = [
   { Id: "DOUBLE", Text: 'Double Summer Time' },
   { Id: "WAR", Text: 'War Time' }
 ];
-//genders: string[];
-//genders: SelectBoxModel[];
 payusing: PaymentInfo[];
 using: string[];
 paymentForm: FormGroup;
@@ -236,16 +191,10 @@ public ds = this.languages[0];
 constructor(public toastr: ToastrManager, public route: ActivatedRoute, private router: Router, public formBuilder: FormBuilder,
   private cdr: ChangeDetectorRef, public partyService: PartyService, public horoScopeService: HoroScopeService, public uiService: UIService,
   public smartHttpClient: SmartHttpClient, private ngZone: NgZone, private mapsAPILoader: MapsAPILoader, public formbuilder: FormBuilder) {
-  var genders = [{ Id: "M", Text: "Male" },
-  { Id: "F", Text: "Female" }];
   //this.serviceInfo =  horoScopeService.getCustomers();
   this.payusing = horoScopeService.getInfo();
-  //this.genders = this.enumToKeyValues(Gender);
-  // this.genders=[{Id:"M",Text:"Male"},
-  //   {Id:"F",Text:"Female"}];
-  // this.genders=[{"Id":"M","Text":"Male"},
-  //   {"Id":"F","Text":"Female"}];
-  //this.genders = ["Male", "Female"];
+  this.genders=[{Id:"M",Text:"Male"},
+    {Id:"F",Text:"Female"}];
   this.using = ["AstroLite Wallet", "Payment Gateway"];
   //this.horoRequest=this.horoScopeService.horoRequest;
   this.horoscopeForm = this.formbuilder.group({
@@ -254,17 +203,14 @@ constructor(public toastr: ToastrManager, public route: ActivatedRoute, private 
     motherName: ['Leelavathi'],
     gotra: ['Vasista'],
     birthDate:new Date(),
-    //birthTime: new Date(),
-    //birthDate: [null, [Validators.required]],
-    birthTime: ['', [Validators.required]],
+    birthTime: new Date(),
     timeformat: ['', [Validators.required]],
     pageSize:['', [Validators.required]],
     birthPlace: ['', [Validators.required]],
     language: ['', [Validators.required]],
-    //language:new FormControl(this.ds, Validators.required),
     latitude: [''],
     longitude: [''],
-    gender: ['', [Validators.required]],
+    gender: ['M', [Validators.required]],
     LatDeg: [null, [Validators.min(0), Validators.max(90)]],
     LongDeg: ['', [Validators.min(0), Validators.max(180)]],
     LatMt: ['', [Validators.min(0), Validators.max(59)]],
@@ -297,37 +243,44 @@ constructor(public toastr: ToastrManager, public route: ActivatedRoute, private 
   birthPlaceContrl.valueChanges.subscribe(value => this.setErrorMessage(birthPlaceContrl));
   // const languageContrl = this.horoscopeForm.get('language');
   // languageContrl.valueChanges.subscribe(value => this.setErrorMessage(languageContrl));
-  
-  this.horoRequest = {
-    Name: this.horoscopeForm.controls['name'].value,
-    Father: null,
-    Mother: null,
-    Gothra: null,
-    Date: null,
-    Time: null,
-    TimeFormat: null,
-    Place: this.horoScopeService.birthplace,
-    LatDeg: this.horoscopeForm.controls['LatDeg'].value,
-    LatMt: this.horoscopeForm.controls['LatMt'].value,
-    LongDeg: this.horoscopeForm.controls['LongDeg'].value,
-    LongMt: this.horoscopeForm.controls['LongMt'].value,
-    NS: this.horoscopeForm.controls['NS'].value,
-    EW: this.horoscopeForm.controls['EW'].value,
-    ZH: null,
-    ZM: null,
-    PN: null,
-    Gender: null,
-    LangCode: null,
-    ReportSize: null,
-    ReportType: null,
-    FormParameter: null,
-    Swarna: 0,
-    Pruchaka: 0,
-    JanmaRashi: 0,
-    AshtaMangalaNo: null,
-    IsMarried: true,
+  if(this.horoScopeService.horoRequest!=null){
+    this.horoRequest =this.horoScopeService.horoRequest;
+    this.birthDateinDateFormat=this.horoScopeService.birthDateinDateFormat;
+    this.birthTimeinDateFormat=this.horoScopeService.birthTimeinDateFormat;
   }
-
+  else{
+    this.birthDateinDateFormat=this.horoscopeForm.controls['birthDate'].value;
+    this.birthTimeinDateFormat=this.horoscopeForm.controls['birthTime'].value;
+    this.horoRequest = {
+      Name: this.horoscopeForm.controls['name'].value,
+      Father: this.horoscopeForm.controls['fatherName'].value,
+      Mother: this.horoscopeForm.controls['motherName'].value,
+      Gothra: this.horoscopeForm.controls['gotra'].value,
+      Date: this.horoscopeForm.controls['birthDate'].value,
+      Time: this.horoscopeForm.controls['birthTime'].value,
+      TimeFormat: null,
+      Place: this.horoScopeService.birthplace,
+      LatDeg: this.horoscopeForm.controls['LatDeg'].value,
+      LatMt: this.horoscopeForm.controls['LatMt'].value,
+      LongDeg: this.horoscopeForm.controls['LongDeg'].value,
+      LongMt: this.horoscopeForm.controls['LongMt'].value,
+      NS: this.horoscopeForm.controls['NS'].value,
+      EW: this.horoscopeForm.controls['EW'].value,
+      ZH: null,
+      ZM: null,
+      PN: null,
+      Gender: this.horoscopeForm.controls['gender'].value,
+      LangCode: null,
+      ReportSize: null,
+      ReportType: null,
+      FormParameter: null,
+      Swarna: 0,
+      Pruchaka: 0,
+      JanmaRashi: 0,
+      AshtaMangalaNo: null,
+      IsMarried: true,
+    }
+  }
   this.paymentForm = this.formbuilder.group({
     using: ['']
   });
@@ -390,10 +343,10 @@ checkBoxStateChanged() {
     this.checkBoxValue = true;
   }
 }
-
-onSelection(event) {
-  console.log("hello");
+public onSelection(eventArgs: ISelectionEventArgs) {
+  this.value = eventArgs.newSelection.value;
 }
+
 public date: Date = new Date(Date.now());
 private monthFormatter = new Intl.DateTimeFormat("en", { month: "long" });
 public formatter = (date: Date) => {
@@ -435,12 +388,12 @@ submit_click() {
   var bdate: Date = this.horoscopeForm.controls['birthDate'].value;
   var btime: Date = this.horoscopeForm.controls['birthTime'].value;
   var dateinString = bdate.getFullYear().toString() + "-" + ("0" + ((bdate.getMonth()) + 1)).toString().slice(-2) + "-" + ("0" + bdate.getDate()).toString().slice(-2);
-  var timeinString = ("0" + btime.getHours()).toString().slice(-2) + ":" + ("0" + btime.getMinutes()).toString().slice(-2) + ":" + btime.getSeconds().toString() + "0";
+  var timeinString = ("0" + btime.getHours()).toString().slice(-2) + ":" + ("0" + btime.getMinutes()).toString().slice(-2) + ":" + "00";
   this.horoRequest = {
     Name: this.horoscopeForm.controls['name'].value,
     Father: this.horoscopeForm.controls['fatherName'].value,
     Mother: this.horoscopeForm.controls['motherName'].value,
-    Gothra: 'Vasista',
+    Gothra: this.horoscopeForm.controls['gotra'].value,
     //Date: "2018-12-28",
     //Time: "18:34:00",
     Date: dateinString,
@@ -469,51 +422,37 @@ submit_click() {
     AshtaMangalaNo: '444',
     IsMarried: true,
   }
-
-  // var dateindate = new  Date (dateinString);
-  // this.dateModel=dateindate.toDateString ();
-
-
+  
   var horoRequest = this.horoRequest;
   this.horoScopeService.Fathername = this.horoRequest.Father;
   this.horoScopeService.Mothername = this.horoRequest.Mother;
-  //this.BDate = this.horoscopeForm.controls['Bdate'].value;
-  // this.horoScopeService.Test((data) => {
-  //   var fff=data;
-  // });
+ 
   this.horoScopeService.horoRequest = this.horoRequest;
   this.horoScopeService.birthDateinDateFormat=bdate;
   this.horoScopeService.birthTimeinDateFormat=btime;
   this.horoScopeService.GetFreeData(this.horoRequest, (data) => {
-    let navigationExtras: NavigationExtras = {
-      // queryParams: {
-      //   "BirthPlace": this.horoscopeForm.controls['bplace'].value, 
-      //   'Fathername': this.horoscopeForm.controls['fathername'].value, 
-      //   'Mothername': this.horoscopeForm.controls['mothername'].value
-      // }
-      queryParams: horoRequest,
-      // queryParams:{horoRequest:JSON.stringify(horoRequest),"data":data}
-    };
-    //this.router.navigate(["/horoscopeFree",  {"horoRequest":horoRequest,queryParams:horoRequest, "data":data, navigationExtras,"BirthPlace": this.horoscopeForm.controls['bplace'].value, 'Fathername': this.horoscopeForm.controls['fathername'].value, 'Mothername': this.horoscopeForm.controls['mothername'].value }]);
-    this.horoScopeService.data = data;
-    this.loading = false;
-    this.router.navigate(["/services/horoscopeFree"]);
+    if(data.Error==undefined){
+      let navigationExtras: NavigationExtras = {
+        // queryParams: {
+        //   "BirthPlace": this.horoscopeForm.controls['bplace'].value, 
+        //   'Fathername': this.horoscopeForm.controls['fathername'].value, 
+        //   'Mothername': this.horoscopeForm.controls['mothername'].value
+        // }
+        queryParams: horoRequest,
+        // queryParams:{horoRequest:JSON.stringify(horoRequest),"data":data}
+      };
+      //this.router.navigate(["/horoscopeFree",  {"horoRequest":horoRequest,queryParams:horoRequest, "data":data, navigationExtras,"BirthPlace": this.horoscopeForm.controls['bplace'].value, 'Fathername': this.horoscopeForm.controls['fathername'].value, 'Mothername': this.horoscopeForm.controls['mothername'].value }]);
+      this.horoScopeService.data = data;
+      this.loading = false;
+      this.router.navigate(["/services/horoscopeFree"]);
+    }
+    else{
+      this.dialog.message=data.Error;
+      this.dialog.open();
+    }
+    
   });
 
-  // this.horoScopeService.ProcessOrder().subscribe((data:any)=>{
-  //   alert(data);
-  // });
-  // var TestDTO = {
-  //   Names: 'rajesh',
-  //   Age: '24'
-  // }
-  // this.horoScopeService.ProcessOrders(TestDTO).subscribe((data:any)=>{
-  //   var gg = data;
-  //   alert(data);
-  // });
-  // this.horoScopeService.TestX(TestDTO).subscribe((data:any)=>{
-  //   alert(data);
-  // });
 }
 
 

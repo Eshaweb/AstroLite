@@ -1,0 +1,119 @@
+<main class="igx-typography"><form>
+<div class="delivery-address-1">
+<div class="navigation"><div class="navigation-navbar">
+<!-- <igx-navbar (click)='backClicked()'
+title="Delivery Address" actionButtonIcon="arrow_back" >
+<igx-icon name="more_vert" ></igx-icon>
+</igx-navbar> -->
+</div>
+
+</div>
+<div class="screen-content"><div class="title"><h4 class="igx-typography__h4 delivery-address">Delivery Address</h4>
+</div>
+<div class="email-2" [formGroup]="customerEMailAddressForm">
+    <div class="email">
+<igx-input-group type="line" class="email-1" >
+<input igxInput type="text" formControlName="email" [(ngModel)]="email" />
+<label igxLabel>Email</label>
+</igx-input-group>
+<p>You are purchasing {{ItName}}. You will get it to above EMail Address</p>
+</div>
+
+</div>
+<div class="address" *ngIf="DeliveryAddressRequired">
+    <p *ngIf="DeliveryAddressRequired">Since you need printed copy, we will send it in post within 3-4 business days</p>
+    <igx-card class="address-box" *ngIf="existingAddress">
+            <!-- <p style="color:red">You can change the default Address by clicking on particular Address list item</p> -->
+        <div *ngFor="let order of existingAddress; trackBy: trackByFn">
+            <div (click)="OnChangeDefaultAddress(order.Id)" [ngClass]="order.Id === Id? 'class-1':'class-2'">
+                <p *ngIf="(order.Id === Id)" style="text-align:center">Default Address</p>
+                <p style="text-transform:capitalize;">{{ order.Name }}</p>
+                <p>EMail:{{ order.EMail }}</p>
+                <p>City:{{ order.Address1 }}</p>
+                <p>Street/Area:{{ order.Address2 }}</p>
+                <p>House No./Building Name:{{ order.Address3 }}</p>
+                <a (click)="onRemoveAddress(order.Id)">Remove</a>
+            </div>
+        </div>
+    </igx-card>
+<div class="buttons-raised">
+<button igxRipple class="buttons-raised-1" *ngIf="DeliveryAddressRequired" igxButton="raised" (click)="onAddAddress()" >Add Address</button>
+</div>
+
+</div>
+<div class="body" *ngIf="DeliveryAddressRequired">
+    <div class="form-address" [formGroup]="customerAddressForm" *ngIf="showAddAddressForm">
+        <div class="postal-code-copy">
+            <igx-input-group type="line" class="postal-code-copy-1">
+                <input igxInput type="text" formControlName="name" />
+                <label igxLabel>Name of the Reciever</label>
+            </igx-input-group>
+            <p style="color:red" id='err_name'></p>
+        </div>
+        <div class="postal-code-copy">
+            <igx-input-group type="line" class="postal-code-copy-1">
+                <input igxInput type="text" formControlName="email" [(ngModel)]='email' />
+                <label igxLabel>EMail Address</label>
+            </igx-input-group>
+            <p style="color:red" id='err_email'></p>
+        </div>
+        <div class="street">
+<igx-input-group type="line" class="street-1" >
+<input igxInput type="text" formControlName="address3" />
+<label igxLabel>Street Address</label>
+</igx-input-group>
+<p style="color:red" id='err_address3'></p>
+</div>
+
+<div class="apartment">
+<igx-input-group type="line" class="apartment-1" >
+<input igxInput type="text" formControlName="address2" />
+<label igxLabel>Street or Area</label>
+</igx-input-group>
+<p style="color:red" id='err_address2'></p>
+</div>
+
+<div class="state">
+<igx-input-group type="line" class="state-1" >
+<input igxInput type="text" formControlName="state" />
+<label igxLabel>State</label>
+<igx-suffix>
+<div class="state-2-suffix">
+<igx-icon name="arrow_drop_down" ></igx-icon>
+</div>
+</igx-suffix>
+</igx-input-group>
+<p style="color:red" id='err_state'></p>
+</div>
+
+<div class="city">
+<igx-input-group type="line" class="city-1" >
+<input igxInput type="text" value="address1" />
+<label igxLabel>City</label>
+</igx-input-group>
+<p style="color:red" id='err_address1'></p>
+</div>
+
+<div class="postal-code">
+<igx-input-group type="line" class="postal-code-1" >
+<input igxInput type="text" formControlName="pincode" />
+<label igxLabel>Postal Code</label>
+</igx-input-group>
+<p style="color:red" id='err_pincode'></p>
+</div>
+
+
+<div class="button">
+<button igxRipple class="button-1" igxButton="raised" [disabled]="customerAddressForm.invalid" (click)="onSaveAddress()">Save</button>
+</div>
+<div class="button">
+<button igxRipple class="button-1" igxButton="raised" (click)="onCancel()">Cancel</button>
+</div>
+</div>
+<br/><br/>
+<button igxRipple igxButton="raised" (click)="onPlaceOrder()">Place Order</button>
+</div>
+<br/><br/>
+<button igxRipple igxButton="raised" (click)="onPlaceOrder()">Place Order</button>
+</div>
+</div></form></main>

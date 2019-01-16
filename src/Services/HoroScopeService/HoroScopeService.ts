@@ -43,8 +43,12 @@ export class HoroScopeService {
     GetFreeData(horoRequest, callback: (data) => void) {
         var endPoint = "HoroScope/GetFreeData";
         return this.smartHttpClient.Post(endPoint, horoRequest).subscribe((data: any) => {
-
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
 
     }
@@ -102,6 +106,11 @@ export class HoroScopeService {
         this.smartHttpClient.DownloadResultById(endPoint, data).subscribe((data: any) => {
             this.existingAddress = data;
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
     }
     Test(AstroReportId, callback: (data) => void){
@@ -111,6 +120,11 @@ export class HoroScopeService {
         return this.smartHttpClient.DownloadResultById(endPoint, data).subscribe((data: any) => {
             this.existingAddress = data;
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
         //return this.http.get(url + data, { responseType: "blob" });
     }
@@ -132,9 +146,11 @@ export class HoroScopeService {
         return this.smartHttpClient.Post(endPoint, orderModel).subscribe((data: any) => {
             this.OrderId = data;
             callback(data);
-        },
-        (error)=>{
-
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
     }
     TestById(OrderId) {
@@ -162,6 +178,11 @@ export class HoroScopeService {
         this.smartHttpClient.GetById(endPoint, data).subscribe((data: any) => {
             this.existingAddress = data;
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
     }
     GetDefaultAddress(PartyMastId, callback: (data) => void) {
@@ -171,6 +192,11 @@ export class HoroScopeService {
             this.defaultAddress = data;
             console.log(data);
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
     }
     GetPriceListByItActId(ItemMast, callback: (data) => void) {
@@ -178,6 +204,11 @@ export class HoroScopeService {
         this.smartHttpClient.Post(endPoint, ItemMast).subscribe((data: any) => {
             var items = data;
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
     }
     GetItemPrice(HardCopyPriceRequest, callback: (data) => void) {
@@ -185,6 +216,11 @@ export class HoroScopeService {
         this.smartHttpClient.Post(endPoint, HardCopyPriceRequest).subscribe((data: any) => {
             var items = data;
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
     }
     CreateAddress(addessModel, callback: (data) => void) {
@@ -196,12 +232,22 @@ export class HoroScopeService {
             //     this.existingAddress = data;
             // });
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
     }
     DeleteAddress(addessModel, callback: (data) => void) {
         var endPoint = "Address/DeleteAddress";
         return this.smartHttpClient.Post(endPoint, addessModel).subscribe((data: any) => {
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
     }
     CreateAndUpdateOrder(addessModel, callback: (data) => void) {
@@ -209,6 +255,11 @@ export class HoroScopeService {
         return this.smartHttpClient.Post(endPoint, addessModel).subscribe((data: any) => {
             var hh = data;
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
     }
     UpdateAddressToOrder(orderAddress, callback: (data) => void) {
@@ -216,6 +267,11 @@ export class HoroScopeService {
         return this.smartHttpClient.Post(endPoint, orderAddress).subscribe((data: any) => {
             var hh = data;
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
     }
     // PaymentComplete(, callback: (data) => void){
@@ -232,6 +288,11 @@ export class HoroScopeService {
         this.smartHttpClient.Get(endPoint).subscribe((data: any) => {
             this.paymentModes = data;
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
     }
     GetWalletBalance(PartyMastId, callback: (data) => void) {
@@ -241,6 +302,11 @@ export class HoroScopeService {
             var balance = data;
             console.log(data);
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
     }
     ValidateCouponCode(orderAddress, callback: (data) => void) {
@@ -248,6 +314,11 @@ export class HoroScopeService {
         return this.smartHttpClient.Post(endPoint, orderAddress).subscribe((data: any) => {
             var hh = data;
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
     }
     CreateBillPayModeToOrder(orderAddress, callback: (data) => void) {
@@ -255,6 +326,11 @@ export class HoroScopeService {
         return this.smartHttpClient.Post(endPoint, orderAddress).subscribe((data: any) => {
             var hh = data;
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
     }
     PaymentComplete(payment, callback: (data) => void) {
@@ -262,6 +338,11 @@ export class HoroScopeService {
         return this.smartHttpClient.Post(endPoint, payment).subscribe((data: any) => {
             var hh = data;
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
 
     }
@@ -272,6 +353,11 @@ export class HoroScopeService {
             var balance = data;
             console.log(data);
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
     }
 
@@ -282,6 +368,11 @@ export class HoroScopeService {
             var balance = data;
             console.log(data);
             callback(data);
+        }, (error) => {
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
     }
     getTimezone(lat, long) {
@@ -350,22 +441,11 @@ export class HoroScopeService {
         }
     }
 
-
-    // getCustomers() {
-    //     return customers;
-    // }
     getInfo() {
         return payusing;
     }
 }
 export class ServiceInformation {
-    // Id:string;
-    // ItemName:string;
-    // Link:string;
-    // Description:string;
-    // MRP: number;
-    // ActualPrice:number;
-
     ItMastId: string;
     Name: string;
     Description: string;
@@ -375,18 +455,6 @@ export class ServiceInformation {
     PrintAmount: number;
 }
 export class ServiceInfo {
-    // Description: string;
-    // ViewSample: string;
-    // Price: number;
-    // Buy: string;
-
-    // Id:string;
-    // ItemName:string;
-    // View:string;
-    // Description:string;
-    // HardCopy: number;
-    // SoftCopy: number;
-
     ItMastId: string;
     Name: string;
     Description: string;
@@ -399,22 +467,6 @@ export class ServiceInfo {
 export class PaymentInfo {
     Title: string;
 }
-// let customers: ServiceInfo[] = [{
-//     "Description": "Mini Format",
-//     "ViewSample": "View",
-//     "Price": 250,
-//     "Buy": "Buy"
-// }, {
-//     "Description": "Medium Format",
-//     "ViewSample": "View",
-//     "Price": 500,
-//     "Buy": "Buy"
-// }, {
-//     "Description": "Full Horoscope",
-//     "ViewSample": "View",
-//     "Price": 750,
-//     "Buy": "Buy"
-// }];
 
 let payusing: PaymentInfo[] = [{
     "Title": "Astrolite Wallet"

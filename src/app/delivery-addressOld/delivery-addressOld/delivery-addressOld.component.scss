@@ -1,0 +1,372 @@
+@import '~igniteui-angular/lib/core/styles/themes/utilities';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-component';
+@import '~igniteui-angular/lib/core/styles/components/ripple/ripple-theme';
+@import '~igniteui-angular/lib/core/styles/components/button/button-component';
+@import '~igniteui-angular/lib/core/styles/components/button/button-theme';
+@import '~igniteui-angular/lib/core/styles/components/card/card-component';
+@import '~igniteui-angular/lib/core/styles/components/card/card-theme';
+@import '~igniteui-angular/lib/core/styles/components/input/input-group-component';
+@import '~igniteui-angular/lib/core/styles/components/input/input-group-theme';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-component';
+@import '~igniteui-angular/lib/core/styles/components/icon/icon-theme';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-component';
+@import '~igniteui-angular/lib/core/styles/components/navbar/navbar-theme';
+
+main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+	overflow: auto;
+    height: 100%;
+}
+.class-1{
+    background-color:goldenrod;
+    border: 1px solid lightgrey; 
+    padding: 15px; 
+    margin: 5px 0;
+}
+
+.class-2{
+    background-color:#ddd;
+    border: 1px solid lightgrey; 
+    padding: 15px; 
+    margin: 5px 0;
+}
+form {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+
+
+.delivery-address-1 {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.navigation {
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.delivery-address {
+color: igx-color($default-palette, grays, 900);
+margin-top: 44px;
+margin-left: 45px;
+
+}
+.title {
+height: 114px;
+min-height: 114px;
+margin-top: 17px;
+margin-right: 28px;
+margin-left: 30px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.email-1 {
+width: 361px;
+min-width: 361px;
+
+}
+.email-2 {
+height: 86px;
+min-height: 86px;
+margin-top: 9px;
+margin-right: 29px;
+margin-left: 29px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+._ngcontent-c12.igx-button--raised {
+    width: 20%;
+    margin-left: 40%;
+    margin-bottom: 20%;
+}
+
+.address-box {
+//margin-top: 24px;
+//margin-left: 43px;
+
+//width: 100%;
+
+}
+.buttons-raised-1 {
+width: 100%;
+height: 36px;
+min-height: 36px;
+
+}
+.address {
+//height: 149px;
+//min-height: 149px;
+margin-top: 5px;
+margin-right: 29px;
+margin-left: 29px;
+
+display: flex;
+flex-direction: row;
+flex-shrink: 0;
+padding: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.street-1 {
+width: 461px;
+min-width: 461px;
+
+}
+.apartment-1 {
+width: 461px;
+min-width: 461px;
+
+}
+.state-1 {
+width: 461px;
+min-width: 461px;
+
+}
+.city-1 {
+width: 461px;
+min-width: 461px;
+
+}
+.postal-code-1 {
+width: 461px;
+min-width: 461px;
+
+}
+.postal-code-copy-1 {
+width: 461px;
+min-width: 461px;
+
+}
+.button-1 {
+width: 100%;
+height: 36px;
+min-height: 36px;
+
+}
+.form-address {
+width: 469px;
+min-width: 469px;
+margin-top: 42px;
+margin-left: 230px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+}
+
+.body {
+height: 556px;
+min-height: 556px;
+margin-top: 5px;
+margin-right: 28px;
+margin-left: 30px;
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgb(255, 255, 255);
+}
+
+.screen-content {
+
+display: flex;
+flex-direction: column;
+padding: 0;
+flex-shrink: 0;
+background-color: rgba(igx-color($default-palette, primary), .10);
+}
+
+@function get-palette($palette, $variant: 'light') {
+$p: igx-color($palette, 'primary');
+$s: igx-color($palette, 'secondary');
+@return igx-palette($primary: $p,
+$secondary: $s,
+$grays: if($variant == 'light', #fff, #000)
+);
+}
+@function get-schema($variant: 'light') {
+@return map-get((
+dark: $dark-schema,
+light: $light-schema
+), $variant);
+}
+
+$navigation-navbar-theme: igx-navbar-theme(
+$background: igx-color($default-palette, primary),
+$idle-icon-color: rgb(255, 255, 255),
+$text-color: rgb(255, 255, 255)
+);
+
+$email-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
+);
+
+$buttons-raised-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, secondary, 600),
+$raised-text-color: rgb(255, 255, 255)
+);
+
+$street-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
+);
+
+$apartment-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
+);
+
+$state-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
+);
+
+$state-2-suffix-theme: igx-icon-theme(
+$color: igx-color($default-palette, grays, 700)
+);
+
+$city-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
+);
+
+$postal-code-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
+);
+
+$postal-code-copy-theme: igx-input-group-theme(
+$idle-bottom-line-color: igx-color($default-palette, grays),
+$box-background: transparent,
+$border-background: transparent,
+$schema: get-schema('dark'),
+$palette: get-palette($default-palette, 'dark')
+);
+
+$button-theme: igx-button-theme(
+$raised-background: igx-color($default-palette, secondary, 600),
+$raised-text-color: rgb(255, 255, 255)
+);
+
+
+:host {
+::ng-deep {
+.navigation-navbar {
+@include igx-navbar($navigation-navbar-theme);
+}
+
+.email {
+@include igx-input-group($email-theme);
+margin-top: 14px;
+margin-left: 44px;
+
+}
+
+.buttons-raised {
+@include igx-button($buttons-raised-theme);
+margin-top: 64px;
+margin-right: 59px;
+//margin-left: 534px;
+
+width: 20%;
+}
+
+.street {
+@include igx-input-group($street-theme);
+margin-right: 8px;
+
+}
+
+.apartment {
+@include igx-input-group($apartment-theme);
+margin-top: 16px;
+margin-right: 8px;
+
+}
+
+.state {
+@include igx-input-group($state-theme);
+margin-top: 16px;
+margin-right: 8px;
+
+}
+
+.state-2-suffix {
+@include igx-icon($state-2-suffix-theme);
+}
+
+.city {
+@include igx-input-group($city-theme);
+margin-top: 16px;
+margin-right: 8px;
+
+}
+
+.postal-code {
+@include igx-input-group($postal-code-theme);
+margin-top: 16px;
+margin-left: 8px;
+
+}
+
+.postal-code-copy {
+@include igx-input-group($postal-code-copy-theme);
+margin-top: 12px;
+margin-right: 1px;
+margin-left: 7px;
+
+}
+
+.button {
+@include igx-button($button-theme);
+margin-top: 10px;
+margin-left: 8px;
+
+}
+
+}
+}

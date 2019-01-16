@@ -28,6 +28,9 @@ import { RegistrationService } from 'src/Services/registration/registration.serv
 import { PaymentComponent } from '../payment/payment/payment.component';
 import { RegistrationComponent } from '../registration/registration/registration.component';
 import { HoroscopeComponent } from '../horoscope/horoscope/horoscope.component';
+import { HoroscopeModule } from '../horoscope/horoscope.module';
+import { AuthGuard } from 'src/Services/auth/auth.guard';
+import { IgxDialogModule } from 'igniteui-angular';
 
 
 @NgModule({
@@ -45,6 +48,7 @@ import { HoroscopeComponent } from '../horoscope/horoscope/horoscope.component';
         ReactiveFormsModule,
         FormsModule,
         InfragisticsImportsModule,
+        IgxDialogModule,
         //DeliveryAddressModule, 
         //PaymentOldModule,
         //HoroscopeModule,
@@ -63,6 +67,7 @@ import { HoroscopeComponent } from '../horoscope/horoscope/horoscope.component';
                         //path: 'horoscope',
                         path: '#SH',
                         component: HoroscopeComponent,
+                        //loadChildren: './horoscope/horoscope.module#HoroscopeModule'
                         //resolve: { person: PersonResolverService }
                     },
                     {
@@ -80,14 +85,15 @@ import { HoroscopeComponent } from '../horoscope/horoscope/horoscope.component';
                     { path: 'registration', component: RegistrationComponent },
                     { path: 'matchFree', component: MatchMakingReportComponent },
                     { path: 'login', component: LoginComponent },
-                    { path: 'horoscopePaid', component: PaidervicesComponent },
-                    { path: 'deliveryAddress', component: DeliveryAddressComponent },
-                    { path: 'paidServices', component: PaidervicesComponent },
-                    { path: 'payment', component: PaymentComponent },
-                    { path: 'paymentProcessing', component: PaymentProcessingComponent }
+                    { path: 'horoscopePaid', component: PaidervicesComponent, canActivate: [AuthGuard], },
+                    { path: 'deliveryAddress', component: DeliveryAddressComponent, canActivate: [AuthGuard], },
+                    { path: 'paidServices', component: PaidervicesComponent, canActivate: [AuthGuard], },
+                    { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard], },
+                    { path: 'paymentProcessing', component: PaymentProcessingComponent, canActivate: [AuthGuard], }
                 ]
             },
-        ])
+        ]),
+        //HoroscopeModule
     ],
     declarations: [
         HoroscopeComponent,
@@ -107,7 +113,7 @@ import { HoroscopeComponent } from '../horoscope/horoscope/horoscope.component';
 
     providers: [
         HoroScopeService, MatchMakingService, LoginService,
-        PartyService, RegistrationService,
+        PartyService, RegistrationService,AuthGuard
         //   {
         //       provide:LocationStrategy,
         //       useClass:HoroscopeComponent 

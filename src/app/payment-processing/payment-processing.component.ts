@@ -17,6 +17,7 @@ export class PaymentProcessingComponent implements OnInit, OnDestroy {
   buttonId: any;
   loading: boolean;
   sub: any;
+  showSuccess: boolean;
 
   constructor(public router: Router, public horoScopeService: HoroScopeService) {
     this.enableDownload = true;
@@ -55,6 +56,7 @@ export class PaymentProcessingComponent implements OnInit, OnDestroy {
           document.body.removeChild(a);
           URL.revokeObjectURL(url);
           this.loading = false;
+          this.showSuccess=true;
         });
       }
       else {
@@ -80,6 +82,7 @@ export class PaymentProcessingComponent implements OnInit, OnDestroy {
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
                 this.loading = false;
+                this.showSuccess=true;
                 this.sub.unsubscribe();
               });
             }
@@ -93,38 +96,7 @@ export class PaymentProcessingComponent implements OnInit, OnDestroy {
        
       }
     });
-    this.horoScopeService.birthDateinDateFormat=new Date();
-    this.horoScopeService.birthTimeinDateFormat=null;
-    this.horoScopeService.birthplace='';
-    this.horoScopeService.horoRequest = {
-      Name: '',
-      Father: '',
-      Mother: '',
-      Gothra: '',
-      Date: null,
-      Time: null,
-      Place: '',
-      TimeFormat: '',
-      LatDeg: null,
-      LatMt: null,
-      LongDeg: null,
-      LongMt: null,
-      NS: '',
-      EW: '',
-      ZH: null,
-      ZM: null,
-      PN: '',
-      Gender: '',
-      LangCode: '',
-      ReportType: '',
-      ReportSize: '',
-      IsMarried: null,
-      FormParameter: '',
-      Swarna: null,
-      Pruchaka: null,
-      JanmaRashi: null,
-      AshtaMangalaNo: '',
-    }
+    this.horoScopeService.horoRequest =null;
   }
   public onDialogOKSelected(event) {
     event.dialog.close();

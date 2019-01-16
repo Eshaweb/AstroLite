@@ -7,7 +7,7 @@ import 'rxjs/add/observable/merge';
 import { Location } from "@angular/common";
 import { UIService } from '../../../Services/UIService/ui.service';
 import { RegistrationService } from '../../../Services/registration/registration.service';
-import { IgxCircularProgressBarComponent } from '../../../../node_modules/igniteui-angular';
+import { IgxCircularProgressBarComponent, IgxDialogComponent } from '../../../../node_modules/igniteui-angular';
 import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
@@ -16,11 +16,13 @@ import { ToastrManager } from 'ng6-toastr-notifications';
     styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit, OnDestroy, AfterViewInit {
+    @ViewChild("dialog") public dialog: IgxDialogComponent;  
     public loading = false;
     public currentValue: number;
     public interval: any;
     @ViewChild(IgxCircularProgressBarComponent) public circularBar: IgxCircularProgressBarComponent;
     public maxvalue: number;
+    errorMessage: any;
     public changeIcon() {
         return this.interval ? "pause" : "play_arrow";
     }
@@ -123,8 +125,14 @@ export class RegistrationComponent implements OnInit, OnDestroy, AfterViewInit {
         }
         this.maxvalue = 100;
         this.registrationService.RegisterParty(registerModel, (data) => {
+            if(data.Error==undefined){
             this.loading = false;
             this.toastrService.successToastr('You Successfully registered.', 'Success!');
+        }
+        else{
+          this.errorMessage=data.Error;
+          this.dialog.open();
+        }
         });
     }
     ngOnInit(): void {

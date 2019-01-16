@@ -51,5 +51,12 @@ Pay using Astrolite wallet (Wallet Balce {{walletbalance}})
 </div>
 </div>
 </div></form>
+<igx-dialog #dialog title="Error Message Alert"
+    leftButtonLabel="Cancel"
+    (onLeftButtonSelect)="dialog.close()"
+    rightButtonLabel="OK"
+    (onRightButtonSelect)="onDialogOKSelected($event)"
+    message="'errorMessage'">
+</igx-dialog>
 <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
 </main>

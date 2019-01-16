@@ -12,12 +12,13 @@ import { ExistingAddress } from '../../../Models/ExistingAddress';
 import { LoginService } from '../../../Services/login/login.service';
 import { Location } from "@angular/common";
 
+
 @Component({
-    selector: 'app-delivery-address',
-    templateUrl: './delivery-address.component.html',
-    styleUrls: ['./delivery-address.component.scss']
+    selector: 'app-delivery-address-old',
+    templateUrl: './delivery-addressOld.component.html',
+    styleUrls: ['./delivery-addressOld.component.scss']
 })
-export class DeliveryAddressComponent implements OnInit, OnDestroy, AfterViewInit {
+export class DeliveryAddressOldComponent implements OnInit, OnDestroy, AfterViewInit {
     ItName: string;
     ngOnInit() {
 

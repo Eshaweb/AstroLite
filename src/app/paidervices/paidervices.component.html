@@ -7,6 +7,14 @@
     </div>
     
     </div>
+
 <div *ngFor="let service of serviceInfo; trackBy: trackByFn">
 <app-horopaid [service]="service" #cmp></app-horopaid>
 </div>
+<igx-dialog #dialog title="Error Message Alert"
+    leftButtonLabel="Cancel"
+    (onLeftButtonSelect)="dialog.close()"
+    rightButtonLabel="OK"
+    (onRightButtonSelect)="onDialogOKSelected($event)"
+    message="'errorMessage'">
+</igx-dialog>

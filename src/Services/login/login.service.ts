@@ -38,12 +38,10 @@ export class LoginService {
             //this.events.publish('REFRESH_NAME');
             callback(data);
         }, (error) => {
-            // var alert = this.alertCtrl.create({
-            //     title: "Error Message",
-            //     subTitle: error,
-            //     buttons: ['OK']
-            // });
-            // alert.present();   
+            var errorMessage={
+              Error:error
+            }
+            callback(errorMessage);
         });
     }
     getPhoneNumberFromFacebookAccount() {

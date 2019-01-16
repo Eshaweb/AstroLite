@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChildren, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChildren, ElementRef, AfterViewInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControlName, FormControl, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -15,6 +15,7 @@ import { EventsService } from 'angular4-events';
 import { LoginService } from 'src/Services/login/login.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import { IgxDialogComponent } from 'igniteui-angular';
 
 @Component({
     selector: 'app-login',
@@ -22,18 +23,20 @@ import { ToastrManager } from 'ng6-toastr-notifications';
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
-
+  @ViewChild("dialog")
+  public dialog: IgxDialogComponent;
     
     @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
   isLoading: boolean=false;
   loading: boolean=false;
+  errorMessage: any;
 
     login(){
         this.isLoading=true;
         this.router.navigate(['regDemo']);
     }
     ngAfterViewInit(): void {
-        
+     
     }
     public onDialogOKSelected(event) {
       event.dialog.close();
@@ -175,22 +178,26 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
         Password: this.loginForm.get('password').value
       }
       this.loginService.Login(loginModel, (data) => {
-        this.loginService.PartyMastId=data.PartyMastId;
-        //   this.orderModel.PartyMastId=data.PartyMastId;
-        //   if(this.orderModel!=null){
-        //   this.horoScopeService.CreateOrder(this.orderModel,(data) => {
-        //   this.navCtrl.push(DeliveryAddressPage,{'OrderId':data,'ItemOrdered':this.navParams.get('ItemOrdered')});  
-        //   this.viewCtrl.dismiss();
-        // });
-        // }
-        if (this.horoScopeService.horoRequest != null) {
-        //   this.navCtrl.push(ServiceInfoPage, { 'PartyMastId': data.PartyMastId, 'HoroInfo': this.navParams.get('HoroInfo') });
-        this.router.navigate(["/services/paidServices", { "PartyMastId": data.PartyMastId}], { skipLocationChange: true });
-        // this.router.navigate(["/services/paidServices", { "PartyMastId": data.PartyMastId, 'HoroInfo': this.horoInfo}]);
-
-        //this.viewCtrl.dismiss();
+        if(data.Error==undefined){
+          this.loginService.PartyMastId=data.PartyMastId;
+          //   this.orderModel.PartyMastId=data.PartyMastId;
+          //   if(this.orderModel!=null){
+          //   this.horoScopeService.CreateOrder(this.orderModel,(data) => {
+          //   this.navCtrl.push(DeliveryAddressPage,{'OrderId':data,'ItemOrdered':this.navParams.get('ItemOrdered')});  
+          //   this.viewCtrl.dismiss();
+          // });
+          // }
+          if (this.horoScopeService.horoRequest != null) {
+          // this.router.navigate(["/services/paidServices", { "PartyMastId": data.PartyMastId}], { skipLocationChange: true });
+          this.router.navigate(["/services/paidServices"], { skipLocationChange: true });
+          //this.viewCtrl.dismiss();
+          }
+          //this.toastrService.successToastr('You Successfully logined.', 'Success!', { position: 'top-center' });
         }
-        this.toastrService.successToastr('You Successfully logined.', 'Success!', { position: 'top-center' });
+        else{
+          this.dialog.message=data.Error;
+          this.dialog.open();
+        }
       });
 
     }

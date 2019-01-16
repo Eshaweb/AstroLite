@@ -20,7 +20,8 @@ class="navigation-navbar-1" title="Login" isActionButtonVisible="false" >
 <div class="password">
 <igx-input-group type="line" class="password-1" >
 <input igxInput type="password" name="password" formControlName="password" />
-<label igxLabel>Password</label>
+<label igxLabel *ngIf="!isLoginByOTP">Password</label>
+<label igxLabel *ngIf="isLoginByOTP">OTP</label>
 </igx-input-group>
 <p style="color:red" id='err_password'></p>
 </div>
@@ -29,7 +30,16 @@ class="navigation-navbar-1" title="Login" isActionButtonVisible="false" >
 <div class="login">
 <button igxRipple class="login-1" igxButton="raised" [disabled]="!loginForm.valid" (click)='Login_Click()'>Login</button>
 </div>
-
+<!-- <div class="dialog-sample">
+    <button igxButton="raised" igxRipple="white" (click)="dialog.open()">LogOut</button>
+</div> -->
+<igx-dialog #dialog title="Error Message Alert"
+    leftButtonLabel="Cancel"
+    (onLeftButtonSelect)="dialog.close()"
+    rightButtonLabel="OK"
+    (onRightButtonSelect)="onDialogOKSelected($event)"
+    message="'errorMessage'">
+</igx-dialog>
 <div class="facebook">
 <button igxRipple class="facebook-1" igxButton="raised" (click)="signInWithFB()">Facebook</button>
 </div>
@@ -39,7 +49,7 @@ class="navigation-navbar-1" title="Login" isActionButtonVisible="false" >
 </div>
 
 <span class="igx-typography__body-1 note">Non- Registered user can login through Otp</span>
-<a class="igx-typography__body-1 clickhere" >Click Here to login</a>
+<a class="igx-typography__body-1 clickhere" (click)="goToLoginByOTP()">Click Here to login</a>
 </div>
 </div>
 </div>
