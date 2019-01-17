@@ -7,7 +7,6 @@ import { CommonModule } from '../../node_modules/@angular/common';
 import { UIService } from '../Services/UIService/ui.service';
 import { ShareButtonsModule } from '@ngx-share/buttons';
 import { InfragisticsImportsModule } from './infragistics-imports/infragistics-imports.module';
-import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { DeliveryAddressComponent } from './delivery-address/delivery-address/delivery-address.component';
 import { ServicesModule } from './services/services.module';
 import { AgmCoreModule } from '../../node_modules/@agm/core';

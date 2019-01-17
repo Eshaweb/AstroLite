@@ -351,7 +351,6 @@ export class HoroScopeService {
         var data = "OrderId=" + OrderId;
         this.smartHttpClient.GetById(endPoint, data).subscribe((data: any) => {
             var balance = data;
-            console.log(data);
             callback(data);
         }, (error) => {
             var errorMessage={

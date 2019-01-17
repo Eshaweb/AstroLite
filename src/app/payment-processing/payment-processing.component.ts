@@ -57,6 +57,7 @@ export class PaymentProcessingComponent implements OnInit, OnDestroy {
           URL.revokeObjectURL(url);
           this.loading = false;
           this.showSuccess=true;
+          this.clearParameters();
         });
       }
       else {
@@ -83,6 +84,7 @@ export class PaymentProcessingComponent implements OnInit, OnDestroy {
                 URL.revokeObjectURL(url);
                 this.loading = false;
                 this.showSuccess=true;
+                this.clearParameters();
                 this.sub.unsubscribe();
               });
             }
@@ -105,6 +107,10 @@ export class PaymentProcessingComponent implements OnInit, OnDestroy {
     //window.history.go(-1);
     // this.router.navigate(['/services/#SH']);
     this.router.navigate(['/home'], { replaceUrl: true });
+  }
+  clearParameters(){
+    this.horoScopeService.birthplace='';
+    this.horoScopeService.OrderId=null;
   }
   Download_Click() {
     this.loading = true;

@@ -179,11 +179,13 @@ export class HoropaidComponent implements OnInit {
             var FreePDF = {
                 OrderId: this.horoScopeService.OrderId.toString()
             }
-            this.isLoading = false;  
+            this.isLoading = false; 
+            this.loading = false; 
             // this.router.navigate(["/services/deliveryAddress", { 'DeliveryAddressRequired': DeliveryAddressRequired }]);
             this.router.navigate(["/services/deliveryAddress"]);
         }
         else{
+          this.loading = false;   
           this.errorMessage=data.Error;
           this.dialog.open();
         }

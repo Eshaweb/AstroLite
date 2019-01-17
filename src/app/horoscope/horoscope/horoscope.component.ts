@@ -86,7 +86,7 @@ ngAfterViewInit(): void {
   }
   else{
     this.timeFormatCombo.selectItems([this.timeformats[0]]);
-    this.pageSizecombo.selectItems([this.pageSizes[1]]);
+    this.pageSizecombo.selectItems([this.pageSizes[2]]);
     this.languagecombo.selectItems([this.languages[2]]);
   }
 }
@@ -447,6 +447,7 @@ submit_click() {
       this.router.navigate(["/services/horoscopeFree"]);
     }
     else{
+      this.loading = false;
       this.dialog.message=data.Error;
       this.dialog.open();
     }

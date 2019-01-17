@@ -20,7 +20,6 @@ import { HoroScopeService } from 'src/Services/HoroScopeService/HoroScopeService
 import { MatchMakingService } from 'src/Services/MatchMakingService/MatchMakingService';
 import { LoginService } from 'src/Services/login/login.service';
 import { PartyService } from 'src/Services/PartyService/PartyService';
-import { DashboardComponent } from '../dashboard/dashboard/dashboard.component';
 import { DepositWalletComponent } from '../deposit-wallet/deposit-wallet/deposit-wallet.component';
 import { NgxLoadingModule } from 'ngx-loading';
 import { ToastrModule } from 'ng6-toastr-notifications';
@@ -31,6 +30,7 @@ import { HoroscopeComponent } from '../horoscope/horoscope/horoscope.component';
 import { HoroscopeModule } from '../horoscope/horoscope.module';
 import { AuthGuard } from 'src/Services/auth/auth.guard';
 import { IgxDialogModule } from 'igniteui-angular';
+import { DeliveryAddressOldComponent } from '../delivery-addressOld/delivery-addressOld/delivery-addressOld.component';
 
 
 @NgModule({
@@ -86,7 +86,7 @@ import { IgxDialogModule } from 'igniteui-angular';
                     { path: 'matchFree', component: MatchMakingReportComponent },
                     { path: 'login', component: LoginComponent },
                     { path: 'horoscopePaid', component: PaidervicesComponent, canActivate: [AuthGuard], },
-                    { path: 'deliveryAddress', component: DeliveryAddressComponent, canActivate: [AuthGuard], },
+                    { path: 'deliveryAddress', component: DeliveryAddressOldComponent, canActivate: [AuthGuard], },
                     { path: 'paidServices', component: PaidervicesComponent, canActivate: [AuthGuard], },
                     { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard], },
                     { path: 'paymentProcessing', component: PaymentProcessingComponent, canActivate: [AuthGuard], }
@@ -99,6 +99,7 @@ import { IgxDialogModule } from 'igniteui-angular';
         HoroscopeComponent,
         MatchMakingComponent,
         DeliveryAddressComponent,
+        DeliveryAddressOldComponent,
         PaymentComponent,
         HoroscopeFreeComponent,
         HoroscopePaidServiceComponent,
@@ -106,7 +107,6 @@ import { IgxDialogModule } from 'igniteui-angular';
         MatchMakingComponent,
         LoginComponent,
         RegistrationComponent,
-        DashboardComponent,
         //DepositWalletComponent,
         MatchMakingReportComponent,
         ServicesComponent, ServicesListComponent, PaidervicesComponent],

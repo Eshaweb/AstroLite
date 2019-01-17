@@ -142,10 +142,41 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    //this.router.navigate(['/home'], { replaceUrl: true });
-  }
+    // const loginModel = {
+    //   MobileNo: this.loginForm.get('mobileno').value,
+    //   Password: this.loginForm.get('password').value
+    // }
+    // this.loginService.Login(loginModel, (data) => {
+    //   if(data.Error==undefined){
+    //     this.loginService.PartyMastId=data.PartyMastId;
+    //     if (this.horoScopeService.horoRequest != null) {
+    //     this.router.navigate(["/services/paidServices"], { skipLocationChange: true });
+    //     }
+    //   }
+    //   else{
+    //     this.dialog.message=data.Error;
+    //     this.dialog.open();
+    //   }
+    // });
+    }
   signInWithFB() {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+      //const loginModel = {
+      //   MobileNo: this.loginForm.get('mobileno').value,
+      //   Password: this.loginForm.get('password').value
+      // }
+      // this.loginService.Login(loginModel, (data) => {
+      //   if(data.Error==undefined){
+      //     this.loginService.PartyMastId=data.PartyMastId;
+      //     if (this.horoScopeService.horoRequest != null) {
+      //     this.router.navigate(["/services/paidServices"], { skipLocationChange: true });
+      //     }
+      //   }
+      //   else{
+      //     this.dialog.message=data.Error;
+      //     this.dialog.open();
+      //   }
+      // });
   }
   signOut(): void {
     this.authService.signOut();
